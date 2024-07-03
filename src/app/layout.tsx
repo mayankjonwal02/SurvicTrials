@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn("bg-gradient-to-r from-green-4 from-20% via-green-2 via-50% to-green-3 to-90%",inter.className)}>
+        {children}
+     
+        </body>
+      
+      <Toaster />
     </html>
   );
 }
