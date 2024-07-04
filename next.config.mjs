@@ -3,7 +3,8 @@ const nextConfig = {
     env: {  
         
         adminid: process.env.adminid,
-        adminpassword: process.env.adminpassword
+        adminpassword: process.env.adminpassword,
+        mongourl: process.env.mongourl
     
     },
 };

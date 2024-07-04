@@ -26,6 +26,9 @@ const config = {
           4:"#D0F0C0",
           5:"#00563B"
         },
+        customgradient: {
+          1:"bg-gradient-to-l from-green-2 from-10% via-green-4 via-60% to-green-3 to-90%"
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

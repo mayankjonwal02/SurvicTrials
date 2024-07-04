@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("bg-gradient-to-r from-green-4 from-20% via-green-2 via-50% to-green-3 to-90%",inter.className)}>
+      <body className={cn("bg-gradient-to-l from-green-2 from-10% via-green-4 via-60% to-green-3 to-90%",inter.className)}>
         {children}
      
         </body>

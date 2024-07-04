@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
 import { Input } from "@/components/ui/input"
 import {
     Card,
@@ -14,11 +15,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
+import mylogo from '../../../assets/aims_jodhpur2.png' 
 
 
 
 
 const Admin = () => {
+    const router = useRouter();
     const { toast } = useToast()
     const [passwordShown, setPasswordShown] = useState(false);
     const [admin, setAdmin] = useState("");
@@ -33,7 +36,8 @@ const Admin = () => {
                 description: 'Welcome Back',
                 variant: 'success',
             })
-            
+            router.push('/admintask/createuser')
+
         } else {
             console.log('Login Failed')
             toast({
@@ -42,7 +46,7 @@ const Admin = () => {
                 variant: 'destructive',
             })
 
-            
+
         }
     };
     const togglePasswordVisibility = () => {
@@ -52,15 +56,22 @@ const Admin = () => {
         <div className='flex flex-col justify-top items-center h-screen'>
 
             <div className='text-green-5 text-5xl md:text-7xl font-extrabold my-8'>SurVic Trials</div>
-            <div className='text-green-5 text-4xl md:text-5xl font-extrabold my-3 '>Admin Panel</div>
-            <div className='flex flex-row justify-around items-center w-screen grow '>
-                <div className=' w-1/5 text-center hidden md:flex '><FontAwesomeIcon icon={faUser} className='text-green-5 w-[270px] h-[270px]' size="3x" /></div>
-                <Card className='backdrop-blur-xl bg-white/30 w-4/5 md:w-2/5 '>
+            <div className='text-black text-4xl md:text-5xl font-extrabold my-3 '>Admin Panel</div>
+            <div className='flex flex-row justify-center items-center w-screen grow gap-[200px]'>
+                {/* <div className=' w-3/12 text-center hidden md:flex justify-center items-center '>
+                <FontAwesomeIcon icon={faUser} className='text-green-5 w-[270px] h-[270px]' size="3x" />
+                <img src={mylogo.src} alt="Description of my image" />               
+                </div> */}
+                <Card className=' drop-shadow-lg relative backdrop-blur-xl bg-white/30 w-4/5 md:w-2/5 lg:w-4/12  py-10 mt-[90px]  border-4 border-green-5 '>
+                    <div className='absolute flex flex-row justify-center items-center w-full top-[-70px] '>
+
+                        <img src={mylogo.src} alt="Description of my image" className='w-[150px] h-[150px] border-4 rounded-full border-green-5 ' /> </div>
                     <CardHeader>
-                        {/* <CardTitle className='text-center font-extrabold text-4xl my-5'>Admin Panel</CardTitle> */}
 
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className=' mt-[50px]'>
+
+
                         <Label htmlFor="email">Admin ID</Label>
                         <Input className='mb-6'
                             type="text"
@@ -87,9 +98,9 @@ const Admin = () => {
                                 {passwordShown ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
                             </button>
                         </div>
-                        <div className='flex flex-row justify-center items-center'>
+                        <div className='flex flex-row justify-center items-center mt-6'>
 
-                            <Button className='bg-green-5 text-white hover:bg-green-4 hover:text-green-5 mt-7' variant="outline" onClick={handleLogin}>Login</Button>
+                            <Button className='bg-green-5 text-white hover:bg-green-4 hover:text-green-5 mt-7 px-9 py-5 text-lg' variant="outline" onClick={handleLogin}>Submit</Button>
                         </div>
 
                     </CardContent>
