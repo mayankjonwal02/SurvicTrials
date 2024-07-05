@@ -9,7 +9,7 @@ import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 const Sidebar = () => {
   const router = useRouter()
   return (
-    <ScrollArea className='rounded-3xl m-5 flex flex-col h-[95%] w-[300px]  justify-start items-center backdrop-blur-xl bg-green-5/20' >
+    <ScrollArea className=' rounded-3xl m-5 hidden md:flex flex-col h-[95%] w-[300px]  justify-start items-center backdrop-blur-xl bg-green-5/20' >
       <div className='flex flex-row  justify-center items-center mt-5  px-3'>
       <img src={logo.src} className='w-40 h-40 '/>
       {/* <div className='font-extrabold  text-2xl text-green-5 '>SurVic Trials</div> */}
