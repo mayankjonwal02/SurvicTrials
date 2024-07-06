@@ -3,10 +3,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import React from 'react'
 import { motion } from "framer-motion";
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
+
 const home = () => {
+    const router = useRouter();
     return (
         <div className='flex flex-col justify-start items-center h-screen w-screen '>
-            <h1 className='text-2xl mt-7 mx-[20px] md:mx-[100px] text-green-5 font-bold text-center bg-white/30 py-6'>Upfront Surgery Vs Induction Chemotherapy Followed By Surgery In Oral Cavity Squamous Cell Cancers With Advanced Nodal Disease</h1>
+            <h1 className='text-2xl mt-7 mx-[20px] md:mx-[100px] text-green-5 font-bold text-center bg-white/30 py-6 px-3'>Upfront Surgery Vs Induction Chemotherapy Followed By Surgery In Oral Cavity Squamous Cell Cancers With Advanced Nodal Disease</h1>
             <h1 className='mt-4 font-bold '>{"(SurVic Trial)"}</h1>
 
             <h1 className='mt-1 font-bold '>{"A Phase 3 Multicentric Randomized Controlled Trial"}</h1>
@@ -20,7 +23,7 @@ const home = () => {
                         transition: { duration: 1 },
                     }}
                     whileTap={{ scale: 0.9 }}
-                ><Button className='bg-green-5 h-[70px] text-2xl'>Add New Patient</Button></motion.button>
+                ><Button className='bg-green-5 h-[70px] text-2xl' onClick={() => router.push('/inclusion_criteria')}>Add New Patient</Button></motion.button>
 
                 <motion.button
                     whileHover={{
@@ -28,7 +31,8 @@ const home = () => {
                         transition: { duration: 1 },
                     }}
                     whileTap={{ scale: 0.9 }}
-                ><Button className='bg-green-5 h-[70px] text-2xl'>Update Patient Data</Button></motion.button>
+                    
+                ><Button className='bg-green-5 h-[70px] text-2xl' >Update Patient Data</Button></motion.button>
 
                 <motion.button
                     whileHover={{
