@@ -56,6 +56,8 @@ const InclusionCriteria = () => {
                 description: "Inclusion Criteria Submitted",
                 variant: "success",
             })
+
+            router.push('/exclusion_criteria')
         }
     }
     const questions = [

@@ -53,6 +53,9 @@ const DoctorLogin = () => {
                                     description: 'Welcome Back',
                                     variant: 'success',
                                 })
+
+                                localStorage.setItem('user', JSON.stringify(data.data))
+                                localStorage.setItem("login","true")
                             }
                             else
                             {

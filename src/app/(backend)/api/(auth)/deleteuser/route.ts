@@ -1,7 +1,7 @@
 import { NextRequest as req, NextResponse as res } from "next/server";
 import { connectMongo } from "@/lib/mongoconnection";
 import User from "@/models/user";
-import { stat } from "fs";
+
 
 
 
@@ -16,6 +16,10 @@ export async function POST(request: req) {
         await User.deleteOne({ unique_id });
         return res.json({ message: "User deleted successfully" ,data : existinguser , executed : true,status : 200});
     } catch (error) {
-        return res.json({ message: "Error deleting user" ,data : error , executed : false,status : 500});
+        if (error instanceof Error) {
+            return res.json({ message: "Error deleting user" ,data : error.message , executed : false});
+        } else {
+            return res.json({ message: "Error deleting user" ,data : error , executed : false});
+        }
     }
 }

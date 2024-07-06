@@ -20,7 +20,12 @@ export async function POST(request: req) {
         
     } catch (error) {
 
-        return res.json({ message: "Error creating user" ,data : error , executed : false});
+        if (error instanceof Error) {
+            return res.json({ message: "Error creating user" ,data : error.message , executed : false});
+        } else {
+            return res.json({ message: "Error creating user" ,data : error , executed : false});
+        }
+        
         
     }
 }

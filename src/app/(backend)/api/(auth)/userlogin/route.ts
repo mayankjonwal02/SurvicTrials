@@ -15,6 +15,12 @@ export async function POST(request: req) {
         }
         return res.json({ message: "Login successful" ,data : existinguser , executed : true});
     } catch (error) {
-        return res.json({ message: error ,data : error , executed : false});
+        
+        if (error instanceof Error) {
+            return res.json({ message: error.message ,data : error.message , executed : false});
+        } else {
+            return res.json({ message: error ,data : error , executed : false});
+        }
+        
     }
 }

@@ -34,9 +34,9 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit , butto
                 <ScrollArea className='w-full h-full px-6' style={{ scrollbarColor: "#d9d9d9 #f0f0f0" }}>
                     {questions.map((question, index) => (
                         <div key={index} className='flex flex-row mt-5'>
-                            <div className='text-lg font-bold me-3'>{index + 1}.</div>
+                            <div className='text-sm md:text-lg font-bold me-3'>{index + 1}.</div>
                             <div className='flex flex-col w-full justify-start items-start'>
-                                <div className='text-lg font-bold '>{question.question}</div>
+                                <div className='text-sm md:text-lg font-bold '>{question.question}</div>
                                 {question.subQuestions && (
                                     <ul className='list-disc ml-4'>
                                         {question.subQuestions.map((subQuestion, subIndex) => (
