@@ -26,6 +26,15 @@ const patientSchema = new Schema({
         type: Date
         
     },
+    patientName: {
+        type: String
+    },
+    consentTakenBy: {
+        type: String
+    },
+    investigatorName: {
+        type: String
+    },
     data: [
         {
             question: String,

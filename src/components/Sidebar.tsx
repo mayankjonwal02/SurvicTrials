@@ -12,12 +12,10 @@ const Sidebar = () => {
     <ScrollArea className=' rounded-3xl m-5 hidden md:flex flex-col h-[95%] w-[300px]  justify-start items-center backdrop-blur-xl bg-green-5/20' >
       <div className='flex flex-row  justify-center items-center mt-5  px-3'>
       <img src={logo.src} className='w-40 h-40 '/>
-      {/* <div className='font-extrabold  text-2xl text-green-5 '>SurVic Trials</div> */}
+      
    
       </div>
-      {/* <div className='text-center text-xl my-7 cursor-pointer text-green-5 font-extrabold bg-white mx-3 rounded-lg'>Create User</div>
-      <div className='text-center text-xl my-7 cursor-pointer text-black font-extrabold'>View Users</div>
-      <div className='text-center text-xl my-7 cursor-pointer text-black font-extrabold'>Data</div> */}
+     
 
       {sidebaritems.map((item, index) => {
         const pathname = usePathname()

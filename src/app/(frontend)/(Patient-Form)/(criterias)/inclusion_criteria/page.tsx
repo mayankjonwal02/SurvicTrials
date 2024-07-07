@@ -80,7 +80,7 @@ const InclusionCriteria = () => {
     return (
         <div>
 
-            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Inclusion Criteria" />
+            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Inclusion Criteria" loading={false}/>
         
         </div>
     );

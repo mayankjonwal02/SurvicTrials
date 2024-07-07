@@ -1,0 +1,255 @@
+"use client"
+import React,{useState,useEffect} from 'react';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import "@/customcss/scrollbar.css";
+import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from 'next/navigation';
+import CustomForm from '@/components/customform';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+import { set } from 'mongoose';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+  
+
+
+const ExclusionCriteria = () => {
+    // const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const { toast } = useToast()
+    const router = useRouter();
+    const [user, setUser] = useState<any>({});
+    const [criteria1, setCriteria1] = React.useState("");
+    const [criteria2, setCriteria2] = React.useState("");
+    const [criteria3, setCriteria3] = React.useState("");
+    const [criteria4, setCriteria4] = React.useState("");
+    const [criteria5, setCriteria5] = React.useState("");
+    const [criteria6, setCriteria6] = React.useState("");
+    const [Patient_trial_number, setPatient_trial_number] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
+    const [loading1, setLoading1] = React.useState(false);
+    const [patientName, setPatientName] = React.useState("");
+    const [consentTakenBy, setConsentTakenBy] = React.useState("");
+    const [investigatorName, setInvestigatorName] = React.useState("");
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+        setUser(storedUser);
+        setCriteria6(storedUser.city);
+    }, []);
+    const handleSubmit = async () => {
+        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
+            toast({
+                title: "Error",
+                description: "Please fill in all the fields",
+                variant: "destructive",
+            })
+
+            return false
+        }
+
+        if (criteria1 === 'Yes' || criteria2 === 'Yes' || criteria3 === 'Yes' || criteria4 === 'Yes' || criteria5 === 'Yes' || criteria6 === 'Yes' ) 
+            {
+            toast({
+                title: "Failed",
+                description: "Criteria Not Satisfied",
+                variant: "destructive",
+            })
+            
+
+            
+
+            router.push('/home')
+
+
+        }
+        else {
+
+
+            try {
+                setLoading(true);
+                let responce1 = await fetch(`/api/getallpatients/${user.citycode}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({}),
+                });
+                let responce = await responce1.json();
+                if(responce.executed)
+                    {
+                        let allpatients = responce.data;
+                let count = allpatients.length;
+                let currentyr = new Date().getFullYear();
+                
+                let patient_trial_number = `${currentyr}-${user.citycode.slice(0, 3).toUpperCase()}-${count + 1}`
+                setPatient_trial_number(patient_trial_number);
+                setLoading(false);
+                document.getElementById("submitbutton")!.click();
+               
+                    }
+                else{
+                    toast({
+                        title: "Failed",
+                        description: responce.message,
+                        variant: "destructive",
+                    })
+                }
+                
+            } catch (error : any) {
+                setLoading(false);
+                toast({
+                    title: "Failed",
+                    description: error.message,
+                    variant: "destructive",
+                })
+            }
+
+            // toast({
+            //     title: "Success",
+            //     description: "Inclusion Criteria Submitted",
+            //     variant: "success",
+            // })
+        }
+    }
+
+
+    const createpatient = async () => {
+
+    if(patientName === '' || consentTakenBy === '' || investigatorName === '')
+    {
+        toast({
+            title: "Error",
+            description: "Please fill in all the fields",
+            variant: "destructive",
+        })
+        
+    }
+    else
+    {
+        try {
+            setLoading1(true);
+            let responce2 = await fetch(`/api/createpatient`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    patient_trial_number: Patient_trial_number,
+                    submittedBy:  user.unique_id,
+                    city: user.city,
+                    citycode: user.citycode,
+                    patientName: patientName,
+                    consentTakenBy: consentTakenBy,
+                    investigatorName: investigatorName
+                    
+                }),
+            });
+
+            let jsondata = await responce2.json();
+            setLoading1(false);
+            if(jsondata.executed)
+            {
+                toast({
+                    title: "Success",
+                    description: jsondata.message,
+                    variant: "success",
+                })
+            }
+            else
+            {
+                toast({
+                    title: "Failed",
+                    description: jsondata.message,
+                    variant: "destructive",
+                })
+            }
+
+    } catch (error : any) {
+        setLoading1(false);
+        toast({
+            title: "Failed",
+            description: error.message,
+            variant: "destructive",
+        })
+        
+    }
+    }
+
+    }
+    const questions = [
+        { question: 'Pregnant ?', options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
+        { question: 'History of moderate to severe hearing loss.', options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
+        { question: 'History of previous malignancy excluding non-melanoma skin cancers or cervical carcinoma in situ.', options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
+        { question: 'Documented Weight loss of more than 15% in the last 6 months.', options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
+        { question: 'Patients with known HIV, hepatitis B or C infection.', options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
+        {
+            question: 'City of Institute.',
+            options: [user.city], value: criteria6, setValue: setCriteria6
+        },
+    ];
+
+    return (
+        <div className='flex flex-col w-full h-screen items-center justify-center'>
+
+            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Exclusion Criteria" loading={loading} />
+            <Dialog >
+      <DialogTrigger asChild>
+        <Button id='submitbutton' className='hidden' variant="outline">Share</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md bg-green-3">
+        <DialogHeader>
+          <DialogTitle>Patient Created Successfully</DialogTitle>
+          
+        </DialogHeader>
+            <div className='text-lg  w-full text-center  border-b-2 border-b-green-5 mb-5'>Patient Trial Number : <b>{Patient_trial_number}</b></div>
+        <ScrollArea className="h-72">
+
+        <div className="flex items-center space-x-2">
+          <div className="flex-1 gap-2 flex flex-col justify-center items-center">
+            
+            <div className='w-full h-fit flex flex-col justify-center items-start'>
+                <Label className="text-sm mb-1">Patient Name</Label>
+                <Input className="w-[70%] mx-1 mb-3" placeholder='Patient Name' value={patientName} onChange={(e) => setPatientName(e.target.value)}/>
+
+                <Label className="text-sm mb-1">Who took Consent</Label>
+                <Input className="w-[70%] mx-1 mb-3" placeholder='Who took Consent' value={consentTakenBy} onChange={(e) => setConsentTakenBy(e.target.value)}/>
+
+                <Label className="text-sm mb-1">Investigator's Name</Label>
+                <Input className="w-[70%] mx-1 mb-3" placeholder="Investigator's Name" value={investigatorName} onChange={(e) => setInvestigatorName(e.target.value)}/>
+            </div>
+            <div className='flex flex-row gap-3 justify-around items-center w-full'>
+            <Button variant="outline" className='w-fit bg-green-5 text-white' onClick={() => {createpatient()}}>
+                Proceed
+            {
+                loading1 ? <div className='ms-2 w-[20px] h-[20px] animate-spin border border-2 border-t-2 rounded-full border-white border-t-transparent'></div> : null
+            }
+            </Button>
+
+            
+            </div>
+          </div>
+         
+        </div>
+        </ScrollArea>
+        
+      </DialogContent>
+    </Dialog>
+        </div>
+    );
+};
+
+export default ExclusionCriteria;

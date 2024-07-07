@@ -4,7 +4,7 @@ import { exec } from "child_process";
 
 export async function POST(request: req) {
     try {
-        const {patient_trial_number,city,citycode,submittedBy} = await request.json();
+        const {patient_trial_number,city,citycode,submittedBy,patientName,consentTakenBy,investigatorName} = await request.json();
         const existingPatient = await Patient.findOne({ patient_trial_number });
         if (existingPatient) {
             return res.json({ message: "Patient already exists" ,executed : false});
@@ -17,11 +17,18 @@ export async function POST(request: req) {
             submittedBy: submittedBy,
             createdon: date,
             updatedon: date,
+            patientName: patientName,
+            consentTakenBy: consentTakenBy,
+            investigatorName: investigatorName,
             data: []
         });
         await newPatient.save();
         return res.json({ message: "Patient created successfully" ,executed : true});
     } catch (error) {
-        return res.json({ message: error ,executed : false});
+        if (error instanceof Error) {
+            return res.json({ message: error.message, executed: false });
+        } else {
+            return res.json({ message: "An unknown error occurred", executed: false });
+        }
     }
 }

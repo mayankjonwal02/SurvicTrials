@@ -24,11 +24,12 @@ interface CustomFormProps {
     handleSubmit: () => void;
     buttontitle : String;
     formtitle : String;
+    loading : boolean;
 }
 
-const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit , buttontitle , formtitle }) => {
+const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit , buttontitle , formtitle , loading }) => {
     return (
-        <div className='flex flex-col justify-start items-center h-screen w-full p-5'>
+        <div className='flex flex-col justify-start items-center h-screen w-screen p-5'>
             <div className='text-4xl font-bold text-green-5 my-5'>{formtitle}</div>
             <div className='w-[90%] h-[80%] flex flex-col justify-center bg-white/30 items-center mt-7 p-4'>
                 <ScrollArea className='w-full h-full px-6' style={{ scrollbarColor: "#d9d9d9 #f0f0f0" }}>
@@ -68,6 +69,10 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit , butto
                     <div className='w-full flex justify-center'>
                         <Button onClick={handleSubmit} className='bg-red-600 mt-5 text-white hover:bg-green-4 hover:text-green-5 text-sm' variant="outline">
                             {buttontitle}
+                        
+                        
+                        {loading?<div className='ms-2 w-[25px] h-[25px] animate-spin rounded-full border-2 border-t-2 border-t-transparent border-white'></div>
+                        :<></>}
                         </Button>
                     </div>
                 </ScrollArea>
