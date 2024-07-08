@@ -9,7 +9,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import logo from '@/assets/aims_jodhpur2.png'
 import { ScrollArea } from "@/components/ui/scroll-area"
-import sidebaritems from '@/constants/Sidebaritems'
+import sidebaritems from '@/constants/PatientSidebarItem'
 import { usePathname, useRouter } from 'next/navigation'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -26,7 +26,7 @@ import {
 
 
 
-export default function AdminSidebarLayout({
+export default function PatientSidebarLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -57,13 +57,11 @@ export default function AdminSidebarLayout({
               const pathname = usePathname()
               const isActive = item.path === pathname
               return (
-                <div key={index} onClick={() => router.push(item.path)} className={`text-start text-xl my-7 mx-3 px-8 py-2 cursor-pointer ${isActive ? 'text-green-5 font-extrabold bg-white rounded-lg' : 'text-black font-extrabold'} `}>
-                  
-                  {item.icon === undefined ? null : <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={item.icon} />}{item.title}
-
-                  {/* <FontAwesomeIcon className='mr-3' icon={item.icon} />{item.title} */}
-                  
-                  </div>
+                <div  key={index} onClick={() => router.push(item.path)} className={`text-start text-xl my-4 mx-3 px-8 py-1  cursor-pointer ${isActive ? 'text-green-5 font-extrabold bg-white rounded-lg' : 'text-black font-extrabold'} `}>
+                    {item.icon === undefined ? null : <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={item.icon} />}{item.title}
+                    {/* <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={item.icon} />{item.title} */}
+                
+                </div>
               )
             })}
 
@@ -75,7 +73,7 @@ export default function AdminSidebarLayout({
       </Sheet>
 
 
-      <Sidebar items = {sidebaritems}/>
+      <Sidebar items={sidebaritems} />
 
       <div className="grow ">
 

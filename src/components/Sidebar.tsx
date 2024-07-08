@@ -6,7 +6,15 @@ import sidebaritems from '@/constants/Sidebaritems'
 import { usePathname , useRouter} from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons'
-const Sidebar = () => {
+
+interface SidebarItem {
+  title: string
+  path: string
+  icon?: any
+}
+
+
+const Sidebar = ({items }: {items: SidebarItem[]}) => {
   const router = useRouter()
   return (
     <ScrollArea className=' rounded-3xl m-5 hidden md:flex flex-col h-[95%] w-[300px]  justify-start items-center backdrop-blur-xl bg-green-5/20' >
@@ -17,11 +25,17 @@ const Sidebar = () => {
       </div>
      
 
-      {sidebaritems.map((item, index) => {
+      {items.map((item, index) => {
         const pathname = usePathname()
         const isActive = item.path === pathname
         return (
-          <div key={index} onClick={() => router.push(item.path)} className={`text-start text-xl my-7 mx-3 px-8 py-2 cursor-pointer ${isActive ? 'text-green-5 font-extrabold bg-white rounded-lg' : 'text-black font-extrabold'} `}><FontAwesomeIcon className='mr-3' icon={item.icon} />{item.title}</div>
+          <div key={index} onClick={() => router.push(item.path)} className={`text-start text-lg my-4 mx-3 px-5 py-2 cursor-pointer hover:bg-white/30 ${isActive ? 'text-green-5 font-extrabold bg-white rounded-lg' : 'text-black font-extrabold'} `}>
+            
+            {item.icon === undefined ? null : <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={item.icon} />}{item.title}
+
+            {/* <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={item.icon} />{item.title} */}
+            
+            </div>
         )
       })}
       

@@ -1,5 +1,6 @@
 import { NextRequest as req, NextResponse as res } from "next/server";
 import Patient from "@/models/patient";
+import { connectMongo } from "@/lib/mongoconnection";
 
 
 
@@ -7,6 +8,7 @@ export async function POST(request: req , { params }: { params: { citycode: stri
     
     const { citycode } = params;
     try {
+        await connectMongo();
         const patient = await Patient.find({ citycode: citycode });
         return res.json({ message: `Patients fetched successfully , citycode = ${citycode}`,data : patient  , executed : true });
     } catch (error) {

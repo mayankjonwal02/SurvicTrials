@@ -1,15 +1,17 @@
 import { NextRequest as req, NextResponse as res } from "next/server";
 import Patient  from "@/models/patient";
-import { exec } from "child_process";
+import { connectMongo } from "@/lib/mongoconnection";
+
 
 export async function POST(request: req) {
     try {
-        const {patient_trial_number,city,citycode,submittedBy,patientName,consentTakenBy,investigatorName} = await request.json();
+        await connectMongo();
+        const {patient_trial_number,city,citycode,submittedBy,patientName,consentTakenBy,investigatorName,date} = await request.json();
         const existingPatient = await Patient.findOne({ patient_trial_number });
         if (existingPatient) {
             return res.json({ message: "Patient already exists" ,executed : false});
         }
-        const date = Date.now();
+       
         const newPatient = new Patient({
             patient_trial_number: patient_trial_number,
             city: city,
@@ -23,6 +25,7 @@ export async function POST(request: req) {
             data: []
         });
         await newPatient.save();
+        console.log(date)
         return res.json({ message: "Patient created successfully" ,executed : true});
     } catch (error) {
         if (error instanceof Error) {

@@ -53,6 +53,6 @@ const patientSchema = new Schema({
     ]
 });
 const db = mongoose.connection.useDb('SurvicTrial');
-const Patient = db.model('PatientData',patientSchema)
+const Patient = db.model('Patient',patientSchema)
 
 module.exports = Patient

@@ -1,5 +1,5 @@
 "use client"
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
     DropdownMenu,
@@ -21,11 +21,19 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-  } from "@/components/ui/dialog"
+} from "@/components/ui/dialog"
 import { set } from 'mongoose';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-  
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+import { Calendar } from "@/components/ui/calendar"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { cn } from '@/lib/utils';
 
 
 const ExclusionCriteria = () => {
@@ -45,6 +53,7 @@ const ExclusionCriteria = () => {
     const [patientName, setPatientName] = React.useState("");
     const [consentTakenBy, setConsentTakenBy] = React.useState("");
     const [investigatorName, setInvestigatorName] = React.useState("");
+    const [date, setDate] = React.useState<Date>()
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
@@ -61,16 +70,15 @@ const ExclusionCriteria = () => {
             return false
         }
 
-        if (criteria1 === 'Yes' || criteria2 === 'Yes' || criteria3 === 'Yes' || criteria4 === 'Yes' || criteria5 === 'Yes' || criteria6 === 'Yes' ) 
-            {
+        if (criteria1 === 'Yes' || criteria2 === 'Yes' || criteria3 === 'Yes' || criteria4 === 'Yes' || criteria5 === 'Yes' || criteria6 === 'Yes') {
             toast({
                 title: "Failed",
                 description: "Criteria Not Satisfied",
                 variant: "destructive",
             })
-            
 
-            
+
+
 
             router.push('/home')
 
@@ -89,27 +97,26 @@ const ExclusionCriteria = () => {
                     body: JSON.stringify({}),
                 });
                 let responce = await responce1.json();
-                if(responce.executed)
-                    {
-                        let allpatients = responce.data;
-                let count = allpatients.length;
-                let currentyr = new Date().getFullYear();
-                
-                let patient_trial_number = `${currentyr}-${user.citycode.slice(0, 3).toUpperCase()}-${count + 1}`
-                setPatient_trial_number(patient_trial_number);
-                setLoading(false);
-                document.getElementById("submitbutton")!.click();
-               
-                    }
-                else{
+                if (responce.executed) {
+                    let allpatients = responce.data;
+                    let count = allpatients.length;
+                    let currentyr = new Date().getFullYear();
+
+                    let patient_trial_number = `${currentyr}-${user.citycode.slice(0, 3).toUpperCase()}-${count + 1}`
+                    setPatient_trial_number(patient_trial_number);
+                    setLoading(false);
+                    document.getElementById("submitbutton")!.click();
+
+                }
+                else {
                     toast({
                         title: "Failed",
                         description: responce.message,
                         variant: "destructive",
                     })
                 }
-                
-            } catch (error : any) {
+
+            } catch (error: any) {
                 setLoading(false);
                 toast({
                     title: "Failed",
@@ -128,77 +135,75 @@ const ExclusionCriteria = () => {
 
 
     const createpatient = async () => {
+        console.log(date)
+        if (patientName === '' || consentTakenBy === '' || investigatorName === '' || date === undefined) {
+            toast({
+                title: "Error",
+                description: "Please fill in all the fields",
+                variant: "destructive",
+            })
 
-    if(patientName === '' || consentTakenBy === '' || investigatorName === '')
-    {
-        toast({
-            title: "Error",
-            description: "Please fill in all the fields",
-            variant: "destructive",
-        })
-        
-    }
-    else
-    {
-        try {
-            setLoading1(true);
-            let responce2 = await fetch(`/api/createpatient`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    patient_trial_number: Patient_trial_number,
-                    submittedBy:  user.unique_id,
-                    city: user.city,
-                    citycode: user.citycode,
-                    patientName: patientName,
-                    consentTakenBy: consentTakenBy,
-                    investigatorName: investigatorName
-                    
-                }),
-            });
+        }
+        else {
+            try {
+                setLoading1(true);
+                const formattedDate = format(date, "dd-MM-yyyy");
+                let responce2 = await fetch(`/api/createpatient`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: Patient_trial_number,
+                        submittedBy: user.unique_id,
+                        city: user.city,
+                        citycode: user.citycode,
+                        patientName: patientName,
+                        consentTakenBy: consentTakenBy,
+                        investigatorName: investigatorName,
+                        date:  format(date, "dd-MM-yyyy")
 
-            let jsondata = await responce2.json();
-            setLoading1(false);
-            if(jsondata.executed)
-            {
-                toast({
-                    title: "Success",
-                    description: jsondata.message,
-                    variant: "success",
-                })
-            }
-            else
-            {
+                    }),
+                });
+
+                let jsondata = await responce2.json();
+                setLoading1(false);
+                if (jsondata.executed) {
+                    toast({
+                        title: "Success",
+                        description: jsondata.message,
+                        variant: "success",
+                    })
+                }
+                else {
+                    toast({
+                        title: "Failed",
+                        description: jsondata.message,
+                        variant: "destructive",
+                    })
+                }
+
+            } catch (error: any) {
+                setLoading1(false);
                 toast({
                     title: "Failed",
-                    description: jsondata.message,
+                    description: error.message,
                     variant: "destructive",
                 })
-            }
 
-    } catch (error : any) {
-        setLoading1(false);
-        toast({
-            title: "Failed",
-            description: error.message,
-            variant: "destructive",
-        })
-        
-    }
-    }
+            }
+        }
 
     }
     const questions = [
-        { question: 'Pregnant ?', options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
-        { question: 'History of moderate to severe hearing loss.', options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
-        { question: 'History of previous malignancy excluding non-melanoma skin cancers or cervical carcinoma in situ.', options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'Documented Weight loss of more than 15% in the last 6 months.', options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients with known HIV, hepatitis B or C infection.', options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
+        { question: 'Pregnant ?' , inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
+        { question: 'History of moderate to severe hearing loss.' , inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
+        { question: 'History of previous malignancy excluding non-melanoma skin cancers or cervical carcinoma in situ.' , inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
+        { question: 'Documented Weight loss of more than 15% in the last 6 months.', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria4, setValue: setCriteria4 },
+        { question: 'Patients with known HIV, hepatitis B or C infection.', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria5, setValue: setCriteria5 },
         {
             question: 'City of Institute.',
-            options: [user.city], value: criteria6, setValue: setCriteria6
+            options: [user.city],  inputtype:'dropdown' , value: criteria6, setValue: setCriteria6
         },
     ];
 
@@ -207,47 +212,71 @@ const ExclusionCriteria = () => {
 
             <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Exclusion Criteria" loading={loading} />
             <Dialog >
-      <DialogTrigger asChild>
-        <Button id='submitbutton' className='hidden' variant="outline">Share</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-green-3">
-        <DialogHeader>
-          <DialogTitle>Patient Created Successfully</DialogTitle>
-          
-        </DialogHeader>
-            <div className='text-lg  w-full text-center  border-b-2 border-b-green-5 mb-5'>Patient Trial Number : <b>{Patient_trial_number}</b></div>
-        <ScrollArea className="h-72">
+                <DialogTrigger asChild>
+                    <Button id='submitbutton' className='hidden' variant="outline">Share</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md backdrop-blur-sm bg-green-1">
+                    <DialogHeader>
+                        <DialogTitle>Patient Created Successfully</DialogTitle>
 
-        <div className="flex items-center space-x-2">
-          <div className="flex-1 gap-2 flex flex-col justify-center items-center">
-            
-            <div className='w-full h-fit flex flex-col justify-center items-start'>
-                <Label className="text-sm mb-1">Patient Name</Label>
-                <Input className="w-[70%] mx-1 mb-3" placeholder='Patient Name' value={patientName} onChange={(e) => setPatientName(e.target.value)}/>
+                    </DialogHeader>
+                    <div className='text-lg  w-full text-center  border-b-2 border-b-green-5 mb-5'>Patient Trial Number : <b>{Patient_trial_number}</b></div>
+                    <ScrollArea className="h-72">
 
-                <Label className="text-sm mb-1">Who took Consent</Label>
-                <Input className="w-[70%] mx-1 mb-3" placeholder='Who took Consent' value={consentTakenBy} onChange={(e) => setConsentTakenBy(e.target.value)}/>
+                        <div className="flex items-center space-x-2">
+                            <div className="flex-1 gap-2 flex flex-col justify-center items-center">
 
-                <Label className="text-sm mb-1">Investigator's Name</Label>
-                <Input className="w-[70%] mx-1 mb-3" placeholder="Investigator's Name" value={investigatorName} onChange={(e) => setInvestigatorName(e.target.value)}/>
-            </div>
-            <div className='flex flex-row gap-3 justify-around items-center w-full'>
-            <Button variant="outline" className='w-fit bg-green-5 text-white' onClick={() => {createpatient()}}>
-                Proceed
-            {
-                loading1 ? <div className='ms-2 w-[20px] h-[20px] animate-spin border border-2 border-t-2 rounded-full border-white border-t-transparent'></div> : null
-            }
-            </Button>
+                                <div className='w-full h-fit flex flex-col justify-center items-start'>
+                                    <Label className="text-sm mb-1">Patient Name</Label>
+                                    <Input className="w-[70%] mx-1 mb-3" placeholder='Patient Name' value={patientName} onChange={(e) => setPatientName(e.target.value)} />
 
-            
-            </div>
-          </div>
-         
-        </div>
-        </ScrollArea>
-        
-      </DialogContent>
-    </Dialog>
+                                    <Label className="text-sm mb-1">Who took Consent</Label>
+                                    <Input className="w-[70%] mx-1 mb-3" placeholder='Who took Consent' value={consentTakenBy} onChange={(e) => setConsentTakenBy(e.target.value)} />
+
+                                    <Label className="text-sm mb-1">Investigator's Name</Label>
+                                    <Input className="w-[70%] mx-1 mb-3" placeholder="Investigator's Name" value={investigatorName} onChange={(e) => setInvestigatorName(e.target.value)} />
+
+                                    <Label className="text-sm mb-1">Choose Date</Label>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <Button
+                                                variant={"outline"}
+                                                className={cn(
+                                                    "w-[70%] mx-1 mb-3 justify-start text-left font-normal",
+                                                    !date && "text-muted-foreground"
+                                                )}
+                                            >
+                                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                                {date ? format(date, "dd-MM-yyyy") : <span>Pick a date</span>}
+                                            </Button>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="w-auto p-0">
+                                            <Calendar
+                                                mode="single"
+                                                selected={date}
+                                                onSelect={setDate}
+                                                initialFocus
+                                            />
+                                        </PopoverContent>
+                                    </Popover>
+                                </div>
+                                <div className='flex flex-row gap-3 justify-around items-center w-full'>
+                                    <Button variant="outline" className='w-fit bg-green-5 text-white' onClick={() => { createpatient() }}>
+                                        Proceed
+                                        {
+                                            loading1 ? <div className='ms-2 w-[20px] h-[20px] animate-spin border border-2 border-t-2 rounded-full border-white border-t-transparent'></div> : null
+                                        }
+                                    </Button>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </ScrollArea>
+
+                </DialogContent>
+            </Dialog>
         </div>
     );
 };

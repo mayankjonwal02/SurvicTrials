@@ -1,5 +1,6 @@
 import { NextRequest as req, NextResponse as res } from "next/server";
 import Patient from "@/models/patient";
+import { connectMongo } from "@/lib/mongoconnection";
 
 
 
@@ -7,6 +8,7 @@ import Patient from "@/models/patient";
 export async function POST(request: req) {
     
     try {
+        await connectMongo();
         const patient = await Patient.find();
         return res.json({ message: "Patients fetched successfully",data : patient  , executed : true });
     } catch (error) {

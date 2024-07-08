@@ -61,13 +61,13 @@ const InclusionCriteria = () => {
         }
     }
     const questions = [
-        { question: 'Age 18-75 years; ECOG PS 0-2', options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
-        { question: 'Clinical Stage cT1-4a, cN2-N3*, M0- as per UICC 2018', options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
-        { question: 'Newly diagnosed, treatment-naive, biopsy or cytology proven OSCC', options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'No contraindication to Cisplatin or radiotherapy', options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients eligible for definitive curative intent treatment after discussion in multidisciplinary tumour board', options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
+        { question: 'Age 18-75 years; ECOG PS 0-2', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
+        { question: 'Clinical Stage cT1-4a, cN2-N3*, M0- as per UICC 2018', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
+        { question: 'Newly diagnosed, treatment-naive, biopsy or cytology proven OSCC', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
+        { question: 'No contraindication to Cisplatin or radiotherapy', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
+        { question: 'Patients eligible for definitive curative intent treatment after discussion in multidisciplinary tumour board', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
         {
-            question: 'Adequate organ function at time of participation:',
+            question: 'Adequate organ function at time of participation:', inputtype:'dropdown' ,
             subQuestions: [
                 'Haematological: Haemoglobin > 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥ 100000/cmm3',
                 'Liver Function test: Bilirubin ≤ 2 x upper limit normal (ULN), AST/ALT/ALP ≤ 2.5 x ULN',
