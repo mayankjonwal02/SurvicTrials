@@ -78,7 +78,7 @@ const InclusionCriteria = () => {
     ];
 
     return (
-        <div>
+        <div className="w-full">
 
             <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Inclusion Criteria" loading={false}/>
         

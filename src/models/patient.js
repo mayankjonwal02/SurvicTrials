@@ -40,11 +40,12 @@ const patientSchema = new Schema({
             question: String,
             answer: String,
             questionId: String,
+            questionType: String,
             updates: [
                 {
                     updatedBy: String,
                     updatedOn: {
-                        type: Date
+                        type: String
                     },
                     answer: String,
                 }

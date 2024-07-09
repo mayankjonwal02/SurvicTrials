@@ -42,10 +42,11 @@ export default function PatientSidebarLayout({
         <SheetTrigger>
           <FontAwesomeIcon className="absolute top-7 left-5 text-green-5 text-2xl flex md:hidden " icon={faBars} />
         </SheetTrigger>
-        <SheetContent side={"left"} className="bg-transparent border border-transparent w-[350px] h-screen flex flex-col justify-center items-center">
+        <SheetContent side={"left"} className="rounded-3xl bg-green-2 border border-transparent w-[300px] h-screen flex flex-col justify-center items-center">
+        <SheetHeader><div className="text-xl font-bold text-green-5">Trial No : RTC-21-2</div></SheetHeader>
           <SheetClose asChild>
 
-          <ScrollArea className=' rounded-3xl m-5 flex md:hidden flex-col h-[95%] w-[300px]  justify-start items-center bg-green-2' >
+          <ScrollArea className=' rounded-3xl m-5 mt-0 flex md:hidden flex-col h-[95%] w-[300px]  justify-start items-center bg-green-2' >
             <div className='flex flex-row  justify-center items-center mt-5  px-3'>
               <img src={logo.src} className='w-40 h-40 ' />
 

@@ -59,6 +59,10 @@ const ExclusionCriteria = () => {
         setUser(storedUser);
         setCriteria6(storedUser.city);
     }, []);
+
+    const settrialno = (trialnumber : string) => {
+        localStorage.setItem("patienttrialnumber", trialnumber);
+    }
     const handleSubmit = async () => {
         if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
             toast({
@@ -148,11 +152,13 @@ const ExclusionCriteria = () => {
             try {
                 setLoading1(true);
                 const formattedDate = format(date, "dd-MM-yyyy");
+                settrialno(Patient_trial_number);
                 let responce2 = await fetch(`/api/createpatient`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    
                     body: JSON.stringify({
                         patient_trial_number: Patient_trial_number,
                         submittedBy: user.unique_id,

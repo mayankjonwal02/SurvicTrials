@@ -14,27 +14,29 @@ export async function POST(request: req ) {
         if (!patient) {
             return res.json({ message: "Patient not found", executed: false });
         }
-        const date = Date.now();
+        const date = new Date(Date.now());
+        
         for (const questiondata of questions) {
-            const { questionId, answer , question } = questiondata;
+            const { questionId, value , question , questionType } = questiondata;
             const existingquestion = patient.data.find((data) => data.questionId === questionId);
             if (existingquestion) {
-                existingquestion.answer = answer;
+                existingquestion.answer = value;
                 existingquestion.updates.push({
                     updatedBy: submittedBy,
-                    updatedOn: date,
-                    answer: answer
+                    updatedOn: date.toLocaleDateString(),
+                    answer: value
                 });
             } else {
                 patient.data.push({
                     question: question,
-                    answer: answer,
+                    answer: value,
                     questionId: questionId,
+                    questionType:questionType,
                     updates: [
                         {
-                            updatedBy: patient.submittedBy,
-                            updatedOn: date,
-                            answer: answer
+                            updatedBy: submittedBy,
+                            updatedOn: date.toLocaleDateString(),
+                            answer: value
                         }
                     ]
                 });
