@@ -7,73 +7,174 @@ import CustomForm from '@/components/customform';
 const Adverseevent = () => {
     const { toast } = useToast()
     const router = useRouter();
-    const [criteria1, setCriteria1] = React.useState("");
-    const [criteria2, setCriteria2] = React.useState("");
-    const [criteria3, setCriteria3] = React.useState("");
-    const [criteria4, setCriteria4] = React.useState("");
-    const [criteria5, setCriteria5] = React.useState("");
-    const [criteria6, setCriteria6] = React.useState("");
+
     const [user, setUser] = useState<any>({});
+    const userid = "mayankjonwal"
+    const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
     }, []);
+    const questionType = "adverseevent";
+    const formTitle = "Adverse Event";
+    const [tabValue, setTabValue] = useState("section1");
+    const [loading, setLoading] = React.useState(false);
 
-    const handleSubmit = () => {
-        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
+    // Section 1
+    const [cycle, setCycle] = useState('');
+    const [thrombocytopenia, setThrombocytopenia] = useState('');
+    const [neutropenia, setNeutropenia] = useState('');
+    const [febrileNeutropenia, setFebrileNeutropenia] = useState('');
+    const [hyponatremia, setHyponatremia] = useState('');
+    const [hypokalemia, setHypokalemia] = useState('');
+    const [hyperbilirubinemia, setHyperbilirubinemia] = useState('');
+    const [anemia, setAnemia] = useState('');
+    const [transaminitis, setTransaminitis] = useState('');
+    const [mucositis, setMucositis] = useState('');
+    const [vomiting, setVomiting] = useState('');
+    const [diarrhea, setDiarrhea] = useState('');
+    const [constipation, setConstipation] = useState('');
+    const [skinRashes, setSkinRashes] = useState('');
+    const [handFootSyndrome, setHandFootSyndrome] = useState('');
+    const [fatigue, setFatigue] = useState('');
+    const [cardiotoxicity, setCardiotoxicity] = useState('');
+    const [neurotoxicity, setNeurotoxicity] = useState('');
+
+
+
+
+
+
+
+
+
+    const questions1 =[
+        { question: 'Cycle:', questionId: 'a1-1', questionType: questionType, inputtype: 'dropdown', options: ["Cycle 1","Cycle 2","Cycle 3"], value: cycle, setValue: setCycle },
+        { question: 'Thrombocytopenia:', questionId: 'a1-2', questionType: questionType, inputtype: 'text', options: [], value: thrombocytopenia, setValue: setThrombocytopenia },
+        { question: 'Neutropenia:', questionId: 'a1-3', questionType: questionType, inputtype: 'text', options: [], value: neutropenia, setValue: setNeutropenia },
+        { question: 'Febrile Neutropenia:', questionId: 'a1-4', questionType: questionType, inputtype: 'text', options: [], value: febrileNeutropenia, setValue: setFebrileNeutropenia },
+        { question: 'Hyponatremia:', questionId: 'a1-5', questionType: questionType, inputtype: 'text', options: [], value: hyponatremia, setValue: setHyponatremia },
+        { question: 'Hypokalemia:', questionId: 'a1-6', questionType: questionType, inputtype: 'text', options: [], value: hypokalemia, setValue: setHypokalemia },
+        { question: 'Hyperbilirubinemia:', questionId: 'a1-7', questionType: questionType, inputtype: 'text', options: [], value: hyperbilirubinemia, setValue: setHyperbilirubinemia },
+        { question: 'Anemia:', questionId: 'a1-8', questionType: questionType, inputtype: 'text', options: [], value: anemia, setValue: setAnemia },
+        { question: 'Transaminitis:', questionId: 'a1-9', questionType: questionType, inputtype: 'text', options: [], value: transaminitis, setValue: setTransaminitis },
+        { question: 'Mucositis:', questionId: 'a1-10', questionType: questionType, inputtype: 'text', options: [], value: mucositis, setValue: setMucositis },
+        { question: 'Vomiting:', questionId: 'a1-11', questionType: questionType, inputtype: 'text', options: [], value: vomiting, setValue: setVomiting },
+        { question: 'Diarrhea:', questionId: 'a1-12', questionType: questionType, inputtype: 'text', options: [], value: diarrhea, setValue: setDiarrhea },
+        { question: 'Constipation:', questionId: 'a1-13', questionType: questionType, inputtype: 'text', options: [], value: constipation, setValue: setConstipation },
+        { question: 'Skin Rashes:', questionId: 'a1-14', questionType: questionType, inputtype: 'text', options: [], value: skinRashes, setValue: setSkinRashes },
+        { question: 'Hand Foot Syndrome:', questionId: 'a1-15', questionType: questionType, inputtype: 'text', options: [], value: handFootSyndrome, setValue: setHandFootSyndrome },
+        { question: 'Fatigue:', questionId: 'a1-16', questionType: questionType, inputtype: 'text', options: [], value: fatigue, setValue: setFatigue },
+        { question: 'Cardiotoxicity:', questionId: 'a1-17', questionType: questionType, inputtype: 'text', options: [], value: cardiotoxicity, setValue: setCardiotoxicity },
+        { question: 'Neurotoxicity:', questionId: 'a1-18', questionType: questionType, inputtype: 'text', options: [], value: neurotoxicity, setValue: setNeurotoxicity }
+      ];
+    
+
+
+
+
+
+
+
+    const handleSubmit1 = () => {
+        if (
+            questions1.some((question) => question.value === '')
+
+
+
+
+
+        ) {
             toast({
                 title: "Error",
                 description: "Please fill in all the fields",
                 variant: "destructive",
             })
 
-            return false
-        }
-
-        if (criteria1 === 'No' || criteria2 === 'No' || criteria3 === 'No' || criteria4 === 'No' || criteria5 === 'No' || criteria6 === 'No') 
-            {
-            toast({
-                title: "Failed",
-                description: "Criteria Not Satisfied",
-                variant: "destructive",
-            })
-
-            router.push('/home')
-
 
         }
+
+
         else {
-            toast({
-                title: "Success",
-                description: "Inclusion Criteria Submitted",
-                variant: "success",
-            })
 
-            router.push('/exclusion_criteria')
+            try {
+                setLoading(true)
+                fetch('/api/updatepatient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: patient_trial_number,
+                        questions: questions1,
+                        submittedBy: userid
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoading(false)
+                        console.log(data)
+                        if (data.executed) {
+                            toast({
+                                title: "Success",
+                                description: "Social History Profile Submitted",
+                                variant: "success",
+                            })
+                        } else {
+                            toast({
+                                title: "Error",
+                                description: data.message,
+                                variant: "destructive",
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        setLoading(false)
+                        console.log(error)
+                        toast({
+                            title: "Error",
+                            description: error.message,
+                            variant: "destructive",
+                        })
+                    });
+
+
+            } catch (error: any) {
+                setLoading(false)
+                console.log(error)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                    variant: "destructive",
+                })
+
+            }
+
+
+            // router.push('/exclusion_criteria')
         }
     }
-    const questions = [
-        { question: 'Age 18-75 years; ECOG PS 0-2', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
-        { question: 'Clinical Stage cT1-4a, cN2-N3*, M0- as per UICC 2018', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
-        { question: 'Newly diagnosed, treatment-naive, biopsy or cytology proven OSCC', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'No contraindication to Cisplatin or radiotherapy', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients eligible for definitive curative intent treatment after discussion in multidisciplinary tumour board', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
-        {
-            question: 'Adequate organ function at time of participation:', inputtype:'dropdown' ,
-            subQuestions: [
-                'Haematological: Haemoglobin > 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥ 100000/cmm3',
-                'Liver Function test: Bilirubin ≤ 2 x upper limit normal (ULN), AST/ALT/ALP ≤ 2.5 x ULN',
-                'Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥ 60 ml/min'
-            ],
-            options: ['Yes', 'No'], value: criteria6, setValue: setCriteria6
-        },
-    ];
+
+
+
+
+
+
+
+
+
+
+
 
     return (
-        <div>
+        <div className=' '>
 
-            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Adverse Event" loading={false}/>
-        
+
+
+
+            <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} />
+
         </div>
     );
 }

@@ -3,79 +3,303 @@ import React, {useState,useEffect} from 'react'
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import CustomForm from '@/components/customform';
+import {
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
+  } from "@/components/ui/tabs"
 
-const Restaging = () => {
+
+
+const Restaging = () =>{
     const { toast } = useToast()
     const router = useRouter();
 
-    const [criteria1, setCriteria1] = React.useState("");
-    const [criteria2, setCriteria2] = React.useState("");
-    const [criteria3, setCriteria3] = React.useState("");
-    const [criteria4, setCriteria4] = React.useState("");
-    const [criteria5, setCriteria5] = React.useState("");
-    const [criteria6, setCriteria6] = React.useState("");
     const [user, setUser] = useState<any>({});
+    const userid = "mayankjonwal"
+    const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
     }, []);
-    const handleSubmit = () => {
-        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
+    const questionType = "Restaging";
+    const [loading, setLoading] = React.useState(false);
+    const [tabValue, setTabValue] = useState("Restaging");
+
+    // Restaging
+    const [methodOfRestaging, setMethodOfRestaging] = useState('');
+    const [clinicalExamination, setClinicalExamination] = useState('');
+    const [responseCategory, setResponseCategory] = useState('');
+
+
+
+    // Restaging Local Imaging
+
+    const [stagingLocalImaging, setStagingLocalImaging] = useState('');
+    const [subsite, setSubsite] = useState('');
+    const [imagingType, setImagingType] = useState('');
+    const [site, setSite] = useState('');
+    const [itf, setItf] = useState('');
+    const [notch, setNotch] = useState('');
+    const [size, setSize] = useState('');
+    const [doi, setDoi] = useState('');
+    const [acrossMidline, setAcrossMidline] = useState('');
+    const [boneInvasion, setBoneInvasion] = useState('');
+    const [maxillaMandible, setMaxillaMandible] = useState('');
+    const [pni, setPni] = useState('');
+    const [neck, setNeck] = useState('');
+    const [numberOfSuspiciousNodes, setNumberOfSuspiciousNodes] = useState('');
+    const [levels, setLevels] = useState('');
+    const [sadLargestSuspiciousNode, setSadLargestSuspiciousNode] = useState('');
+    const [usgCorrelation, setUsgCorrelation] = useState('');
+    const [fnac, setFnac] = useState('');
+    const [radiologicalEne, setRadiologicalEne] = useState('');
+    const [eneSuggestions, setEneSuggestions] = useState('');
+    const [responseCategory1, setResponseCategory1] = useState('');
+
+
+
+ 
+
+
+    const questions1 = [
+        { question: 'Method of restaging:', questionType: questionType, questionId: 'r-1', inputtype: 'text', options: [], value: methodOfRestaging, setValue: setMethodOfRestaging , heading:"Restaging"},
+        { question: 'Clinical Examination (CE) only/ or CT Scan/ or MRI/ or PET CT:', questionType: questionType, questionId: 'r-2', inputtype: 'text', options: [], value: clinicalExamination, setValue: setClinicalExamination },
+        { question: 'Response on clinical assessment (*Progressive disease/ Stable disease/ Complete Response/ Partial Response):', questionType: questionType, questionId: 'r-3', inputtype: 'text', options: [], value: responseCategory, setValue: setResponseCategory }
+    ]
+
+    const questions2 = [
+    { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'r-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging,heading:"Restaging Local Imaging" },
+    { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionType: questionType, questionId: 'r-38', inputtype: 'text', options: [], value: subsite, setValue: setSubsite },
+    { question: 'USG/CT/MRI/PET:', questionType: questionType, questionId: 'r-39', inputtype: 'text', options: ['USG', 'CT', 'MRI', 'PET'], value: imagingType, setValue: setImagingType },
+    { question: 'Site (Epicenter of tumor):', questionType: questionType, questionId: 'r-40', inputtype: 'text', options: [], value: site, setValue: setSite },
+    { question: 'ITF High/Low/Free:', questionType: questionType, questionId: 'r-41', inputtype: 'text', options: ['High', 'Low', 'Free'], value: itf, setValue: setItf },
+    { question: 'Supra-notch/Infra-notch:', questionType: questionType, questionId: 'r-42', inputtype: 'text', options: ['Supra-notch', 'Infra-notch'], value: notch, setValue: setNotch },
+    { question: 'Size (mm):', questionType: questionType, questionId: 'r-43', inputtype: 'text', options: [], value: size, setValue: setSize },
+    { question: 'DOI (mm):', questionType: questionType, questionId: 'r-44', inputtype: 'text', options: [], value: doi, setValue: setDoi },
+    { question: 'Across Midline:', questionType: questionType, questionId: 'r-45', inputtype: 'text', options: ['Yes', 'No'], value: acrossMidline, setValue: setAcrossMidline },
+    { question: 'Bone Invasion:', questionType: questionType, questionId: 'r-46', inputtype: 'text', options: ['Yes', 'No'], value: boneInvasion, setValue: setBoneInvasion },
+    { question: 'Maxilla/Mandible:', questionType: questionType, questionId: 'r-47', inputtype: 'text', options: ['Maxilla', 'Mandible'], value: maxillaMandible, setValue: setMaxillaMandible },
+    { question: 'PNI:', questionType: questionType, questionId: 'r-48', inputtype: 'text', options: ['Yes', 'No'], value: pni, setValue: setPni },
+    { question: 'Neck:', questionType: questionType, questionId: 'r-49', inputtype: 'text', options: [], value: neck, setValue: setNeck },
+    { question: 'Number of Suspicious Nodes:', questionType: questionType, questionId: 'r-50', inputtype: 'text', options: [], value: numberOfSuspiciousNodes, setValue: setNumberOfSuspiciousNodes },
+    { question: 'Level 1/2a/2b/3/4/5:', questionType: questionType, questionId: 'r-51', inputtype: 'text', options: [], value: levels, setValue: setLevels },
+    { question: 'SAD of Largest Suspicious Nodes (mm):', questionType: questionType, questionId: 'r-52', inputtype: 'text', options: [], value: sadLargestSuspiciousNode, setValue: setSadLargestSuspiciousNode },
+    { question: 'USG Correlation:', questionType: questionType, questionId: 'r-53', inputtype: 'text', options: [], value: usgCorrelation, setValue: setUsgCorrelation },
+    { question: 'FNAC:', questionType: questionType, questionId: 'r-54', inputtype: 'text', options: [], value: fnac, setValue: setFnac },
+    { question: 'Radiological ENE:', questionType: questionType, questionId: 'r-55', inputtype: 'text', options: ['Yes', 'No'], value: radiologicalEne, setValue: setRadiologicalEne },
+    { question: 'What Suggests ENE:', questionType: questionType, questionId: 'r-56', inputtype: 'text', options: [], value: eneSuggestions, setValue: setEneSuggestions },
+    { question: 'Response category (CR/PR/SD/PD):', questionType: questionType, questionId: 'r-57', inputtype: 'text', options: [], value: responseCategory1, setValue: setResponseCategory1 }
+  
+];
+
+
+ 
+
+
+    const handleSubmit1 = () => {
+        if (
+            questions1.some((question) => question.value === '')
+
+
+            
+
+
+        ) {
             toast({
                 title: "Error",
                 description: "Please fill in all the fields",
                 variant: "destructive",
             })
 
-            return false
+
         }
 
-        if (criteria1 === 'No' || criteria2 === 'No' || criteria3 === 'No' || criteria4 === 'No' || criteria5 === 'No' || criteria6 === 'No') 
-            {
+
+        else {
+
+            try {
+                setLoading(true)
+                fetch('/api/updatepatient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: patient_trial_number,
+                        questions: questions1,
+                        submittedBy: userid
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoading(false)
+                        console.log(data)
+                        if (data.executed) {
+                            toast({
+                                title: "Success",
+                                description: "Social History Profile Submitted",
+                                variant: "success",
+                            })
+                        } else {
+                            toast({
+                                title: "Error",
+                                description: data.message,
+                                variant: "destructive",
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        setLoading(false)
+                        console.log(error)
+                        toast({
+                            title: "Error",
+                            description: error.message,
+                            variant: "destructive",
+                        })
+                    });
+
+
+            } catch (error: any) {
+                setLoading(false)
+                console.log(error)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                    variant: "destructive",
+                })
+
+            }
+
+
+            // router.push('/exclusion_criteria')
+        }
+    }
+
+    const handleSubmit2 = () => {
+        if (
+           
+
+
+      questions2.some((question) => question.value === "")
+
+
+            
+
+
+
+        ) {
             toast({
-                title: "Failed",
-                description: "Criteria Not Satisfied",
+                title: "Error",
+                description: "Please fill in all the fields",
                 variant: "destructive",
             })
 
-            router.push('/home')
-
 
         }
-        else {
-            toast({
-                title: "Success",
-                description: "Inclusion Criteria Submitted",
-                variant: "success",
-            })
 
-            router.push('/exclusion_criteria')
+
+        else {
+
+            try {
+                setLoading(true)
+                fetch('/api/updatepatient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: patient_trial_number,
+                        questions: questions2,
+                        submittedBy: userid
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoading(false)
+                        console.log(data)
+                        if (data.executed) {
+                            toast({
+                                title: "Success",
+                                description: "Social History Profile Submitted",
+                                variant: "success",
+                            })
+                        } else {
+                            toast({
+                                title: "Error",
+                                description: data.message,
+                                variant: "destructive",
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        setLoading(false)
+                        console.log(error)
+                        toast({
+                            title: "Error",
+                            description: error.message,
+                            variant: "destructive",
+                        })
+                    });
+
+
+            } catch (error: any) {
+                setLoading(false)
+                console.log(error)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                    variant: "destructive",
+                })
+
+            }
+
+
+            // router.push('/exclusion_criteria')
         }
     }
-    const questions = [
-        { question: 'Age 18-75 years; ECOG PS 0-2', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
-        { question: 'Clinical Stage cT1-4a, cN2-N3*, M0- as per UICC 2018', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
-        { question: 'Newly diagnosed, treatment-naive, biopsy or cytology proven OSCC', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'No contraindication to Cisplatin or radiotherapy', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients eligible for definitive curative intent treatment after discussion in multidisciplinary tumour board', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
-        {
-            question: 'Adequate organ function at time of participation:', inputtype:'dropdown' ,
-            subQuestions: [
-                'Haematological: Haemoglobin > 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥ 100000/cmm3',
-                'Liver Function test: Bilirubin ≤ 2 x upper limit normal (ULN), AST/ALT/ALP ≤ 2.5 x ULN',
-                'Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥ 60 ml/min'
-            ],
-            options: ['Yes', 'No'], value: criteria6, setValue: setCriteria6
-        },
-    ];
+
+   
+
+    
+
 
     return (
-        <div>
+        <div className=' '>
 
-            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Restaging" loading={false}/>
-        
+
+
+
+            {tabValue==="Restaging"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={questionType} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+            {tabValue==="RestagingLocalImaging"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={questionType} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+           
         </div>
     );
 }
+
+
+
+interface CustomTabsProps {
+    tabValue: string;
+    setTabValue: (value: string) => void;
+}
+
+const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
+    return (
+        <div className=''>
+
+            <Tabs value={tabValue} onValueChange={setTabValue} className="">
+                <TabsList className='bg-green-1'>
+                    <TabsTrigger className='active:bg-green-5' value="Restaging">1</TabsTrigger>
+                    <TabsTrigger value="RestagingLocalImaging">2</TabsTrigger>
+                
+                    
+                </TabsList>
+            </Tabs>
+        </div>
+    );
+};
 
 export default Restaging

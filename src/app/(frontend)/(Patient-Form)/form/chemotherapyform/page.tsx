@@ -8,72 +8,179 @@ const Chemotherapyform = () => {
     const { toast } = useToast()
     const router = useRouter();
 
-    const [criteria1, setCriteria1] = React.useState("");
-    const [criteria2, setCriteria2] = React.useState("");
-    const [criteria3, setCriteria3] = React.useState("");
-    const [criteria4, setCriteria4] = React.useState("");
-    const [criteria5, setCriteria5] = React.useState("");
-    const [criteria6, setCriteria6] = React.useState("");
     const [user, setUser] = useState<any>({});
+    const userid = "mayankjonwal"
+    const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
     }, []);
-    const handleSubmit = () => {
-        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
+    const questionType = "chemotherapy";
+    const formTitle = "Chemotherapy Form";
+    const [tabValue, setTabValue] = useState("section1");
+    const [loading, setLoading] = React.useState(false);
+
+    // Section 1
+    const [startDate, setStartDate] = useState('');
+    const [regimen, setRegimen] = useState('');
+    const [otherRegimen, setOtherRegimen] = useState('');
+    const [cycle, setCycle] = useState('');
+    const [cycleStartDate, setCycleStartDate] = useState('');
+    const [ecogPS, setEcogPS] = useState('');
+    const [hb, setHb] = useState('');
+    const [anc, setAnc] = useState('');
+    const [plateletCount, setPlateletCount] = useState('');
+    const [bilirubin, setBilirubin] = useState('');
+    const [sgotSgpt, setSgotSgpt] = useState('');
+    const [creatinine, setCreatinine] = useState('');
+    const [creatinineClearance, setCreatinineClearance] = useState('');
+    const [bloodSugar, setBloodSugar] = useState('');
+    const [otherDetails, setOtherDetails] = useState('');
+    const [primarySecondaryGcsf, setPrimarySecondaryGcsf] = useState('');
+    const [doseDelay, setDoseDelay] = useState('');
+    const [reasonForDelay, setReasonForDelay] = useState('');
+    const [daysDelayed, setDaysDelayed] = useState('');
+    const [doseModification, setDoseModification] = useState('');
+    const [reasonForDoseModification, setReasonForDoseModification] = useState('');
+
+
+
+
+
+
+
+
+
+    const questions1 = [
+        { question: 'Date of Start of Chemotherapy:', questionType:questionType,questionId: 'c1-1', inputtype: 'date',options:[], value: startDate, setValue: setStartDate },
+        { question: 'Regimen:', questionType:questionType,questionId: 'c1-2', inputtype: 'dropdown',options:["DCF","CF","Other"], value: regimen, setValue: setRegimen },
+        { question: 'Regimen other:', questionType:questionType,questionId: 'c1-3', inputtype: 'text',options:[], value: otherRegimen, setValue: setOtherRegimen },
+        { question: 'Cycle:', questionType:questionType,questionId: 'c1-4', inputtype: 'dropdown',options:["Cycle 1","Cycle 2","Cycle 3"], value: cycle, setValue: setCycle },
+        { question: 'Date of Start of Cycle:', questionType:questionType,questionId: 'c1-5', inputtype: 'date',options:[], value: cycleStartDate, setValue: setCycleStartDate },
+        { question: 'ECOG PS:', questionType:questionType,questionId: 'c1-6', inputtype: 'text',options:[], value: ecogPS, setValue: setEcogPS },
+        { question: 'Hemoglobin (Hb):', questionType:questionType,questionId: 'c1-7', inputtype: 'text',options:[], value: hb, setValue: setHb },
+        { question: 'Absolute Neutrophil Count (ANC):', questionType:questionType,questionId: 'c1-8', inputtype: 'text',options:[], value: anc, setValue: setAnc },
+        { question: 'Platelet Count:', questionType:questionType,questionId: 'c1-9', inputtype: 'text',options:[], value: plateletCount, setValue: setPlateletCount },
+        { question: 'Bilirubin:', questionType:questionType,questionId: 'c1-10', inputtype: 'text',options:[], value: bilirubin, setValue: setBilirubin },
+        { question: 'SGOT/SGPT:', questionType:questionType,questionId: 'c1-11', inputtype: 'text',options:[], value: sgotSgpt, setValue: setSgotSgpt },
+        { question: 'Creatinine:', questionType:questionType,questionId: 'c1-12', inputtype: 'text',options:[], value: creatinine, setValue: setCreatinine },
+        { question: 'Creatinine Clearance:', questionType:questionType,questionId: 'c1-13', inputtype: 'text',options:[], value: creatinineClearance, setValue: setCreatinineClearance },
+        { question: 'Blood Sugar:', questionType:questionType,questionId: 'c1-14', inputtype: 'text',options:[], value: bloodSugar, setValue: setBloodSugar },
+        { question: 'Other Details:', questionType:questionType,questionId: 'c1-15', inputtype: 'textarea',options:[], value: otherDetails, setValue: setOtherDetails },
+        { question: 'Primary/Secondary GCSF:', questionType:questionType,questionId: 'c1-16', inputtype: 'text',options:[], value: primarySecondaryGcsf, setValue: setPrimarySecondaryGcsf },
+        { question: 'Dose Delay:', questionType:questionType,questionId: 'c1-17', inputtype: 'dropdown',options:["Yes","No"], value: doseDelay, setValue: setDoseDelay },
+        { question: 'Reason for Delay:', questionType:questionType,questionId: 'c1-18', inputtype: 'textarea',options:[], value: reasonForDelay, setValue: setReasonForDelay },
+        { question: 'Number of Days Delayed:', questionType:questionType,questionId: 'c1-19', inputtype: 'text',options:[], value: daysDelayed, setValue: setDaysDelayed },
+        { question: 'Dose Modification:', questionType:questionType,questionId: 'c1-20', inputtype: 'dropdown',options:["Yes","No"], value: doseModification, setValue: setDoseModification },
+        { question: 'Reason for Dose Modification:', questionType:questionType,questionId: 'c1-21', inputtype: 'text',options:[], value: reasonForDoseModification, setValue: setReasonForDoseModification }
+      ];
+    
+
+
+
+
+
+
+
+    const handleSubmit1 = () => {
+        if (
+            questions1.some((question) => question.value === '')
+
+
+
+
+
+        ) {
             toast({
                 title: "Error",
                 description: "Please fill in all the fields",
                 variant: "destructive",
             })
 
-            return false
-        }
-
-        if (criteria1 === 'No' || criteria2 === 'No' || criteria3 === 'No' || criteria4 === 'No' || criteria5 === 'No' || criteria6 === 'No') 
-            {
-            toast({
-                title: "Failed",
-                description: "Criteria Not Satisfied",
-                variant: "destructive",
-            })
-
-            router.push('/home')
-
 
         }
+
+
         else {
-            toast({
-                title: "Success",
-                description: "Inclusion Criteria Submitted",
-                variant: "success",
-            })
 
-            router.push('/exclusion_criteria')
+            try {
+                setLoading(true)
+                fetch('/api/updatepatient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: patient_trial_number,
+                        questions: questions1,
+                        submittedBy: userid
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoading(false)
+                        console.log(data)
+                        if (data.executed) {
+                            toast({
+                                title: "Success",
+                                description: "Social History Profile Submitted",
+                                variant: "success",
+                            })
+                        } else {
+                            toast({
+                                title: "Error",
+                                description: data.message,
+                                variant: "destructive",
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        setLoading(false)
+                        console.log(error)
+                        toast({
+                            title: "Error",
+                            description: error.message,
+                            variant: "destructive",
+                        })
+                    });
+
+
+            } catch (error: any) {
+                setLoading(false)
+                console.log(error)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                    variant: "destructive",
+                })
+
+            }
+
+
+            // router.push('/exclusion_criteria')
         }
     }
-    const questions = [
-        { question: 'Age 18-75 years; ECOG PS 0-2', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
-        { question: 'Clinical Stage cT1-4a, cN2-N3*, M0- as per UICC 2018', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
-        { question: 'Newly diagnosed, treatment-naive, biopsy or cytology proven OSCC', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'No contraindication to Cisplatin or radiotherapy', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients eligible for definitive curative intent treatment after discussion in multidisciplinary tumour board', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
-        {
-            question: 'Adequate organ function at time of participation:', inputtype:'dropdown' ,
-            subQuestions: [
-                'Haematological: Haemoglobin > 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥ 100000/cmm3',
-                'Liver Function test: Bilirubin ≤ 2 x upper limit normal (ULN), AST/ALT/ALP ≤ 2.5 x ULN',
-                'Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥ 60 ml/min'
-            ],
-            options: ['Yes', 'No'], value: criteria6, setValue: setCriteria6
-        },
-    ];
+
+
+
+
+
+
+
+
+
+
+
 
     return (
-        <div>
+        <div className=' '>
 
-            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Chemotherapy" loading={false}/>
-        
+
+
+
+            <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} />
+
         </div>
     );
 }

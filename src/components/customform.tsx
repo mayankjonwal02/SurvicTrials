@@ -86,7 +86,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                 {question.inputtype === "text" ? (
                                     <input
                                         type="text"
-                                        className='w-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
+                                        className='w-[300px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
                                         value={question.value}
                                         onChange={(e) => question.setValue(e.target.value)}
                                         placeholder='Answer here'
@@ -98,7 +98,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                 {question.inputtype === "disabled" ? (
                                     <input
                                         type="text"
-                                        className='w-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
+                                        className='w-[300px] p-2 border border-green-5 bg-green-2/30 rounded-lg m-2 '
                                         value={question.value}
                                         onChange={(e) => question.setValue(e.target.value)}
                                         placeholder='Answer here'
@@ -124,7 +124,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
 
                                 {question.inputtype === "textarea" ? (
                                     <textarea
-                                        className='w-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
+                                        className='w-[300px] min-h-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
                                         value={question.value}
                                         onChange={(e) => question.setValue(e.target.value)}
                                         placeholder='Answer here'

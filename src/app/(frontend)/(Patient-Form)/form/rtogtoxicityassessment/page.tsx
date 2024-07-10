@@ -8,72 +8,160 @@ const Rtogtoxicityassessment = () => {
     const { toast } = useToast()
     const router = useRouter();
 
-    const [criteria1, setCriteria1] = React.useState("");
-    const [criteria2, setCriteria2] = React.useState("");
-    const [criteria3, setCriteria3] = React.useState("");
-    const [criteria4, setCriteria4] = React.useState("");
-    const [criteria5, setCriteria5] = React.useState("");
-    const [criteria6, setCriteria6] = React.useState("");
     const [user, setUser] = useState<any>({});
+    const userid = "mayankjonwal"
+    const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
     }, []);
-    const handleSubmit = () => {
-        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
+    const questionType = "rtogtoxicityassessment";
+    const formTitle = "Toxicity During Radiotherapy -RTOG Toxicity Assessment";
+    const [tabValue, setTabValue] = useState("section1");
+    const [loading, setLoading] = React.useState(false);
+
+    // Section 1
+ const [treatmentWeek, setTreatmentWeek] = useState('');
+  const [skin, setSkin] = useState('');
+  const [mucosa, setMucosa] = useState('');
+  const [pharynx, setPharynx] = useState('');
+  const [larynx, setLarynx] = useState('');
+  const [salivaryGland, setSalivaryGland] = useState('');
+  const [weight, setWeight] = useState('');
+  const [cbc, setCbc] = useState('');
+
+
+
+
+
+
+
+
+
+    const questions1 = [
+        { question: 'Treatment Week:', questionId: 'r2-1', questionType: questionType, inputtype: 'dropdown', options: [ "---------",
+            "Week 1",
+            "Week 2",
+            "Week 3",
+            "Week 4",
+            "Week 5",
+            "Week 6",
+            "Week 7",
+            "Week 8"], value: treatmentWeek, setValue: setTreatmentWeek },
+        { question: 'Skin:', questionId: 'r2-2', questionType: questionType, inputtype: 'text', options: [], value: skin, setValue: setSkin },
+        { question: 'Mucosa:', questionId: 'r2-3', questionType: questionType, inputtype: 'text', options: [], value: mucosa, setValue: setMucosa },
+        { question: 'Pharynx:', questionId: 'r2-4', questionType: questionType, inputtype: 'text', options: [], value: pharynx, setValue: setPharynx },
+        { question: 'Larynx:', questionId: 'r2-5', questionType: questionType, inputtype: 'text', options: [], value: larynx, setValue: setLarynx },
+        { question: 'Salivary Gland:', questionId: 'r2-6', questionType: questionType, inputtype: 'text', options: [], value: salivaryGland, setValue: setSalivaryGland },
+        { question: 'Weight (in kg):', questionId: 'r2-7', questionType: questionType, inputtype: 'text', options: [], value: weight, setValue: setWeight },
+        { question: 'CBC:', questionId: 'r2-8', questionType: questionType, inputtype: 'text', options: [], value: cbc, setValue: setCbc }
+      ];
+
+
+
+
+
+
+
+    const handleSubmit1 = () => {
+        if (
+            questions1.some((question) => question.value === '')
+
+
+
+
+
+        ) {
             toast({
                 title: "Error",
                 description: "Please fill in all the fields",
                 variant: "destructive",
             })
 
-            return false
-        }
-
-        if (criteria1 === 'No' || criteria2 === 'No' || criteria3 === 'No' || criteria4 === 'No' || criteria5 === 'No' || criteria6 === 'No') 
-            {
-            toast({
-                title: "Failed",
-                description: "Criteria Not Satisfied",
-                variant: "destructive",
-            })
-
-            router.push('/home')
-
 
         }
+
+
         else {
-            toast({
-                title: "Success",
-                description: "Inclusion Criteria Submitted",
-                variant: "success",
-            })
 
-            router.push('/exclusion_criteria')
+            try {
+                setLoading(true)
+                fetch('/api/updatepatient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: patient_trial_number,
+                        questions: questions1,
+                        submittedBy: userid
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoading(false)
+                        console.log(data)
+                        if (data.executed) {
+                            toast({
+                                title: "Success",
+                                description: "Social History Profile Submitted",
+                                variant: "success",
+                            })
+                        } else {
+                            toast({
+                                title: "Error",
+                                description: data.message,
+                                variant: "destructive",
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        setLoading(false)
+                        console.log(error)
+                        toast({
+                            title: "Error",
+                            description: error.message,
+                            variant: "destructive",
+                        })
+                    });
+
+
+            } catch (error: any) {
+                setLoading(false)
+                console.log(error)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                    variant: "destructive",
+                })
+
+            }
+
+
+            // router.push('/exclusion_criteria')
         }
     }
-    const questions = [
-        { question: 'Age 18-75 years; ECOG PS 0-2', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
-        { question: 'Clinical Stage cT1-4a, cN2-N3*, M0- as per UICC 2018', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
-        { question: 'Newly diagnosed, treatment-naive, biopsy or cytology proven OSCC', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'No contraindication to Cisplatin or radiotherapy', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients eligible for definitive curative intent treatment after discussion in multidisciplinary tumour board', inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria5, setValue: setCriteria5 },
-        {
-            question: 'Adequate organ function at time of participation:', inputtype:'dropdown' ,
-            subQuestions: [
-                'Haematological: Haemoglobin > 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥ 100000/cmm3',
-                'Liver Function test: Bilirubin ≤ 2 x upper limit normal (ULN), AST/ALT/ALP ≤ 2.5 x ULN',
-                'Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥ 60 ml/min'
-            ],
-            options: ['Yes', 'No'], value: criteria6, setValue: setCriteria6
-        },
-    ];
+
+
+
+
+
+
+
+
+
+
+
 
     return (
-        <div>
+        <div className=' '>
 
-            <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Toxicity During Radiotherapy - RTOG Toxicity Assessment" loading={false}/>
-        
+
+
+
+            <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} />
+
         </div>
     );
 }

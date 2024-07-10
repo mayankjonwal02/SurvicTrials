@@ -70,33 +70,29 @@ const Investigations = () =>  {
 
 
 
-    // Adult Comorbidity Evaluation-27 (ACE-27)
-
-    const [myocardialinfarction1, setMyocardialinfarction1] = React.useState("");
-    const [anginaandconorarydisease, setAnginaandconorarydisease] = React.useState("");
-    const [congestiveheartfailure, setCongestiveheartfailure] = React.useState("");
-    const [cardiacarrhythmias, setCardiacarrhythmias] = React.useState("");
-    const [hypertension, setHypertension] = React.useState("");
-    const [venousdisease, setVenousdisease] = React.useState("");
-    const [peripheralarterydisease, setPeripheralarterydisease] = React.useState("");
-    const [respiratorydisease, setRespiratorydisease] = React.useState("");
-    const [hepaticdisease, setHepaticdisease] = React.useState("");
-    const [stomachandintestinalinfection, setStomachandintestinalinfection] = React.useState("");
-    const [pancreaticdisease, setPancreaticdisease] = React.useState("");
-    const [endstageretinaldisease, setEndstageretinaldisease] = React.useState("");
-    const [stroke, setStroke] = React.useState("");
-    const [paralysis, setParalysis] = React.useState("");
-    const [neuromusculardisorder, setNeuromusculardisorder] = React.useState("");
-    const [psychiaticdisorder, setPsychiatricdisorder] = React.useState("");
-    const [rheumatologicdisorder, setRheumatologicdisorder] = React.useState("");
-    const [leukemiaormyeloma, setLeukemiaormyeloma] = React.useState("");
-    const [alcohol, setAlcohol] = React.useState("");
-    const [drug, setDrug] = React.useState("");
-    const [obesity, setObesity] = React.useState("");
-    const [overallcomorbidity, setOverallcomorbidity] = React.useState("");
-    const [grade, setGrade] = React.useState("");
-    const [moderatecomorbidity, setModeratecomorbidity] = React.useState("");
-    const [severecomorbidity, setSeverecomorbidity] = React.useState("");
+    // Radiology
+    const [stagingLocalImaging, setStagingLocalImaging] = useState('');
+    const [subsite, setSubsite] = useState('');
+    const [imagingType, setImagingType] = useState('');
+    const [site, setSite] = useState('');
+    const [itf, setItf] = useState('');
+    const [notch, setNotch] = useState('');
+    const [size, setSize] = useState('');
+    const [doi, setDoi] = useState('');
+    const [acrossMidline, setAcrossMidline] = useState('');
+    const [boneInvasion, setBoneInvasion] = useState('');
+    const [maxillaMandible, setMaxillaMandible] = useState('');
+    const [pni, setPni] = useState('');
+    const [neck, setNeck] = useState('');
+    const [numberOfSuspiciousNodes, setNumberOfSuspiciousNodes] = useState('');
+    const [levels, setLevels] = useState('');
+    const [sadLargestSuspiciousNode, setSadLargestSuspiciousNode] = useState('');
+    const [usgCorrelation, setUsgCorrelation] = useState('');
+    const [fnac, setFnac] = useState('');
+    const [radiologicalEne, setRadiologicalEne] = useState('');
+    const [eneSuggestions, setEneSuggestions] = useState('');
+    const [metastaticWorkup, setMetastaticWorkup] = useState('');
+    const [findings, setFindings] = useState('');
 
  
 
@@ -126,7 +122,7 @@ const Investigations = () =>  {
         { question: "COVID Vaccine:", questionType: questionType, questionId: 'i-19', inputtype: 'text', options: [], value: covidvaccine, setValue: setCovidvaccine },
         { question: "Vaccine Name:", questionType: questionType, questionId: 'i-20', inputtype: 'text', options: [], value: vaccinename, setValue: setVaccinename },
         { question: "Renal Function Test (RFT) - Creatinine Clearance:", questionType: questionType, questionId: 'i-21', inputtype: 'text', options: [], value: rft, setValue: setRft },
-        { question: "Serum Creatinine Level:",questionType: questionType, questionId: 'i-26', inputtype: 'text', options: [], value: serumcreatinelevel, setValue: setSerumcreatinelevel },
+        { question: "Serum Creatinine Level:",questionType: questionType, questionId: 'i-36', inputtype: 'text', options: [], value: serumcreatinelevel, setValue: setSerumcreatinelevel },
         { question: "Blood Urea Level:", questionType: questionType, questionId: 'i-22', inputtype: 'text', options: [], value: bloodurealevel, setValue: setBloodurealevel },
         { question: "Viral Markers:", questionType: questionType, questionId: 'i-23', inputtype: 'text', options: [], value: viralmarkers, setValue: setViralmarkers },
         { question: "Hepatitis B Surface Antigen (HBsAg) / Hepatitis C Virus (HCV) / Human Immunodeficiency Virus (HIV):", questionType: questionType, questionId: 'i-24', inputtype: 'text', options: [], value: hhh, setValue: setHhh },
@@ -151,34 +147,29 @@ const Investigations = () =>  {
     ]
 
     const questions3 = [
-        { question: 'Myocardial Infarction:', questionType: questionType, questionId: 'c2-44', inputtype: 'text', options: [], value: myocardialinfarction1, setValue: setMyocardialinfarction1, heading: "Adult Comorbidity Evaluation-27 (ACE-27)" },
-        { question: 'Angina and Coronary Disease:', questionType: questionType, questionId: 'c2-45', inputtype: 'text', options: [], value: anginaandconorarydisease, setValue: setAnginaandconorarydisease },
-        { question: "Congestive Heart Failure:", questionType: questionType, questionId: 'c2-46', inputtype: 'text', options: [], value: congestiveheartfailure, setValue: setCongestiveheartfailure },
-        { question: "Cardial Arrhythmia:", questionType: questionType, questionId: 'c2-47', inputtype: 'text', options: [], value: cardiacarrhythmias, setValue: setCardiacarrhythmias },
-        { question: "Hypertension:", questionType: questionType, questionId: 'c2-48', inputtype: 'text', options: [], value: hypertension, setValue: setHypertension },
-        { question: "Venous Disease:", questionType: questionType, questionId: 'c2-49', inputtype: 'text', options: [], value: venousdisease, setValue: setVenousdisease },
-        { question: "Peripheral Artery Disease:", questionType: questionType, questionId: 'c2-50', inputtype: 'text', options: [], value: peripheralarterydisease, setValue: setPeripheralarterydisease },
-        { question: "Respiratory Disease:", questionType: questionType, questionId: 'c2-51', inputtype: 'text', options: [], value: respiratorydisease, setValue: setRespiratorydisease },
-        { question: "Hepatic Disease:", questionType: questionType, questionId: 'c2-52', inputtype: 'text', options: [], value: hepaticdisease, setValue: setHepaticdisease },
-        { question: "Stomach and Intestinal Disease:", questionType: questionType, questionId: 'c2-53', inputtype: 'text', options: [], value: stomachandintestinalinfection, setValue: setStomachandintestinalinfection },
-        { question: "Pancreatic Disease:", questionType: questionType, questionId: 'c2-54', inputtype: 'text', options: [], value: pancreaticdisease, setValue: setPancreaticdisease },
-        { question: "End Stage Renal Disease:", questionType: questionType, questionId: 'c2-55', inputtype: 'text', options: [], value: endstageretinaldisease, setValue: setEndstageretinaldisease },
-        { question: "Stroke:", questionType: questionType, questionId: 'c2-56', inputtype: 'text', options: [], value: stroke, setValue: setStroke },
-        { question: "Paralysis:", questionType: questionType, questionId: 'c2-57', inputtype: 'text', options: [], value: paralysis, setValue: setParalysis },
-        { question: "Neuromuscular Disorder:", questionType: questionType, questionId: 'c2-58', inputtype: 'text', options: [], value: neuromusculardisorder, setValue: setNeuromusculardisorder },
-        { question: "Psychiatric Disorder:", questionType: questionType, questionId: 'c2-59', inputtype: 'text', options: [], value: psychiaticdisorder, setValue: setPsychiatricdisorder },
-        { question: "Rheumatologic Disorder:", questionType: questionType, questionId: 'c2-60', inputtype: 'text', options: [], value: rheumatologicdisorder, setValue: setRheumatologicdisorder },
-        { question: "Leukemia or Myeloma:", questionType: questionType, questionId: 'c2-61', inputtype: 'text', options: [], value: leukemiaormyeloma, setValue: setLeukemiaormyeloma },
-        // { question: "Lymphoma:", questionType: questionType, questionId: 'c2-62', inputtype: 'text', options: [], value: lymphoma, setValue: setLymphoma },
-        { question: "Alcohol:", questionType: questionType, questionId: 'c2-63', inputtype: 'text', options: [], value: alcohol, setValue: setAlcohol },
-        { question: "Illicit Drugs:", questionType: questionType, questionId: 'c2-64', inputtype: 'text', options: [], value: drug, setValue: setDrug },
-        { question: "Obesity:", questionType: questionType, questionId: 'c2-65', inputtype: 'text', options: [], value: obesity, setValue: setObesity },
-        { question: "Overall Comorbidity:", questionType: questionType, questionId: 'c2-66', inputtype: 'text', options: [], value: overallcomorbidity, setValue: setOverallcomorbidity },
-        { question: "Grade:", questionType: questionType, questionId: 'c2-67', inputtype: 'text', options: [], value: grade, setValue: setGrade },
-        { question: "No. of Items with Moderate Comorbidities:", questionType: questionType, questionId: 'c2-68', inputtype: 'text', options: [], value: moderatecomorbidity, setValue: setModeratecomorbidity },
-        { question: "No. of Items with Severe Comorbidities:", questionType: questionType, questionId: 'c2-69', inputtype: 'text', options: [], value: severecomorbidity, setValue: setSeverecomorbidity },
-
-    ]
+        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging, heading:"Radiology" },
+        { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionType: questionType, questionId: 'i-38', inputtype: 'text', options: [], value: subsite, setValue: setSubsite },
+        { question: 'USG/CT/MRI/PET:', questionType: questionType, questionId: 'i-39', inputtype: 'text', options: ['USG', 'CT', 'MRI', 'PET'], value: imagingType, setValue: setImagingType },
+        { question: 'Site (Epicenter of tumor):', questionType: questionType, questionId: 'i-40', inputtype: 'text', options: [], value: site, setValue: setSite },
+        { question: 'ITF High/Low/Free:', questionType: questionType, questionId: 'i-41', inputtype: 'text', options: ['High', 'Low', 'Free'], value: itf, setValue: setItf },
+        { question: 'Supra-notch/Infra-notch:', questionType: questionType, questionId: 'i-42', inputtype: 'text', options: ['Supra-notch', 'Infra-notch'], value: notch, setValue: setNotch },
+        { question: 'Size (mm):', questionType: questionType, questionId: 'i-43', inputtype: 'text', options: [], value: size, setValue: setSize },
+        { question: 'DOI (mm):', questionType: questionType, questionId: 'i-44', inputtype: 'text', options: [], value: doi, setValue: setDoi },
+        { question: 'Across Midline:', questionType: questionType, questionId: 'i-45', inputtype: 'text', options: ['Yes', 'No'], value: acrossMidline, setValue: setAcrossMidline },
+        { question: 'Bone Invasion:', questionType: questionType, questionId: 'i-46', inputtype: 'text', options: ['Yes', 'No'], value: boneInvasion, setValue: setBoneInvasion },
+        { question: 'Maxilla/Mandible:', questionType: questionType, questionId: 'i-47', inputtype: 'text', options: ['Maxilla', 'Mandible'], value: maxillaMandible, setValue: setMaxillaMandible },
+        { question: 'PNI (Perineural Invasion):', questionType: questionType, questionId: 'i-48', inputtype: 'text', options: ['Yes', 'No'], value: pni, setValue: setPni },
+        { question: 'Neck:', questionType: questionType, questionId: 'i-49', inputtype: 'text', options: [], value: neck, setValue: setNeck },
+        { question: 'Number of Suspicious Nodes:', questionType: questionType, questionId: 'i-50', inputtype: 'text', options: [], value: numberOfSuspiciousNodes, setValue: setNumberOfSuspiciousNodes },
+        { question: 'Level 1/2a/2b/3/4/5:', questionType: questionType, questionId: 'i-51', inputtype: 'text', options: [], value: levels, setValue: setLevels },
+        { question: 'SAD of Largest Suspicious Nodes (mm):', questionType: questionType, questionId: 'i-52', inputtype: 'text', options: [], value: sadLargestSuspiciousNode, setValue: setSadLargestSuspiciousNode },
+        { question: 'USG Correlation:', questionType: questionType, questionId: 'i-53', inputtype: 'text', options: [], value: usgCorrelation, setValue: setUsgCorrelation },
+        { question: 'FNAC:', questionType: questionType, questionId: 'i-54', inputtype: 'text', options: [], value: fnac, setValue: setFnac },
+        { question: 'Radiological ENE:', questionType: questionType, questionId: 'i-55', inputtype: 'text', options: ['Yes', 'No'], value: radiologicalEne, setValue: setRadiologicalEne },
+        { question: 'What Suggests ENE:', questionType: questionType, questionId: 'i-56', inputtype: 'text', options: [], value: eneSuggestions, setValue: setEneSuggestions },
+        { question: 'Metastatic Workup with Date CT Thorax/CXR:', questionType: questionType, questionId: 'i-57', inputtype: 'text', options: [], value: metastaticWorkup, setValue: setMetastaticWorkup },
+        { question: 'Findings:', questionType: questionType, questionId: 'i-58', inputtype: 'text', options: [], value: findings, setValue: setFindings }
+      ];
 
  
 
@@ -385,31 +376,7 @@ const Investigations = () =>  {
             
 
 
-            drug === "" ||
-            obesity === "" ||
-            overallcomorbidity === "" ||
-            grade === "" ||
-            moderatecomorbidity === "" ||
-            severecomorbidity === "" ||
-            myocardialinfarction1 === "" ||
-            anginaandconorarydisease === "" ||
-            congestiveheartfailure === "" ||
-            cardiacarrhythmias === "" ||
-            hypertension === "" ||
-            venousdisease === "" ||
-            peripheralarterydisease === "" ||
-            respiratorydisease === "" ||
-            hepaticdisease === "" ||
-            stomachandintestinalinfection === "" ||
-            pancreaticdisease === "" ||
-            endstageretinaldisease === "" ||
-            stroke === "" ||
-            paralysis === "" ||
-            neuromusculardisorder === "" ||
-            psychiaticdisorder === "" ||
-            rheumatologicdisorder === "" ||
-            leukemiaormyeloma === "" ||
-            alcohol === "" 
+            questions3.some((question) => question.value === "")
 
            
 
