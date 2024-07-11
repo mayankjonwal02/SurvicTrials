@@ -40,6 +40,17 @@ const ExclusionCriteria = () => {
     // const user = JSON.parse(localStorage.getItem("user") || "{}");
     const { toast } = useToast()
     const router = useRouter();
+
+    useEffect(() => {
+        const login = localStorage.getItem("login");
+
+        if (login !== "true") {
+            router.push('/')
+        }
+
+    }, []);
+
+
     const [user, setUser] = useState<any>({});
     const [criteria1, setCriteria1] = React.useState("");
     const [criteria2, setCriteria2] = React.useState("");
@@ -180,6 +191,7 @@ const ExclusionCriteria = () => {
                         description: jsondata.message,
                         variant: "success",
                     })
+                    router.push('/form/demographic')
                 }
                 else {
                     toast({

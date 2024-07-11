@@ -31,6 +31,15 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 const Viewusers = () => {
   const [data, setData] = useState<any>([])
   const [loading, setLoading] = useState(false);
+  const router = useRouter()
+//   useEffect(() => {
+//     const login = localStorage.getItem("login_admin");
+
+//     if (login === "true") {
+//         router.push('/admin')
+//     }
+
+// }, []);
 
   const fetchData = async () => {
     try {

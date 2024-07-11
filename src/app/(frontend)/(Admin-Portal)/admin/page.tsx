@@ -31,6 +31,7 @@ const Admin = () => {
         if (admin === process.env.adminid && password === process.env.adminpassword) {
             console.log('Login Successful')
 
+            localStorage.setItem("login_admin", "true")
             toast({
                 title: 'Login Successful',
                 description: 'Welcome Back',

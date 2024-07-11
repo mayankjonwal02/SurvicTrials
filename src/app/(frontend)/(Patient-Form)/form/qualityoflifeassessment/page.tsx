@@ -15,12 +15,13 @@ const Qualityoflifeassessment = () => {
     const router = useRouter();
 
     const [user, setUser] = useState<any>({});
-    const userid = "mayankjonwal"
+    const [userid, setUserId] = useState('');
     const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
+        setUserId(storedUser.unique_id);
     }, []);
     const questionType = "Qualityoflifeassessment";
     const formTitle = "QUALITY OF LIFE ASSESSMENT: FACTG/H&N/COST/FATIGUE SCORE";
@@ -211,7 +212,61 @@ const Qualityoflifeassessment = () => {
       ];
     
 
- 
+      useEffect( () => {
+
+        const fetchalldata = async () => 
+        {
+        const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
+        if (storedpatient_trial_number) {
+          await setPatient_trial_number(storedpatient_trial_number);
+          fetch("/api/getpatientbytrialid", {
+            method:"Post",
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({trialid:storedpatient_trial_number})
+          })
+          .then((res) => res.json())
+          .then((apidata: any) => {
+            console.log(apidata)
+            if (apidata.executed) {
+                const questiondata = apidata.data.data;
+                const questionsArray = [questions1, questions2, questions3, questions4, questions5, questions6, questions7]
+                questionsArray.forEach((question_list) => {
+                    question_list.map((question) => {
+                        const requiredquestionid = question.questionId;
+                        const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
+                        
+                        questionvalue !== undefined && question.setValue(questionvalue)
+                    })
+                })
+                
+
+            }
+            else
+            {
+            //   toast({
+            //     title: "Error",
+            //     description: apidata.message,
+            //     variant: "destructive",
+            //   })
+            console.log("Data not found")
+            }
+          })
+
+
+        }
+        else
+        {
+          setPatient_trial_number("ID not found")
+        }
+
+        }
+
+
+        fetchalldata();
+        
+      }, []);
 
 
     const handleSubmit1 = () => {
@@ -258,6 +313,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section2")
                         } else {
                             toast({
                                 title: "Error",
@@ -341,6 +397,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section3")
                         } else {
                             toast({
                                 title: "Error",
@@ -420,6 +477,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section4")
                         } else {
                             toast({
                                 title: "Error",
@@ -500,6 +558,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section5")
                         } else {
                             toast({
                                 title: "Error",
@@ -579,6 +638,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section6")
                         } else {
                             toast({
                                 title: "Error",
@@ -659,6 +719,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section7")
                         } else {
                             toast({
                                 title: "Error",
@@ -739,6 +800,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            router.push('/form/surgicaltreatment')
                         } else {
                             toast({
                                 title: "Error",

@@ -13,7 +13,7 @@ const sidebaritems = [
     },
     {
         title: "Data",
-        path: "/admintask/data",
+        path: "/admintask/adminbasedtable",
         icon: faBookMedical,
     },
     {

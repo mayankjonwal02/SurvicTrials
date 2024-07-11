@@ -19,7 +19,7 @@ export async function POST(request: req ) {
         for (const questiondata of questions) {
             const { questionId, value , question , questionType } = questiondata;
             const existingquestion = patient.data.find((data) => data.questionId === questionId);
-            if (existingquestion) {
+            if (existingquestion && existingquestion.answer !== value) {
                 existingquestion.answer = value;
                 existingquestion.updates.push({
                     updatedBy: submittedBy,

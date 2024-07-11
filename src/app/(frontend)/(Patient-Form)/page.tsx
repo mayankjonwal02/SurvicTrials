@@ -114,7 +114,7 @@ const DoctorLogin = () => {
                         <Label htmlFor="email">Unique ID</Label>
                         <Input className='mb-6'
                             type="text"
-                            placeholder="Admin ID"
+                            placeholder="Unique ID"
                             value={admin}
                             onChange={(e) => setAdmin(e.target.value)} />
 

@@ -23,6 +23,7 @@ import {
   SheetTrigger,
   SheetClose
 } from "@/components/ui/sheet"
+import { useEffect } from "react";
 
 
 
@@ -33,6 +34,15 @@ export default function AdminSidebarLayout({
 }>) {
 
   const router = useRouter()
+  useEffect(() => {
+    const login = localStorage.getItem("login_admin");
+   
+
+    if (login !== "true") {
+        router.push('/admin')
+    }
+
+}, []);
   return (
 
     <div className={cn("flex flex-row justify-center items-start h-screen w-screen bg-gradient-to-l from-green-2 from-10% via-green-4 via-60% to-green-3 to-90%", inter.className)}>

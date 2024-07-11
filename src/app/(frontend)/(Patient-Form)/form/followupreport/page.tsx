@@ -16,12 +16,13 @@ const Followupreport = () => {
     const router = useRouter();
 
     const [user, setUser] = useState<any>({});
-    const userid = "mayankjonwal"
+    const [userid, setUserId] = useState('');
     const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
+        setUserId(storedUser.unique_id);
     }, []);
     const questionType = "followupreport";
     const formTitle = "Follow-up Assessment Report";
@@ -79,7 +80,7 @@ const Followupreport = () => {
       ];
 
     const questions3 = [
-        { question: 'Date of Imaging (dd-mm-yyyy):',questionType: questionType, questionId: 'f-5', inputtype: 'text', options: [],value: dateOfImaging, setValue: setDateOfImaging ,heading:"Imaging "},
+        { question: 'Date of Imaging:',questionType: questionType, questionId: 'f-5', inputtype: 'date', options: [],value: dateOfImaging, setValue: setDateOfImaging ,heading:"Imaging "},
         { question: 'Imaging type (USG/ CT/ MRI/ PET CT):',questionType: questionType, questionId: 'f-6', inputtype: 'dropdown',value: imagingType, setValue: setImagingType, options: [ "USG",
             "CT",
             "MRI",
@@ -88,7 +89,7 @@ const Followupreport = () => {
       ];
 
     const questions4 = [
-        { question: 'Biopsy Date (dd-mm-yyyy):', questionId: 'f-8', questionType: questionType, inputtype: 'date', options: [], value: biopsyDate, setValue: setBiopsyDate,heading:"Biopsy" },
+        { question: 'Biopsy Date ', questionId: 'f-8', questionType: questionType, inputtype: 'date', options: [], value: biopsyDate, setValue: setBiopsyDate,heading:"Biopsy" },
         { question: 'Biopsy Report:', questionId: 'f-9', questionType: questionType, inputtype: 'text', options: [], value: biopsyReport, setValue: setBiopsyReport }
       ];
 
@@ -108,7 +109,61 @@ const Followupreport = () => {
 
     
 
- 
+      useEffect( () => {
+
+        const fetchalldata = async () => 
+        {
+        const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
+        if (storedpatient_trial_number) {
+          await setPatient_trial_number(storedpatient_trial_number);
+          fetch("/api/getpatientbytrialid", {
+            method:"Post",
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({trialid:storedpatient_trial_number})
+          })
+          .then((res) => res.json())
+          .then((apidata: any) => {
+            console.log(apidata)
+            if (apidata.executed) {
+                const questiondata = apidata.data.data;
+                const questionsArray = [questions1, questions2, questions3, questions4, questions5]
+                questionsArray.forEach((question_list) => {
+                    question_list.map((question) => {
+                        const requiredquestionid = question.questionId;
+                        const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
+                        
+                        questionvalue !== undefined && question.setValue(questionvalue)
+                    })
+                })
+                
+
+            }
+            else
+            {
+            //   toast({
+            //     title: "Error",
+            //     description: apidata.message,
+            //     variant: "destructive",
+            //   })
+            console.log("Data not found")
+            }
+          })
+
+
+        }
+        else
+        {
+          setPatient_trial_number("ID not found")
+        }
+
+        }
+
+
+        fetchalldata();
+        
+      }, []);
 
 
     const handleSubmit1 = () => {
@@ -155,6 +210,7 @@ const Followupreport = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section2")
                         } else {
                             toast({
                                 title: "Error",
@@ -238,6 +294,7 @@ const Followupreport = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section3")
                         } else {
                             toast({
                                 title: "Error",
@@ -317,6 +374,7 @@ const Followupreport = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section4")
                         } else {
                             toast({
                                 title: "Error",
@@ -397,6 +455,7 @@ const Followupreport = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            setTabValue("section5")
                         } else {
                             toast({
                                 title: "Error",
@@ -476,6 +535,7 @@ const Followupreport = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+
                         } else {
                             toast({
                                 title: "Error",

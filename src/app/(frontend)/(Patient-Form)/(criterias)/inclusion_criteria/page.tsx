@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
     DropdownMenu,
@@ -19,6 +19,14 @@ const InclusionCriteria = () => {
 
     const { toast } = useToast()
     const router = useRouter();
+    useEffect(() => {
+        const login = localStorage.getItem("login");
+
+        if (login !== "true") {
+            router.push('/')
+        }
+
+    }, []);
 
     const [criteria1, setCriteria1] = React.useState("");
     const [criteria2, setCriteria2] = React.useState("");

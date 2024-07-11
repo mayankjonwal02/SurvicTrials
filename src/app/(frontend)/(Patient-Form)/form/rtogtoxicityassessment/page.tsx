@@ -9,12 +9,13 @@ const Rtogtoxicityassessment = () => {
     const router = useRouter();
 
     const [user, setUser] = useState<any>({});
-    const userid = "mayankjonwal"
+    const [userid, setUserId] = useState('');
     const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
+        setUserId(storedUser.unique_id);
     }, []);
     const questionType = "rtogtoxicityassessment";
     const formTitle = "Toxicity During Radiotherapy -RTOG Toxicity Assessment";
@@ -40,7 +41,7 @@ const Rtogtoxicityassessment = () => {
 
 
     const questions1 = [
-        { question: 'Treatment Week:', questionId: 'r2-1', questionType: questionType, inputtype: 'dropdown', options: [ "---------",
+        { question: 'Treatment Week:', questionId: 'r2-1', questionType: questionType, inputtype: 'dropdown', options: [
             "Week 1",
             "Week 2",
             "Week 3",
@@ -60,7 +61,61 @@ const Rtogtoxicityassessment = () => {
 
 
 
+      useEffect( () => {
 
+        const fetchalldata = async () => 
+        {
+        const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
+        if (storedpatient_trial_number) {
+          await setPatient_trial_number(storedpatient_trial_number);
+          fetch("/api/getpatientbytrialid", {
+            method:"Post",
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({trialid:storedpatient_trial_number})
+          })
+          .then((res) => res.json())
+          .then((apidata: any) => {
+            console.log(apidata)
+            if (apidata.executed) {
+                const questiondata = apidata.data.data;
+                const questionsArray = [questions1]
+                questionsArray.forEach((question_list) => {
+                    question_list.map((question) => {
+                        const requiredquestionid = question.questionId;
+                        const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
+                        
+                        questionvalue !== undefined && question.setValue(questionvalue)
+                    })
+                })
+                
+
+            }
+            else
+            {
+            //   toast({
+            //     title: "Error",
+            //     description: apidata.message,
+            //     variant: "destructive",
+            //   })
+            console.log("Data not found")
+            }
+          })
+
+
+        }
+        else
+        {
+          setPatient_trial_number("ID not found")
+        }
+
+        }
+
+
+        fetchalldata();
+        
+      }, []);
 
 
 
@@ -108,6 +163,7 @@ const Rtogtoxicityassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
+                            router.push("/form/chemotherapyform")
                         } else {
                             toast({
                                 title: "Error",

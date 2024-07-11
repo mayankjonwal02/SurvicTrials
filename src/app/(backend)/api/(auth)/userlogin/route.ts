@@ -11,7 +11,7 @@ export async function POST(request: req) {
             return res.json({ message: "UserID not found" ,data : existinguser , executed : false});
         }
         if(existinguser.password !== password){
-            return res.json({ message: "Password is incorrect" ,data : existinguser , executed : false});
+            return res.json({ message: "Password is incorrect"  , executed : false});
         }
         return res.json({ message: "Login successful" ,data : existinguser , executed : true});
     } catch (error) {

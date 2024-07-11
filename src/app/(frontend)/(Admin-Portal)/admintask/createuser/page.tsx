@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { Input } from "@/components/ui/input"
 import {
@@ -30,6 +30,14 @@ import cities from '@/constants/ConstantData'
 
 const CreateUser = () => {
     const router = useRouter();
+    // useEffect(() => {
+    //     const login = localStorage.getItem("login_admin");
+    
+    //     if (login === "true") {
+    //         router.push('/admin')
+    //     }
+    
+    // }, []);
     const { toast } = useToast()
     const [passwordShown, setPasswordShown] = useState(false);
     const [passwordShown1, setPasswordShown1] = useState(false);
