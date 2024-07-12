@@ -50,7 +50,7 @@ const AllResponses = () => {
         console.error("Error fetching patients:", error);
       })
       .finally(() => setLoading(false));}
-  }, []);
+  }, [citycode]);
 
   const exportPatientsToCSV = () => {
     const headers = Object.keys(AllQuestions).flatMap(category =>
