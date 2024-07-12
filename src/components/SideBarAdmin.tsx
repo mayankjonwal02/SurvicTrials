@@ -31,7 +31,10 @@ const SidebarAdmin = ({items , patient_trial_number }: {items: SidebarItem[] , p
         const pathname = usePathname()
         const isActive = item.path === pathname
         return (
-          <div key={index} onClick={() => router.push(item.path)} className={`text-start text-lg my-4 mx-3 px-5 py-2 cursor-pointer hover:bg-white/30 ${isActive ? 'text-green-5 font-extrabold bg-white rounded-lg' : 'text-black font-extrabold'} `}>
+          <div key={index} onClick={() => {
+            localStorage.clear()
+            router.push(item.path)
+            }} className={`text-start text-lg my-4 mx-3 px-5 py-2 cursor-pointer hover:bg-white/30 ${isActive ? 'text-green-5 font-extrabold bg-white rounded-lg' : 'text-black font-extrabold'} `}>
             
             {item.icon === undefined ? null : <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={item.icon} />}{item.title}
 

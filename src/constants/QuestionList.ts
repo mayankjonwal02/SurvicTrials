@@ -451,8 +451,7 @@ const Quality = [
     { question: 'I am able to afford the health care I need:', questionId: 'q-63', value:"",questionType: 'Quality of Life Assessment' },
     { question: 'I feel guilty about my family members or others having to spend money on my health care:', questionId: 'q-64', value:"",questionType: 'Quality of Life Assessment' },
     { question: 'I worry that I won’t be able to leave my family enough money:', questionId: 'q-65', value:"",questionType: 'Quality of Life Assessment' },
-    { question: 'I am worried that the cost of my medical care will use up all or most of my savings, retirement, or assets:', questionId: 'q-66', value:"",questionType: 'Quality of Life Assessment' },
-    { question: 'I have had to borrow money or get a loan to pay for my treatment or medical care:', questionId: 'q-67', value:"",questionType: 'Quality of Life Assessment' }
+   
 
 
 ]

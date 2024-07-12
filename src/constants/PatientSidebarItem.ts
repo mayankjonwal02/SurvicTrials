@@ -4,25 +4,29 @@ const sidebaritems = [
     {
         title: "Demographic Details",
         path: "/form/demographic",
-        icon:undefined
+        icon:undefined,
+        category:"Demographic Details"
         
     },
     {
         title: "Social History Addictions",
         path: "/form/socialhistory",
-        icon:undefined
+        icon:undefined,
+        category:"Social History"
      
     },
     {
         title: "Clinical Profile",
         path: "/form/clinicalprofile",
-        icon:undefined
+        icon:undefined,
+        category:"Clinical Profile"
         
     },
     {
         title: "Investigations",
         path: "/form/investigations",
-        icon:undefined
+        icon:undefined,
+        category:"Investigation"
        
     },
 
@@ -30,50 +34,58 @@ const sidebaritems = [
     {
         title: "Restaging",
         path: "/form/restaging",
-        icon:undefined
+        icon:undefined,
+        category:"Restaging"
         
     },
     {
         title: "Quality of Life Assessment",
         path: "/form/qualityoflifeassessment",
-        icon:undefined
+        icon:undefined,
+        category:"Quality of Life Assessment"
      
     },
     {
         title: "Surgical Treatment",
         path: "/form/surgicaltreatment",
-        icon:undefined
+        icon:undefined,
+        category:"Surgical Treatment"
         
     },
     {
         title: "Postoperative Complications",
         path: "/form/postoperativecomplications",
-        icon:undefined
+        icon:undefined,
+        category:"Post-Operative Complications"
        
     },
 
     {
         title: "Histopathology",
         path: "/form/histopathology",
-        icon:undefined
+        icon:undefined,
+        category:"Histopathology"
         
     },
     {
         title: "Treatment Plan after HPE",
         path: "/form/treatmentplanafterhpe",
-        icon:undefined
+        icon:undefined,
+        category:"Treatment Plan after HPE"
      
     },
     {
         title: "RTOG Toxicity Assessment",
         path: "/form/rtogtoxicityassessment",
-        icon:undefined
+        icon:undefined,
+        category:"RTOG Toxicity Assessment"
         
     },
     {
         title: "Chemotherapy Form",
         path: "/form/chemotherapyform",
-        icon:undefined
+        icon:undefined,
+        category:"Chemotherapy"
        
     },
 
@@ -81,30 +93,35 @@ const sidebaritems = [
     {
         title: "Concomitant medicines",
         path: "/form/concomitantmedicines",
-        icon:undefined
+        icon:undefined,
+        category:"Concomitant Medicines"
         
     },
     {
         title: "Adverse Event",
         path: "/form/adverseevent",
-        icon:undefined
+        icon:undefined,
+        category:"Adverse Event"
      
     },
     {
         title: "Adverse Events Management",
         path: "/form/adverseeventsmanagement",
-        icon:undefined
+        icon:undefined,
+        category:"Adverse Event Management"
         
     },
     {
         title: "Protocol Deviation",
         path: "/form/protocoldeviation",
-        icon:undefined
+        icon:undefined,
+        category:"Protocol Deviation"
        
     },
     {
         title: "Follow up report",
         icon:undefined,
+        category:"Follow-Up Report",
         path: "/form/followupreport",
        
     }
