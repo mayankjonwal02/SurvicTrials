@@ -1,5 +1,5 @@
 "use client"
-import Sidebar from "@/components/Sidebar";
+import SidebarAdmin from "@/components/SideBarAdmin";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -85,9 +85,9 @@ export default function AdminSidebarLayout({
       </Sheet>
 
 
-      <Sidebar items = {sidebaritems}/>
+      <SidebarAdmin items = {sidebaritems}/>
 
-      <div className="grow ">
+      <div className="w-[80%] h-full">
 
         {children}
       </div>

@@ -26,7 +26,7 @@ const AllResponses = () => {
     const login = localStorage.getItem("login_admin");
 
     if (login !== "true") {
-        router.push('/')
+      router.push('/');
     }
   }, []);
 
@@ -71,7 +71,7 @@ const AllResponses = () => {
     const fields = ['patient_trial_number', ...headers];
     const json2csvParser = new Parser({ fields });
     const csv = json2csvParser.parse(data);
-    
+
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     saveAs(blob, 'patients_data.csv');
   };
@@ -81,55 +81,57 @@ const AllResponses = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col justify-start items-center overflow-hidden">
+    <div className="w-full h-screen flex flex-col justify-start items-center overflow-hidden ">
       <LogoutButton />
       <div className="font-bold text-3xl text-green-700 my-4">All Patient Responses</div>
       <button onClick={exportPatientsToCSV} className="mb-4 mt-4 p-2 bg-green-600 hover:bg-green-700 text-white rounded transition duration-300">
         Export All Responses to CSV
       </button>
-      <ScrollArea className="w-full h-full bg-green-100 border border-green-300 rounded-lg shadow-md overflow-auto">
-        <div className="min-w-full overflow-auto">
-          <table className="min-w-full bg-white border-collapse">
-            <thead>
-              <tr className="bg-green-600 text-white">
-                <th className="border border-green-400 px-4 py-2 sticky left-0 z-10" style={{ minWidth: "200px" }}>Patient Trial Number</th>
-                {Object.keys(AllQ).flatMap(category =>
-                  AllQuestions[category].map(question => (
-                    <TooltipProvider key={question.questionId}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <th className="border border-green-400 px-4 py-2 cursor-pointer whitespace-nowrap">
-                            {question.questionId}
-                          </th>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>{question.question}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  ))
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {patientsdata.map((patient: any, index: number) => (
-                <tr key={patient.patient_trial_number} className={index % 2 === 0 ? "bg-green-50" : "bg-white"}>
-                  <td className="border border-green-300 px-4 py-2 sticky left-0 z-10 font-semibold" style={{ minWidth: "200px" }}>{patient.patient_trial_number}</td>
+      <div className="flex-grow flex w-full justify-center">
+        <ScrollArea className="w-[90%] h-[90%] bg-green-100 border border-green-300 rounded-lg shadow-md overflow-auto">
+          <div className="w-full h-full overflow-x-auto">
+            <table className="min-w-full bg-white border-collapse">
+              <thead>
+                <tr className="bg-green-600 text-white">
+                  <th className="border border-green-400 px-4 py-2 sticky left-0 z-10" style={{ minWidth: "200px" }}>Patient Trial Number</th>
                   {Object.keys(AllQ).flatMap(category =>
                     AllQuestions[category].map(question => (
-                      <td className="border border-green-300 px-4 py-2 whitespace-nowrap" key={question.questionId}>
-                        {patient.data.find((q: any) => q.questionId === question.questionId)?.answer || "Not Answered"}
-                      </td>
+                      <TooltipProvider key={question.questionId}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <th className="border border-green-400 px-4 py-2 cursor-pointer whitespace-nowrap">
+                              {question.questionId}
+                            </th>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{question.question}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     ))
                   )}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <ScrollBar orientation="horizontal" />
-        <ScrollBar orientation="vertical" />
-      </ScrollArea>
+              </thead>
+              <tbody>
+                {patientsdata.map((patient: any, index: number) => (
+                  <tr key={patient.patient_trial_number} className={index % 2 === 0 ? "bg-green-50" : "bg-white"}>
+                    <td className="border border-green-300 px-4 py-2 sticky left-0 z-10 font-semibold" style={{ minWidth: "200px" }}>{patient.patient_trial_number}</td>
+                    {Object.keys(AllQ).flatMap(category =>
+                      AllQuestions[category].map(question => (
+                        <td className="border border-green-300 px-4 py-2 whitespace-nowrap" key={question.questionId}>
+                          {patient.data.find((q: any) => q.questionId === question.questionId)?.answer || "Not Answered"}
+                        </td>
+                      ))
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <ScrollBar orientation="horizontal" className="h-5 w-full bg-gray-500 " />
+          <ScrollBar orientation="vertical" />
+        </ScrollArea>
+      </div>
     </div>
   );
 };
