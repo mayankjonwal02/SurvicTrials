@@ -22,13 +22,13 @@ const AllResponses = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const login = localStorage.getItem("login_admin");
+  // useEffect(() => {
+  //   const login = localStorage.getItem("login_admin");
 
-    if (login !== "true") {
-      router.push('/');
-    }
-  }, []);
+  //   if (login !== "true") {
+  //     router.push('/admin');
+  //   }
+  // }, []);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
