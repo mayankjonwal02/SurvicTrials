@@ -58,7 +58,7 @@ const Institutebaseddata = () => {
       .catch((error) => {
         console.error("Error fetching patients:", error);
       });}
-  }, []);
+  }, [citycode]);
 
   useEffect(() => {
     if (patient.data) {
