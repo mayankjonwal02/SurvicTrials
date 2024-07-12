@@ -185,7 +185,9 @@ const Surgicaltreatment = () =>{
 
     const handleSubmit1 = () => {
         if (
-            questions1.some((question) => question.value === '')
+            // questions1.some((question) => question.value === '')
+
+            false
 
 
             
@@ -268,7 +270,9 @@ const Surgicaltreatment = () =>{
            
 
 
-      questions2.some((question) => question.value === "")
+    //   questions2.some((question) => question.value === "")
+
+    false
 
 
             
@@ -349,7 +353,9 @@ const Surgicaltreatment = () =>{
 
     const handleSubmit3 = () => {
         if (
-            questions3.some((question) => question.value === '')
+            // questions3.some((question) => question.value === '')
+
+            false
 
 
             

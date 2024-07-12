@@ -130,7 +130,9 @@ const Protocoldeviation = () => {
 
     const handleSubmit1 = () => {
         if (
-            questions1.some((question) => question.value === '')
+            // questions1.some((question) => question.value === '')
+
+            false
 
 
 

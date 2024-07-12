@@ -271,8 +271,8 @@ const Qualityoflifeassessment = () => {
 
     const handleSubmit1 = () => {
         if (
-            questions1.some((question) => question.value === '')
-
+            // questions1.some((question) => question.value === '')
+                false
 
             
 
@@ -354,7 +354,9 @@ const Qualityoflifeassessment = () => {
            
 
 
-      questions2.some((question) => question.value === "")
+    //   questions2.some((question) => question.value === "")
+
+    false
 
 
             
@@ -435,8 +437,8 @@ const Qualityoflifeassessment = () => {
 
     const handleSubmit3 = () => {
         if (
-            questions3.some((question) => question.value === '')
-
+            // questions3.some((question) => question.value === '')
+                false
 
             
 
@@ -516,8 +518,8 @@ const Qualityoflifeassessment = () => {
 
     const handleSubmit4 = () => {
         if (
-            questions4.some((question) => question.value === '')
-
+            // questions4.some((question) => question.value === '')
+                false
 
             
 
@@ -596,8 +598,8 @@ const Qualityoflifeassessment = () => {
 
     const handleSubmit5 = () => {
         if (
-            questions5.some((question) => question.value === '')
-
+            // questions5.some((question) => question.value === '')
+                false
 
             
 
@@ -677,8 +679,8 @@ const Qualityoflifeassessment = () => {
 
     const handleSubmit6 = () => {
         if (
-            questions6.some((question) => question.value === '')
-
+            // questions6.some((question) => question.value === '')
+                false
 
             
 
@@ -758,8 +760,8 @@ const Qualityoflifeassessment = () => {
 
     const handleSubmit7 = () => {
         if (
-            questions7.some((question) => question.value === '')
-
+            // questions7.some((question) => question.value === '')
+                false
 
             
 

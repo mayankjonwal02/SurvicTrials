@@ -20,10 +20,10 @@ const patientSchema = new Schema({
         required: true
     },
     createdon: {
-        type: Date
+        type: String
     },
     updatedon: {
-        type: Date
+        type: String
         
     },
     patientName: {

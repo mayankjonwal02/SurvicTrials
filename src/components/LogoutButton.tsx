@@ -10,7 +10,7 @@ const LogoutButton = () => {
       <div className=' w-full p-3 flex flex-row justify-end items-center text-green-5 '>
       <div className='border border-2 me-4 p-1 rounded-full border-green-5 flex flex-row justify-end items-center bg-green-4 hover:bg-green-1 font-bold cursor-pointer' onClick={() => {
                     
-                    
+                    localStorage.setItem("task","")
                     router.push('/home')}}>
 
                     <FontAwesomeIcon icon={faHome} className='w-[20px] me-1' /> Home</div>

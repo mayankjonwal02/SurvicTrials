@@ -116,7 +116,9 @@ const Demographic = () => {
 
     const handleSubmit = () => {
         if (
-            questions.some((question) => question.value === "")
+            // questions.some((question) => question.value === "")
+
+            false
         ) {
             toast({
                 title: "Error",

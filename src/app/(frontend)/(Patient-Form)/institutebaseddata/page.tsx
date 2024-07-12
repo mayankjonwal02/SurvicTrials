@@ -42,7 +42,7 @@ const Institutebaseddata = () => {
     setUserId(storedUser.unique_id);
     setCitycode(storedUser.citycode);
     console.log(citycode);
-    fetch(`/api/getallpatients/${citycode}`, {
+    if(citycode !==''){fetch(`/api/getallpatients/${citycode}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const Institutebaseddata = () => {
       })
       .catch((error) => {
         console.error("Error fetching patients:", error);
-      });
+      });}
   }, []);
 
   useEffect(() => {

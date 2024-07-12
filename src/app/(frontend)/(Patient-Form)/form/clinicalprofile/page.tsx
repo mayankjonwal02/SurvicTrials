@@ -377,31 +377,33 @@ const ClinicalProfile = () => {
 
     const handleSubmit1 = () => {
         if (
-            nonhealingulcer === "" ||
-            nonhealingulcerduration === "" ||
-            skinfungationulcer === "" ||
-            skinfungationulcerduration === "" ||
-            pain === "" ||
-            painduration === "" ||
-            fatigue === "" ||
-            fatigueduration === "" ||
-            neckswelling === "" ||
-            neckswellingduration === "" ||
-            loosingteeth === "" ||
-            loosingteethduration === "" ||
-            weightloss === "" ||
-            weightlossduration === "" ||
-            dentureuse === "" ||
-            dentureuseduration === "" ||
-            reducedmouthopening === "" ||
-            reducedmouthopeningduration === "" ||
-            pasthistoryofcancer === "" ||
-            pasthistoryofcancerduration === "" ||
-            other === "" ||
-            pasthistorytreatment === "" ||
-            pasthistorytreatmentduration1 === "" ||
-            pasthistorytreatmentduration2 === "" ||
-            pasthistorytreatmentduration3 === "" 
+            // nonhealingulcer === "" ||
+            // nonhealingulcerduration === "" ||
+            // skinfungationulcer === "" ||
+            // skinfungationulcerduration === "" ||
+            // pain === "" ||
+            // painduration === "" ||
+            // fatigue === "" ||
+            // fatigueduration === "" ||
+            // neckswelling === "" ||
+            // neckswellingduration === "" ||
+            // loosingteeth === "" ||
+            // loosingteethduration === "" ||
+            // weightloss === "" ||
+            // weightlossduration === "" ||
+            // dentureuse === "" ||
+            // dentureuseduration === "" ||
+            // reducedmouthopening === "" ||
+            // reducedmouthopeningduration === "" ||
+            // pasthistoryofcancer === "" ||
+            // pasthistoryofcancerduration === "" ||
+            // other === "" ||
+            // pasthistorytreatment === "" ||
+            // pasthistorytreatmentduration1 === "" ||
+            // pasthistorytreatmentduration2 === "" ||
+            // pasthistorytreatmentduration3 === "" 
+
+            false
 
 
             
@@ -484,27 +486,27 @@ const ClinicalProfile = () => {
            
 
 
-            age === "" ||
-            myocardialinfarction === "" ||
-            chf === "" ||
-            copd === "" ||
-            connectivetissuedisease === "" ||
-            dementia === "" ||
-            pepticulcer === "" ||
-            cva === "" ||
-            peripheralvascular === "" ||
-            diabetes === "" ||
-            liverrdisease === "" ||
-            aids === "" ||
-            pointscore === "" ||
-            estimatedsurvival === "" ||
-            hemiplegia === "" ||
-            ckd === "" ||
-            solidtumor === "" ||
-            leukemia === "" ||
-            lymphoma === "" 
+            // age === "" ||
+            // myocardialinfarction === "" ||
+            // chf === "" ||
+            // copd === "" ||
+            // connectivetissuedisease === "" ||
+            // dementia === "" ||
+            // pepticulcer === "" ||
+            // cva === "" ||
+            // peripheralvascular === "" ||
+            // diabetes === "" ||
+            // liverrdisease === "" ||
+            // aids === "" ||
+            // pointscore === "" ||
+            // estimatedsurvival === "" ||
+            // hemiplegia === "" ||
+            // ckd === "" ||
+            // solidtumor === "" ||
+            // leukemia === "" ||
+            // lymphoma === "" 
 
-
+            false
             
 
 
@@ -586,31 +588,33 @@ const ClinicalProfile = () => {
             
 
 
-            drug === "" ||
-            obesity === "" ||
-            overallcomorbidity === "" ||
-            grade === "" ||
-            moderatecomorbidity === "" ||
-            severecomorbidity === "" ||
-            myocardialinfarction1 === "" ||
-            anginaandconorarydisease === "" ||
-            congestiveheartfailure === "" ||
-            cardiacarrhythmias === "" ||
-            hypertension === "" ||
-            venousdisease === "" ||
-            peripheralarterydisease === "" ||
-            respiratorydisease === "" ||
-            hepaticdisease === "" ||
-            stomachandintestinalinfection === "" ||
-            pancreaticdisease === "" ||
-            endstageretinaldisease === "" ||
-            stroke === "" ||
-            paralysis === "" ||
-            neuromusculardisorder === "" ||
-            psychiaticdisorder === "" ||
-            rheumatologicdisorder === "" ||
-            leukemiaormyeloma === "" ||
-            alcohol === "" 
+            // drug === "" ||
+            // obesity === "" ||
+            // overallcomorbidity === "" ||
+            // grade === "" ||
+            // moderatecomorbidity === "" ||
+            // severecomorbidity === "" ||
+            // myocardialinfarction1 === "" ||
+            // anginaandconorarydisease === "" ||
+            // congestiveheartfailure === "" ||
+            // cardiacarrhythmias === "" ||
+            // hypertension === "" ||
+            // venousdisease === "" ||
+            // peripheralarterydisease === "" ||
+            // respiratorydisease === "" ||
+            // hepaticdisease === "" ||
+            // stomachandintestinalinfection === "" ||
+            // pancreaticdisease === "" ||
+            // endstageretinaldisease === "" ||
+            // stroke === "" ||
+            // paralysis === "" ||
+            // neuromusculardisorder === "" ||
+            // psychiaticdisorder === "" ||
+            // rheumatologicdisorder === "" ||
+            // leukemiaormyeloma === "" ||
+            // alcohol === "" 
+
+            false
 
            
 
@@ -691,13 +695,15 @@ const ClinicalProfile = () => {
         if (
            
 
-            familyhistoryofcancer === "" ||
-            cancerdegree === "" ||
-            ageatmalignacy === "" ||
-            cancertype === "" ||
-            testedforcancer === "" ||
-            outcome === "" ||
-            doublerimary === "" 
+            // familyhistoryofcancer === "" ||
+            // cancerdegree === "" ||
+            // ageatmalignacy === "" ||
+            // cancertype === "" ||
+            // testedforcancer === "" ||
+            // outcome === "" ||
+            // doublerimary === "" 
+
+            false
 
 
             
@@ -782,8 +788,10 @@ const ClinicalProfile = () => {
             
 
 
-            diet === "" ||
-            meal === "" 
+            // diet === "" ||
+            // meal === "" 
+
+            false
 
 
         ) {
@@ -861,13 +869,15 @@ const ClinicalProfile = () => {
     const handleSubmit6 = () => {
         if (
             
-            ps === "" ||
-            height === "" ||
-            weight === "" ||
-            bsa === "" ||
-            bmi === "" ||
-            musclewasting === "" ||
-            otherpositivefindings === "" 
+            // ps === "" ||
+            // height === "" ||
+            // weight === "" ||
+            // bsa === "" ||
+            // bmi === "" ||
+            // musclewasting === "" ||
+            // otherpositivefindings === "" 
+
+            false
 
             
 
@@ -950,21 +960,23 @@ const ClinicalProfile = () => {
         if (
             
 
-            primarysite === "" ||
-            clinicalappropriate === "" ||
-            siteoftumor === "" ||
-            reachingmidline === "" ||
-            tumorsize === "" ||
-            pipi === "" ||
-            skininvolved === "" ||
-            gfeu === "" ||
-            boneinvolved === "" ||
-            osmf === "" ||
-            leukoplakia === "" ||
-            erythroplakia === "" ||
-            mouthopening === "" ||
-            tougueprotrusion === "" ||
-            ctstage === ""
+            // primarysite === "" ||
+            // clinicalappropriate === "" ||
+            // siteoftumor === "" ||
+            // reachingmidline === "" ||
+            // tumorsize === "" ||
+            // pipi === "" ||
+            // skininvolved === "" ||
+            // gfeu === "" ||
+            // boneinvolved === "" ||
+            // osmf === "" ||
+            // leukoplakia === "" ||
+            // erythroplakia === "" ||
+            // mouthopening === "" ||
+            // tougueprotrusion === "" ||
+            // ctstage === ""
+
+            false
 
 
 
@@ -1047,16 +1059,18 @@ const ClinicalProfile = () => {
 
             
 
-            necknodes === "" ||
-            levelofnodes === "" ||
-            sizeoflargestpalpable === "" ||
-            grossene === "" ||
-            whatsuggestene === "" ||
-            contralateralnodes === "" ||
-            eneinclnodes === "" ||
-            cnstage === "" ||
-            cstage === "" ||
-            othersignificantfindings === ""
+            // necknodes === "" ||
+            // levelofnodes === "" ||
+            // sizeoflargestpalpable === "" ||
+            // grossene === "" ||
+            // whatsuggestene === "" ||
+            // contralateralnodes === "" ||
+            // eneinclnodes === "" ||
+            // cnstage === "" ||
+            // cstage === "" ||
+            // othersignificantfindings === ""
+
+            false
 
 
 

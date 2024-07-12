@@ -232,11 +232,13 @@ const Investigations = () =>  {
 
     const handleSubmit1 = () => {
         if (
-            biopsynumber === "" ||
-            dateofbiopsy === "" ||
-            histology === "" ||
-            gradebiopsy === "" ||
-            anyspecialfeature === ""
+            // biopsynumber === "" ||
+            // dateofbiopsy === "" ||
+            // histology === "" ||
+            // gradebiopsy === "" ||
+            // anyspecialfeature === ""
+
+            false
 
 
             
@@ -319,38 +321,40 @@ const Investigations = () =>  {
            
 
 
-       cbc === "" ||
-       hb === "" ||
-       rbc === "" ||
-       tlc === "" ||
-       neutrophilcount === "" ||
-       lymphocytecount === "" ||
-       monocytecount === "" ||
-       eosinophilcount === "" ||
-       basophilcount === "" ||
-       plateletcount === "" ||
-       largeimmaturecellcount === "" ||
-       lic === "" ||
-       plateletcount === "" ||
-       covidinpast === "" ||
-       covidvaccine === "" ||
-       vaccinename === "" ||
-       rft === "" ||
-       serumcreatinelevel === "" ||
-       bloodurealevel === "" ||
-       viralmarkers === "" ||
-       hhh === "" ||
-       lft === "" ||
-       directbilirubin === "" ||
-       indirectbilirubin === "" ||
-       aasg === "" ||
-       as === "" ||
-       sap === "" ||
-       totalprotienlevel === "" ||
-       albumin === "" ||
-       agratio === "" ||
-       ejectionfraction === "" ||
-       ecg === ""
+    //    cbc === "" ||
+    //    hb === "" ||
+    //    rbc === "" ||
+    //    tlc === "" ||
+    //    neutrophilcount === "" ||
+    //    lymphocytecount === "" ||
+    //    monocytecount === "" ||
+    //    eosinophilcount === "" ||
+    //    basophilcount === "" ||
+    //    plateletcount === "" ||
+    //    largeimmaturecellcount === "" ||
+    //    lic === "" ||
+    //    plateletcount === "" ||
+    //    covidinpast === "" ||
+    //    covidvaccine === "" ||
+    //    vaccinename === "" ||
+    //    rft === "" ||
+    //    serumcreatinelevel === "" ||
+    //    bloodurealevel === "" ||
+    //    viralmarkers === "" ||
+    //    hhh === "" ||
+    //    lft === "" ||
+    //    directbilirubin === "" ||
+    //    indirectbilirubin === "" ||
+    //    aasg === "" ||
+    //    as === "" ||
+    //    sap === "" ||
+    //    totalprotienlevel === "" ||
+    //    albumin === "" ||
+    //    agratio === "" ||
+    //    ejectionfraction === "" ||
+    //    ecg === ""
+
+    false
 
 
             
@@ -434,9 +438,9 @@ const Investigations = () =>  {
             
 
 
-            questions3.some((question) => question.value === "")
+            // questions3.some((question) => question.value === "")
 
-           
+                false
 
 
         ) {

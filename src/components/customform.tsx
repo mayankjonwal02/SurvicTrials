@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react';
+import React, { useRef , useEffect, use, useState } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
     DropdownMenu,
@@ -14,6 +14,7 @@ import LogoutButton from './LogoutButton';
 import { motion, useScroll } from "framer-motion"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faDroplet } from '@fortawesome/free-solid-svg-icons';
+import { cn } from '@/lib/utils';
 interface Question {
     question: string;
     subQuestions?: string[];
@@ -35,6 +36,13 @@ interface CustomFormProps {
 }
 
 const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, buttontitle, formtitle, loading , tabs }) => {
+    const [task, setTask] = useState("")
+    useEffect(() => {
+        const storedtask = localStorage.getItem("task");
+        if (storedtask) {
+            setTask(storedtask);
+        }
+    }, []);
     const { scrollYProgress } = useScroll();
     const scrollRef = useRef(null);
     return (
@@ -63,12 +71,12 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                             <li key={subIndex} className='text-sm'>
                                                 {subQuestion}
                                             </li>
-                                        ))}
+                                        ))}'bg-green-600 m-2 text-white hover:bg-green-4 hover:text-green-5 text-sm'
                                     </ul>
                                 )}
                                 {question.inputtype === "dropdown" ? <DropdownMenu>
                                     <DropdownMenuTrigger>
-                                        <Button className='bg-green-600 m-2 text-white hover:bg-green-4 hover:text-green-5 text-sm' variant="outline">
+                                        <Button className={cn("w-[300px] p-2 border  rounded-lg m-2 ", (question.value === "" && task === "update" )? "bg-red-300 " : "text-white bg-green-600 hover:bg-green-4 hover:text-green-5")} onClick={() => question.setValue("")} variant="outline">
                                             {question.value === "" ? `Choose Option` : question.value} <FontAwesomeIcon className='ml-2' icon={faCaretDown} />
                                         </Button>
                                     </DropdownMenuTrigger>
@@ -86,7 +94,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                 {question.inputtype === "text" ? (
                                     <input
                                         type="text"
-                                        className='w-[300px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
+                                        className={cn('w-[300px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 ', (question.value === "" && task === "update" )? "bg-red-300 placeholder:text-black" : "")}
                                         value={question.value}
                                         onChange={(e) => question.setValue(e.target.value)}
                                         placeholder='Answer here'
@@ -112,7 +120,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                 {question.inputtype === "date" ? (
                                     <input
                                         type="date"
-                                        className='w-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
+                                        className={cn('w-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 ', (question.value === "" && task === "update" )? "bg-red-300 " : "")}
                                         value={question.value}
                                         onChange={(e) => question.setValue(e.target.value)}
                                         placeholder='dd-MM-yyyy'
@@ -124,7 +132,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
 
                                 {question.inputtype === "textarea" ? (
                                     <textarea
-                                        className='w-[300px] min-h-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 '
+                                        className={cn('w-[300px] min-h-[200px] p-2 border border-green-5 bg-green-4 rounded-lg m-2 ', (question.value === "" && task === "update" )? "bg-red-300 placeholder:text-black" : "")}
                                         value={question.value}
                                         onChange={(e) => question.setValue(e.target.value)}
                                         placeholder='Answer here'

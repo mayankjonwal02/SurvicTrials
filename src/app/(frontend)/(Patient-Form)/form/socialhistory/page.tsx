@@ -108,15 +108,17 @@ const SocialHistory = () => {
 
     const handleSubmit = () => {
         if (
-            addiction === "" ||
-            addictiontype === "" ||
-            ageofstarting === "" ||
-            doseperday === "" ||
-            doseperweek === "" ||
-            doseinyears === "" ||   
-            currentstatus === "" ||
-            quitsince === "" ||
-            category === ""
+            // addiction === "" ||
+            // addictiontype === "" ||
+            // ageofstarting === "" ||
+            // doseperday === "" ||
+            // doseperweek === "" ||
+            // doseinyears === "" ||   
+            // currentstatus === "" ||
+            // quitsince === "" ||
+            // category === ""
+
+            false
         ) {
             toast({
                 title: "Error",

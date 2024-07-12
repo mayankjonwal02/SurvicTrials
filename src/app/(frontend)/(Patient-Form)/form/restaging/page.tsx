@@ -158,7 +158,9 @@ useEffect( () => {
 
     const handleSubmit1 = () => {
         if (
-            questions1.some((question) => question.value === '')
+            // questions1.some((question) => question.value === '')
+
+            false
 
 
             
@@ -241,7 +243,9 @@ useEffect( () => {
            
 
 
-      questions2.some((question) => question.value === "")
+    //   questions2.some((question) => question.value === "")
+
+    false
 
 
             

@@ -34,7 +34,7 @@ const AllResponses = () => {
     const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
     setUser(storedUser);
     setCitycode(storedUser.citycode);
-    fetch(`/api/getallpatients/${citycode}`, {
+    if(citycode !==''){fetch(`/api/getallpatients/${citycode}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const AllResponses = () => {
       .catch((error) => {
         console.error("Error fetching patients:", error);
       })
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(false));}
   }, []);
 
   const exportPatientsToCSV = () => {
