@@ -122,6 +122,59 @@ const home = () => {
     }
 
 
+    const handlesubmit_data = async () => {
+
+        if (patient_trial_number === "") {
+            toast({
+                title: "Error",
+                description: "Please enter patient trial number",
+                variant: "destructive",
+            })
+            return
+        }
+        try {
+            setLoading(true)
+            const response = await fetch('/api/getpatientbytrialid', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    trialid: patient_trial_number
+                }),
+            })
+            const data = await response.json();
+            if (data.executed) {
+
+                setLoading(false)
+                localStorage.setItem("patienttrialnumber", patient_trial_number)
+                localStorage.setItem("task","update")
+                router.push('/institutebaseddata')
+            }
+            else {
+
+                setLoading(false)
+                toast({
+                    title: "Error",
+                    description: data.message,
+                    variant: "destructive",
+                })
+            }
+            console.log(data)
+        }
+        catch (error: any) {
+
+            setLoading(false)
+            console.log(error)
+            toast({
+                title: "Error",
+                description: error.message,
+                variant: "destructive",
+            })
+        }
+    }
+
+
     return (
         <div className='flex flex-col justify-start items-center h-screen w-screen '>
             <LogoutButton />
@@ -196,7 +249,51 @@ const home = () => {
                     </DialogContent>
                 </Dialog>
 
+                <Dialog >
+                    <DialogTrigger asChild>
+                    <motion.button
+                    whileHover={{
+                        scale: 1.2,
+                        transition: { duration: 1 },
+                    }}
+                    whileTap={{ scale: 0.9 }}
+                ><Button className='bg-green-5 h-[70px] text-2xl' onClick={() =>{handlesubmit_data() }}>View Individual Data</Button></motion.button>
 
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md backdrop-blur-sm bg-green-1">
+                        <DialogHeader>
+                            <DialogTitle className='text-xl text-center font-bold'>Enter Patient Trial Number</DialogTitle>
+
+                        </DialogHeader>
+                        <div className='flex flex-row justify-around items-center'>
+
+                            {/* <Input className="w-[70%] mx-1 mt-7 mb-3" placeholder='Patient Trial Number' value={patient_trial_number} onChange={(e) => setPatient_trial_number(e.target.value)} /> */}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild><Button className='bg-green-3 text-green-5 hover:bg-green-4 hover:text-green-5 text-sm border border-2 border-green-5' >
+                                    {patient_trial_number !== "" ? patient_trial_number : "Select Patient Trial Number"} <FontAwesomeIcon icon={faChevronDown} className='ms-2' />
+                                </Button></DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    {idlist.map((id) => (
+                                        <DropdownMenuItem key={id} onClick={() => setPatient_trial_number(id)}>
+                                            {id}
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                            <Button className='bg-green-5 h-fit text-xl' onClick={handlesubmit}>Submit
+                                {loading ? <div className='animate-spin w-[25px] h-[25px] ms-2 border-4 border-t-4 border-white border-t-transparent rounded-full'></div>
+                                    : <></>}
+                            </Button>
+
+                            {/* {idlist.map((id) => (
+                                <div className='w-full flex flex-row justify-between items-center py-1 px-3 my-2 bg-white/30 rounded-lg'>
+                                    {id}
+                                </div>
+                            ))} */}
+                        </div>
+
+                    </DialogContent>
+                </Dialog>
                 <motion.button
                     whileHover={{
                         scale: 1.2,
