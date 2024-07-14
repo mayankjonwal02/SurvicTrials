@@ -192,7 +192,7 @@ const home = () => {
                         transition: { duration: 1 },
                     }}
                     whileTap={{ scale: 0.9 }}
-                ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-2xl ' onClick={() => router.push('/inclusion_criteria')}>Add New Patient</Button></motion.button>
+                ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-xl lg:text-2xl ' onClick={() => router.push('/inclusion_criteria')}>Add New Patient</Button></motion.button>
 
                 {/* <motion.button
                     whileHover={{
@@ -212,7 +212,7 @@ const home = () => {
                             }}
                             whileTap={{ scale: 0.9 }}
 
-                        ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-2xl' >Update Patient Data</Button></motion.button>
+                        ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-xl lg:text-2xl' >Update Patient Data</Button></motion.button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-md backdrop-blur-sm bg-green-1">
                         <DialogHeader>
@@ -234,7 +234,7 @@ const home = () => {
                                     ))}
                                 </DropdownMenuContent>
                             </DropdownMenu>
-                            <Button className='bg-green-5 h-fit text-xl' onClick={handlesubmit}>Submit
+                            <Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-xl lg:text-2xl' onClick={handlesubmit}>Submit
                                 {loading ? <div className='animate-spin w-[25px] h-[25px] ms-2 border-4 border-t-4 border-white border-t-transparent rounded-full'></div>
                                     : <></>}
                             </Button>
@@ -256,7 +256,7 @@ const home = () => {
                         transition: { duration: 1 },
                     }}
                     whileTap={{ scale: 0.9 }}
-                ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-2xl' onClick={() => router.push('/institutebaseddata')}>View Individual Data</Button></motion.button>
+                ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-xl lg:text-2xl' onClick={() => router.push('/institutebaseddata')}>View Individual Data</Button></motion.button>
 
                 <motion.button
                     whileHover={{
@@ -264,7 +264,7 @@ const home = () => {
                         transition: { duration: 1 },
                     }}
                     whileTap={{ scale: 0.9 }}
-                ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-2xl' onClick={() => router.push('/institutebasedtable')}>View Overall Data</Button></motion.button>
+                ><Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-xl lg:text-2xl' onClick={() => router.push('/institutebasedtable')}>View Overall Data</Button></motion.button>
 
             </div>
         </div >

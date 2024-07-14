@@ -127,18 +127,18 @@ const Institutebaseddata = () => {
     <div className="w-full h-full flex flex-col justify-start items-center overflow-hidden">
       <LogoutButton />
 
-      <div className="font-bold text-3xl text-green-500">Patient's Data - {citycode}</div>
+      <div className="font-bold text-2xl md:text-3xl text-green-500 mt-2">Patient's Data - {citycode}</div>
       <div className="font-bold text-xl my-4">{patient.patient_trial_number}</div>
-      <div className="flex flex-col md:flex-row w-full h-fit justify-around items-center">
+      <div className="flex flex-col md:flex-row w-full h-fit justify-around items-center mb-4">
 
-        <button onClick={exportPatientsToCSV} className="animate-pulse mb-4 p-2 bg-green-1 text-green-5 font-bold border border-2 border-green-5  rounded">
+        <button onClick={exportPatientsToCSV} className="animate-pulse mb-4 p-2 bg-green-1 text-green-5 font-bold border border-2 border-green-5  rounded text-xs">
           Export All Responses to CSV
         </button>
-        <button onClick={exportQuestionsToCSV} className="animate-pulse mb-4 p-2 bg-green-1  text-green-5 font-bold border border-2 border-green-5  rounded">
+        <button onClick={exportQuestionsToCSV} className="animate-pulse mb-4 p-2 bg-green-1  text-green-5 font-bold border border-2 border-green-5  rounded text-xs">
           Export Questions to CSV
         </button>
       </div>
-      <div className="flex flex-row w-full h-full justify-start items-center overflow-hidden">
+      <div className="flex flex-row w-full h-full justify-start items-start overflow-hidden">
       <Sheet>
         <SheetTrigger>
           <FontAwesomeIcon className="absolute top-7 left-5 text-green-5 text-2xl flex md:hidden " icon={faBars} />
@@ -187,20 +187,20 @@ const Institutebaseddata = () => {
             <Accordion type="single" collapsible className="w-full">
               {Object.keys(AllQ).map((category: string) => (
                 <AccordionItem key={category} value={category} className="mb-4">
-                  <AccordionTrigger className="text-xl font-bold text-green-700 bg-white/40 p-2 rounded-lg">
+                  <AccordionTrigger className="text-md md:text-xl font-bold text-green-700 bg-white/40 p-2 rounded-lg">
                     {category}
                   </AccordionTrigger>
                   <AccordionContent className="p-4 bg-white/20 border rounded-lg">
                     {AllQ[category].map((question) => (
                       <div className="flex flex-col">
                       <div className="flex flex-row justify-start items-center ">
-                        <div className="font-bold text-black text-xl mb-3 border border-4 rounded-full border-green-3 bg-green-3 text-green-5 p-1 me-3">{question.questionId}</div>
-                      <div key={question.questionId} className="font-bold text-black text-xl mb-2">
+                        <div className="font-bold text-black text-md md:text-xl mb-3 border border-4 rounded-full border-green-3 bg-green-3 text-green-5 p-1 me-3">{question.questionId}</div>
+                      <div key={question.questionId} className="font-bold text-black text-md md:text-xl mb-2">
 
                        Question : {question.question} 
                       </div>
                       </div>
-                      <div key={question.questionId} className="font-bold text-green-500 text-lg mb-6 ms-3">
+                      <div key={question.questionId} className="font-bold text-green-500 text-md md:text-lg mb-6 ms-3">
                       Answer : {question.value} 
                     </div>
                       </div>

@@ -20,9 +20,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from 'next/navigation'
 const Institutebaseddata = () => {
-  const [user, setUser] = useState<any>({});
-  const [userid, setUserId] = useState("");
-  const [citycode, setCitycode] = useState("");
+  // const [user, setUser] = useState<any>({});
+  // const [userid, setUserId] = useState("");
+  // const [citycode, setCitycode] = useState("");
   const [patientsdata, setPatientsdata] = useState<any>([]);
   const [patient, setPatient] = useState<any>({});
   const [AllQ, setAllQ] = useState(AllQuestions);
@@ -37,11 +37,11 @@ const Institutebaseddata = () => {
 
 }, []);
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
-    setUser(storedUser);
-    setUserId(storedUser.unique_id);
-    setCitycode(storedUser.citycode);
-    console.log(citycode);
+    // const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+    // setUser(storedUser);
+    // setUserId(storedUser.unique_id);
+    // setCitycode(storedUser.citycode);
+  
     fetch(`/api/getallpatients/`, {
       method: "POST",
       headers: {
@@ -127,7 +127,7 @@ const Institutebaseddata = () => {
     <div className="w-full h-full flex flex-col justify-start items-center overflow-hidden">
       <LogoutButton />
 
-      <div className="font-bold text-3xl text-green-500">Patient's Data - {citycode}</div>
+      <div className="font-bold text-3xl text-green-500">Patient's Data</div>
       <div className="font-bold text-xl my-4">{patient.patient_trial_number}</div>
       <div className="flex flex-col md:flex-row w-full h-fit justify-around items-center">
 
