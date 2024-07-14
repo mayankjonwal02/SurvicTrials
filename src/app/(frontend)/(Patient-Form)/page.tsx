@@ -176,6 +176,8 @@ const WelcomePage = () => {
 
                 </div>
             </div>
+            <div className="w-full h-fit py-3 text-center bg-green-3 text-green-5">Developed by <b><a className="underline" href="https://www.linkedin.com/in/mayank-jonwal-b79a5a1ba/">Mayank Jonwal</a></b> & <b className="underline"><a href="https://www.linkedin.com/in/dasanivishu/">Vishal Dasani</a></b> from <b><a className="underline" href="https://www.iitj.ac.in/">IIT Jodhpur</a></b></div>
+
         </div>
     );
 };

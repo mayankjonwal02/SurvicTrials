@@ -83,7 +83,7 @@ const DoctorLogin = () => {
     };
 
     return (
-        <div className='flex flex-col justify-start items-center h-screen w-screen overflow-x-hidden '>
+        <div className='flex flex-col justify-start items-center h-screen w-full overflow-x-hidden '>
             <div className='text-green-5 text-5xl md:text-5xl lg:text-6xl font-extrabold mt-8'>SurVic Trials</div>
             <div className='text-black text-4xl md:text-5xl font-extrabold my-7'>Login</div>
             <div className='flex flex-col justify-center items-center w-full grow'>
