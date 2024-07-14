@@ -77,7 +77,7 @@ const AllResponses = () => {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center h-full w-full text-3xl font-bold text-green-5">Loading...</div>;
+    return <div className="flex items-center justify-center h-full w-full text-3xl font-bold text-green-5">Loading... </div>;
   }
 
   return (

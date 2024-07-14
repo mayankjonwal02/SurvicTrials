@@ -35,7 +35,7 @@ export default function AdminSidebarLayout({
     const router = useRouter()
     return (
 
-        <div className={cn("flex flex-col justify-center items-start h-screen w-screen bg-gradient-to-l from-green-2 from-10% via-green-4 via-60% to-green-3 to-90%", inter.className)}>
+        <div className={cn("flex flex-col justify-center items-start h-full w-full bg-gradient-to-l from-green-2 from-10% via-green-4 via-60% to-green-3 to-90%", inter.className)}>
 
             {children}
 
