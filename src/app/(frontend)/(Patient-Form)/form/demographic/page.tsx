@@ -116,13 +116,13 @@ const Demographic = () => {
 
     const handleSubmit = () => {
         if (
-            // questions.some((question) => question.value === "")
-
-            false
+            
+        (  contact.length !== 0 && contact.length !== 10 ) || (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10)
+            
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Error in form submission",
                 variant: "destructive",
             })
 
@@ -193,7 +193,7 @@ const Demographic = () => {
     }
 // {question:'',questionType:questionType,questionId:'',inputtype:'',options:[],value:,setValue:}
     return (
-        <div>
+        <div className='w-full h-screen'>
 
             <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Demographic Profile Form" loading={loading}/>
         

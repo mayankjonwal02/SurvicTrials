@@ -242,7 +242,7 @@ const Postoperativecomplications = () => {
 
 
     return (
-        <div className=' '>
+        <div className='w-full h-screen '>
 
 
 

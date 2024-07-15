@@ -3,7 +3,7 @@ import React, {useState,useEffect} from 'react'
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import CustomForm from '@/components/customform';
-import { sub } from 'date-fns';
+import { daysToWeeks, sub } from 'date-fns';
 
 const SocialHistory = () => {
     const { toast } = useToast()
@@ -106,23 +106,27 @@ const SocialHistory = () => {
         
       }, []);
 
+      const alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
     const handleSubmit = () => {
         if (
-            // addiction === "" ||
-            // addictiontype === "" ||
-            // ageofstarting === "" ||
-            // doseperday === "" ||
-            // doseperweek === "" ||
-            // doseinyears === "" ||   
-            // currentstatus === "" ||
-            // quitsince === "" ||
-            // category === ""
 
-            false
+          
+            ( (alpha.some(i => ageofstarting.includes(i)) || special.some(i => ageofstarting.includes(i))) || ageofstarting.length > 2 ) 
+
+            || ( (alpha.some(i => doseperday.includes(i)) || special.some(i => doseperday.includes(i)))  )
+
+            || ( (alpha.some(i => doseperweek.includes(i)) || special.some(i => doseperweek.includes(i)))  )
+
+            || ( (alpha.some(i => doseinyears.includes(i)) || special.some(i => doseinyears.includes(i)))  )
+
+
+            
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Data type error in form submission",
                 variant: "destructive",
             })
 
@@ -192,8 +196,8 @@ const SocialHistory = () => {
     }
 
     return (
-        <div>
-
+        <div className='w-full h-screen'>
+            
             <CustomForm questions={questions} handleSubmit={handleSubmit} buttontitle="Submit" formtitle="Social History - Addictions" loading={loading}/>
         
         </div>

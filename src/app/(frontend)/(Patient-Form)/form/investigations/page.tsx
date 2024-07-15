@@ -519,7 +519,7 @@ const Investigations = () =>  {
 
 
     return (
-        <div className=' '>
+        <div className='w-full h-screen '>
 
 
 

@@ -443,7 +443,7 @@ const Surgicaltreatment = () =>{
 
 
     return (
-        <div className=' '>
+        <div className='w-full h-screen '>
 
 
 
