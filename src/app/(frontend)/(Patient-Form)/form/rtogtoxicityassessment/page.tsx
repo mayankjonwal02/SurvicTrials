@@ -118,13 +118,15 @@ const Rtogtoxicityassessment = () => {
       }, []);
 
 
-
+      const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+      const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+    
     const handleSubmit1 = () => {
         if (
             // questions1.some((question) => question.value === '')
 
 
-            false
+            alpha.some(i => weight.includes(i)) 
 
 
 
@@ -133,7 +135,7 @@ const Rtogtoxicityassessment = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 

@@ -350,21 +350,33 @@ const Surgicaltreatment = () =>{
             // router.push('/exclusion_criteria')
         }
     }
+    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+  
 
     const handleSubmit3 = () => {
         if (
             // questions3.some((question) => question.value === '')
 
-            false
+            
 
-
+            alpha.some(i => s2_17.includes(i)) ||
+            alpha.some(i => s2_18.includes(i)) ||
+            alpha.some(i => s2_19.includes(i)) ||
+            alpha.some(i => s2_20.includes(i)) ||
+            alpha.some(i => s2_22.includes(i)) ||
+            alpha.some(i => s2_26.includes(i)) ||
+            alphaspecial.some(i => s2_28.includes(i)) ||
+            alphaspecial.some(i => s2_31.includes(i)) ||
+            alphaspecial.some(i => s2_32.includes(i)) ||
+            alphaspecial.some(i => s2_34.includes(i)) 
             
 
 
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 

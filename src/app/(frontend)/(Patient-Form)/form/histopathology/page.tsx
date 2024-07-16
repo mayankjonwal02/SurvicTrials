@@ -210,12 +210,24 @@ const Histopathology = () => {
       }, []);
 
 
-
+    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+  
     const handleSubmit1 = () => {
         if (
             // questions1.some((question) => question.value === '')
-            false
 
+            alpha.some(i => h5.includes(i)) ||
+            alpha.some(i => h6.includes(i)) ||
+            alpha.some(i => h7.includes(i)) ||
+            alpha.some(i => h8.includes(i)) ||
+            alpha.some(i => h9.includes(i)) ||
+            alpha.some(i => h10.includes(i)) ||
+            alpha.some(i => h15.includes(i)) ||
+            alpha.some(i => h27.includes(i)) ||
+            alpha.some(i => h36.includes(i)) ||
+            alphaspecial.some(i => h24.includes(i)) ||
+            alphaspecial.some(i => h25.includes(i)) 
 
 
 
@@ -223,7 +235,7 @@ const Histopathology = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 

@@ -228,8 +228,9 @@ const Investigations = () =>  {
         fetchalldata();
         
       }, []);
-
-
+    
+    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
     const handleSubmit1 = () => {
         if (
             // biopsynumber === "" ||
@@ -247,7 +248,7 @@ const Investigations = () =>  {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
@@ -320,7 +321,20 @@ const Investigations = () =>  {
         if (
            
 
-
+            alpha.some( i => rbc.includes(i)) ||
+            alpha.some( i => cbc.includes(i)) || 
+            alpha.some( i => tlc.includes(i)) ||
+            alpha.some( i => neutrophilcount.includes(i)) ||
+            alpha.some( i => lymphocytecount.includes(i)) ||
+            alpha.some( i => monocytecount.includes(i)) ||
+            alpha.some( i => eosinophilcount.includes(i)) ||
+            alpha.some( i => basophilcount.includes(i)) ||
+            alpha.some( i => plateletcount.includes(i)) ||
+            alpha.some( i => largeimmaturecellcount.includes(i)) ||
+            alpha.some( i => lic.includes(i)) ||
+            alpha.some( i => lft.includes(i)) ||
+            alpha.some( i => directbilirubin.includes(i)) ||
+            alpha.some( i => indirectbilirubin.includes(i)) 
     //    cbc === "" ||
     //    hb === "" ||
     //    rbc === "" ||
@@ -354,7 +368,7 @@ const Investigations = () =>  {
     //    ejectionfraction === "" ||
     //    ecg === ""
 
-    false
+    
 
 
             
@@ -364,7 +378,7 @@ const Investigations = () =>  {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
@@ -436,17 +450,19 @@ const Investigations = () =>  {
     const handleSubmit3 = () => {
         if (
             
-
+            alpha.some( i => size.includes(i)) ||
+            alpha.some( i => doi.includes(i)) ||
+            alpha.some( i => sadLargestSuspiciousNode.includes(i)) 
 
             // questions3.some((question) => question.value === "")
 
-                false
+                
 
 
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 

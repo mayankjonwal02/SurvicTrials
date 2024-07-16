@@ -375,35 +375,26 @@ const ClinicalProfile = () => {
         
       }, []);
 
+      const alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+        const alphaspecial = [...alpha, ...special];
+
     const handleSubmit1 = () => {
         if (
-            // nonhealingulcer === "" ||
-            // nonhealingulcerduration === "" ||
-            // skinfungationulcer === "" ||
-            // skinfungationulcerduration === "" ||
-            // pain === "" ||
-            // painduration === "" ||
-            // fatigue === "" ||
-            // fatigueduration === "" ||
-            // neckswelling === "" ||
-            // neckswellingduration === "" ||
-            // loosingteeth === "" ||
-            // loosingteethduration === "" ||
-            // weightloss === "" ||
-            // weightlossduration === "" ||
-            // dentureuse === "" ||
-            // dentureuseduration === "" ||
-            // reducedmouthopening === "" ||
-            // reducedmouthopeningduration === "" ||
-            // pasthistoryofcancer === "" ||
-            // pasthistoryofcancerduration === "" ||
-            // other === "" ||
-            // pasthistorytreatment === "" ||
-            // pasthistorytreatmentduration1 === "" ||
-            // pasthistorytreatmentduration2 === "" ||
-            // pasthistorytreatmentduration3 === "" 
-
-            false
+            
+            alphaspecial.some(i => nonhealingulcerduration.includes(i)) ||
+            alphaspecial.some(i => skinfungationulcerduration.includes(i)) ||
+            alphaspecial.some(i => painduration.includes(i)) ||
+            alphaspecial.some(i => fatigueduration.includes(i)) ||
+            alphaspecial.some(i => neckswellingduration.includes(i)) ||
+            alphaspecial.some(i => weightlossduration.includes(i)) ||
+            alphaspecial.some(i => dentureuseduration.includes(i)) ||
+            alphaspecial.some(i => reducedmouthopeningduration.includes(i)) ||
+            alphaspecial.some(i => pasthistoryofcancerduration.includes(i)) ||
+            alphaspecial.some(i => pasthistorytreatmentduration1.includes(i)) ||
+            alphaspecial.some(i => pasthistorytreatmentduration2.includes(i)) ||
+            alphaspecial.some(i => pasthistorytreatmentduration3.includes(i)) 
 
 
             
@@ -412,7 +403,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please enter valid data" ,
                 variant: "destructive",
             })
 
@@ -485,6 +476,7 @@ const ClinicalProfile = () => {
         if (
            
 
+            ( (alpha.some(i => age.includes(i)) || special.some(i => age.includes(i))) || age.length > 2 ) 
 
             // age === "" ||
             // myocardialinfarction === "" ||
@@ -506,7 +498,7 @@ const ClinicalProfile = () => {
             // leukemia === "" ||
             // lymphoma === "" 
 
-            false
+            
             
 
 
@@ -514,7 +506,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Enter valid data",
                 variant: "destructive",
             })
 
@@ -587,7 +579,8 @@ const ClinicalProfile = () => {
         if (
             
 
-
+            alphaspecial.some(i => moderatecomorbidity.includes(i)) || 
+            alphaspecial.some(i => severecomorbidity.includes(i)) 
             // drug === "" ||
             // obesity === "" ||
             // overallcomorbidity === "" ||
@@ -614,7 +607,7 @@ const ClinicalProfile = () => {
             // leukemiaormyeloma === "" ||
             // alcohol === "" 
 
-            false
+            
 
            
 
@@ -622,7 +615,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
@@ -694,7 +687,7 @@ const ClinicalProfile = () => {
     const handleSubmit4 = () => {
         if (
            
-
+            alphaspecial.some(i => ageatmalignacy.includes(i)) || ageatmalignacy.length > 2
             // familyhistoryofcancer === "" ||
             // cancerdegree === "" ||
             // ageatmalignacy === "" ||
@@ -703,7 +696,7 @@ const ClinicalProfile = () => {
             // outcome === "" ||
             // doublerimary === "" 
 
-            false
+            
 
 
             
@@ -713,7 +706,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
@@ -869,15 +862,9 @@ const ClinicalProfile = () => {
     const handleSubmit6 = () => {
         if (
             
-            // ps === "" ||
-            // height === "" ||
-            // weight === "" ||
-            // bsa === "" ||
-            // bmi === "" ||
-            // musclewasting === "" ||
-            // otherpositivefindings === "" 
+            alpha.some(i => height.includes(i)) || alpha.some(i => weight.includes(i)) || alpha.some(i => weightlosspercentage.includes(i)) || alpha.some(i => bsa.includes(i)) || alpha.some(i => bmi.includes(i)) 
 
-            false
+            
 
             
 
@@ -886,7 +873,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
@@ -960,30 +947,17 @@ const ClinicalProfile = () => {
         if (
             
 
-            // primarysite === "" ||
-            // clinicalappropriate === "" ||
-            // siteoftumor === "" ||
-            // reachingmidline === "" ||
-            // tumorsize === "" ||
-            // pipi === "" ||
-            // skininvolved === "" ||
-            // gfeu === "" ||
-            // boneinvolved === "" ||
-            // osmf === "" ||
-            // leukoplakia === "" ||
-            // erythroplakia === "" ||
-            // mouthopening === "" ||
-            // tougueprotrusion === "" ||
+            alpha.some(i => tumorsize.includes(i)) || alpha.some(i => mouthopening.includes(i)) 
             // ctstage === ""
 
-            false
+            
 
 
 
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
@@ -1060,24 +1034,20 @@ const ClinicalProfile = () => {
             
 
             // necknodes === "" ||
-            // levelofnodes === "" ||
+           
             // sizeoflargestpalpable === "" ||
-            // grossene === "" ||
-            // whatsuggestene === "" ||
-            // contralateralnodes === "" ||
-            // eneinclnodes === "" ||
-            // cnstage === "" ||
-            // cstage === "" ||
-            // othersignificantfindings === ""
 
-            false
+            alpha.some(i => sizeoflargestpalpable.includes(i)) || alphaspecial.some(i => necknodes.includes(i))
+            
+
+            
 
 
 
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 

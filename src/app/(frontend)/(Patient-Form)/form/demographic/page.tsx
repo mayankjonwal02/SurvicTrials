@@ -54,6 +54,18 @@ const Demographic = () => {
         {question:'Family Income (per Month):',questionType:questionType,questionId:'d-14',inputtype:'dropdown',options:["47,348 or more","23,674 - 47,347","17,756 - 23,673","11,837 - 17,755","7,102 - 11,836","2,391 - 7,101","2,390 or less"],value:familyincome,setValue: setFamilyincome},
 
     ];
+    function isMoreThan18Years(dateValue: string): boolean {
+        const inputDate = new Date(dateValue);
+        const today = new Date();
+        let age = today.getFullYear() - inputDate.getFullYear();
+        const monthDifference = today.getMonth() - inputDate.getMonth();
+      
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < inputDate.getDate())) {
+          age--;
+        }
+      
+        return age >= 18;
+      }
 
     useEffect( () => {
 
@@ -117,12 +129,12 @@ const Demographic = () => {
     const handleSubmit = () => {
         if (
             
-        (  contact.length !== 0 && contact.length !== 10 ) || (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10)
+        (  contact.length !== 0 && contact.length !== 10 ) || (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) || (isMoreThan18Years(dateofbirth) == false)
             
         ) {
             toast({
                 title: "Error",
-                description: "Error in form submission",
+                description: "Enter Valid Data",
                 variant: "destructive",
             })
 

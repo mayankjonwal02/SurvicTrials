@@ -132,13 +132,14 @@ const Adverseeventsmanagement = () => {
         fetchalldata();
         
       }, []);
-
+      
+      const alpha = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
     const handleSubmit1 = () => {
         if (
             // questions1.some((question) => question.value === '')
-            false
-
+            
+            alpha.some(i => a28.includes(i))
 
 
 
@@ -146,7 +147,7 @@ const Adverseeventsmanagement = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill in all the fields",
+                description: "Please fill valid data",
                 variant: "destructive",
             })
 
