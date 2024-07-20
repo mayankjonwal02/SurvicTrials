@@ -234,7 +234,7 @@ const home = () => {
                                     ))}
                                 </DropdownMenuContent>
                             </DropdownMenu>
-                            <Button className='bg-green-5 h-[40px] md:h-[70px] text-lg md:text-xl lg:text-2xl' onClick={handlesubmit}>Submit
+                            <Button className='bg-green-5 h-[40px] md:h-[40px] text-lg md:text-xl lg:text-2xl' onClick={handlesubmit}>Submit
                                 {loading ? <div className='animate-spin w-[25px] h-[25px] ms-2 border-4 border-t-4 border-white border-t-transparent rounded-full'></div>
                                     : <></>}
                             </Button>

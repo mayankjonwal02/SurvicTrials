@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import sidebaritems from '@/constants/Sidebaritems'
 import { usePathname , useRouter} from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faRightFromBracket, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { cn } from '@/lib/utils'
 
 interface SidebarItem {
@@ -53,6 +53,21 @@ const Sidebar = ({items , patient_trial_number , qtypes ,setReload}: {items: Sid
             </div>
         )
       })}
+
+<div  onClick={() => {
+            
+           localStorage.clear() 
+            router.push("/")
+            
+            }} className={cn(`text-start text-lg my-4 mx-3 px-5 py-2 cursor-pointer hover:bg-white/30 font-extrabold `)}>
+            
+            <FontAwesomeIcon className='mr-3 w-[20px] h-[20px]' icon={faRightFromBracket} />Logout
+            
+
+            
+          
+            
+            </div>
       
       </ScrollArea>
   )

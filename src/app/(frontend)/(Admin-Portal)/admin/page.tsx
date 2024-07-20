@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { Input } from "@/components/ui/input"
 import {
@@ -23,7 +23,7 @@ const Admin = () => {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        if (admin === process.env.adminid && password === process.env.adminpassword) {
+        if (admin.trim() === process.env.adminid && password.trim() === process.env.adminpassword) {
             console.log('Login Successful')
 
             localStorage.setItem("login_admin", "true")
@@ -43,6 +43,22 @@ const Admin = () => {
             })
         }
     };
+         // Event handler for key press
+         const handleKeyPress = (event: { key: string; }) => {
+            if (event.key === 'Enter') {
+                handleLogin();
+            }
+        };
+    
+        // Use useEffect to add event listener when component mounts
+        useEffect(() => {
+            window.addEventListener('keydown', handleKeyPress);
+    
+            // Cleanup the event listener when the component unmounts
+            return () => {
+                window.removeEventListener('keydown', handleKeyPress);
+            };
+        }, [admin, password]); // Dependencies array ensures the function updates if these values change
     
     const togglePasswordVisibility = () => {
         setPasswordShown(!passwordShown);

@@ -73,20 +73,67 @@ const AllResponses = () => {
     const csv = json2csvParser.parse(data);
     
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    saveAs(blob, 'patients_data.csv');
+    const timestamp = new Date().toISOString().replace(/:/g, '-');
+    saveAs(blob, `patients_data_${timestamp}.csv`);
+  };
+
+  const exportUpdatesToCSV = () => {
+    const headers = Object.keys(AllQuestions).flatMap(category =>
+      AllQuestions[category].map(question => question.questionId)
+    );
+
+    const data = patientsdata.map((patient: any) => {
+      const patientData: any = { patient_trial_number: patient.patient_trial_number };
+
+      headers.forEach(questionId => {
+        const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
+        if (matchingQuestion) {
+          let info = ""
+          matchingQuestion.updates.map((update: any) => {
+            if (update.answer !== "") { info = info + update.updatedOn + " : " + update.answer + " | " }
+          })
+          patientData[questionId] = info !== "" ? info : "Not Answered"
+
+        }
+        else {
+          patientData[questionId] = "Not Answered";
+        }
+
+      });
+
+      return patientData;
+    });
+
+    const fields = ['patient_trial_number', ...headers];
+    const json2csvParser = new Parser({ fields });
+    const csv = json2csvParser.parse(data);
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const timestamp = new Date().toISOString().replace(/:/g, '-');
+    saveAs(blob, `updates_data_${timestamp}.csv`);
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center h-full w-full text-3xl font-bold text-green-5">Loading... </div>;
+    return <div className="flex items-center justify-center h-screen w-full text-3xl font-bold text-green-5 ">
+              <div className="w-[70px] h-[70px] border border-4 border-t-0 border-green-700 rounded-full animate-spin">
+              </div> 
+            </div>;
   }
 
   return (
     <div className="w-full h-full flex flex-col justify-start items-center overflow-hidden bg-green-70">
       <LogoutButton />
       <div className="font-bold text-2xl md:text-3xl text-green-700 my-4">All Patient Responses</div>
+      <div className="flex flex-row justify-around items-center w-full">
+
       <button onClick={exportPatientsToCSV} className="mb-4 mt-4 p-2 bg-green-600 hover:bg-green-700 text-white rounded transition duration-300">
         Export All Responses to CSV
       </button>
+
+      <button onClick={exportUpdatesToCSV} className="mb-4 mt-4 p-2 bg-green-600 hover:bg-green-700 text-white rounded transition duration-300">
+        Export All Updates to CSV
+      </button>
+      </div>
       <ScrollArea className="w-[90%] max-h-[70%] mt-6 bg-green-100 border border-green-300 rounded-lg ms-3 shadow-md">
         <div className="overflow-x-auto" style={{ width: "max-content", minWidth: "100%" }}>
           <table className="bg-white border-collapse">

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { Input } from "@/components/ui/input"
 import {
@@ -24,7 +24,7 @@ const DoctorLogin = () => {
     const [loading, setloading] = useState(false)
 
     const handleLogin = () => {
-        if (admin !== '' && password !== '') {
+        if (admin.trim() !== '' && password.trim() !== '') {
             try {
                 setloading(true)
                 fetch('/api/userlogin', {
@@ -33,8 +33,8 @@ const DoctorLogin = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        unique_id: admin,
-                        password: password
+                        unique_id: admin.trim(),
+                        password: password.trim()
                     }),
                 })
                     .then((response) => response.json())
@@ -77,7 +77,23 @@ const DoctorLogin = () => {
             })
         }
     };
-    
+     // Event handler for key press
+     const handleKeyPress = (event: { key: string; }) => {
+        if (event.key === 'Enter') {
+            handleLogin();
+        }
+    };
+
+    // Use useEffect to add event listener when component mounts
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyPress);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [admin, password]); // Dependencies array ensures the function updates if these values change
+
     const togglePasswordVisibility = () => {
         setPasswordShown(!passwordShown);
     };

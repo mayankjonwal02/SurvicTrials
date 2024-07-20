@@ -34,6 +34,7 @@ const Demographic = () => {
     const [education, setEducation] = React.useState("");
     const [occupation, setOccupation] = React.useState("");
     const [ familyincome , setFamilyincome] = React.useState("");
+    const [dataloading, setDataLoading] = React.useState(false);
     
     const questions = [
         { question: 'Patient Trial Number:',questionType:questionType,questionId:'d-0', inputtype:'disabled' , options: [], value: patient_trial_number, setValue: setPatient_trial_number },
@@ -71,6 +72,7 @@ const Demographic = () => {
 
         const fetchalldata = async () => 
         {
+        setDataLoading(true)
         const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
           await setPatient_trial_number(storedpatient_trial_number);
@@ -84,6 +86,7 @@ const Demographic = () => {
           .then((res) => res.json())
           .then((apidata: any) => {
             console.log(apidata)
+            setDataLoading(false)
             if (apidata.executed) {
                 const questiondata = apidata.data.data;
                 const questionsArray = [questions]
@@ -203,6 +206,13 @@ const Demographic = () => {
             // router.push('/exclusion_criteria')
         }
     }
+
+    if (dataloading) {
+        return <div className="flex items-center justify-center h-screen w-full text-3xl font-bold text-green-5 ">
+                  <div className="w-[70px] h-[70px] border border-4 border-t-0 border-green-700 rounded-full animate-spin">
+                  </div> 
+                </div>;
+      }
 // {question:'',questionType:questionType,questionId:'',inputtype:'',options:[],value:,setValue:}
     return (
         <div className='w-full h-screen'>

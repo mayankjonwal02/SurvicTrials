@@ -25,6 +25,7 @@ const ClinicalProfile = () => {
     const questionType = "ClinicalProfile";
     const [loading, setLoading] = React.useState(false);
     const [tabValue, setTabValue] = useState("Symptoms");
+    const [dataloading, setDataloading] = useState(false);
 
     // Symptoms and Signs
     const [nonhealingulcer, setNonhealingulcer] = React.useState("");
@@ -323,6 +324,7 @@ const ClinicalProfile = () => {
 
         const fetchalldata = async () => 
         {
+            setDataloading(true)
         const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
           await setPatient_trial_number(storedpatient_trial_number);
@@ -336,6 +338,7 @@ const ClinicalProfile = () => {
           .then((res) => res.json())
           .then((apidata: any) => {
             console.log(apidata)
+            setDataloading(false);
             if (apidata.executed) {
                 const questiondata = apidata.data.data;
                 const questionsArray = [questions1, questions2, questions3, questions4, questions5, questions6, questions7, questions8]
@@ -1115,7 +1118,12 @@ const ClinicalProfile = () => {
            
         }
     }
-   
+    if (dataloading) {
+        return <div className="flex items-center justify-center h-screen w-full text-3xl font-bold text-green-5 ">
+                  <div className="w-[70px] h-[70px] border border-4 border-t-0 border-green-700 rounded-full animate-spin">
+                  </div> 
+                </div>;
+      }
 
 
     return (

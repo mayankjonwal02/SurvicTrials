@@ -26,20 +26,32 @@ import {
 } from "@/components/ui/dropdown-menu"
 import cities from '@/constants/ConstantData'
 import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 
 
 const Viewusers = () => {
   const [data, setData] = useState<any>([])
   const [loading, setLoading] = useState(false);
   const router = useRouter()
-//   useEffect(() => {
-//     const login = localStorage.getItem("login_admin");
+  //   useEffect(() => {
+  //     const login = localStorage.getItem("login_admin");
 
-//     if (login === "true") {
-//         router.push('/admin')
-//     }
+  //     if (login === "true") {
+  //         router.push('/admin')
+  //     }
 
-// }, []);
+  // }, []);
 
   const fetchData = async () => {
     try {
@@ -107,6 +119,7 @@ const Viewusers = () => {
               <th className='text-center text-green-5 font-extrabold border border-green-5'>City</th>
               <th className='text-center text-green-5 font-extrabold border border-green-5'>City Code</th>
               <th className='text-center text-green-5 font-extrabold border border-green-5'>Action</th>
+
             </tr>
           </thead>
           <tbody className=''>
@@ -116,7 +129,28 @@ const Viewusers = () => {
                 <td className='text-center border border-green-5'>{user.password}</td>
                 <td className='text-center border border-green-5'>{user.city}</td>
                 <td className='text-center border border-green-5'>{user.citycode}</td>
-                <td className='text-center border border-green-5 bg-red-500 text-white hover:bg-red-600 cursor-pointer' onClick={() => handledelete(user.unique_id)}>Delete</td>
+                <td className=' text-center w-ful' >
+                  <AlertDialog>
+                    <AlertDialogTrigger className='text-center border border-green-5 bg-red-500 text-white hover:bg-red-600 cursor-pointer w-full h-full'>
+                      Delete
+                    </AlertDialogTrigger>
+                    {/* </td> */}
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently delete your account
+                          and remove your data from our servers.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction className='bg-red-500 text-white' onClick={() => handledelete(user.unique_id)}>Continue</AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </td>
+
               </tr>
             ))}
           </tbody>
@@ -124,13 +158,13 @@ const Viewusers = () => {
 
       </ScrollArea>
       {
-  loading ? (
-    <div className='absolute animate-spin h-[100px] w-[100px] top-[50%] left-[40%] border-4 border-t-4 border-green-500 border-t-transparent rounded-full'></div>
-  ) : null
-}
+        loading ? (
+          <div className='absolute animate-spin h-[100px] w-[100px] top-[50%] left-[40%] border-4 border-t-4 border-green-500 border-t-transparent rounded-full'></div>
+        ) : null
+      }
 
-      
-      
+
+
     </div>
   )
 }

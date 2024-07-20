@@ -47,6 +47,7 @@ const Institutebaseddata = () => {
   const [patientsdata, setPatientsdata] = useState<any>([]);
   const [patient, setPatient] = useState<any>({});
   const [AllQ, setAllQ] = useState(AllQuestions);
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
   useEffect(() => {
@@ -58,6 +59,7 @@ const Institutebaseddata = () => {
 
   }, []);
   useEffect(() => {
+    setLoading(true);
     const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
     setUser(storedUser);
     setUserId(storedUser.unique_id);
@@ -75,10 +77,12 @@ const Institutebaseddata = () => {
           if (data.data && data.data.length > 0) {
             setPatientsdata(data.data);
             setPatient(data.data[0]);
+            setLoading(false);
           }
         })
         .catch((error) => {
           console.error("Error fetching patients:", error);
+
         });
     }
   }, [citycode]);
@@ -186,9 +190,14 @@ const Institutebaseddata = () => {
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     saveAs(blob, 'questions_data.csv');
   };
-
+  if (loading) {
+    return <div className="flex items-center justify-center h-screen w-full text-3xl font-bold text-green-5 ">
+              <div className="w-[70px] h-[70px] border border-4 border-t-0 border-green-700 rounded-full animate-spin">
+              </div> 
+            </div>;
+  }
   return (
-    <div className="w-full h-full flex flex-col justify-start items-center overflow-hidden">
+    <div className="w-full h-screen flex flex-col justify-start items-center overflow-hidden">
       <LogoutButton />
 
       <div className="font-bold text-2xl md:text-3xl text-green-500 mt-2">Patient's Data - {citycode}</div>
@@ -205,7 +214,7 @@ const Institutebaseddata = () => {
           Export Questions to CSV
         </button>
       </div>
-      <div className="flex flex-row w-full h-full justify-start items-start overflow-hidden">
+      <div className="flex flex-row w-full h-full justify-start items-start overflow-hidden ">
         <Sheet>
           <SheetTrigger>
             <FontAwesomeIcon className="absolute top-7 left-5 text-green-5 text-2xl flex md:hidden " icon={faBars} />
@@ -214,7 +223,7 @@ const Institutebaseddata = () => {
             <SheetHeader><div className="text-xl font-bold text-green-5">Trial No : {patient.patient_trial_number}</div></SheetHeader>
             <SheetClose asChild>
 
-              <ScrollArea className="w-full h-[80%]   rounded-lg overflow-auto ">
+              <ScrollArea className="w-full h-[80%]   rounded-lg overflow-auto  ">
                 <div className="flex flex-col h-full justify-center items-center mt-5 px-3">
                   {patientsdata.map((data: any) => (
                     <div
@@ -233,7 +242,7 @@ const Institutebaseddata = () => {
           </SheetContent>
         </Sheet>
 
-        <ScrollArea className="w-[300px] h-[80%] bg-white/30 border rounded-lg ms-3 overflow-auto hidden md:flex">
+        <ScrollArea className="w-[300px] h-[98%] bg-white/30 border rounded-lg ms-3 overflow-auto hidden md:flex">
           <div className="text-center font-bold text-xl my-3">Choose Trial ID</div>
           <div className="flex flex-col h-full justify-center items-center mt-5 px-3">
             {patientsdata.map((data: any) => (
@@ -247,7 +256,7 @@ const Institutebaseddata = () => {
             ))}
           </div>
         </ScrollArea>
-        <ScrollArea className="flex-1 h-[80%] me-5 bg-white/30 border rounded-lg ms-3  overflow-auto">
+        <ScrollArea className="flex-1 h-[98%] me-5 bg-white/30 border rounded-lg ms-3  overflow-auto">
           {/* <div className="text-center font-bold text-2xl my-3">View Data</div> */}
 
           <div className="flex flex-col h-full justify-center items-center mt-5 px-3">

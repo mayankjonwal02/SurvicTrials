@@ -35,8 +35,8 @@ const CreateUser = () => {
     const [loading, setloading] = useState(false);
 
     const handleregister = () => {
-        if (password === confirmPassword) {
-            if(admin !== '' && password !== '' && city !== '' && citycode !== '') {
+        if (password.trim() === confirmPassword.trim()) {
+            if(admin.trim() !== '' && password.trim() !== '' && city !== '' && citycode !== '') {
                 setloading(true)
                 fetch('/api/createuser', {
                     method: 'POST',
@@ -44,8 +44,8 @@ const CreateUser = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        unique_id: admin,
-                        password: password,
+                        unique_id: admin.trim(),
+                        password: password.trim(),
                         city: city,
                         citycode: citycode
                     }),

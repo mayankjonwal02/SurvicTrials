@@ -19,6 +19,8 @@ const Postoperativecomplications = () => {
     const [userid, setUserId] = useState('');
     const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
 
+    const [dataloading, setDataloading] = useState(false);
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
@@ -91,6 +93,7 @@ const Postoperativecomplications = () => {
 
         const fetchalldata = async () => 
         {
+            setDataloading(true)
         const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
           await setPatient_trial_number(storedpatient_trial_number);
@@ -104,6 +107,7 @@ const Postoperativecomplications = () => {
           .then((res) => res.json())
           .then((apidata: any) => {
             console.log(apidata)
+            setDataloading(false);
             if (apidata.executed) {
                 const questiondata = apidata.data.data;
                 const questionsArray = [questions1]
@@ -237,7 +241,12 @@ const Postoperativecomplications = () => {
 
 
    
-
+    if (dataloading) {
+        return <div className="flex items-center justify-center h-screen w-full text-3xl font-bold text-green-5 ">
+                  <div className="w-[70px] h-[70px] border border-4 border-t-0 border-green-700 rounded-full animate-spin">
+                  </div> 
+                </div>;
+      }
     
 
 
