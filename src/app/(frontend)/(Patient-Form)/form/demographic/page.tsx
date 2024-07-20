@@ -132,7 +132,7 @@ const Demographic = () => {
     const handleSubmit = () => {
         if (
             
-        (  contact.length !== 0 && contact.length !== 10 ) || (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) || (isMoreThan18Years(dateofbirth) == false)
+        (  contact.length !== 0 && contact.length !== 10 ) || (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) || (dateofbirth !== "" && isMoreThan18Years(dateofbirth) == false)
             
         ) {
             toast({
