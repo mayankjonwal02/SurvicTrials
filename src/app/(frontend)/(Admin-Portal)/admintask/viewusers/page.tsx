@@ -139,8 +139,8 @@ const Viewusers = () => {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                         <AlertDialogDescription>
-                          This action cannot be undone. This will permanently delete your account
-                          and remove your data from our servers.
+                          This action cannot be undone. This will permanently delete {user.unique_id}'s account
+                          and remove this user from our servers.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
