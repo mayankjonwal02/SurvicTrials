@@ -354,8 +354,8 @@ const Surgicaltreatment = () =>{
             // router.push('/exclusion_criteria')
         }
     }
-    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+    const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
   
 
     const handleSubmit3 = () => {
@@ -378,12 +378,86 @@ const Surgicaltreatment = () =>{
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
-
+            if (alpha.some(i => s2_17.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Duration of Primary Resection",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alpha.some(i => s2_18.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Duration of Neck Dissection",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alpha.some(i => s2_19.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Duration of Reconstruction",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alpha.some(i => s2_20.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Total Surgical Duration",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alpha.some(i => s2_22.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Blood Loss",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alpha.some(i => s2_26.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Number of units transfused (Postoperative)",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_28.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in ICU Days",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_31.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Duration of Hospitalization",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_32.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Parenteral Antibiotics Use",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_34.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Oral Antibiotics Use",
+                    variant: "destructive",
+                });
+                
+            }
 
         }
 

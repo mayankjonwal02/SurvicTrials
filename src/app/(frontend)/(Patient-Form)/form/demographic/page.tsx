@@ -132,14 +132,30 @@ const Demographic = () => {
     const handleSubmit = () => {
         if (
             
-        (  contact.length !== 0 && contact.length !== 10 ) || (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) || (dateofbirth !== "" && isMoreThan18Years(dateofbirth) == false)
+        (  contact.length !== 0 && contact.length !== 10 ) || 
+        (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) || 
+        (dateofbirth !== "" && isMoreThan18Years(dateofbirth) == false)
             
         ) {
-            toast({
-                title: "Error",
-                description: "Enter Valid Data",
-                variant: "destructive",
-            })
+            if (contact.length !== 0 && contact.length !== 10) {
+                toast({
+                    title: "Error",
+                    description: "Phone Number must be 10 digits long.",
+                    variant: "destructive",
+                });
+            } else if (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) {
+                toast({
+                    title: "Error",
+                    description: "Primary Caregiver Phone Number must be 10 digits long.",
+                    variant: "destructive",
+                });
+            } else if (dateofbirth !== "" && !isMoreThan18Years(dateofbirth)) {
+                toast({
+                    title: "Error",
+                    description: "The patient must be at least 18 years old.",
+                    variant: "destructive",
+                });
+            }
 
             
         }

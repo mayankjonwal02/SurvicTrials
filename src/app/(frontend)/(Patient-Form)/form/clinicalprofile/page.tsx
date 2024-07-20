@@ -378,8 +378,9 @@ const ClinicalProfile = () => {
         
       }, []);
 
-      const alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    //   const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+            const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
         const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
         const alphaspecial = [...alpha, ...special];
 
@@ -404,11 +405,103 @@ const ClinicalProfile = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please enter valid data" ,
-                variant: "destructive",
-            })
+            if (alphaspecial.some(i => nonhealingulcerduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Non-healing ulcer duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => skinfungationulcerduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Skin fungation ulcer duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => painduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Pain duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => fatigueduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Fatigue duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => neckswellingduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Neck swelling duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => weightlossduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Weight loss duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => dentureuseduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Denture use duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => reducedmouthopeningduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Reduced mouth opening duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => pasthistoryofcancerduration.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Past history of cancer duration data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => pasthistorytreatmentduration1.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Past history treatment duration (presenting symptom to presentation to first physician/ primary care) data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => pasthistorytreatmentduration2.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Past history treatment duration (primary physician referred to cancer centre/enrolling institute) data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => pasthistorytreatmentduration3.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Past history treatment duration (day of presentation to enrolling institute to start of treatment) data is invalid.",
+                    variant: "destructive",
+                });
+            }
+            
+            
 
 
         }
@@ -509,7 +602,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Enter valid data",
+                description: "Enter valid age data",
                 variant: "destructive",
             })
 
@@ -616,11 +709,20 @@ const ClinicalProfile = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alphaspecial.some(i => moderatecomorbidity.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid moderate comorbidity",
+                    variant: "destructive",
+                });
+            } else if (alphaspecial.some(i => severecomorbidity.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid severe comorbidity",
+                    variant: "destructive",
+                });
+            }
+            
 
 
         }
@@ -709,7 +811,7 @@ const ClinicalProfile = () => {
         ) {
             toast({
                 title: "Error",
-                description: "Please fill valid data",
+                description: "Please fill valid data for age at malignancy",
                 variant: "destructive",
             })
 
@@ -865,7 +967,11 @@ const ClinicalProfile = () => {
     const handleSubmit6 = () => {
         if (
             
-            alpha.some(i => height.includes(i)) || alpha.some(i => weight.includes(i)) || alpha.some(i => weightlosspercentage.includes(i)) || alpha.some(i => bsa.includes(i)) || alpha.some(i => bmi.includes(i)) 
+            alpha.some(i => height.includes(i)) || 
+            alpha.some(i => weight.includes(i)) || 
+            alpha.some(i => weightlosspercentage.includes(i)) || 
+            alpha.some(i => bsa.includes(i)) || 
+            alpha.some(i => bmi.includes(i)) 
 
             
 
@@ -874,11 +980,46 @@ const ClinicalProfile = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alpha.some(i => height.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid height data",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alpha.some(i => weight.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid weight data",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alpha.some(i => weightlosspercentage.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid weight loss percentage data",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alpha.some(i => bsa.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid BSA data",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alpha.some(i => bmi.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid BMI data",
+                    variant: "destructive",
+                });
+            }
+            
 
 
         }
@@ -950,7 +1091,8 @@ const ClinicalProfile = () => {
         if (
             
 
-            alpha.some(i => tumorsize.includes(i)) || alpha.some(i => mouthopening.includes(i)) 
+            alpha.some(i => tumorsize.includes(i)) || 
+            alpha.some(i => mouthopening.includes(i)) 
             // ctstage === ""
 
             
@@ -958,12 +1100,22 @@ const ClinicalProfile = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
-
+            if (alpha.some(i => tumorsize.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid tumor size data",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alpha.some(i => mouthopening.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid mouth opening data",
+                    variant: "destructive",
+                });
+            }
+            
 
         }
 
@@ -1040,7 +1192,8 @@ const ClinicalProfile = () => {
            
             // sizeoflargestpalpable === "" ||
 
-            alpha.some(i => sizeoflargestpalpable.includes(i)) || alphaspecial.some(i => necknodes.includes(i))
+            alpha.some(i => sizeoflargestpalpable.includes(i)) || 
+            alphaspecial.some(i => necknodes.includes(i))
             
 
             
@@ -1048,11 +1201,22 @@ const ClinicalProfile = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alpha.some(i => sizeoflargestpalpable.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid size of largest palpable data",
+                    variant: "destructive",
+                });
+            }
+            
+            if (alphaspecial.some(i => necknodes.includes(i))) {
+                toast({
+                    title: "Warning",
+                    description: "Invalid neck nodes data",
+                    variant: "destructive",
+                });
+            }
+            
 
 
         }

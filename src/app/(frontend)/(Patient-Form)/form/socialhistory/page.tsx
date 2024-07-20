@@ -110,8 +110,9 @@ const SocialHistory = () => {
         
       }, []);
 
-      const alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+      const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+       const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
         const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
     const handleSubmit = () => {
         if (
@@ -128,11 +129,32 @@ const SocialHistory = () => {
 
             
         ) {
-            toast({
-                title: "Error",
-                description: "Data type error in form submission",
-                variant: "destructive",
-            })
+            
+            if ((alpha.some(i => ageofstarting.includes(i)) || special.some(i => ageofstarting.includes(i))) || ageofstarting.length > 2) {
+                toast({
+                    title: "Error",
+                    description: "Please provide a valid answer for Age of Starting",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => doseperday.includes(i)) || special.some(i => doseperday.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please provide a valid answer for Dose per Day/Intensity",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => doseperweek.includes(i)) || special.some(i => doseperweek.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please provide a valid answer for Dose per Week",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => doseinyears.includes(i)) || special.some(i => doseinyears.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please provide a valid answer for Duration in Years",
+                    variant: "destructive",
+                });
+            }
 
             
         }

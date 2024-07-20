@@ -233,9 +233,9 @@ const Investigations = () =>  {
         
       }, []);
     
-    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
-    const handleSubmit1 = () => {
+      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+      const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+        const handleSubmit1 = () => {
         if (
             // biopsynumber === "" ||
             // dateofbiopsy === "" ||
@@ -380,11 +380,91 @@ const Investigations = () =>  {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alpha.some(i => rbc.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in RBC.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => cbc.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in CBC.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => tlc.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in TLC.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => neutrophilcount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Neutrophil Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => lymphocytecount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Lymphocyte Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => monocytecount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Monocyte Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => eosinophilcount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Eosinophil Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => basophilcount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Basophil Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => plateletcount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Platelet Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => largeimmaturecellcount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Large Immature Cells Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => lic.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in LIC Count.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => lft.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in LFT.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => directbilirubin.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Direct Bilirubin.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => indirectbilirubin.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Indirect Bilirubin.",
+                    variant: "destructive",
+                });
+            }
 
 
         }
@@ -464,11 +544,25 @@ const Investigations = () =>  {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alpha.some(i => size.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Size.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => doi.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in DOI.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => sadLargestSuspiciousNode.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in SAD of Largest Suspicious Nodes.",
+                    variant: "destructive",
+                });
+            }
 
 
         }

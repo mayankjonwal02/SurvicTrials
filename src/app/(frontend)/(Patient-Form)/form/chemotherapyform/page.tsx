@@ -137,8 +137,8 @@ const Chemotherapyform = () => {
         
       }, []);
 
-      const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-      const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+      const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
     
 
 
@@ -155,11 +155,25 @@ const Chemotherapyform = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alpha.some(i => plateletCount.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid platelet count data",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => hb.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid hemoglobin data",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => anc.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid absolute neutrophil count data",
+                    variant: "destructive",
+                });
+            }
 
 
         }

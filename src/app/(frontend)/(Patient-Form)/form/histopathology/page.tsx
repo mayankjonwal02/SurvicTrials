@@ -214,9 +214,9 @@ const Histopathology = () => {
       }, []);
 
 
-    const alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    const alphaspecial = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
-  
+      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+      const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+    
     const handleSubmit1 = () => {
         if (
             // questions1.some((question) => question.value === '')
@@ -237,11 +237,73 @@ const Histopathology = () => {
 
 
         ) {
-            toast({
-                title: "Error",
-                description: "Please fill valid data",
-                variant: "destructive",
-            })
+            if (alpha.some(i => h5.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Tumor Size - Length.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h6.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Tumor Size - Width.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h7.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Tumor Size - Depth.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h8.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Greatest Tumor Dimension.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h9.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Depth of Invasion.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h10.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Tumor Thickness.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h15.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Closest Margin Distance.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h27.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Size of Largest Metastatic Deposit.",
+                    variant: "destructive",
+                });
+            } else if (alpha.some(i => h36.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Distance from Lymph Node Capsule.",
+                    variant: "destructive",
+                });
+            } else if (alphaspecial.some(i => h24.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Total Number of Nodes Identified.",
+                    variant: "destructive",
+                });
+            } else if (alphaspecial.some(i => h25.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Number of Nodes Involved.",
+                    variant: "destructive",
+                });
+            }
 
 
         }
