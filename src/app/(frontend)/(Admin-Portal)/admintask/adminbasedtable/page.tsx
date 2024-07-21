@@ -126,7 +126,7 @@ const AllResponses = () => {
   return (
     <div className="w-full h-screen flex flex-col justify-start items-center overflow-hidden ">
       {/* <LogoutButton /> */}
-      <div className="font-bold text-3xl text-green-700 my-4">All Patient Responses</div>
+      <div className="font-bold text-2xl md:text-3xl text-green-700 mb-4 mt-8 text-center">All Patient Responses</div>
       <div className="flex flex-col md:flex-row justify-around items-center w-full">
 
       <button onClick={exportPatientsToCSV} className="mb-1 md:mb-4 mt-4 p-2 bg-green-600 hover:bg-green-700 text-white rounded transition duration-300">

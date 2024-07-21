@@ -37,6 +37,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { Scrollbar } from '@radix-ui/react-scroll-area';
 
 
 
@@ -110,8 +111,8 @@ const Viewusers = () => {
   return (
     <div className='relative flex flex-col justify-start items-center w-full h-screen'>
       <h1 className='text-3xl font-bold my-6'>View Users</h1>
-      <ScrollArea className="flex w-full h-full mt-[50px] px-5">
-        <table className="w-full border-collapse border border-green-5">
+      <ScrollArea className="flex w-full h-full mt-[50px] px-5 ">
+        <table className="w-full border-collapse border border-green-5 overflow-auto">
           <thead>
             <tr>
               <th className='text-center text-green-5 font-extrabold border border-green-5'>Unique ID</th>
@@ -155,7 +156,7 @@ const Viewusers = () => {
             ))}
           </tbody>
         </table>
-
+            <Scrollbar orientation="horizontal" className='h-5 w-full bg-gray-500 '/>
       </ScrollArea>
       {
         loading ? (

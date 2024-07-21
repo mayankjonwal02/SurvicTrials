@@ -98,11 +98,11 @@ const CreateUser = () => {
     };
 
     return (
-        <div className='flex flex-col w-full h-screen items-center justify-center'>
-            <div className='w-full text-center text-5xl text-green-5 font-extrabold justify-center items-center mb-10'>
+        <div className='flex flex-col w-full h-screen items-center justify-center '>
+            <div className='w-full text-center text-3xl mt-2 md:text-5xl text-green-5 font-extrabold justify-center items-center mb-10'>
                 Register New User
             </div>
-            <Card className='drop-shadow-lg relative backdrop-blur-xl bg-white/30 w-11/12 md:w-2/5 lg:w-4/12 pt-10 mt-16 border-4 border-green-5'>
+            <Card className='drop-shadow-lg relative backdrop-blur-xl bg-white/30 w-full md:w-2/5 lg:w-4/12 pt-10 mt-16 border-4 border-green-5'>
                 <div className='absolute flex justify-center w-full top-[-70px]'>
                     <FontAwesomeIcon icon={faUser} className='text-green-5 w-[90px] h-[90px] bg-green-2 rounded-full p-6 border border-4 border-green-5' size="3x" />
                 </div>
