@@ -75,7 +75,7 @@ const ExclusionCriteria = () => {
         localStorage.setItem("patienttrialnumber", trialnumber);
     }
     const handleSubmit = async () => {
-        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria4 === '' || criteria5 === '' || criteria6 === '') {
+        if (criteria1 === '' || criteria2 === '' || criteria3 === '' || criteria5 === '' || criteria6 === '') {
             toast({
                 title: "Error",
                 description: "Please fill in all the fields",
@@ -85,7 +85,7 @@ const ExclusionCriteria = () => {
             return false
         }
 
-        if (criteria1 === 'Yes' || criteria2 === 'Yes' || criteria3 === 'Yes' || criteria4 === 'Yes' || criteria5 === 'Yes' || criteria6 === 'Yes') {
+        if (criteria1 === 'Yes' || criteria2 === 'Yes' || criteria3 === 'Yes' ||  criteria5 === 'Yes' || criteria6 === 'Yes') {
             toast({
                 title: "Failed",
                 description: "Criteria Not Satisfied",
@@ -217,8 +217,8 @@ const ExclusionCriteria = () => {
         { question: 'Pregnant ?' , inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria1, setValue: setCriteria1 },
         { question: 'History of moderate to severe hearing loss.' , inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria2, setValue: setCriteria2 },
         { question: 'History of previous malignancy excluding non-melanoma skin cancers or cervical carcinoma in situ.' , inputtype:'dropdown' , options: ['Yes', 'No'], value: criteria3, setValue: setCriteria3 },
-        { question: 'Documented Weight loss of more than 15% in the last 6 months.', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria4, setValue: setCriteria4 },
-        { question: 'Patients with known HIV, hepatitis B or C infection.', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria5, setValue: setCriteria5 },
+        // { question: 'Documented Weight loss of more than 15% in the last 6 months.', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria4, setValue: setCriteria4 },
+        { question: 'Patients with known HIV, hepatitis B or C infection (severe/uncompensated).', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria5, setValue: setCriteria5 },
         {
             question: 'City of Institute.',
             options: [user.city],  inputtype:'dropdown' , value: criteria6, setValue: setCriteria6

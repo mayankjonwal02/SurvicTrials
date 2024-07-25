@@ -34,7 +34,34 @@ const Demographic = () => {
     const [education, setEducation] = React.useState("");
     const [occupation, setOccupation] = React.useState("");
     const [ familyincome , setFamilyincome] = React.useState("");
+    const [age, setAge] = React.useState("");
     const [dataloading, setDataLoading] = React.useState(false);
+
+    const [houseNumber1, setHouseNumber1] = useState('');
+    const [locality1, setLocality1] = useState('');
+    const [villageTown1, setVillageTown1] = useState('');
+    const [district1, setDistrict1] = useState('');
+    const [state1, setState1] = useState('');
+    const [pinCode1, setPinCode1] = useState('');
+    
+    const [houseNumber2, setHouseNumber2] = useState('');
+    const [locality2, setLocality2] = useState('');
+    const [villageTown2, setVillageTown2] = useState('');
+    const [district2, setDistrict2] = useState('');
+    const [state2, setState2] = useState('');
+    const [pinCode2, setPinCode2] = useState('');
+
+    useEffect(() => {
+        setAddressline1(`${houseNumber1}, ${locality1}, ${villageTown1}, ${district1}, ${state1}, ${pinCode1}`);
+
+    }, [houseNumber1, locality1, villageTown1, district1, state1, pinCode1]);
+    
+    useEffect(() => {
+        setAddressline2(`${houseNumber2}, ${locality2}, ${villageTown2}, ${district2}, ${state2}, ${pinCode2}`);
+    }, [houseNumber2, locality2, villageTown2, district2, state2, pinCode2]);
+
+    
+
     
     const questions = [
         { question: 'Patient Trial Number:',questionType:questionType,questionId:'d-0', inputtype:'disabled' , options: [], value: patient_trial_number, setValue: setPatient_trial_number },
@@ -45,10 +72,25 @@ const Demographic = () => {
         { question: 'Primary Caregiver Phone Number:',questionType:questionType,questionId:'d-4', inputtype:'text' , options: [], value: contact_primary_care_giver, setValue: setContact_primary_care_giver },
         { question: 'Phone Number:',questionType:questionType,questionId:'d-5', inputtype:'text' , options: [], value: contact, setValue: setContact },
         { question: 'Date of Birth:',questionType:questionType,questionId:'d-6', inputtype:'date' , options: [], value: dateofbirth, setValue: setDateofbirth },
+        { question: 'Age:',questionType:questionType,questionId:'d-6_1', inputtype:'text' , options: [], value: age, setValue: setAge },
         {question:'Gender:',questionType:questionType,questionId:'d-7',inputtype:'dropdown',options:["Male","Female","Others"],value:gender,setValue:setGender},
         {question:'Menopausal State:',questionType:questionType,questionId:'d-8',inputtype:'dropdown',options:["Premenopausal","Postmenopausal","Not Applicable"],value: menopausalstate,setValue: setMenopausalstate},
-        {question:'Address Line 1:',questionType:questionType,questionId:'d-9',inputtype:'text',options:[],value:addressline1,setValue: setAddressline1},
-        {question:'Address Line 2',questionType:questionType,questionId:'d-10',inputtype:'text',options:[],value: addressline2,setValue: setAddressline2},
+        {question:'Address Line 1:',questionType:questionType,questionId:'d-9',inputtype:'multitext',options:[],value:addressline1,setValue: setAddressline1 ,  subParts : [
+            { s_question: "House Number", s_answer: houseNumber1, s_setanswer: setHouseNumber1 },
+            { s_question: "Locality", s_answer: locality1, s_setanswer: setLocality1 },
+            { s_question: "Village/Town", s_answer: villageTown1, s_setanswer: setVillageTown1 },
+            { s_question: "District", s_answer: district1, s_setanswer: setDistrict1 },
+            { s_question: "State", s_answer: state1, s_setanswer: setState1 },
+            { s_question: "Pin Code", s_answer: pinCode1, s_setanswer: setPinCode1 }
+        ]},
+        {question:'Address Line 2',questionType:questionType,questionId:'d-10',inputtype:'multitext',options:[],value: addressline2,setValue: setAddressline2,  subParts : [
+            { s_question: "House Number", s_answer: houseNumber2, s_setanswer: setHouseNumber2 },
+            { s_question: "Locality", s_answer: locality2, s_setanswer: setLocality2 },
+            { s_question: "Village/Town", s_answer: villageTown2, s_setanswer: setVillageTown2 },
+            { s_question: "District", s_answer: district2, s_setanswer: setDistrict2 },
+            { s_question: "State", s_answer: state2, s_setanswer: setState2 },
+            { s_question: "Pin Code", s_answer: pinCode2, s_setanswer: setPinCode2 }
+        ]},
         {question:'Marital Status:',questionType:questionType,questionId:'d-11',inputtype:'dropdown',options:["Single","Married","Divorced","Widowed"],value: maritalstatus,setValue: setMaritalstatus},
         {question:'Education:',questionType:questionType,questionId:'d-12',inputtype:'dropdown',options:["Illiterate","Primary School"," Middle School","High School","Intermediate/Diploma","Graduate","Professional Degree"],value: education,setValue: setEducation},
         {question:'Occupation:',questionType:questionType,questionId:'d-13',inputtype:'dropdown',options:["Professional","Semi-professional","Student","Clerical/Shop/Farmer","Skilled Worker","Semi-Skilled Worker","Unskilled Worker","Retired","Home-Maker","Unemployed"],value: occupation,setValue: setOccupation},
@@ -95,6 +137,17 @@ const Demographic = () => {
                         const requiredquestionid = question.questionId;
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
                         questionvalue !== undefined && question.setValue(questionvalue)
+                        if(question.inputtype === "multitext")
+                        {
+                            const subparts = question.subParts
+                            const questionsubparts = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.subParts
+                            if(questionsubparts !== undefined && subparts !== undefined)
+                            {
+                                subparts.map((subpart, index) => {
+                                    subpart.s_setanswer(questionsubparts[index].s_answer)
+                                })
+                            }
+                        }
                     })
                 })
 

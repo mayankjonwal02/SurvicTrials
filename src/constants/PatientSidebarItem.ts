@@ -31,19 +31,62 @@ const sidebaritems = [
     },
 
 
-    {
-        title: "Restaging",
-        path: "/form/restaging",
-        icon:undefined,
-        category:"Restaging"
-        
-    },
+   
     {
         title: "Quality of Life Assessment",
         path: "/form/qualityoflifeassessment",
         icon:undefined,
         category:"Quality of Life Assessment"
      
+    },
+    {
+        title: "Randomization",
+        path: "/form/restaging",
+        icon:undefined,
+        category:"Restaging"
+        
+    },
+    {
+        title: "Chemotherapy Form",
+        path: "/form/chemotherapyform",
+        icon:undefined,
+        category:"Chemotherapy"
+       
+    },
+    {
+        title: "Concomitant medicines",
+        path: "/form/concomitantmedicines",
+        icon:undefined,
+        category:"Concomitant Medicines"
+        
+    },
+    {
+        title: "Adverse Event",
+        path: "/form/adverseevent",
+        icon:undefined,
+        category:"Adverse Event"
+     
+    },
+    {
+        title: "Adverse Events Management",
+        path: "/form/adverseeventsmanagement",
+        icon:undefined,
+        category:"Adverse Event Management"
+        
+    },
+    {
+        title: "Protocol Deviation",
+        path: "/form/protocoldeviation",
+        icon:undefined,
+        category:"Protocol Deviation"
+       
+    },
+    {
+        title: "Restaging",
+        path: "/form/restaging",
+        icon:undefined,
+        category:"Restaging"
+        
     },
     {
         title: "Surgical Treatment",
@@ -82,41 +125,11 @@ const sidebaritems = [
         
     },
     {
-        title: "Chemotherapy Form",
-        path: "/form/chemotherapyform",
+        title: "SAE",
+        path: "/form/rtogtoxicityassessment",
         icon:undefined,
-        category:"Chemotherapy"
-       
-    },
-
-
-    {
-        title: "Concomitant medicines",
-        path: "/form/concomitantmedicines",
-        icon:undefined,
-        category:"Concomitant Medicines"
+        category:"RTOG Toxicity Assessment"
         
-    },
-    {
-        title: "Adverse Event",
-        path: "/form/adverseevent",
-        icon:undefined,
-        category:"Adverse Event"
-     
-    },
-    {
-        title: "Adverse Events Management",
-        path: "/form/adverseeventsmanagement",
-        icon:undefined,
-        category:"Adverse Event Management"
-        
-    },
-    {
-        title: "Protocol Deviation",
-        path: "/form/protocoldeviation",
-        icon:undefined,
-        category:"Protocol Deviation"
-       
     },
     {
         title: "Follow up report",

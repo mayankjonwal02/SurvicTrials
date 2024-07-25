@@ -41,6 +41,14 @@ const patientSchema = new Schema({
             answer: String,
             questionId: String,
             questionType: String,
+            subParts:{
+                type:[
+                {
+                    s_question: String,
+                    s_answer: String
+                }],
+                default: []
+            },
             updates: [
                 {
                     updatedBy: String,

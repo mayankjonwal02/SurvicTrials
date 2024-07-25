@@ -26,12 +26,22 @@ export async function POST(request: req ) {
                     updatedOn: date.toLocaleDateString(),
                     answer: value
                 });
+                if(questiondata.subParts)
+                {
+                    existingquestion.subParts = questiondata.subParts;
+                }
             } else {
+                let subParts = []
+                if(questiondata.subParts)
+                {
+                    subParts = questiondata.subParts
+                }
                 patient.data.push({
                     question: question,
                     answer: value,
                     questionId: questionId,
                     questionType:questionType,
+                    subParts:subParts,
                     updates: [
                         {
                             updatedBy: submittedBy,

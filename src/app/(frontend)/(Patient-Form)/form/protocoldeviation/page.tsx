@@ -57,15 +57,9 @@ const Protocoldeviation = () => {
             "Loss of Confidentiality",
             "Other"], value: category, setValue: setCategory },
         { question: 'Other Category:', questionId: 'p2-5', questionType: questionType, inputtype: 'text', options: [], value: otherCategory, setValue: setOtherCategory },
-        { question: 'Does deviation/ unanticipated problem have the potential to*: Impact subject safety:', questionId: 'p2-6', questionType: questionType, inputtype: 'dropdown', options: [ "Impact subject safety",
-            "Affect data integrity",
-            "Affect subject’s willingness to participate"], value: impactSubjectSafety, setValue: setImpactSubjectSafety },
-        { question: 'Does deviation/ unanticipated problem have the potential to*: Affect data integrity:', questionId: 'p2-7', questionType: questionType, inputtype: 'dropdown', options: [   "Impact subject safety",
-            "Affect data integrity",
-            "Affect subject’s willingness to participate"], value: affectDataIntegrity, setValue: setAffectDataIntegrity },
-        { question: 'Does deviation/ unanticipated problem have the potential to*: Affect subject’s willingness to participate?:', questionId: 'p2-8', questionType: questionType, inputtype: 'dropdown', options: [   "Impact subject safety",
-            "Affect data integrity",
-            "Affect subject’s willingness to participate"], value: affectWillingness, setValue: setAffectWillingness },
+        { question: 'Does deviation/ unanticipated problem have the potential to*: Impact subject safety:', questionId: 'p2-6', questionType: questionType, inputtype: 'dropdown', options: [ "Yes","No","NA"], value: impactSubjectSafety, setValue: setImpactSubjectSafety },
+        { question: 'Does deviation/ unanticipated problem have the potential to*: Affect data integrity:', questionId: 'p2-7', questionType: questionType, inputtype: 'dropdown', options: [   "Yes","No","NA"], value: affectDataIntegrity, setValue: setAffectDataIntegrity },
+        { question: 'Does deviation/ unanticipated problem have the potential to*: Affect subject’s willingness to participate?:', questionId: 'p2-8', questionType: questionType, inputtype: 'dropdown', options: [   "Yes","No","NA"], value: affectWillingness, setValue: setAffectWillingness },
         { question: 'Date of Reporting:', questionId: 'p2-9', questionType: questionType, inputtype: 'date', options: [], value: reportingDate, setValue: setReportingDate },
         { question: 'PI Sign Date:', questionId: 'p2-10', questionType: questionType, inputtype: 'date', options: [], value: piSignDate, setValue: setPiSignDate }
       ];

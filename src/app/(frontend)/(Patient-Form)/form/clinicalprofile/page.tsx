@@ -194,8 +194,8 @@ const ClinicalProfile = () => {
     ]
 
     const questions2 = [
-        { question: 'Age:', questionType: questionType, questionId: 'c2-25', inputtype: 'text', options: [], value: age, setValue: setAge, heading: "Comorbidities" },
-        { question: 'Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):', questionType: questionType, questionId: 'c2-26', inputtype: 'text', options: ["Yes", "No"], value: myocardialinfarction, setValue: setMyocardialinfarction },
+        // { question: 'Age:', questionType: questionType, questionId: 'c2-25', inputtype: 'text', options: [], value: age, setValue: setAge, heading: "Comorbidities" },
+        { question: 'Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):', questionType: questionType, questionId: 'c2-26', inputtype: 'text', options: ["Yes", "No"], value: myocardialinfarction, setValue: setMyocardialinfarction ,heading: "Comorbidities" },
         { question: 'CHF:', questionType: questionType, questionId: 'c2-27', inputtype: 'text', options: ["Yes", "No"], value: chf, setValue: setChf },
         { question: 'Peripheral Vascular Disease:', questionType: questionType, questionId: 'c2-28', inputtype: 'text', options: ["Yes", "No"], value: peripheralvascular, setValue: setPeripheralvascular },
         { question: 'CVA cerebrovascular accident / TIA transient ischemic attacks:', questionType: questionType, questionId: 'c2-29', inputtype: 'text', options: ["Yes", "No"], value: cva, setValue: setCva },
