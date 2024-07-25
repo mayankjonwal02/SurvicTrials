@@ -35,6 +35,7 @@ const Demographic = () => {
     const [occupation, setOccupation] = React.useState("");
     const [ familyincome , setFamilyincome] = React.useState("");
     const [age, setAge] = React.useState("");
+    const [socioeconomicclass, setSocioeconomicclass] = React.useState("");
     const [dataloading, setDataLoading] = React.useState(false);
 
     const [houseNumber1, setHouseNumber1] = useState('');
@@ -60,7 +61,15 @@ const Demographic = () => {
         setAddressline2(`${houseNumber2}, ${locality2}, ${villageTown2}, ${district2}, ${state2}, ${pinCode2}`);
     }, [houseNumber2, locality2, villageTown2, district2, state2, pinCode2]);
 
-    
+    useEffect(() => {
+        setAge(`${calculateAge(dateofbirth)}`);
+    }, [dateofbirth]);
+
+    const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    //   const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+            const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+        const alphaspecial = [...alpha, ...special];
 
     
     const questions = [
@@ -69,10 +78,10 @@ const Demographic = () => {
         { question: 'Date of OPD Registration:',questionType:questionType,questionId:'d-1', inputtype:'date' , options: [], value: dateodopdregistration, setValue: setDateodopdregistration },
         { question: 'Name :',questionType:questionType,questionId:'d-2', inputtype:'disabled' , options: [], value: name, setValue: setName },
         { question: 'Name of Primary Caregiver:',questionType:questionType,questionId:'d-3', inputtype:'text' , options: [], value: name_primary_care_giver, setValue: setName_primary_care_giver },
-        { question: 'Primary Caregiver Phone Number:',questionType:questionType,questionId:'d-4', inputtype:'text' , options: [], value: contact_primary_care_giver, setValue: setContact_primary_care_giver },
-        { question: 'Phone Number:',questionType:questionType,questionId:'d-5', inputtype:'text' , options: [], value: contact, setValue: setContact },
-        { question: 'Date of Birth:',questionType:questionType,questionId:'d-6', inputtype:'date' , options: [], value: dateofbirth, setValue: setDateofbirth },
-        { question: 'Age:',questionType:questionType,questionId:'d-6_1', inputtype:'text' , options: [], value: age, setValue: setAge },
+        { question: 'Primary Caregiver Phone Number:',questionType:questionType,questionId:'d-4', inputtype:'text' , options: [], value: contact_primary_care_giver, setValue: setContact_primary_care_giver , restriction:( (  contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10 ) ) ,restrictiontext:"Please enter a valid phone number" },
+        { question: 'Phone Number:',questionType:questionType,questionId:'d-5', inputtype:'text' , options: [], value: contact, setValue: setContact, restriction:( (  contact.length !== 0 && contact.length !== 10 ) ) ,restrictiontext:"Please enter a valid phone number" },
+        { question: 'Date of Birth:',questionType:questionType,questionId:'d-6', inputtype:'date' , options: [], value: dateofbirth, setValue: setDateofbirth, restriction:( ((dateofbirth !== "" && isMoreThan18Years(dateofbirth) )== false) ) ,restrictiontext:"Patient should be atleast 18 years" },
+        { question: 'Age:',questionType:questionType,questionId:'d-6_1', inputtype:'disabled' , options: [], value: age, setValue: setAge , restriction:( age !="" && islessThan18(age) ) ,restrictiontext:"Patient should be atleast 18 years" },
         {question:'Gender:',questionType:questionType,questionId:'d-7',inputtype:'dropdown',options:["Male","Female","Others"],value:gender,setValue:setGender},
         {question:'Menopausal State:',questionType:questionType,questionId:'d-8',inputtype:'dropdown',options:["Premenopausal","Postmenopausal","Not Applicable"],value: menopausalstate,setValue: setMenopausalstate},
         {question:'Address Line 1:',questionType:questionType,questionId:'d-9',inputtype:'multitext',options:[],value:addressline1,setValue: setAddressline1 ,  subParts : [
@@ -91,12 +100,28 @@ const Demographic = () => {
             { s_question: "State", s_answer: state2, s_setanswer: setState2 },
             { s_question: "Pin Code", s_answer: pinCode2, s_setanswer: setPinCode2 }
         ]},
-        {question:'Marital Status:',questionType:questionType,questionId:'d-11',inputtype:'dropdown',options:["Single","Married","Divorced","Widowed"],value: maritalstatus,setValue: setMaritalstatus},
-        {question:'Education:',questionType:questionType,questionId:'d-12',inputtype:'dropdown',options:["Illiterate","Primary School"," Middle School","High School","Intermediate/Diploma","Graduate","Professional Degree"],value: education,setValue: setEducation},
-        {question:'Occupation:',questionType:questionType,questionId:'d-13',inputtype:'dropdown',options:["Professional","Semi-professional","Student","Clerical/Shop/Farmer","Skilled Worker","Semi-Skilled Worker","Unskilled Worker","Retired","Home-Maker","Unemployed"],value: occupation,setValue: setOccupation},
-        {question:'Family Income (per Month):',questionType:questionType,questionId:'d-14',inputtype:'dropdown',options:["47,348 or more","23,674 - 47,347","17,756 - 23,673","11,837 - 17,755","7,102 - 11,836","2,391 - 7,101","2,390 or less"],value:familyincome,setValue: setFamilyincome},
+        {question:'Marital Status:',questionType:questionType,questionId:'d-11',inputtype:'dropdown',options:["Single","Married","Divorced","Widow-widower"],value: maritalstatus,setValue: setMaritalstatus},
+        {question:'Education:',questionType:questionType,questionId:'d-12',inputtype:'dropdown',options:["Professional Degree","Graduate"," Intermediate/ Diploma","High School","Middle school","Primary school","Illiterate"],value: education,setValue: setEducation},
+        {question:'Occupation:',questionType:questionType,questionId:'d-13',inputtype:'dropdown',options:["Legislators/senior officials/managers", "Professional", "Technicians/associate professionals", "Clerk", "Semi-professional/Skilled worker", "shop and market sales workers", "Skilled agricultural and fishery workers", "Craft and related trade workers", "Plant and machine operators and assemblers", "Unskilled worker: Elementary occupation", "Unemployed"],value: occupation,setValue: setOccupation},
+        {question:'Family Income (per Month):',questionType:questionType,questionId:'d-14',inputtype:'dropdown',options:["185,574 or more", "92,764–185,574", "69,584–92,764", "46,405–69,584", "27,815–46,405", "9,276–27,815", "less than 9,276"],value:familyincome,setValue: setFamilyincome},
+        {question:"Socioeconomic class",questionType:questionType,questionId:'d-15',inputtype:'dropdown',options:["Upper Class", "Upper Middle", "Lower Middle", "Upper lower", "Lower"],value:socioeconomicclass,setValue:setSocioeconomicclass}
 
     ];
+
+    const calculateAge = (dob: string): number => {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        const dayDifference = today.getDate() - birthDate.getDate();
+    
+        // Adjust age if the current date is before the birth date in the current year
+        if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+            age--;
+        }
+    
+        return age;
+    };
     function isMoreThan18Years(dateValue: string): boolean {
         const inputDate = new Date(dateValue);
         const today = new Date();
@@ -109,6 +134,22 @@ const Demographic = () => {
       
         return age >= 18;
       }
+
+
+      function islessThan18(numStr: string) {
+        // Check if the string contains only numbers
+        const isNumeric = /^\d+$/.test(numStr);
+    
+        if (!isNumeric) {
+            return false; // or handle the error as needed
+        }
+    
+        // Convert the string to a number
+        const num = Number(numStr);
+    
+        // Check if the number is greater than 18
+        return num < 18;
+    }
 
     useEffect( () => {
 
@@ -184,7 +225,7 @@ const Demographic = () => {
 
     const handleSubmit = () => {
         if (
-            
+            ( (alpha.some(i => age.includes(i)) || special.some(i => age.includes(i))) || age.length > 2 ) ||
         (  contact.length !== 0 && contact.length !== 10 ) || 
         (contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10) || 
         (dateofbirth !== "" && isMoreThan18Years(dateofbirth) == false)

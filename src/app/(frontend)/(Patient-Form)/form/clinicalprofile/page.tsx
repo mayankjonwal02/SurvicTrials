@@ -57,7 +57,7 @@ const ClinicalProfile = () => {
 
     // Comorbidities
 
-    const [age, setAge] = React.useState("");
+    // const [age, setAge] = React.useState("");
     const [myocardialinfarction, setMyocardialinfarction] = React.useState("");
     const [chf, setChf] = React.useState("");
     const [peripheralvascular, setPeripheralvascular] = React.useState("");
@@ -572,7 +572,7 @@ const ClinicalProfile = () => {
         if (
            
 
-            ( (alpha.some(i => age.includes(i)) || special.some(i => age.includes(i))) || age.length > 2 ) 
+            
 
             // age === "" ||
             // myocardialinfarction === "" ||
@@ -593,6 +593,8 @@ const ClinicalProfile = () => {
             // solidtumor === "" ||
             // leukemia === "" ||
             // lymphoma === "" 
+
+            false
 
             
             

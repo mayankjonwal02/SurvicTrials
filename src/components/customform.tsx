@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import LogoutButton from './LogoutButton';
 import { motion, useScroll } from "framer-motion"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faDroplet } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCircleExclamation, faDroplet, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { cn } from '@/lib/utils';
 interface Question {
     question: string;
@@ -30,6 +30,8 @@ interface Question {
             s_setanswer: (value: string) => void;
         }
     >;
+    restriction?:boolean;
+    restrictiontext?:string;
 
 }
 
@@ -103,13 +105,18 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                     </DropdownMenu> : <></>}
 
                                     {question.inputtype === "text" ? (
-                                        <input
-                                            type="text"
-                                            className={cn('w-[75%] md:w-[300px] py-2 ps-2 border border-green-5 bg-green-4 rounded-lg m-2 ', (question.value === "" && task === "update") ? "bg-red-300 placeholder:text-black" : "")}
-                                            value={question.value}
-                                            onChange={(e) => question.setValue(e.target.value)}
-                                            placeholder='Answer here'
-                                        />
+                                        <div className='flex flex-col  '>
+
+                                            <input
+                                                type="text"
+                                                className={cn('w-[75%] md:w-[300px] py-2 ps-2 border border-green-5 bg-green-4 rounded-lg m-2 ', (question.value === "" && task === "update") ? "bg-red-300 placeholder:text-black" : "")}
+                                                value={question.value}
+                                                onChange={(e) => question.setValue(e.target.value)}
+                                                placeholder='Answer here'
+                                            />
+                                            {/* {question.restriction && <div className='text-red-500 ps-2'>{<FontAwesomeIcon icon={faCircleExclamation} className='me-2'/>}{question.restrictiontext}</div>} */}
+                                        </div>
+                                        
                                     ) : (
                                         <></>
                                     )}
@@ -177,6 +184,8 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                     ) : (
                                         <></>
                                     )}
+                                    {question.restriction && <div className='text-red-500 ps-2'>{<FontAwesomeIcon icon={faCircleExclamation} className='me-2'/>}{question.restrictiontext}</div>}
+
                                 </div>
                             </div>
                         </div>

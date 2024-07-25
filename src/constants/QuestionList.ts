@@ -226,6 +226,7 @@ const Demographic = [
     { question: 'Education:', questionId: 'd-12',updates:[], value:"",questionType: 'Demographic Details' },
     { question: 'Occupation:', questionId: 'd-13',updates:[], value:"",questionType: 'Demographic Details' },
     { question: 'Family Income (per Month):', questionId: 'd-14',updates:[], value:"",questionType: 'Demographic Details' },
+    {question:"Socioeconomic class",questionType:'Demographic Details',questionId:'d-15',updates:[], value:""},
 ];
 
 const Followup = [
