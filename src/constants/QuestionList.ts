@@ -497,20 +497,62 @@ const Rtog = [
 ];
 
 const SocialHistory = [
-    { question: 'Addiction:', questionId: 's1-0',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Addiction Type:', questionId: 's1-1',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Age of Starting:', questionId: 's1-2',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Dose per Day/Intensity:', questionId: 's1-3',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Dose per Week:', questionId: 's1-4',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Duration in Years:', questionId: 's1-5',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Current Status:', questionId: 's1-6',updates:[], value:"",questionType: 'Social History' },
-    { question: 'Quit Since:', questionId: 's1-7',updates:[], value:"",questionType: 'Social History' },
-    {
-        question: 'Category:',
-        questionId: 's1-8',
-       updates:[], value:"",questionType: 'Social History',
-    },
+    // For Question Set 1
+    { question: 'Addiction:', questionId: 's1-0-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Addiction Type:', questionId: 's1-1-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Age of Starting:', questionId: 's1-2-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Day/Intensity:', questionId: 's1-3-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Week:', questionId: 's1-4-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Duration in Years:', questionId: 's1-5-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Current Status:', questionId: 's1-6-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Quit Since:', questionId: 's1-7-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Category:', questionId: 's1-8-type1', updates: [], value: "", questionType: 'Social History' },
+
+    // For Question Set 2
+    { question: 'Addiction:', questionId: 's1-0-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Addiction Type:', questionId: 's1-1-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Age of Starting:', questionId: 's1-2-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Day/Intensity:', questionId: 's1-3-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Week:', questionId: 's1-4-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Duration in Years:', questionId: 's1-5-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Current Status:', questionId: 's1-6-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Quit Since:', questionId: 's1-7-type2', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Category:', questionId: 's1-8-type2', updates: [], value: "", questionType: 'Social History' },
+
+    // For Question Set 3
+    { question: 'Addiction:', questionId: 's1-0-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Addiction Type:', questionId: 's1-1-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Age of Starting:', questionId: 's1-2-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Day/Intensity:', questionId: 's1-3-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Week:', questionId: 's1-4-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Duration in Years:', questionId: 's1-5-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Current Status:', questionId: 's1-6-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Quit Since:', questionId: 's1-7-type3', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Category:', questionId: 's1-8-type3', updates: [], value: "", questionType: 'Social History' },
+
+    // For Question Set 4
+    { question: 'Addiction:', questionId: 's1-0-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Addiction Type:', questionId: 's1-1-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Age of Starting:', questionId: 's1-2-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Day/Intensity:', questionId: 's1-3-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Week:', questionId: 's1-4-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Duration in Years:', questionId: 's1-5-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Current Status:', questionId: 's1-6-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Quit Since:', questionId: 's1-7-type4', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Category:', questionId: 's1-8-type4', updates: [], value: "", questionType: 'Social History' },
+
+    // For Question Set 5
+    { question: 'Addiction:', questionId: 's1-0-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Addiction Type:', questionId: 's1-1-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Age of Starting:', questionId: 's1-2-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Day/Intensity:', questionId: 's1-3-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Week:', questionId: 's1-4-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Duration in Years:', questionId: 's1-5-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Current Status:', questionId: 's1-6-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Quit Since:', questionId: 's1-7-type5', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Category:', questionId: 's1-8-type5', updates: [], value: "", questionType: 'Social History' },
 ];
+
 
 const SurgicalTreatment = [
     // Surgical Treatment
