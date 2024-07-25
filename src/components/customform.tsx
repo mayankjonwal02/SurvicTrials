@@ -32,6 +32,7 @@ interface Question {
     >;
     restriction?:boolean;
     restrictiontext?:string;
+    info?:Array<string>;
 
 }
 
@@ -71,6 +72,21 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                         <div>
 
                             {question.heading ? <div className='text-xl font-bold text-green-5 text-center mt-[60px] mb-10'>{question.heading}</div> : <></>}
+                            {question.info && (
+
+                                        <div className='list-disc ml-4'>
+                                            <b className='mb-10'>Points to be noted:</b>
+
+                                        {question.info.map((information: string, infoIndex) => (
+                                            information !== "" ? (
+                                                <p key={infoIndex} className='text-sm text-green-5'>
+                                                    {information}
+                                                </p>
+                                            ) : <p className='mt-5'></p>
+                                        ))}
+                                    </div>
+                                    
+                                    )}
                             <div key={index} className='flex flex-row mt-5'>
                                 <div className='text-sm md:text-lg font-bold me-3'>{index + 1}.</div>
                                 <div className='flex flex-col w-full justify-start items-start'>

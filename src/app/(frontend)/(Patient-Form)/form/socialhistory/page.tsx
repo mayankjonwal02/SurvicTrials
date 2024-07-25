@@ -195,7 +195,40 @@ const SocialHistory = () => {
         const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
    
     const questions1 = [
-        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type1', inputtype: 'dropdown', options: ["Yes","No"], value: addiction1, setValue: setAddiction1,heading:"Smoking" },
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type1', inputtype: 'dropdown', options: ["Yes","No"], value: addiction1, setValue: setAddiction1,heading:"Smoking" ,info: [
+            "Never: never consumed the substance;",
+            "Current: Consuming currently or quit for less than 3 months;",
+            "Reformed: Quit for 3 months or more.",
+            "",
+            "Alcohol**:",
+            "Alcohol consumption categorized into 4 levels:",
+            "1. Light (0.01-12.4 g/day)",
+            "2. Light to moderate (12.5-24.9 g/day)",
+            "3. Moderate to high (25.0-49.9 g/day)",
+            "4. Heavy (≥ 50.0 g/day)",
+            "",
+            "Various units of alcohol consumption (grams, milliliters, ounces, or number of drinks) reported in the studies can be converted to grams per day using the following conversion factors: 0.8 g/mL, 28 g/oz, and 12 g/glass.",
+            "",
+            "Measuring (UK):",
+            "10–12 grams of pure alcohol are contained in:",
+            "- 280-330 ml of beer",
+            "- 150-180 ml of champagne",
+            "- 30-40 ml of whisky or high-strength spirit",
+            "- 60-80 ml of liqueur",
+            "- 100-120 ml of red wine",
+            "",
+            "Measuring (USA):",
+            "A standard drink is 14 gm.",
+            "",
+            "Opium***:",
+            "Addict/user means- used opium at least once per week for at least 6 months.",
+            "3 Months (Dependence) / 1 Year Former",
+            "Cumulative use (year/days) was defined as the number of nokhods (a local unit, approximately 0.2 g) of opium consumed per day multiplied by the number of year/days consuming.",
+            "Types of opium: Opium Bar-prepared dross / Opium sap-paste-raw / Doda",
+            "",
+            "Gm/Day DODA or Gm of Opium bar or Paste.",
+            "SODQ scale (Dr. Navtratan)"
+        ]},
         { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type1', inputtype: 'disabled', options: [], value: addictiontype1, setValue: setAddictiontype1 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: ageofstarting1, setValue: setAgeofstarting1, restriction:( ( (alpha.some(i => ageofstarting1.includes(i)) || special.some(i => ageofstarting1.includes(i))) || ageofstarting1.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseperday1, setValue: setDoseperday1 , restriction:( ( (alpha.some(i => doseperday1.includes(i)) || special.some(i => doseperday1.includes(i))) || doseperday1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -205,16 +238,45 @@ const SocialHistory = () => {
         { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type1', inputtype: addiction1==="No"?"disabled":'date', options: [], value: quitsince1, setValue: setQuitsince1 },
         {
             question: 'Category:', questionType: 'text', questionId: 's1-8-type1', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category1, setValue: setCategory1,
-            subQuestions: [
-                "Never: never consumed the substance;",
-                "Current: Consuming currently or quit for less than 3 months;",
-                "Reformed: Quit for 3 months or more."
-            ]
+           
         },
     ];
 
     const questions2 = [
-        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type2', inputtype: 'dropdown', options: ["Yes","No"], value: addiction2, setValue: setAddiction2  ,heading:"Non-Smoked Tobacco" },
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type2', inputtype: 'dropdown', options: ["Yes","No"], value: addiction2, setValue: setAddiction2  ,heading:"Non-Smoked Tobacco" ,info: [
+            "Never: never consumed the substance;",
+            "Current: Consuming currently or quit for less than 3 months;",
+            "Reformed: Quit for 3 months or more.",
+            "",
+            "Alcohol**:",
+            "Alcohol consumption categorized into 4 levels:",
+            "1. Light (0.01-12.4 g/day)",
+            "2. Light to moderate (12.5-24.9 g/day)",
+            "3. Moderate to high (25.0-49.9 g/day)",
+            "4. Heavy (≥ 50.0 g/day)",
+            "",
+            "Various units of alcohol consumption (grams, milliliters, ounces, or number of drinks) reported in the studies can be converted to grams per day using the following conversion factors: 0.8 g/mL, 28 g/oz, and 12 g/glass.",
+            "",
+            "Measuring (UK):",
+            "10–12 grams of pure alcohol are contained in:",
+            "- 280-330 ml of beer",
+            "- 150-180 ml of champagne",
+            "- 30-40 ml of whisky or high-strength spirit",
+            "- 60-80 ml of liqueur",
+            "- 100-120 ml of red wine",
+            "",
+            "Measuring (USA):",
+            "A standard drink is 14 gm.",
+            "",
+            "Opium***:",
+            "Addict/user means- used opium at least once per week for at least 6 months.",
+            "3 Months (Dependence) / 1 Year Former",
+            "Cumulative use (year/days) was defined as the number of nokhods (a local unit, approximately 0.2 g) of opium consumed per day multiplied by the number of year/days consuming.",
+            "Types of opium: Opium Bar-prepared dross / Opium sap-paste-raw / Doda",
+            "",
+            "Gm/Day DODA or Gm of Opium bar or Paste.",
+            "SODQ scale (Dr. Navtratan)"
+        ]},
         { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type2', inputtype: 'disabled', options: [], value: addictiontype2, setValue: setAddictiontype2 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: ageofstarting2, setValue: setAgeofstarting2 , restriction:( ( (alpha.some(i => ageofstarting2.includes(i)) || special.some(i => ageofstarting2.includes(i))) || ageofstarting2.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperday2, setValue: setDoseperday2 , restriction:( ( (alpha.some(i => doseperday2.includes(i)) || special.some(i => doseperday2.includes(i))) || doseperday2.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -224,16 +286,45 @@ const SocialHistory = () => {
         { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type2', inputtype: addiction2==="No"?"disabled":'date', options: [], value: quitsince2, setValue: setQuitsince2 },
         {
             question: 'Category:', questionType: 'text', questionId: 's1-8-type2', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category2, setValue: setCategory2,
-            subQuestions: [
-                "Never: never consumed the substance;",
-                "Current: Consuming currently or quit for less than 3 months;",
-                "Reformed: Quit for 3 months or more."
-            ]
+            
         },
     ];
 
     const questions3 = [
-        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type3', inputtype: 'dropdown', options: ["Yes","No"], value: addiction3, setValue: setAddiction3 , heading:"Alcohol Intake**" },
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type3', inputtype: 'dropdown', options: ["Yes","No"], value: addiction3, setValue: setAddiction3 , heading:"Alcohol Intake**" ,info: [
+            "Never: never consumed the substance;",
+            "Current: Consuming currently or quit for less than 3 months;",
+            "Reformed: Quit for 3 months or more.",
+            "",
+            "Alcohol**:",
+            "Alcohol consumption categorized into 4 levels:",
+            "1. Light (0.01-12.4 g/day)",
+            "2. Light to moderate (12.5-24.9 g/day)",
+            "3. Moderate to high (25.0-49.9 g/day)",
+            "4. Heavy (≥ 50.0 g/day)",
+            "",
+            "Various units of alcohol consumption (grams, milliliters, ounces, or number of drinks) reported in the studies can be converted to grams per day using the following conversion factors: 0.8 g/mL, 28 g/oz, and 12 g/glass.",
+            "",
+            "Measuring (UK):",
+            "10–12 grams of pure alcohol are contained in:",
+            "- 280-330 ml of beer",
+            "- 150-180 ml of champagne",
+            "- 30-40 ml of whisky or high-strength spirit",
+            "- 60-80 ml of liqueur",
+            "- 100-120 ml of red wine",
+            "",
+            "Measuring (USA):",
+            "A standard drink is 14 gm.",
+            "",
+            "Opium***:",
+            "Addict/user means- used opium at least once per week for at least 6 months.",
+            "3 Months (Dependence) / 1 Year Former",
+            "Cumulative use (year/days) was defined as the number of nokhods (a local unit, approximately 0.2 g) of opium consumed per day multiplied by the number of year/days consuming.",
+            "Types of opium: Opium Bar-prepared dross / Opium sap-paste-raw / Doda",
+            "",
+            "Gm/Day DODA or Gm of Opium bar or Paste.",
+            "SODQ scale (Dr. Navtratan)"
+        ]},
         { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type3', inputtype: 'disabled', options: [], value: addictiontype3, setValue: setAddictiontype3 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: ageofstarting3, setValue: setAgeofstarting3 , restriction:( ( (alpha.some(i => ageofstarting3.includes(i)) || special.some(i => ageofstarting3.includes(i))) || ageofstarting3.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: doseperday3, setValue: setDoseperday3 , restriction:( ( (alpha.some(i => doseperday3.includes(i)) || special.some(i => doseperday3.includes(i))) || doseperday3.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -243,16 +334,45 @@ const SocialHistory = () => {
         { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type3', inputtype: addiction3==="No"?"disabled":'date', options: [], value: quitsince3, setValue: setQuitsince3 },
         {
             question: 'Category:', questionType: 'text', questionId: 's1-8-type3', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category3, setValue: setCategory3,
-            subQuestions: [
-                "Never: never consumed the substance;",
-                "Current: Consuming currently or quit for less than 3 months;",
-                "Reformed: Quit for 3 months or more."
-            ]
+           
         },
     ];
 
     const questions4 = [
-        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type4', inputtype: 'dropdown', options: ["Yes","No"], value: addiction4, setValue: setAddiction4 , heading:"Opium***" },
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type4', inputtype: 'dropdown', options: ["Yes","No"], value: addiction4, setValue: setAddiction4 , heading:"Opium***" ,info: [
+            "Never: never consumed the substance;",
+            "Current: Consuming currently or quit for less than 3 months;",
+            "Reformed: Quit for 3 months or more.",
+            "",
+            "Alcohol**:",
+            "Alcohol consumption categorized into 4 levels:",
+            "1. Light (0.01-12.4 g/day)",
+            "2. Light to moderate (12.5-24.9 g/day)",
+            "3. Moderate to high (25.0-49.9 g/day)",
+            "4. Heavy (≥ 50.0 g/day)",
+            "",
+            "Various units of alcohol consumption (grams, milliliters, ounces, or number of drinks) reported in the studies can be converted to grams per day using the following conversion factors: 0.8 g/mL, 28 g/oz, and 12 g/glass.",
+            "",
+            "Measuring (UK):",
+            "10–12 grams of pure alcohol are contained in:",
+            "- 280-330 ml of beer",
+            "- 150-180 ml of champagne",
+            "- 30-40 ml of whisky or high-strength spirit",
+            "- 60-80 ml of liqueur",
+            "- 100-120 ml of red wine",
+            "",
+            "Measuring (USA):",
+            "A standard drink is 14 gm.",
+            "",
+            "Opium***:",
+            "Addict/user means- used opium at least once per week for at least 6 months.",
+            "3 Months (Dependence) / 1 Year Former",
+            "Cumulative use (year/days) was defined as the number of nokhods (a local unit, approximately 0.2 g) of opium consumed per day multiplied by the number of year/days consuming.",
+            "Types of opium: Opium Bar-prepared dross / Opium sap-paste-raw / Doda",
+            "",
+            "Gm/Day DODA or Gm of Opium bar or Paste.",
+            "SODQ scale (Dr. Navtratan)"
+        ]},
         { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type4', inputtype: 'disabled', options: [], value: addictiontype4, setValue: setAddictiontype4 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: ageofstarting4, setValue: setAgeofstarting4 , restriction:( ( (alpha.some(i => ageofstarting4.includes(i)) || special.some(i => ageofstarting4.includes(i))) || ageofstarting4.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: doseperday4, setValue: setDoseperday4, restriction:( ( (alpha.some(i => doseperday4.includes(i)) || special.some(i => doseperday4.includes(i))) || doseperday4.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -262,17 +382,48 @@ const SocialHistory = () => {
         { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type4', inputtype: addiction4==="No"?"disabled":'date', options: [], value: quitsince4, setValue: setQuitsince4 },
         {
             question: 'Category:', questionType: 'text', questionId: 's1-8-type4', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category4, setValue: setCategory4,
-            subQuestions: [
-                "Never: never consumed the substance;",
-                "Current: Consuming currently or quit for less than 3 months;",
-                "Reformed: Quit for 3 months or more."
-            ]
+           
         },
     ];
 
 
     const questions5 = [
-        { question: 'Addiction:', questionType: questionType, questionId: 's1-0-type5', inputtype: 'dropdown', options: ["Yes","No"], value: addiction5, setValue: setAddiction5 , heading:"Others" },
+        { question: 'Addiction:', questionType: questionType, questionId: 's1-0-type5', inputtype: 'dropdown', options: ["Yes","No"], value: addiction5, setValue: setAddiction5 , heading:"Others" , 
+            info: [
+            "Never: never consumed the substance;",
+            "Current: Consuming currently or quit for less than 3 months;",
+            "Reformed: Quit for 3 months or more.",
+            "",
+            "Alcohol**:",
+            "Alcohol consumption categorized into 4 levels:",
+            "1. Light (0.01-12.4 g/day)",
+            "2. Light to moderate (12.5-24.9 g/day)",
+            "3. Moderate to high (25.0-49.9 g/day)",
+            "4. Heavy (≥ 50.0 g/day)",
+            "",
+            "Various units of alcohol consumption (grams, milliliters, ounces, or number of drinks) reported in the studies can be converted to grams per day using the following conversion factors: 0.8 g/mL, 28 g/oz, and 12 g/glass.",
+            "",
+            "Measuring (UK):",
+            "10–12 grams of pure alcohol are contained in:",
+            "- 280-330 ml of beer",
+            "- 150-180 ml of champagne",
+            "- 30-40 ml of whisky or high-strength spirit",
+            "- 60-80 ml of liqueur",
+            "- 100-120 ml of red wine",
+            "",
+            "Measuring (USA):",
+            "A standard drink is 14 gm.",
+            "",
+            "Opium***:",
+            "Addict/user means- used opium at least once per week for at least 6 months.",
+            "3 Months (Dependence) / 1 Year Former",
+            "Cumulative use (year/days) was defined as the number of nokhods (a local unit, approximately 0.2 g) of opium consumed per day multiplied by the number of year/days consuming.",
+            "Types of opium: Opium Bar-prepared dross / Opium sap-paste-raw / Doda",
+            "",
+            "Gm/Day DODA or Gm of Opium bar or Paste.",
+            "SODQ scale (Dr. Navtratan)"
+        ]
+    },
         { question: 'Addiction Type:', questionType: questionType, questionId: 's1-1-type5', inputtype: addiction5==="No"?"disabled":'text', options: [], value: addictiontype5, setValue: setAddictiontype5 },
         { question: 'Age of Starting:', questionType: questionType, questionId: 's1-2-type5', inputtype: addiction5==="No"?"disabled":'text', options: [], value: ageofstarting5, setValue: setAgeofstarting5 , restriction:( ( (alpha.some(i => ageofstarting5.includes(i)) || special.some(i => ageofstarting5.includes(i))) || ageofstarting5.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: questionType, questionId: 's1-3-type5', inputtype: addiction5==="No"?"disabled":'text', options: [], value: doseperday5, setValue: setDoseperday5 , restriction:( ( (alpha.some(i => doseperday5.includes(i)) || special.some(i => doseperday5.includes(i))) || doseperday5.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -281,11 +432,7 @@ const SocialHistory = () => {
         { question: 'Current Status:', questionType: questionType, questionId: 's1-6-type5', inputtype: addiction5==="No"?"disabled":'text', options: [], value: currentstatus5, setValue: setCurrentstatus5 },
         { question: 'Quit Since:', questionType: questionType, questionId: 's1-7-type5', inputtype: addiction5==="No"?"disabled":'date', options: [], value: quitsince5, setValue: setQuitsince5 },
         { question: 'Category:', questionType: questionType, questionId: 's1-8-type5', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category5, setValue: setCategory5, 
-            subQuestions: [
-                "Never: never consumed the substance;",
-                "Current: Consuming currently or quit for less than 3 months;",
-                "Reformed: Quit for 3 months or more."
-            ]
+           
         },
     ];
     
