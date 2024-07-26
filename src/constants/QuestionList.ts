@@ -89,17 +89,19 @@ const ClinicalProfile = [
     { question: "Duration in day (primary physician referred to cancer centre/enrolling institute):", questionId: "c2-22",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Duration in day (day of presentation to enrolling institute to start of treatment):", questionId: "c2-23",updates:[], value:"",questionType: "Clinical Profile" },
     // { question: "Age:", questionId: "c2-25",updates:[], value:"",questionType: "Clinical Profile" },
+
+
     { question: "Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):", questionId: "c2-26",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "CHF:", questionId: "c2-27",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Peripheral Vascular Disease:", questionId: "c2-28",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "CVA cerebrovascular accident / TIA transient ischemic attacks:", questionId: "c2-29",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Dementia:", questionId: "c2-30",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "COPD:", questionId: "c2-31",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "Connective Tissue Disease:", questionId: "c2-32",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "COPD/RLD:", questionId: "c2-31",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "Connective Tissue Disease/Rheumatic disease:", questionId: "c2-32",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Peptic Ulcer Disease:", questionId: "c2-33",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Liver Disease:", questionId: "c2-34",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Diabetes Mellitus:", questionId: "c2-35",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "Hemiplegia:", questionId: "c2-36",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "Hemiplegia or Paraplegia:", questionId: "c2-36",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Moderate to Severe CKD:", questionId: "c2-37",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Solid Tumor:", questionId: "c2-38",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Leukemia:", questionId: "c2-39",updates:[], value:"",questionType: "Clinical Profile" },
@@ -132,6 +134,11 @@ const ClinicalProfile = [
     { question: "Grade:", questionId: "c2-67",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "No. of Items with Moderate Comorbidities:", questionId: "c2-68",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "No. of Items with Severe Comorbidities:", questionId: "c2-69",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "No. of Items with Mild Comorbidities:", questionType: "Clinical Profile", questionId: 'c2-70',updates:[], value:"" },
+
+
+
+
     { question: "Cancer History in Family:", questionId: "c3-1",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Degree (1st Degree/2nd Degree):", questionId: "c3-2",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Age at Malignancy:", questionId: "c3-3",updates:[], value:"",questionType: "Clinical Profile" },
@@ -139,8 +146,16 @@ const ClinicalProfile = [
     { question: "Tested/Non-Tested for Cancer:", questionId: "c3-5",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Outcome (Alive/Dead):", questionId: "c3-6",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Double Primary (Yes/No):", questionId: "c3-7",updates:[], value:"",questionType: "Clinical Profile" },
+
+
+
     { question: "Diet:", questionId: "c4-1",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Meal:", questionId: "c4-2",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "Covid in past:", questionType: "Clinical Profile", questionId: 'c4-3',updates:[], value:"" },
+    { question: "Covid Vaccine:", questionType: "Clinical Profile", questionId: 'c4-4',updates:[], value:"" },
+    { question: "Which Vaccine:", questionType: "Clinical Profile", questionId: 'c4-5',updates:[], value:"" },
+
+
     { question: "PS(ECOG):", questionId: "c5-1",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Height (cms):", questionId: "c5-2",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Weight (kgs):", questionId: "c5-3",updates:[], value:"",questionType: "Clinical Profile" },

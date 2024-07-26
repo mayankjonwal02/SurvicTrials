@@ -104,6 +104,7 @@ const ClinicalProfile = () => {
     const [grade, setGrade] = React.useState("");
     const [moderatecomorbidity, setModeratecomorbidity] = React.useState("");
     const [severecomorbidity, setSeverecomorbidity] = React.useState("");
+    const [mildcomorbidity, setMildcomorbidity] = React.useState("");
 
     // Family History of Cancers
 
@@ -119,6 +120,9 @@ const ClinicalProfile = () => {
 
     const [diet, setDiet] = React.useState("");
     const [meal, setMeal] = React.useState("");
+    const [covidinpast, setCovidinpast] = React.useState("");
+    const [whichvaccine, setWhichvaccine] = React.useState("");
+    const [vaccine, setVaccine] = React.useState("");
 
 
     //  Physical Examination
@@ -163,113 +167,150 @@ const ClinicalProfile = () => {
     const [cstage, setCstage] = React.useState("");
     const [othersignificantfindings, setOthersignificantfindings] = React.useState("");
 
+useEffect(() => {
+
+    nonhealingulcer==="No"?setNonhealingulcerduration("0"):setNonhealingulcerduration("");
+    skinfungationulcer==="No"?setSkinfungationulcerduration("0"):setSkinfungationulcerduration("");
+    pain==="No"?setPainduration("0"):setPainduration("");
+    fatigue==="No"?setFatigueduration("0"):setFatigueduration("");
+    neckswelling==="No"?setNeckswellingduration("0"):setNeckswellingduration("");
+    loosingteeth==="No"?setLoosingteethduration("0"):setLoosingteethduration("");
+    weightloss==="No"?setWeightlossduration("0"):setWeightlossduration("");
+    dentureuse==="No"?setDentureuseduration("0"):setDentureuseduration("");
+    reducedmouthopening==="No"?setReducedmouthopeningduration("0"):setReducedmouthopeningduration("");
+    pasthistoryofcancer==="No"?setPasthistoryofcancerduration("0"):setPasthistoryofcancerduration("");
+
+}, [nonhealingulcer,skinfungationulcer,pain,fatigue,neckswelling,loosingteeth,weightloss,dentureuse,reducedmouthopening,pasthistoryofcancer]);
+
+    const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+    const alphaspecial = [...alpha, ...special];
+
+
 
     const questions1 = [
         { question: 'Non-Healing Ulcer:', questionType: questionType, questionId: 'c2-0', inputtype: 'dropdown', options: ["Yes", "No"], value: nonhealingulcer, setValue: setNonhealingulcer, heading: "Symptoms and Signs" },
-        { question: 'Non-Healing Ulcer Duration (days):', questionType: questionType, questionId: 'c2-1', inputtype: 'text', options: [], value: nonhealingulcerduration, setValue: setNonhealingulcerduration },
+        { question: 'Non-Healing Ulcer Duration (days):', questionType: questionType, questionId: 'c2-1', inputtype: nonhealingulcer==="No"?"disabled":'text', options: [], value: nonhealingulcerduration, setValue: setNonhealingulcerduration , restriction:( alphaspecial.some(i => nonhealingulcerduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Skin Fungation/Ulcer:', questionType: questionType, questionId: 'c2-2', inputtype: 'dropdown', options: ["Yes", "No"], value: skinfungationulcer, setValue: setSkinfungationulcer },
-        { question: 'Skin Fungation/Ulcer Duration (days):', questionType: questionType, questionId: 'c2-3', inputtype: 'text', options: [], value: skinfungationulcerduration, setValue: setSkinfungationulcerduration },
+        { question: 'Skin Fungation/Ulcer Duration (days):', questionType: questionType, questionId: 'c2-3', inputtype: skinfungationulcer==="No"?"disabled":'text', options: [], value: skinfungationulcerduration, setValue: setSkinfungationulcerduration , restriction:( alphaspecial.some(i => skinfungationulcerduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Pain:', questionType: questionType, questionId: 'c2-4', inputtype: 'dropdown', options: ["Yes", "No"], value: pain, setValue: setPain },
-        { question: 'Pain Duration (days):', questionType: questionType, questionId: 'c2-5', inputtype: 'text', options: [], value: painduration, setValue: setPainduration },
+        { question: 'Pain Duration (days):', questionType: questionType, questionId: 'c2-5', inputtype: pain==="No"?"disabled":'text', options: [], value: painduration, setValue: setPainduration , restriction:( alphaspecial.some(i => painduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Fatigue:', questionType: questionType, questionId: 'c2-6', inputtype: 'dropdown', options: ["Yes", "No"], value: fatigue, setValue: setFatigue },
-        { question: 'Fatigue Duration (days):', questionType: questionType, questionId: 'c2-7', inputtype: 'text', options: [], value: fatigueduration, setValue: setFatigueduration },
+        { question: 'Fatigue Duration (days):', questionType: questionType, questionId: 'c2-7', inputtype: fatigue==="No"?"disabled":'text', options: [], value: fatigueduration, setValue: setFatigueduration, restriction:( alphaspecial.some(i => fatigueduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Neck Swelling:', questionType: questionType, questionId: 'c2-8', inputtype: 'dropdown', options: ["Yes", "No"], value: neckswelling, setValue: setNeckswelling },
-        { question: 'Neck Swelling Duration (days):', questionType: questionType, questionId: 'c2-9', inputtype: 'text', options: [], value: neckswellingduration, setValue: setNeckswellingduration },
+        { question: 'Neck Swelling Duration (days):', questionType: questionType, questionId: 'c2-9', inputtype: neckswelling==="No"?"disabled":'text', options: [], value: neckswellingduration, setValue: setNeckswellingduration, restriction:( alphaspecial.some(i => neckswellingduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Loosing of Teeth:', questionType: questionType, questionId: 'c2-10', inputtype: 'dropdown', options: ["Yes", "No"], value: loosingteeth, setValue: setLoosingteeth },
-        { question: 'Loosing Teeth Duration (days):', questionType: questionType, questionId: 'c2-11', inputtype: 'text', options: [], value: loosingteethduration, setValue: setLoosingteethduration },
+        { question: 'Loosing Teeth Duration (days):', questionType: questionType, questionId: 'c2-11', inputtype: loosingteeth==="No"?"disabled":'text', options: [], value: loosingteethduration, setValue: setLoosingteethduration, restriction:( alphaspecial.some(i => loosingteethduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Weight Loss (more than 10% in 6 months or more than 5% in 3 months):', questionType: questionType, questionId: 'c2-12', inputtype: 'dropdown', options: ["Yes", "No"], value: weightloss, setValue: setWeightloss },
-        { question: 'Weight Loss Duration (days):', questionType: questionType, questionId: 'c2-13', inputtype: 'text', options: [], value: weightlossduration, setValue: setWeightlossduration },
+        { question: 'Weight Loss Duration (days):', questionType: questionType, questionId: 'c2-13', inputtype: weightloss==="No"?"disabled":'text', options: [], value: weightlossduration, setValue: setWeightlossduration, restriction:( alphaspecial.some(i => weightlossduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Denture Use:', questionType: questionType, questionId: 'c2-14', inputtype: 'dropdown', options: ["Yes", "No"], value: dentureuse, setValue: setDentureuse },
-        { question: 'Denture Use Duration (days):', questionType: questionType, questionId: 'c2-15', inputtype: 'text', options: [], value: dentureuseduration, setValue: setDentureuseduration },
+        { question: 'Denture Use Duration (days):', questionType: questionType, questionId: 'c2-15', inputtype: dentureuse==="No"?"disabled":'text', options: [], value: dentureuseduration, setValue: setDentureuseduration, restriction:( alphaspecial.some(i => dentureuseduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Reduced Mouth Opening:', questionType: questionType, questionId: 'c2-16', inputtype: 'dropdown', options: ["Yes", "No"], value: reducedmouthopening, setValue: setReducedmouthopening },
-        { question: 'Reduced Mouth Opening Duration (days):', questionType: questionType, questionId: 'c2-17', inputtype: 'text', options: [], value: reducedmouthopeningduration, setValue: setReducedmouthopeningduration },
+        { question: 'Reduced Mouth Opening Duration (days):', questionType: questionType, questionId: 'c2-17', inputtype: reducedmouthopening==="No"?"disabled":'text', options: [], value: reducedmouthopeningduration, setValue: setReducedmouthopeningduration, restriction:( alphaspecial.some(i => reducedmouthopeningduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Past History of Cancer Rx:', questionType: questionType, questionId: 'c2-18', inputtype: 'dropdown', options: ["Yes", "No"], value: pasthistoryofcancer, setValue: setPasthistoryofcancer },
-        { question: 'Past History of Cancer Rx Duration (days):', questionType: questionType, questionId: 'c2-19', inputtype: 'text', options: [], value: pasthistoryofcancerduration, setValue: setPasthistoryofcancerduration },
+        { question: 'Past History of Cancer Rx Duration (days):', questionType: questionType, questionId: 'c2-19', inputtype: pasthistoryofcancer==="No"?"disabled":'text', options: [], value: pasthistoryofcancerduration, setValue: setPasthistoryofcancerduration, restriction:( alphaspecial.some(i => pasthistoryofcancerduration.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
         { question: 'Others (please mention):', questionType: questionType, questionId: 'c2-24', inputtype: 'text', options: [], value: other, setValue: setOther },
         { question: 'Past History Treatment if any:', questionType: questionType, questionId: 'c2-20', inputtype: 'text', options: [], value: pasthistorytreatment, setValue: setPasthistorytreatment },
-        { question: 'Duration in day (presenting symptom to presentation to first physician/ primary care):', questionType: questionType, questionId: 'c2-21', inputtype: 'text', options: [], value: pasthistorytreatmentduration1, setValue: setPasthistorytreatmentduration1 },
-        { question: 'Duration in day (primary physician referred to cancer centre/enrolling institute):', questionType: questionType, questionId: 'c2-22', inputtype: 'text', options: [], value: pasthistorytreatmentduration2, setValue: setPasthistorytreatmentduration2 },
-        { question: 'Duration in day (day of presentation to enrolling institute to start of treatment):', questionType: questionType, questionId: 'c2-23', inputtype: 'text', options: [], value: pasthistorytreatmentduration3, setValue: setPasthistorytreatmentduration3 },
+        { question: 'Duration in day (presenting symptom to presentation to first physician/ primary care):', questionType: questionType, questionId: 'c2-21', inputtype: 'text', options: [], value: pasthistorytreatmentduration1, setValue: setPasthistorytreatmentduration1, restriction:( alphaspecial.some(i => pasthistorytreatmentduration1.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
+        { question: 'Duration in day (primary physician referred to cancer centre/enrolling institute):', questionType: questionType, questionId: 'c2-22', inputtype: 'text', options: [], value: pasthistorytreatmentduration2, setValue: setPasthistorytreatmentduration2 ,restriction:( alphaspecial.some(i => pasthistorytreatmentduration2.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
+        { question: 'Duration in day (day of presentation to enrolling institute to start of treatment):', questionType: questionType, questionId: 'c2-23', inputtype: 'text', options: [], value: pasthistorytreatmentduration3, setValue: setPasthistorytreatmentduration3, restriction:( alphaspecial.some(i => pasthistorytreatmentduration3.includes(i))),restrictiontext:"Alphabets and Special Characters Not Allowed"},
 
     ]
 
     const questions2 = [
         // { question: 'Age:', questionType: questionType, questionId: 'c2-25', inputtype: 'text', options: [], value: age, setValue: setAge, heading: "Comorbidities" },
-        { question: 'Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):', questionType: questionType, questionId: 'c2-26', inputtype: 'text', options: ["Yes", "No"], value: myocardialinfarction, setValue: setMyocardialinfarction ,heading: "Comorbidities" },
-        { question: 'CHF:', questionType: questionType, questionId: 'c2-27', inputtype: 'text', options: ["Yes", "No"], value: chf, setValue: setChf },
-        { question: 'Peripheral Vascular Disease:', questionType: questionType, questionId: 'c2-28', inputtype: 'text', options: ["Yes", "No"], value: peripheralvascular, setValue: setPeripheralvascular },
-        { question: 'CVA cerebrovascular accident / TIA transient ischemic attacks:', questionType: questionType, questionId: 'c2-29', inputtype: 'text', options: ["Yes", "No"], value: cva, setValue: setCva },
-        { question: 'Dementia:', questionType: questionType, questionId: 'c2-30', inputtype: 'text', options: ["Yes", "No"], value: dementia, setValue: setDementia },
-        { question: 'COPD:', questionType: questionType, questionId: 'c2-31', inputtype: 'text', options: ["Yes", "No"], value: copd, setValue: setCopd },
-        { question: 'Connective Tissue Disease:', questionType: questionType, questionId: 'c2-32', inputtype: 'text', options: ["Yes", "No"], value: connectivetissuedisease, setValue: setConnectivetissuedisease },
-        { question: 'Peptic Ulcer Disease:', questionType: questionType, questionId: 'c2-33', inputtype: 'text', options: ["Yes", "No"], value: pepticulcer, setValue: setPepticulcer },
+        { question: 'Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):', questionType: questionType, questionId: 'c2-26', inputtype: 'dropdown', options: ["Yes", "No"], value: myocardialinfarction, setValue: setMyocardialinfarction ,heading: "Comorbidities" , subheading:"Charlson Comorbidity Index*"},
+        { question: 'CHF:', questionType: questionType, questionId: 'c2-27', inputtype: 'dropdown', options: ["Yes", "No"], value: chf, setValue: setChf },
+        { question: 'Peripheral Vascular Disease:', questionType: questionType, questionId: 'c2-28', inputtype: 'dropdown', options: ["Yes", "No"], value: peripheralvascular, setValue: setPeripheralvascular },
+        { question: 'CVA cerebrovascular accident / TIA transient ischemic attacks:', questionType: questionType, questionId: 'c2-29', inputtype: 'dropdown', options: ["Yes", "No"], value: cva, setValue: setCva },
+        { question: 'Dementia:', questionType: questionType, questionId: 'c2-30', inputtype: 'dropdown', options: ["Yes", "No"], value: dementia, setValue: setDementia },
+        { question: 'COPD/RLD:', questionType: questionType, questionId: 'c2-31', inputtype: 'dropdown', options: ["Yes", "No"], value: copd, setValue: setCopd },
+        { question: 'Connective Tissue Disease/Rheumatic disease:', questionType: questionType, questionId: 'c2-32', inputtype: 'dropdown', options: ["Yes", "No"], value: connectivetissuedisease, setValue: setConnectivetissuedisease },
+        { question: 'Peptic Ulcer Disease:', questionType: questionType, questionId: 'c2-33', inputtype: 'dropdown', options: ["Yes", "No"], value: pepticulcer, setValue: setPepticulcer },
         { question: 'Liver Disease:', questionType: questionType, questionId: 'c2-34', inputtype: 'text', options: ["Yes", "No"], value: liverrdisease, setValue: setLiverrdisease },
-        { question: 'Diabetes Mellitus:', questionType: questionType, questionId: 'c2-35', inputtype: 'text', options: ["Yes", "No"], value: diabetes, setValue: setDiabetes },
-        { question: 'Hemiplegia:', questionType: questionType, questionId: 'c2-36', inputtype: 'text', options: ["Yes", "No"], value: hemiplegia, setValue: setHemiplegia },
-        { question: 'Moderate to Severe CKD:', questionType: questionType, questionId: 'c2-37', inputtype: 'text', options: ["Yes", "No"], value: ckd, setValue: setCkd },
-        { question: 'Solid Tumor:', questionType: questionType, questionId: 'c2-38', inputtype: 'text', options: ["Yes", "No"], value: solidtumor, setValue: setSolidtumor },
-        { question: 'Leukemia:', questionType: questionType, questionId: 'c2-39', inputtype: 'text', options: ["Yes", "No"], value: leukemia, setValue: setLeukemia },
-        { question: 'Lymphoma:', questionType: questionType, questionId: 'c2-40', inputtype: 'text', options: ["Yes", "No"], value: lymphoma, setValue: setLymphoma },
-        { question: 'AIDS:', questionType: questionType, questionId: 'c2-41', inputtype: 'text', options: ["Yes", "No"], value: aids, setValue: setAids },
-        { question: 'Points Score:', questionType: questionType, questionId: 'c2-42', inputtype: 'text', options: [], value: pointscore, setValue: setPointscore },
-        { question: 'Estimated 10-Year Survival:', questionType: questionType, questionId: 'c2-43', inputtype: 'text', options: [], value: estimatedsurvival, setValue: setEstimatedsurvival },
+        { question: 'Diabetes Mellitus:', questionType: questionType, questionId: 'c2-35', inputtype: 'dropdown', options: ["Yes", "No"], value: diabetes, setValue: setDiabetes },
+        { question: 'Hemiplegia or Paraplegia:', questionType: questionType, questionId: 'c2-36', inputtype: 'dropdown', options: ["Yes", "No"], value: hemiplegia, setValue: setHemiplegia },
+        { question: 'Moderate to Severe CKD:', questionType: questionType, questionId: 'c2-37', inputtype: 'dropdown', options: ["Yes", "No"], value: ckd, setValue: setCkd },
+        { question: 'Solid Tumor:', questionType: questionType, questionId: 'c2-38', inputtype: 'dropdown', options: ["Yes", "No"], value: solidtumor, setValue: setSolidtumor },
+        { question: 'Leukemia:', questionType: questionType, questionId: 'c2-39', inputtype: 'dropdown', options: ["Yes", "No"], value: leukemia, setValue: setLeukemia },
+        { question: 'Lymphoma:', questionType: questionType, questionId: 'c2-40', inputtype: 'dropdown', options: ["Yes", "No"], value: lymphoma, setValue: setLymphoma },
+        { question: 'AIDS:', questionType: questionType, questionId: 'c2-41', inputtype: 'dropdown', options: ["Yes", "No"], value: aids, setValue: setAids },
+        { question: 'Points Score:', questionType: questionType, questionId: 'c2-42', inputtype: 'dropdown', options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"], value: pointscore, setValue: setPointscore },
+        { question: 'Estimated 10-Year Survival (in %):', questionType: questionType, questionId: 'c2-43', inputtype: 'text', options: [], value: estimatedsurvival, setValue: setEstimatedsurvival },
 
     ]
 
     const questions3 = [
-        { question: 'Myocardial Infarction:', questionType: questionType, questionId: 'c2-44', inputtype: 'text', options: [], value: myocardialinfarction1, setValue: setMyocardialinfarction1, heading: "Adult Comorbidity Evaluation-27 (ACE-27)" },
-        { question: 'Angina and Coronary Disease:', questionType: questionType, questionId: 'c2-45', inputtype: 'text', options: [], value: anginaandconorarydisease, setValue: setAnginaandconorarydisease },
-        { question: "Congestive Heart Failure:", questionType: questionType, questionId: 'c2-46', inputtype: 'text', options: [], value: congestiveheartfailure, setValue: setCongestiveheartfailure },
-        { question: "Cardial Arrhythmia:", questionType: questionType, questionId: 'c2-47', inputtype: 'text', options: [], value: cardiacarrhythmias, setValue: setCardiacarrhythmias },
-        { question: "Hypertension:", questionType: questionType, questionId: 'c2-48', inputtype: 'text', options: [], value: hypertension, setValue: setHypertension },
-        { question: "Venous Disease:", questionType: questionType, questionId: 'c2-49', inputtype: 'text', options: [], value: venousdisease, setValue: setVenousdisease },
-        { question: "Peripheral Artery Disease:", questionType: questionType, questionId: 'c2-50', inputtype: 'text', options: [], value: peripheralarterydisease, setValue: setPeripheralarterydisease },
-        { question: "Respiratory Disease:", questionType: questionType, questionId: 'c2-51', inputtype: 'text', options: [], value: respiratorydisease, setValue: setRespiratorydisease },
-        { question: "Hepatic Disease:", questionType: questionType, questionId: 'c2-52', inputtype: 'text', options: [], value: hepaticdisease, setValue: setHepaticdisease },
-        { question: "Stomach and Intestinal Disease:", questionType: questionType, questionId: 'c2-53', inputtype: 'text', options: [], value: stomachandintestinalinfection, setValue: setStomachandintestinalinfection },
-        { question: "Pancreatic Disease:", questionType: questionType, questionId: 'c2-54', inputtype: 'text', options: [], value: pancreaticdisease, setValue: setPancreaticdisease },
-        { question: "End Stage Renal Disease:", questionType: questionType, questionId: 'c2-55', inputtype: 'text', options: [], value: endstageretinaldisease, setValue: setEndstageretinaldisease },
-        { question: "Stroke:", questionType: questionType, questionId: 'c2-56', inputtype: 'text', options: [], value: stroke, setValue: setStroke },
-        { question: "Paralysis:", questionType: questionType, questionId: 'c2-57', inputtype: 'text', options: [], value: paralysis, setValue: setParalysis },
-        { question: "Neuromuscular Disorder:", questionType: questionType, questionId: 'c2-58', inputtype: 'text', options: [], value: neuromusculardisorder, setValue: setNeuromusculardisorder },
-        { question: "Psychiatric Disorder:", questionType: questionType, questionId: 'c2-59', inputtype: 'text', options: [], value: psychiaticdisorder, setValue: setPsychiatricdisorder },
-        { question: "Rheumatologic Disorder:", questionType: questionType, questionId: 'c2-60', inputtype: 'text', options: [], value: rheumatologicdisorder, setValue: setRheumatologicdisorder },
-        { question: "Leukemia or Myeloma:", questionType: questionType, questionId: 'c2-61', inputtype: 'text', options: [], value: leukemiaormyeloma, setValue: setLeukemiaormyeloma },
+        { question: 'Myocardial Infarction:', questionType: questionType, questionId: 'c2-44', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: myocardialinfarction1, setValue: setMyocardialinfarction1, heading: "Adult Comorbidity Evaluation-27 (ACE-27)" },
+        { question: 'Angina and Coronary Disease:', questionType: questionType, questionId: 'c2-45', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: anginaandconorarydisease, setValue: setAnginaandconorarydisease },
+        { question: "Congestive Heart Failure:", questionType: questionType, questionId: 'c2-46', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: congestiveheartfailure, setValue: setCongestiveheartfailure },
+        { question: "Cardial Arrhythmia:", questionType: questionType, questionId: 'c2-47', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: cardiacarrhythmias, setValue: setCardiacarrhythmias },
+        { question: "Hypertension:", questionType: questionType, questionId: 'c2-48', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: hypertension, setValue: setHypertension },
+        { question: "Venous Disease:", questionType: questionType, questionId: 'c2-49', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: venousdisease, setValue: setVenousdisease },
+        { question: "Peripheral Artery Disease:", questionType: questionType, questionId: 'c2-50', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: peripheralarterydisease, setValue: setPeripheralarterydisease },
+        { question: "Respiratory Disease:", questionType: questionType, questionId: 'c2-51', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: respiratorydisease, setValue: setRespiratorydisease },
+        { question: "Hepatic Disease:", questionType: questionType, questionId: 'c2-52', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: hepaticdisease, setValue: setHepaticdisease },
+        { question: "Stomach and Intestinal Disease:", questionType: questionType, questionId: 'c2-53', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: stomachandintestinalinfection, setValue: setStomachandintestinalinfection },
+        { question: "Pancreatic Disease:", questionType: questionType, questionId: 'c2-54', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: pancreaticdisease, setValue: setPancreaticdisease },
+        { question: "End Stage Renal Disease:", questionType: questionType, questionId: 'c2-55', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: endstageretinaldisease, setValue: setEndstageretinaldisease },
+        { question: "Stroke:", questionType: questionType, questionId: 'c2-56', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: stroke, setValue: setStroke },
+        { question: "Paralysis:", questionType: questionType, questionId: 'c2-57', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: paralysis, setValue: setParalysis },
+        { question: "Neuromuscular Disorder:", questionType: questionType, questionId: 'c2-58', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: neuromusculardisorder, setValue: setNeuromusculardisorder },
+        { question: "Psychiatric Disorder:", questionType: questionType, questionId: 'c2-59', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: psychiaticdisorder, setValue: setPsychiatricdisorder },
+        { question: "Rheumatologic Disorder:", questionType: questionType, questionId: 'c2-60', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: rheumatologicdisorder, setValue: setRheumatologicdisorder },
+        { question: "Leukemia or Myeloma:", questionType: questionType, questionId: 'c2-61', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: leukemiaormyeloma, setValue: setLeukemiaormyeloma },
         // { question: "Lymphoma:", questionType: questionType, questionId: 'c2-62', inputtype: 'text', options: [], value: lymphoma, setValue: setLymphoma },
-        { question: "Alcohol:", questionType: questionType, questionId: 'c2-63', inputtype: 'text', options: [], value: alcohol, setValue: setAlcohol },
-        { question: "Illicit Drugs:", questionType: questionType, questionId: 'c2-64', inputtype: 'text', options: [], value: drug, setValue: setDrug },
-        { question: "Obesity:", questionType: questionType, questionId: 'c2-65', inputtype: 'text', options: [], value: obesity, setValue: setObesity },
-        { question: "Overall Comorbidity:", questionType: questionType, questionId: 'c2-66', inputtype: 'text', options: [], value: overallcomorbidity, setValue: setOverallcomorbidity },
-        { question: "Grade:", questionType: questionType, questionId: 'c2-67', inputtype: 'text', options: [], value: grade, setValue: setGrade },
-        { question: "No. of Items with Moderate Comorbidities:", questionType: questionType, questionId: 'c2-68', inputtype: 'text', options: [], value: moderatecomorbidity, setValue: setModeratecomorbidity },
-        { question: "No. of Items with Severe Comorbidities:", questionType: questionType, questionId: 'c2-69', inputtype: 'text', options: [], value: severecomorbidity, setValue: setSeverecomorbidity },
+        { question: "Alcohol:", questionType: questionType, questionId: 'c2-63', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: alcohol, setValue: setAlcohol },
+        { question: "Illicit Drugs:", questionType: questionType, questionId: 'c2-64', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: drug, setValue: setDrug },
+        { question: "Obesity:", questionType: questionType, questionId: 'c2-65', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: obesity, setValue: setObesity },
+        { question: "Overall Comorbidity:", questionType: questionType, questionId: 'c2-66', inputtype: 'dropdown', options: ["No"," Mild","Mod", "Sev"], value: overallcomorbidity, setValue: setOverallcomorbidity },
+        { question: "Grade:", questionType: questionType, questionId: 'c2-67', inputtype: 'dropdown', options: ["0","1","2","3", "9"], value: grade, setValue: setGrade },
+        { question: "No. of Items with Moderate Comorbidities:", questionType: questionType, questionId: 'c2-68', inputtype: 'text', options: [], value: moderatecomorbidity, setValue: setModeratecomorbidity,restriction:(       alphaspecial.some(i => moderatecomorbidity.includes(i))),restrictiontext:"alphabets and special characters not allowed " },
+        { question: "No. of Items with Severe Comorbidities:", questionType: questionType, questionId: 'c2-69', inputtype: 'text', options: [], value: severecomorbidity, setValue: setSeverecomorbidity ,restriction:(       alphaspecial.some(i => severecomorbidity.includes(i))),restrictiontext:"alphabets and special characters not allowed " },
+        { question: "No. of Items with Mild Comorbidities:", questionType: questionType, questionId: 'c2-70', inputtype: 'text', options: [], value: mildcomorbidity, setValue: setMildcomorbidity,restriction:(       alphaspecial.some(i => mildcomorbidity.includes(i))),restrictiontext:"alphabets and special characters not allowed " },
 
     ]
 
+    useEffect(() => {
+
+            setCancerdegree(familyhistoryofcancer==="No"?"Not Applicable":"")
+            setAgeatmalignacy(familyhistoryofcancer==="No"?"0":"")
+            setCancertype(familyhistoryofcancer==="No"?"Not Applicable":"")
+            setTestedforcancer(familyhistoryofcancer==="No"?"Not Applicable":"")
+            setOutcome(familyhistoryofcancer==="No"?"Not Applicable":"")
+            setDoublerimary(familyhistoryofcancer==="No"?"Not Applicable":"")
+
+
+    } ,[familyhistoryofcancer])
+
     const questions4 = [
         { question: "Cancer History in Family:", questionType: questionType, questionId: 'c3-1', inputtype: 'dropdown', options: ["Yes", "No"], value: familyhistoryofcancer, setValue: setFamilyhistoryofcancer, heading: "Family History of Cancer" },
-        { question: "Degree (1st Degree/2nd Degree):", questionType: questionType, questionId: 'c3-2', inputtype: 'dropdown', options: ["1st Degree", "2nd Degree", "Not Applicable"], value: cancerdegree, setValue: setCancerdegree },
-        { question: "Age at Malignancy:", questionType: questionType, questionId: 'c3-3', inputtype: 'text', options: [], value: ageatmalignacy, setValue: setAgeatmalignacy },
-        { question: "Type of Cancer:", questionType: questionType, questionId: 'c3-4', inputtype: 'text', options: [], value: cancertype, setValue: setCancertype },
-        { question: "Tested/Non-Tested for Cancer:", questionType: questionType, questionId: 'c3-5', inputtype: 'dropdown', options: ["Tested", "Not Tested"], value: testedforcancer, setValue: setTestedforcancer },
-        { question: "Outcome (Alive/Dead):", questionType: questionType, questionId: 'c3-6', inputtype: 'dropdown', options: ["Alive", "Dead"], value: outcome, setValue: setOutcome },
-        { question: "Double Primary (Yes/No):", questionType: questionType, questionId: 'c3-7', inputtype: 'dropdown', options: ["Yes", "No"], value: doublerimary, setValue: setDoublerimary },
+        { question: "Degree (1st Degree/2nd Degree):", questionType: questionType, questionId: 'c3-2', inputtype: familyhistoryofcancer==="No"?"disabled":'dropdown', options: ["1st Degree", "2nd Degree", "Not Applicable"], value: cancerdegree, setValue: setCancerdegree },
+        { question: "Age at Malignancy:", questionType: questionType, questionId: 'c3-3', inputtype: familyhistoryofcancer==="No"?"disabled":'text', options: [], value: ageatmalignacy, setValue: setAgeatmalignacy,restriction:( alphaspecial.some(i => ageatmalignacy.includes(i)) || ageatmalignacy.length > 2),restrictiontext:"alphabets and special characters not allowed " },
+        { question: "Type of Cancer:", questionType: questionType, questionId: 'c3-4', inputtype: familyhistoryofcancer==="No"?"disabled":'text', options: [], value: cancertype, setValue: setCancertype },
+        { question: "Tested/Non-Tested for Cancer:", questionType: questionType, questionId: 'c3-5', inputtype: 'dropdown', options: ["Tested", "Not Tested", "Not Applicable"], value: testedforcancer, setValue: setTestedforcancer },
+        { question: "Outcome (Alive/Dead):", questionType: questionType, questionId: 'c3-6', inputtype:familyhistoryofcancer==="No"?"disabled": 'dropdown', options: ["Alive", "Dead", "Not Applicable"], value: outcome, setValue: setOutcome },
+        { question: "Double Primary (Yes/No):", questionType: questionType, questionId: 'c3-7', inputtype: familyhistoryofcancer==="No"?"disabled":'dropdown', options: ["Yes", "No", "Not Applicable"], value: doublerimary, setValue: setDoublerimary },
 
     ]
 
     const questions5 = [
-        { question: "Diet:", questionType: questionType, questionId: 'c4-1', inputtype: 'dropdown', options: ["Vegetarian", "Non-Vegetarian", "Mixed"], value: diet, setValue: setDiet, heading: "Nutritional History" },
+        { question: "Diet:", questionType: questionType, questionId: 'c4-1', inputtype: 'dropdown', options: ["Vegetarian", "Non-Vegetarian", "Mixed"], value: diet, setValue: setDiet, heading: "Other Information" },
         { question: "Meal:", questionType: questionType, questionId: 'c4-2', inputtype: 'dropdown', options: ["Regular", "Irregular"], value: meal, setValue: setMeal },
+        { question: "Covid in past:", questionType: questionType, questionId: 'c4-3', inputtype: 'dropdown', options: ["Yes", "No"], value: covidinpast, setValue: setCovidinpast },
+        { question: "Covid Vaccine:", questionType: questionType, questionId: 'c4-4', inputtype: 'dropdown', options: ["Yes", "No","Not Applicable"], value: vaccine, setValue: setVaccine },
+        { question: "Which Vaccine:", questionType: questionType, questionId: 'c4-5', inputtype: 'dropdown', options: ["Covaxin", "CoviShield", "Not Applicable"], value: whichvaccine, setValue: setWhichvaccine },
 
     ]
 
     const questions6 = [
-        { question: "PS(ECOG):", questionType: questionType, questionId: 'c5-1', inputtype: 'text', options: [], value: ps, setValue: setPs, heading: "Physical Examination" },
-        { question: "Height (cms):", questionType: questionType, questionId: 'c5-2', inputtype: 'text', options: [], value: height, setValue: setHeight },
-        { question: "Weight (kgs):", questionType: questionType, questionId: 'c5-3', inputtype: 'text', options: [], value: weight, setValue: setWeight },
-        { question: "Weight Loss (%):", questionType: questionType, questionId: 'c5-4', inputtype: 'text', options: [], value: weightlosspercentage, setValue: setWeightlosspercentage },
-        { question: "BSA (/m2):", questionType: questionType, questionId: 'c5-5', inputtype: 'text', options: [], value: bsa, setValue: setBsa },
-        { question: "BMI (kg/m2):", questionType: questionType, questionId: 'c5-6', inputtype: 'text', options: [], value: bmi, setValue: setBmi },
+        { question: "PS(ECOG):", questionType: questionType, questionId: 'c5-1', inputtype: 'dropdown', options: ["0", "1", "2"], value: ps, setValue: setPs, heading: "Physical Examination" },
+        { question: "Height (cms):", questionType: questionType, questionId: 'c5-2', inputtype: 'text', options: [], value: height, setValue: setHeight, restriction:(alpha.some(i => height.includes(i))),restrictiontext:"alphabets not allowed" },
+        { question: "Weight (kgs):", questionType: questionType, questionId: 'c5-3', inputtype: 'text', options: [], value: weight, setValue: setWeight, restriction:(alpha.some(i => weight.includes(i))),restrictiontext:"alphabets not allowed" },
+        { question: "Weight Loss (%):", questionType: questionType, questionId: 'c5-4', inputtype: 'text', options: [], value: weightlosspercentage, setValue: setWeightlosspercentage, restriction:(alpha.some(i => weightlosspercentage.includes(i))),restrictiontext:"alphabets not allowed" },
+        { question: "BSA (/m2):", questionType: questionType, questionId: 'c5-5', inputtype: 'text', options: [], value: bsa, setValue: setBsa , restriction:(alpha.some(i => bsa.includes(i))),restrictiontext:"alphabets not allowed" },
+        { question: "BMI (kg/m2):", questionType: questionType, questionId: 'c5-6', inputtype: 'text', options: [], value: bmi, setValue: setBmi, restriction:(alpha.some(i => bmi.includes(i))),restrictiontext:"alphabets not allowed" },
         { question: "Muscle Wasting:", questionType: questionType, questionId: 'c5-7', inputtype: 'dropdown', options: ["General", "Temporal"], value: musclewasting, setValue: setMusclewasting },
         { question: "Other Positive Finding:", questionType: questionType, questionId: 'c5-8', inputtype: 'text', options: [], value: otherpositivefindings, setValue: setOtherpositivefindings },
 
@@ -378,11 +419,7 @@ const ClinicalProfile = () => {
         
       }, []);
 
-      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    //   const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
-            const numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-        const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
-        const alphaspecial = [...alpha, ...special];
+     
 
     const handleSubmit1 = () => {
         if (
@@ -678,7 +715,8 @@ const ClinicalProfile = () => {
             
 
             alphaspecial.some(i => moderatecomorbidity.includes(i)) || 
-            alphaspecial.some(i => severecomorbidity.includes(i)) 
+            alphaspecial.some(i => severecomorbidity.includes(i)) ||
+            alphaspecial.some(i => mildcomorbidity.includes(i)) 
             // drug === "" ||
             // obesity === "" ||
             // overallcomorbidity === "" ||

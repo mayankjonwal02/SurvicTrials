@@ -23,6 +23,7 @@ interface Question {
     value: string;
     setValue: (value: string) => void;
     heading?: string;
+    subheading?: string;
     subParts?: Array<
         {
             s_question: string;
@@ -30,9 +31,9 @@ interface Question {
             s_setanswer: (value: string) => void;
         }
     >;
-    restriction?:boolean;
-    restrictiontext?:string;
-    info?:Array<string>;
+    restriction?: boolean;
+    restrictiontext?: string;
+    info?: Array<string>;
 
 }
 
@@ -71,22 +72,23 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                     {questions.map((question, index) => (
                         <div>
 
-                            {question.heading ? <div className='text-xl font-bold text-green-5 text-center mt-[60px] mb-10'>{question.heading}</div> : <></>}
+                            {question.heading ? <div className='text-xl font-bold text-green-5 text-center mt-[60px] mb-4'>{question.heading}</div> : <></>}
+                            {question.subheading ? <div className='text-lg font-bold text-green-5 text-center mb-10'>{question.subheading}</div> : <></>}
                             {question.info && (
 
-                                        <div className='list-disc ml-4'>
-                                            <b className='mb-10'>Points to be noted:</b>
+                                <div className='list-disc ml-4'>
+                                    <b className='mb-10'>Points to be noted:</b>
 
-                                        {question.info.map((information: string, infoIndex) => (
-                                            information !== "" ? (
-                                                <p key={infoIndex} className='text-sm text-green-5'>
-                                                    {information}
-                                                </p>
-                                            ) : <p className='mt-5'></p>
-                                        ))}
-                                    </div>
-                                    
-                                    )}
+                                    {question.info.map((information: string, infoIndex) => (
+                                        information !== "" ? (
+                                            <p key={infoIndex} className='text-sm text-green-5'>
+                                                {information}
+                                            </p>
+                                        ) : <p className='mt-5'></p>
+                                    ))}
+                                </div>
+
+                            )}
                             <div key={index} className='flex flex-row mt-5'>
                                 <div className='text-sm md:text-lg font-bold me-3'>{index + 1}.</div>
                                 <div className='flex flex-col w-full justify-start items-start'>
@@ -102,23 +104,35 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                         </ul>
                                     )}
                                     {/* <div>{question.value}</div> */}
-                                    {question.inputtype === "dropdown" ? <DropdownMenu>
-                                        <DropdownMenuTrigger className='w-fit p-2 border  rounded-lg m-2 '>
-                                            <Button className={cn("w-full p-2 border  rounded-lg  ", (question.value === "" && task === "update") ? "bg-red-300 " : "text-white bg-green-600 hover:bg-green-4 hover:text-green-5")} onClick={() => question.setValue("")} variant="outline">
-                                                {question.value === "" ? `Choose Option` : question.value} <FontAwesomeIcon className='ml-2' icon={faCaretDown} />
-                                            </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent>
-                                            <DropdownMenuLabel>Choose Option</DropdownMenuLabel>
-                                            <DropdownMenuSeparator />
-                                            {question.options.map((option, optIndex) => (
-                                                <DropdownMenuItem key={optIndex} onClick={() => question.setValue(option)}>
-                                                    {option}
-                                                </DropdownMenuItem>
-                                            ))}
-                                        </DropdownMenuContent>
+                                    {question.inputtype === "dropdown" ? (
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger className='w-fit p-2 border rounded-lg m-2'>
+                                                <Button
+                                                    className={cn(
+                                                        "w-full p-2 border rounded-lg",
+                                                        (question.value === "" && task === "update") ? "bg-red-300" : "text-white bg-green-600 hover:bg-green-4 hover:text-green-5"
+                                                    )}
+                                                    onClick={() => question.setValue("")}
+                                                    variant="outline"
+                                                >
+                                                    {question.value === "" ? `Choose Option` : question.value} <FontAwesomeIcon className='ml-2' icon={faCaretDown} />
+                                                </Button>
+                                            </DropdownMenuTrigger>
 
-                                    </DropdownMenu> : <></>}
+                                            <DropdownMenuContent>
+                                                <ScrollArea className='max-h-[300px]'>
+                                                    <DropdownMenuLabel>Choose Option</DropdownMenuLabel>
+                                                    <DropdownMenuSeparator />
+                                                    {question.options.map((option, optIndex) => (
+                                                        <DropdownMenuItem key={optIndex} onClick={() => question.setValue(option)}>
+                                                            {option}
+                                                        </DropdownMenuItem>
+                                                    ))}
+                                                </ScrollArea>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    ) : null}
+
 
                                     {question.inputtype === "text" ? (
                                         <div className='flex flex-col  '>
@@ -132,32 +146,32 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                             />
                                             {/* {question.restriction && <div className='text-red-500 ps-2'>{<FontAwesomeIcon icon={faCircleExclamation} className='me-2'/>}{question.restrictiontext}</div>} */}
                                         </div>
-                                        
+
                                     ) : (
                                         <></>
                                     )}
 
                                     {question.inputtype === "multitext" ? (
-                                     
-                                            <div className='flex flex-col lg:flex-row w-[80%] gap-2'>
-                                                {question.subParts!.map((subPart, subPartIndex) => (
-                                                    <div key={subPartIndex} className='flex-grow'>
-                                                        <input
-                                                            type="text"
-                                                            className={`w-full py-2 ps-2 border border-green-5 bg-green-4 rounded-lg m-2 ${question.value === "" && task === "update"
-                                                                    ? "bg-red-300 placeholder:text-black"
-                                                                    : ""
-                                                                }`}
-                                                            value={subPart.s_answer}
-                                                            onChange={(e) => subPart.s_setanswer(e.target.value)}
-                                                            placeholder={subPart.s_question}
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            
 
-                                       
+                                        <div className='flex flex-col lg:flex-row w-[80%] gap-2'>
+                                            {question.subParts!.map((subPart, subPartIndex) => (
+                                                <div key={subPartIndex} className='flex-grow'>
+                                                    <input
+                                                        type="text"
+                                                        className={`w-full py-2 ps-2 border border-green-5 bg-green-4 rounded-lg m-2 ${question.value === "" && task === "update"
+                                                            ? "bg-red-300 placeholder:text-black"
+                                                            : ""
+                                                            }`}
+                                                        value={subPart.s_answer}
+                                                        onChange={(e) => subPart.s_setanswer(e.target.value)}
+                                                        placeholder={subPart.s_question}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+
+
+
                                     ) : (
                                         <></>
                                     )}
@@ -200,7 +214,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                     ) : (
                                         <></>
                                     )}
-                                    {question.restriction && <div className='text-red-500 ps-2'>{<FontAwesomeIcon icon={faCircleExclamation} className='me-2'/>}{question.restrictiontext}</div>}
+                                    {question.restriction && <div className='text-red-500 ps-2'>{<FontAwesomeIcon icon={faCircleExclamation} className='me-2' />}{question.restrictiontext}</div>}
 
                                 </div>
                             </div>
