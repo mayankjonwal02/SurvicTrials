@@ -41,9 +41,9 @@ const sidebaritems = [
     },
     {
         title: "Randomization",
-        path: "/form/restaging",
+        path: "/form/randomization",
         icon:undefined,
-        category:"Restaging"
+        category:"Randomization"
         
     },
     {

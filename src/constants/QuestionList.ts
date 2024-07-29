@@ -38,6 +38,14 @@ const AdverseEventManagement = [
     { question: 'Drug 2:', questionId: 'a2-17',updates:[], value:"",questionType: 'Adverse Event Management' },
     { question: 'Drug 3:', questionId: 'a2-18',updates:[], value:"",questionType: 'Adverse Event Management' }
 ];
+
+const Randomization = [
+    {question :"Treatment Arm:", questionId:"r3-1",updates:[], value:"",questionType:"Randomization"},
+    {question:"Stratification by Age:", questionId:"r3-2",updates:[], value:"",questionType:"Randomization"},
+    {question:"General Stratification:", questionId:"r3-3",updates:[], value:"",questionType:"Randomization"},
+];
+
+
 const Chemotherapy = [
     { question: 'Date of Start of Chemotherapy:', questionId: 'c1-1',updates:[], value:"",questionType: 'Chemotherapy' },
     { question: 'Regimen:', questionId: 'c1-2',updates:[], value:"",questionType: 'Chemotherapy' },
@@ -317,7 +325,7 @@ const Investigation = [
     { question: 'Histology', questionId: 'i-3',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Grade (Biopsy):', questionId: 'i-4',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Any Special Features', questionId: 'i-5',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Date of Test',  questionId: 'i-6_0',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'Date of Test - CBC',  questionId: 'i-6_0',updates:[], value:"",questionType: 'Investigation' },
     { question: 'CBC (Complete Blood Count):', questionId: 'i-6',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Hemoglobin (Hb):', questionId: 'i-7',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Red Blood Cell Count (RBC) (10^6/uL):', questionId: 'i-8',updates:[], value:"",questionType: 'Investigation' },
@@ -327,9 +335,10 @@ const Investigation = [
     { question: 'Monocyte Count (10^3/uL):', questionId: 'i-12',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Eosinophil Count (10^3/uL):', questionId: 'i-13',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Basophil Count (10^3/uL):', questionId: 'i-14',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Large Immature Cells Count:', questionId: 'i-15',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Large Immature Cells (LIC) Count (10^3/uL):', questionId: 'i-16',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Platelet Count (10^3/uL):', questionId: 'i-17',updates:[], value:"",questionType: 'Investigation' },
+    { question: "Date of Test - RFT:", questionType: 'Investigation', questionId: 'i-15', updates: [], value: "" },
+    { question: "Date of Test - LFT:", questionType: 'Investigation', questionId: 'i-15_0', updates: [], value: "" },
     // { question: 'COVID in Past:', questionId: 'i-18',updates:[], value:"",questionType: 'Investigation' },
     // { question: 'COVID Vaccine:', questionId: 'i-19',updates:[], value:"",questionType: 'Investigation' },
     // { question: 'Vaccine Name:', questionId: 'i-20',updates:[], value:"",questionType: 'Investigation' },
@@ -366,12 +375,20 @@ const Investigation = [
     { question: 'Level 1/2a/2b/3/4/5:', questionId: 'i-51',updates:[], value:"",questionType: 'Investigation' },
     { question: 'SAD of Largest Suspicious Nodes (mm):', questionId: 'i-52',updates:[], value:"",questionType: 'Investigation' },
     { question: 'USG Correlation:', questionId: 'i-53',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'FNAC:', questionId: 'i-54',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'FNAC Required:', questionId: 'i-54',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Radiological ENE:', questionId: 'i-55',updates:[], value:"",questionType: 'Investigation' },
     { question: 'What Suggests ENE:', questionId: 'i-56',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Metastatic Workup with Date CT Thorax/CXR:', questionId: 'i-57',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Findings:', questionId: 'i-58',updates:[], value:"",questionType: 'Investigation' }
-];
+    { question: 'Metastatic Workup :', questionId: 'i-57',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'Date :',  questionId: 'i-57_0',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'Lesion 1 Location', questionType: "Investigation", questionId: 'i-58_0', updates:[],value:"" },
+    { question: 'Lesion 1 Size', questionType: "Investigation", questionId: 'i-58_1',  updates:[],value:"" },
+    { question: 'Lesion 1 Marked on scan', questionType: "Investigation", questionId: 'i-58_2', updates:[],value:"" },
+    { question: 'Lesion 2 Location', questionType: "Investigation", questionId: 'i-58_3', updates:[],value:"" },
+    { question: 'Lesion 2 Size', questionType: "Investigation", questionId: 'i-58_4', updates:[],value:"" },
+    { question: 'Lesion 2 Marked on scan', questionType: "Investigation", questionId: 'i-58_5', updates:[],value:"" },
+    { question: 'Lesion 3 Location', questionType: "Investigation", questionId: 'i-58_6', inputtype: 'text',  updates:[],value:"" },
+    { question: 'Lesion 3 Size', questionType: "Investigation", questionId: 'i-58_7', inputtype: 'text', updates:[],value:"" },
+    { question: 'Lesion 3 Marked on scan', questionType: "Investigation", questionId: 'i-58_8', updates:[],value:"" }      ]
 const Postoperativecom = [
     { question: 'Postoperative Complications:', questionId: 'p1-1',updates:[], value:"",questionType: 'Post-Operative Complications' },
     { question: 'Grade of Complications:', questionId: 'p1-2',updates:[], value:"",questionType: 'Post-Operative Complications' },
@@ -685,7 +702,8 @@ const AllQuestions : AllQuestionsType = {
     "RTOG Toxicity Assessment": Rtog,
     "Social History":SocialHistory,
     "Surgical Treatment":SurgicalTreatment,
-    "Treatment Plan after HPE":Hpe
+    "Treatment Plan after HPE":Hpe,
+    "Randomization":Randomization   
 
 
 }

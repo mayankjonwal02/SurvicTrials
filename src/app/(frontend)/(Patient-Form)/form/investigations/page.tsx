@@ -9,6 +9,7 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
+import { sub } from 'date-fns';
 const Investigations = () =>  {
     const { toast } = useToast()
     const router = useRouter();
@@ -38,7 +39,9 @@ const Investigations = () =>  {
 
 
     // Laboratory Tests (on first admission for treatment)
-    const [dateoftest, setDateoftest] = React.useState("");
+    const [dateoftest_cbc, setDateoftest_cbc] = React.useState("");
+    const [dateoftest_rft, setDateoftest_rft] = React.useState("");
+    const [dateoftest_lft, setDateoftest_lft] = React.useState("");
     const [cbc, setCbc] = React.useState("");
     const [hb, setHb] = React.useState("");
     const [rbc, setRbc] = React.useState("");
@@ -95,13 +98,25 @@ const Investigations = () =>  {
     const [radiologicalEne, setRadiologicalEne] = useState('');
     const [eneSuggestions, setEneSuggestions] = useState('');
     const [metastaticWorkup, setMetastaticWorkup] = useState('');
-    const [findings, setFindings] = useState('');
+    const [date_part3, setDate_part3] = useState('');
+    const [lesion1Location, setLesion1Location] = useState('');
+    const [lesion1Size, setLesion1Size] = useState('');
+    const [lesion1Marked, setLesion1Marked] = useState('');
 
-    useEffect(() => {
-        setDateoftest("");
-    },[])
+    const [lesion2Location, setLesion2Location] = useState('');
+    const [lesion2Size, setLesion2Size] = useState('');
+    const [lesion2Marked, setLesion2Marked] = useState('');
 
- 
+    const [lesion3Location, setLesion3Location] = useState('');
+    const [lesion3Size, setLesion3Size] = useState('');
+    const [lesion3Marked, setLesion3Marked] = useState('');
+
+
+    
+
+    const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
+
 
 
     const questions1 = [
@@ -113,71 +128,83 @@ const Investigations = () =>  {
     ]
 
     const questions2 = [
-        { question: 'Date of Test', questionType: questionType, questionId: 'i-6_0', inputtype: 'date', options: [], value: dateoftest, setValue: setDateoftest, heading: "Laboratory Tests " },
-        { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc },
+        { question: 'Date of Test - CBC', questionType: questionType, questionId: 'i-6_0', inputtype: 'date', options: [], value: dateoftest_cbc, setValue: setDateoftest_cbc, heading: "Laboratory Tests " },
+        { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc , restriction: alpha.some(i => cbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: 'Hemoglobin (Hb):', questionType: questionType, questionId: 'i-7', inputtype: 'text', options: [], value: hb, setValue: setHb },
-        { question: "Red Blood Cell Count (RBC) (10^6/uL):" , questionType: questionType, questionId: 'i-8', inputtype: 'text', options: [], value: rbc, setValue: setRbc },
-        { question: "Total Leukocyte Count (TLC) (10^3/uL):", questionType: questionType, questionId: 'i-9', inputtype: 'text', options: [], value: tlc, setValue: setTlc },
-        { question: "Neutrophil Count (10^3/uL):", questionType: questionType, questionId: 'i-10', inputtype: 'text', options: [], value: neutrophilcount, setValue: setNeutrophilcount },
-        { question: "Lymphocyte Count (10^3/uL):", questionType: questionType, questionId: 'i-11', inputtype: 'text', options: [], value: lymphocytecount, setValue: setLymphocytecount },
-        { question: "Monocyte Count (10^3/uL):", questionType: questionType, questionId: 'i-12', inputtype: 'text', options: [], value: monocytecount, setValue: setMonocytecount },
-        { question: "Eosinophil Count (10^3/uL):", questionType: questionType, questionId: 'i-13', inputtype: 'text', options: [], value: eosinophilcount, setValue: setEosinophilcount },
-        { question: "Basophil Count (10^3/uL):", questionType: questionType, questionId: 'i-14', inputtype: 'text', options: [], value: basophilcount, setValue: setBasophilcount },
-        { question: "Large Immature Cells Count:", questionType: questionType, questionId: 'i-15', inputtype: 'text', options: [], value: largeimmaturecellcount, setValue: setLargeimmaturecellcount },
-        { question: "Large Immature Cells (LIC) Count (10^3/uL):" , questionType: questionType, questionId: 'i-16', inputtype: 'text', options: [], value: lic, setValue: setLic },
-        { question: "Platelet Count (10^3/uL):", questionType: questionType, questionId: 'i-17', inputtype: 'text', options: [], value: plateletcount, setValue: setPlateletcount },
-        // { question: "COVID in Past:", questionType: questionType, questionId: 'i-18', inputtype: 'text', options: [], value: covidinpast, setValue: setCovidinpast },
-        // { question: "COVID Vaccine:", questionType: questionType, questionId: 'i-19', inputtype: 'text', options: [], value: covidvaccine, setValue: setCovidvaccine },
-        // { question: "Vaccine Name:", questionType: questionType, questionId: 'i-20', inputtype: 'text', options: [], value: vaccinename, setValue: setVaccinename },
+        { question: "Red Blood Cell Count (RBC) (10^6/uL):", questionType: questionType, questionId: 'i-8', inputtype: 'text', options: [], value: rbc, setValue: setRbc, restriction: alpha.some(i => rbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Total Leukocyte Count (TLC) (10^3/uL):", questionType: questionType, questionId: 'i-9', inputtype: 'text', options: [], value: tlc, setValue: setTlc, restriction: alpha.some(i => tlc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Neutrophil Count (10^3/uL):", questionType: questionType, questionId: 'i-10', inputtype: 'text', options: [], value: neutrophilcount, setValue: setNeutrophilcount, restriction: alpha.some(i => neutrophilcount.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Lymphocyte Count (10^3/uL):", questionType: questionType, questionId: 'i-11', inputtype: 'text', options: [], value: lymphocytecount, setValue: setLymphocytecount, restriction: alpha.some(i => lymphocytecount.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Monocyte Count (10^3/uL):", questionType: questionType, questionId: 'i-12', inputtype: 'text', options: [], value: monocytecount, setValue: setMonocytecount, restriction: alpha.some(i => monocytecount.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Eosinophil Count (10^3/uL):", questionType: questionType, questionId: 'i-13', inputtype: 'text', options: [], value: eosinophilcount, setValue: setEosinophilcount, restriction: alpha.some(i => eosinophilcount.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Basophil Count (10^3/uL):", questionType: questionType, questionId: 'i-14', inputtype: 'text', options: [], value: basophilcount, setValue: setBasophilcount, restriction: alpha.some(i => basophilcount.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Large Immature Cells (LIC) Count (10^3/uL):", questionType: questionType, questionId: 'i-16', inputtype: 'text', options: [], value: lic, setValue: setLic, restriction: alpha.some(i => lic.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Platelet Count (10^3/uL):", questionType: questionType, questionId: 'i-17', inputtype: 'text', options: [], value: plateletcount, setValue: setPlateletcount, restriction: alpha.some(i => plateletcount.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Date of Test - RFT:", questionType: questionType, questionId: 'i-15', inputtype: 'date', options: [], value: dateoftest_rft, setValue: setDateoftest_rft },
+        { question: "Date of Test - LFT:", questionType: questionType, questionId: 'i-15_0', inputtype: 'date', options: [], value: dateoftest_lft, setValue: setDateoftest_lft },
+
         { question: "Renal Function Test (RFT) - Creatinine Clearance:", questionType: questionType, questionId: 'i-21', inputtype: 'text', options: [], value: rft, setValue: setRft },
         { question: "Serum Creatinine Level:",questionType: questionType, questionId: 'i-36', inputtype: 'text', options: [], value: serumcreatinelevel, setValue: setSerumcreatinelevel },
         { question: "Blood Urea Level:", questionType: questionType, questionId: 'i-22', inputtype: 'text', options: [], value: bloodurealevel, setValue: setBloodurealevel },
         { question: "Viral Markers:", questionType: questionType, questionId: 'i-23', inputtype: 'text', options: [], value: viralmarkers, setValue: setViralmarkers },
-        { question: "Hepatitis B Surface Antigen (HBsAg) / Hepatitis C Virus (HCV) / Human Immunodeficiency Virus (HIV):", questionType: questionType, questionId: 'i-24', inputtype: 'text', options: [], value: hhh, setValue: setHhh },
-        { question: "Liver Function Test (LFT) - Total Bilirubin (mg%) (T):", questionType: questionType, questionId: 'i-25', inputtype: 'text', options: [], value: lft, setValue: setLft },
-        { question: "Direct Bilirubin (mg%) (D):", questionType: questionType, questionId: 'i-26', inputtype: 'text', options: [], value: directbilirubin, setValue: setDirectbilirubin },
-        { question: "Indirect Bilirubin (mg%) (I):", questionType: questionType, questionId: 'i-27', inputtype: 'text', options: [], value: indirectbilirubin, setValue: setIndirectbilirubin },
-        { question: "Aspartate Aminotransferase (AST) / Serum Glutamic Oxaloacetic Transaminase (SGOT):", questionType: questionType, questionId: 'i-28', inputtype: 'text', options: [], value: as, setValue: setAs },
-        { question: "Alanine Aminotransferase (ALT) / Serum Glutamic Pyruvic Transaminase (SGPT):" , questionType:questionType, questionId: 'i-29', inputtype: 'text', options: [], value: aasg, setValue: setAasg },
+        { question: "Hepatitis B Surface Antigen (HBsAg) / Hepatitis C Virus (HCV) / Human Immunodeficiency Virus (HIV):", questionType: questionType, questionId: 'i-24', inputtype: 'dropdown', options: ["HBsAg", "HCV", "HIV"], value: hhh, setValue: setHhh },
+        { question: "Liver Function Test (LFT) - Total Bilirubin (mg%) (T):", questionType: questionType, questionId: 'i-25', inputtype: 'text', options: [], value: lft, setValue: setLft, restriction: alpha.some(i => lft.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Direct Bilirubin (mg%) (D):", questionType: questionType, questionId: 'i-26', inputtype: 'text', options: [], value: directbilirubin, setValue: setDirectbilirubin, restriction: alpha.some(i => directbilirubin.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Indirect Bilirubin (mg%) (I):", questionType: questionType, questionId: 'i-27', inputtype: 'text', options: [], value: indirectbilirubin, setValue: setIndirectbilirubin, restriction: alpha.some(i => indirectbilirubin.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: "Aspartate Aminotransferase (AST) / Serum Glutamic Oxaloacetic Transaminase (SGOT):", questionType: questionType, questionId: 'i-28', inputtype: 'dropdown', options: ["AST", "SGOT"], value: as, setValue: setAs },
+        { question: "Alanine Aminotransferase (ALT) / Serum Glutamic Pyruvic Transaminase (SGPT):", questionType:questionType, questionId: 'i-29', inputtype: 'dropdown', options: ["ALT", "SGPT"], value: aasg, setValue: setAasg },
         { question: "Serum Alkaline Phosphatase (SAP):", questionType: questionType, questionId: 'i-30', inputtype: 'text', options: [], value: sap, setValue: setSap },
         { question:"Total Protein Level:", questionType: questionType, questionId: 'i-31', inputtype: 'text', options: [], value: totalprotienlevel, setValue: setTotalprotienlevel },
         { question:"Albumin Level:",questionType:questionType, questionId: 'i-32', inputtype: 'text', options: [], value: albumin, setValue: setAlbumin },
         { question:"Albumin/Globulin (A/G) Ratio:", questionType: questionType, questionId: 'i-33', inputtype: 'text', options: [], value: agratio, setValue: setAgratio },
-        { question: "Ejection Fraction:" , questionType:questionType, questionId: 'i-34', inputtype: 'text', options: [], value: ejectionfraction, setValue: setEjectionfraction },
+        { question: "Ejection Fraction:", questionType:questionType, questionId: 'i-34', inputtype: 'text', options: [], value: ejectionfraction, setValue: setEjectionfraction },
         { question: "Electrocardiogram (ECG):",questionType:questionType, questionId: 'i-35', inputtype: 'text', options: [], value: ecg, setValue: setEcg },
-    
-    
-    
-    
-    
-    
-    
-    ]
+    ];
+
+    const [height, setHeight] = useState('');
+    const [width, setWidth] = useState('');
+    const [depth, setDepth] = useState('');
+
+    useEffect(() => {
+        if (height !== '' && width !== '' && depth !== '') {
+            setSize(`${height} x ${width} x ${depth}`)
+        }
+    }, [height, width, depth])
 
     const questions3 = [
-        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging, heading:"Radiology" },
-        { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionType: questionType, questionId: 'i-38', inputtype: 'text', options: [], value: subsite, setValue: setSubsite },
-        { question: 'USG/CT/MRI/PET:', questionType: questionType, questionId: 'i-39', inputtype: 'text', options: ['USG', 'CT', 'MRI', 'PET'], value: imagingType, setValue: setImagingType },
-        { question: 'Site (Epicenter of tumor):', questionType: questionType, questionId: 'i-40', inputtype: 'text', options: [], value: site, setValue: setSite },
-        { question: 'ITF High/Low/Free:', questionType: questionType, questionId: 'i-41', inputtype: 'text', options: ['High', 'Low', 'Free'], value: itf, setValue: setItf },
-        { question: 'Supra-notch/Infra-notch:', questionType: questionType, questionId: 'i-42', inputtype: 'text', options: ['Supra-notch', 'Infra-notch'], value: notch, setValue: setNotch },
-        { question: 'Size (mm):', questionType: questionType, questionId: 'i-43', inputtype: 'text', options: [], value: size, setValue: setSize },
-        { question: 'DOI (mm):', questionType: questionType, questionId: 'i-44', inputtype: 'text', options: [], value: doi, setValue: setDoi },
-        { question: 'Across Midline:', questionType: questionType, questionId: 'i-45', inputtype: 'text', options: ['Yes', 'No'], value: acrossMidline, setValue: setAcrossMidline },
-        { question: 'Bone Invasion:', questionType: questionType, questionId: 'i-46', inputtype: 'text', options: ['Yes', 'No'], value: boneInvasion, setValue: setBoneInvasion },
-        { question: 'Maxilla/Mandible:', questionType: questionType, questionId: 'i-47', inputtype: 'text', options: ['Maxilla', 'Mandible'], value: maxillaMandible, setValue: setMaxillaMandible },
-        { question: 'PNI (Perineural Invasion):', questionType: questionType, questionId: 'i-48', inputtype: 'text', options: ['Yes', 'No'], value: pni, setValue: setPni },
-        { question: 'Neck:', questionType: questionType, questionId: 'i-49', inputtype: 'text', options: [], value: neck, setValue: setNeck },
+        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging, heading: "Staging Radiology" },
+        { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionType: questionType, questionId: 'i-38', inputtype: 'dropdown', options: ["Upper BA Complex", "Lower BA Complex", "Tongue"], value: subsite, setValue: setSubsite },
+        { question: 'USG/CT/MRI/PET:', questionType: questionType, questionId: 'i-39', inputtype: 'dropdown', options: ['USG', 'CT', 'MRI', 'PET'], value: imagingType, setValue: setImagingType },
+        { question: 'Site (Epicenter of tumor):', questionType: questionType, questionId: 'i-40', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "Central Alveolus", "RMT", "FOM", "Oral Tongue"], value: site, setValue: setSite },
+        { question: 'ITF High/Low/Free:', questionType: questionType, questionId: 'i-41', inputtype: 'dropdown', options: ['High', 'Low', 'Free'], value: itf, setValue: setItf },
+        { question: 'Supra-notch/Infra-notch:', questionType: questionType, questionId: 'i-42', inputtype: 'dropdown', options: ['Supra-notch', 'Infra-notch'], value: notch, setValue: setNotch },
+        { question: 'Size (mm):', questionType: questionType, questionId: 'i-43', inputtype: 'multitext', options: [], value: size, setValue: setSize, restriction: alpha.some(i => (i!=='x' && size.includes(i))), restrictiontext: 'Alphabets are not allowed' , subParts: [ {s_question:"Height (mm):", s_answer:height, s_setanswer:setHeight}, {s_question:"Width (mm):", s_answer:width, s_setanswer:setWidth}, {s_question:"Length (mm):", s_answer:depth, s_setanswer:setDepth} ]},
+        { question: 'DOI (mm):', questionType: questionType, questionId: 'i-44', inputtype: 'text', options: [], value: doi, setValue: setDoi, restriction: alpha.some(i => doi.includes(i)), restrictiontext: 'Alphabets are not allowed' },
+        { question: 'Across Midline:', questionType: questionType, questionId: 'i-45', inputtype: 'dropdown', options: ['Yes', 'No'], value: acrossMidline, setValue: setAcrossMidline },
+        { question: 'Bone Invasion:', questionType: questionType, questionId: 'i-46', inputtype: 'dropdown', options: ['Yes', 'No'], value: boneInvasion, setValue: setBoneInvasion },
+        { question: 'Maxilla/Mandible:', questionType: questionType, questionId: 'i-47', inputtype: 'dropdown', options: ['Maxilla', 'Mandible'], value: maxillaMandible, setValue: setMaxillaMandible },
+        { question: 'PNI (Perineural Invasion):', questionType: questionType, questionId: 'i-48', inputtype: 'dropdown', options: ['Yes', 'No'], value: pni, setValue: setPni },
+        { question: 'Neck:', questionType: questionType, questionId: 'i-49', inputtype: 'dropdown', options: ["Single","Multiple"], value: neck, setValue: setNeck },
         { question: 'Number of Suspicious Nodes:', questionType: questionType, questionId: 'i-50', inputtype: 'text', options: [], value: numberOfSuspiciousNodes, setValue: setNumberOfSuspiciousNodes },
-        { question: 'Level 1/2a/2b/3/4/5:', questionType: questionType, questionId: 'i-51', inputtype: 'text', options: [], value: levels, setValue: setLevels },
-        { question: 'SAD of Largest Suspicious Nodes (mm):', questionType: questionType, questionId: 'i-52', inputtype: 'text', options: [], value: sadLargestSuspiciousNode, setValue: setSadLargestSuspiciousNode },
+        { question: 'Level 1/2a/2b/3/4/5:', questionType: questionType, questionId: 'i-51', inputtype: 'dropdown', options: ["Level 1", "Level 2a", "Level 2b", "Level 3", "Level 4", "Level 5"], value: levels, setValue: setLevels },
+        { question: 'SAD of Largest Suspicious Nodes (mm):', questionType: questionType, questionId: 'i-52', inputtype: 'text', options: [], value: sadLargestSuspiciousNode, setValue: setSadLargestSuspiciousNode, restriction: alpha.some(i => sadLargestSuspiciousNode.includes(i)), restrictiontext: 'Alphabets are not allowed' },
         { question: 'USG Correlation:', questionType: questionType, questionId: 'i-53', inputtype: 'text', options: [], value: usgCorrelation, setValue: setUsgCorrelation },
-        { question: 'FNAC:', questionType: questionType, questionId: 'i-54', inputtype: 'text', options: [], value: fnac, setValue: setFnac },
-        { question: 'Radiological ENE:', questionType: questionType, questionId: 'i-55', inputtype: 'text', options: ['Yes', 'No'], value: radiologicalEne, setValue: setRadiologicalEne },
-        { question: 'What Suggests ENE:', questionType: questionType, questionId: 'i-56', inputtype: 'text', options: [], value: eneSuggestions, setValue: setEneSuggestions },
-        { question: 'Metastatic Workup with Date CT Thorax/CXR:', questionType: questionType, questionId: 'i-57', inputtype: 'text', options: [], value: metastaticWorkup, setValue: setMetastaticWorkup },
-        { question: 'Findings:', questionType: questionType, questionId: 'i-58', inputtype: 'text', options: [], value: findings, setValue: setFindings }
-      ];
+        { question: 'FNAC Required:', questionType: questionType, questionId: 'i-54', inputtype: 'dropdown', options: ["Yes", "No"], value: fnac, setValue: setFnac },
+        { question: 'Radiological ENE:', questionType: questionType, questionId: 'i-55', inputtype: 'dropdown', options: ['Yes', 'No'], value: radiologicalEne, setValue: setRadiologicalEne },
+        { question: 'What Suggests ENE:', questionType: questionType, questionId: 'i-56', inputtype: 'dropdown', options: ["Skin","Muscle","Vessel"], value: eneSuggestions, setValue: setEneSuggestions },
+        { question: 'Metastatic Workup :', questionType: questionType, questionId: 'i-57', inputtype: 'dropdown', options: ["CT Thorax","CXR","PET CT"], value: metastaticWorkup, setValue: setMetastaticWorkup },
+        { question: 'Date :', questionType: questionType, questionId: 'i-57_0', inputtype: 'date', options: [], value: date_part3, setValue: setDate_part3 },
+        { question: 'Lesion 1 Location', questionType: questionType, questionId: 'i-58_0', inputtype: 'text', options: [], value: lesion1Location, setValue: setLesion1Location },
+        { question: 'Lesion 1 Size', questionType: questionType, questionId: 'i-58_1', inputtype: 'text', options: [], value: lesion1Size, setValue: setLesion1Size, restriction: alpha.some(i => lesion1Size.includes(i)), restrictiontext: 'Alphabets are not allowed' },
+        { question: 'Lesion 1 Marked on scan', questionType: questionType, questionId: 'i-58_2', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion1Marked, setValue: setLesion1Marked },
+        { question: 'Lesion 2 Location', questionType: questionType, questionId: 'i-58_3', inputtype: 'text', options: [], value: lesion2Location, setValue: setLesion2Location },
+        { question: 'Lesion 2 Size', questionType: questionType, questionId: 'i-58_4', inputtype: 'text', options: [], value: lesion2Size, setValue: setLesion2Size, restriction: alpha.some(i => lesion2Size.includes(i)), restrictiontext: 'Alphabets are not allowed' },
+        { question: 'Lesion 2 Marked on scan', questionType: questionType, questionId: 'i-58_5', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion2Marked, setValue: setLesion2Marked },
+        { question: 'Lesion 3 Location', questionType: questionType, questionId: 'i-58_6', inputtype: 'text', options: [], value: lesion3Location, setValue: setLesion3Location },
+        { question: 'Lesion 3 Size', questionType: questionType, questionId: 'i-58_7', inputtype: 'text', options: [], value: lesion3Size, setValue: setLesion3Size, restriction: alpha.some(i => lesion3Size.includes(i)), restrictiontext: 'Alphabets are not allowed' },
+        { question: 'Lesion 3 Marked on scan', questionType: questionType, questionId: 'i-58_8', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion3Marked, setValue: setLesion3Marked }     
+    ];
+    
 
  
       useEffect( () => {
@@ -208,6 +235,9 @@ const Investigations = () =>  {
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
                         
                         questionvalue !== undefined && question.setValue(questionvalue)
+
+                        
+
                     })
                 })
                 
@@ -238,8 +268,6 @@ const Investigations = () =>  {
         
       }, []);
     
-      const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-      const alphaspecial = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',"!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
         const handleSubmit1 = () => {
         if (
             // biopsynumber === "" ||
@@ -339,12 +367,12 @@ const Investigations = () =>  {
             alpha.some( i => eosinophilcount.includes(i)) ||
             alpha.some( i => basophilcount.includes(i)) ||
             alpha.some( i => plateletcount.includes(i)) ||
-            alpha.some( i => largeimmaturecellcount.includes(i)) ||
+            
             alpha.some( i => lic.includes(i)) ||
             alpha.some( i => lft.includes(i)) ||
             alpha.some( i => directbilirubin.includes(i)) ||
-            alpha.some( i => indirectbilirubin.includes(i)) ||
-            dateoftest === "" 
+            alpha.some( i => indirectbilirubin.includes(i)) 
+            
     //    cbc === "" ||
     //    hb === "" ||
     //    rbc === "" ||
@@ -440,12 +468,7 @@ const Investigations = () =>  {
                     description: "Invalid input detected in Platelet Count.",
                     variant: "destructive",
                 });
-            } else if (alpha.some(i => largeimmaturecellcount.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Invalid input detected in Large Immature Cells Count.",
-                    variant: "destructive",
-                });
+           
             } else if (alpha.some(i => lic.includes(i))) {
                 toast({
                     title: "Error",
@@ -540,9 +563,12 @@ const Investigations = () =>  {
     const handleSubmit3 = () => {
         if (
             
-            alpha.some( i => size.includes(i)) ||
+            alpha.some( i => (i!=='x' && size.includes(i))) ||
             alpha.some( i => doi.includes(i)) ||
-            alpha.some( i => sadLargestSuspiciousNode.includes(i)) 
+            alpha.some( i => sadLargestSuspiciousNode.includes(i)) ||
+            alpha.some( i => lesion1Size.includes(i)) ||
+            alpha.some( i => lesion2Size.includes(i)) ||
+            alpha.some( i => lesion3Size.includes(i)) 
 
             // questions3.some((question) => question.value === "")
 
@@ -566,6 +592,27 @@ const Investigations = () =>  {
                 toast({
                     title: "Error",
                     description: "Invalid input detected in SAD of Largest Suspicious Nodes.",
+                    variant: "destructive",
+                });
+            }
+            else if (alpha.some(i => lesion1Size.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Lesion 1 Size.",
+                    variant: "destructive",
+                });
+            }
+            else if (alpha.some(i => lesion2Size.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Lesion 2 Size.",
+                    variant: "destructive",
+                });
+            }
+            else if (alpha.some(i => lesion3Size.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Invalid input detected in Lesion 3 Size.",
                     variant: "destructive",
                 });
             }
