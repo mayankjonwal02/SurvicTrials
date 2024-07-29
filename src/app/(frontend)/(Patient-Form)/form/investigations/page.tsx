@@ -38,7 +38,7 @@ const Investigations = () =>  {
 
 
     // Laboratory Tests (on first admission for treatment)
-
+    const [dateoftest, setDateoftest] = React.useState("");
     const [cbc, setCbc] = React.useState("");
     const [hb, setHb] = React.useState("");
     const [rbc, setRbc] = React.useState("");
@@ -97,6 +97,10 @@ const Investigations = () =>  {
     const [metastaticWorkup, setMetastaticWorkup] = useState('');
     const [findings, setFindings] = useState('');
 
+    useEffect(() => {
+        setDateoftest("");
+    },[])
+
  
 
 
@@ -104,12 +108,13 @@ const Investigations = () =>  {
          { question: 'Biopsy Number', questionType: questionType, questionId: 'i-1', inputtype: 'text', options: [], value: biopsynumber, setValue: setBiopsynumber , heading: "Biopsy"},
          { question: 'Date of Biopsy', questionType: questionType, questionId: 'i-2', inputtype: 'date', options: [], value: dateofbiopsy, setValue: setDateofbiopsy },
          { question: "Histology", questionType: questionType, questionId: 'i-3', inputtype: 'text', options: [], value: histology, setValue: setHistology },
-         { question: "Grade (Biopsy):", questionType: questionType, questionId: 'i-4', inputtype: 'text', options: [], value: gradebiopsy, setValue: setGradebiopsy },
+         { question: "Grade (Biopsy):", questionType: questionType, questionId: 'i-4', inputtype: 'dropdown', options: ["1","2","3"], value: gradebiopsy, setValue: setGradebiopsy },
          { question: "Any Special Features", questionType: questionType, questionId: 'i-5', inputtype: 'text', options: [], value: anyspecialfeature, setValue: setAnyspecialfeature },
     ]
 
     const questions2 = [
-        { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc, heading: "Laboratory Tests (on first admission for treatment)" },
+        { question: 'Date of Test', questionType: questionType, questionId: 'i-6_0', inputtype: 'date', options: [], value: dateoftest, setValue: setDateoftest, heading: "Laboratory Tests " },
+        { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc },
         { question: 'Hemoglobin (Hb):', questionType: questionType, questionId: 'i-7', inputtype: 'text', options: [], value: hb, setValue: setHb },
         { question: "Red Blood Cell Count (RBC) (10^6/uL):" , questionType: questionType, questionId: 'i-8', inputtype: 'text', options: [], value: rbc, setValue: setRbc },
         { question: "Total Leukocyte Count (TLC) (10^3/uL):", questionType: questionType, questionId: 'i-9', inputtype: 'text', options: [], value: tlc, setValue: setTlc },
@@ -121,9 +126,9 @@ const Investigations = () =>  {
         { question: "Large Immature Cells Count:", questionType: questionType, questionId: 'i-15', inputtype: 'text', options: [], value: largeimmaturecellcount, setValue: setLargeimmaturecellcount },
         { question: "Large Immature Cells (LIC) Count (10^3/uL):" , questionType: questionType, questionId: 'i-16', inputtype: 'text', options: [], value: lic, setValue: setLic },
         { question: "Platelet Count (10^3/uL):", questionType: questionType, questionId: 'i-17', inputtype: 'text', options: [], value: plateletcount, setValue: setPlateletcount },
-        { question: "COVID in Past:", questionType: questionType, questionId: 'i-18', inputtype: 'text', options: [], value: covidinpast, setValue: setCovidinpast },
-        { question: "COVID Vaccine:", questionType: questionType, questionId: 'i-19', inputtype: 'text', options: [], value: covidvaccine, setValue: setCovidvaccine },
-        { question: "Vaccine Name:", questionType: questionType, questionId: 'i-20', inputtype: 'text', options: [], value: vaccinename, setValue: setVaccinename },
+        // { question: "COVID in Past:", questionType: questionType, questionId: 'i-18', inputtype: 'text', options: [], value: covidinpast, setValue: setCovidinpast },
+        // { question: "COVID Vaccine:", questionType: questionType, questionId: 'i-19', inputtype: 'text', options: [], value: covidvaccine, setValue: setCovidvaccine },
+        // { question: "Vaccine Name:", questionType: questionType, questionId: 'i-20', inputtype: 'text', options: [], value: vaccinename, setValue: setVaccinename },
         { question: "Renal Function Test (RFT) - Creatinine Clearance:", questionType: questionType, questionId: 'i-21', inputtype: 'text', options: [], value: rft, setValue: setRft },
         { question: "Serum Creatinine Level:",questionType: questionType, questionId: 'i-36', inputtype: 'text', options: [], value: serumcreatinelevel, setValue: setSerumcreatinelevel },
         { question: "Blood Urea Level:", questionType: questionType, questionId: 'i-22', inputtype: 'text', options: [], value: bloodurealevel, setValue: setBloodurealevel },
@@ -338,7 +343,8 @@ const Investigations = () =>  {
             alpha.some( i => lic.includes(i)) ||
             alpha.some( i => lft.includes(i)) ||
             alpha.some( i => directbilirubin.includes(i)) ||
-            alpha.some( i => indirectbilirubin.includes(i)) 
+            alpha.some( i => indirectbilirubin.includes(i)) ||
+            dateoftest === "" 
     //    cbc === "" ||
     //    hb === "" ||
     //    rbc === "" ||

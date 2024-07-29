@@ -155,7 +155,7 @@ const ClinicalProfile = [
     { question: "Covid Vaccine:", questionType: "Clinical Profile", questionId: 'c4-4',updates:[], value:"" },
     { question: "Which Vaccine:", questionType: "Clinical Profile", questionId: 'c4-5',updates:[], value:"" },
 
-
+    { question: "ASA:", questionType: "Clinical Profile", questionId: 'c5-0', updates:[], value:"" },
     { question: "PS(ECOG):", questionId: "c5-1",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Height (cms):", questionId: "c5-2",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Weight (kgs):", questionId: "c5-3",updates:[], value:"",questionType: "Clinical Profile" },
@@ -164,8 +164,11 @@ const ClinicalProfile = [
     { question: "BMI (kg/m2):", questionId: "c5-6",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Muscle Wasting:", questionId: "c5-7",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Other Positive Finding:", questionId: "c5-8",updates:[], value:"",questionType: "Clinical Profile" },
+
+
+
     { question: "Primary Site:", questionId: "c6-1",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "Select the most appropriate one:", questionId: "c6-2",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "Specific Site:", questionId: "c6-2",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Site of tumor (Epicenter)-Right or Left:", questionId: "c6-3",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Reaching Midline:", questionId: "c6-4",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Size (cm):", questionId: "c6-5",updates:[], value:"",questionType: "Clinical Profile" },
@@ -178,7 +181,9 @@ const ClinicalProfile = [
     { question: "Erythroplakia:", questionId: "c6-12",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Mouth Opening (cm):", questionId: "c6-13",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Tongue Protrusion:", questionId: "c6-14",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "CT Stage:", questionId: "c6-15",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "cT Stage:", questionId: "c6-15",updates:[], value:"",questionType: "Clinical Profile" },
+
+
     { question: "Number of Palpable Nodes:", questionId: "c7-1",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Level :", questionId: "c7-2",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Size of Largest Palpable Node (cm):", questionId: "c7-3",updates:[], value:"",questionType: "Clinical Profile" },
@@ -187,7 +192,7 @@ const ClinicalProfile = [
     { question: "Contralateral Nodes (C/L):", questionId: "c7-6",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "ENE in C/L Nodes:", questionId: "c7-7",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "c N Stage:", questionId: "c7-8",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "c Stage:", questionId: "c7-9",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "c M Stage:", questionId: "c7-9",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Other Significant Findings:", questionId: "c7-10",updates:[], value:"",questionType: "Clinical Profile" }
 ]
 
@@ -312,6 +317,7 @@ const Investigation = [
     { question: 'Histology', questionId: 'i-3',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Grade (Biopsy):', questionId: 'i-4',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Any Special Features', questionId: 'i-5',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'Date of Test',  questionId: 'i-6_0',updates:[], value:"",questionType: 'Investigation' },
     { question: 'CBC (Complete Blood Count):', questionId: 'i-6',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Hemoglobin (Hb):', questionId: 'i-7',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Red Blood Cell Count (RBC) (10^6/uL):', questionId: 'i-8',updates:[], value:"",questionType: 'Investigation' },
@@ -324,9 +330,9 @@ const Investigation = [
     { question: 'Large Immature Cells Count:', questionId: 'i-15',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Large Immature Cells (LIC) Count (10^3/uL):', questionId: 'i-16',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Platelet Count (10^3/uL):', questionId: 'i-17',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'COVID in Past:', questionId: 'i-18',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'COVID Vaccine:', questionId: 'i-19',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Vaccine Name:', questionId: 'i-20',updates:[], value:"",questionType: 'Investigation' },
+    // { question: 'COVID in Past:', questionId: 'i-18',updates:[], value:"",questionType: 'Investigation' },
+    // { question: 'COVID Vaccine:', questionId: 'i-19',updates:[], value:"",questionType: 'Investigation' },
+    // { question: 'Vaccine Name:', questionId: 'i-20',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Renal Function Test (RFT) - Creatinine Clearance:', questionId: 'i-21',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Serum Creatinine Level:', questionId: 'i-36',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Blood Urea Level:', questionId: 'i-22',updates:[], value:"",questionType: 'Investigation' },

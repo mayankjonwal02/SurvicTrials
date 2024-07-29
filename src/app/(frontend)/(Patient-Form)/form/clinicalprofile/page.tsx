@@ -127,6 +127,7 @@ const ClinicalProfile = () => {
 
     //  Physical Examination
 
+    const [asa, setAsa] = React.useState("");
     const [ps, setPs] = React.useState("");
     const [height, setHeight] = React.useState("");
     const [weight, setWeight] = React.useState("");
@@ -237,7 +238,7 @@ useEffect(() => {
         { question: 'Lymphoma:', questionType: questionType, questionId: 'c2-40', inputtype: 'dropdown', options: ["Yes", "No"], value: lymphoma, setValue: setLymphoma },
         { question: 'AIDS:', questionType: questionType, questionId: 'c2-41', inputtype: 'dropdown', options: ["Yes", "No"], value: aids, setValue: setAids },
         { question: 'Points Score:', questionType: questionType, questionId: 'c2-42', inputtype: 'dropdown', options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"], value: pointscore, setValue: setPointscore },
-        { question: 'Estimated 10-Year Survival (in %):', questionType: questionType, questionId: 'c2-43', inputtype: 'text', options: [], value: estimatedsurvival, setValue: setEstimatedsurvival },
+        { question: 'Estimated 10-Year Survival (in %):', questionType: questionType, questionId: 'c2-43', inputtype: 'text', options: [], value: estimatedsurvival, setValue: setEstimatedsurvival ,restriction:(alpha.some(i => estimatedsurvival.includes(i))),restrictiontext:"alphabets not allowed "},
 
     ]
 
@@ -305,24 +306,31 @@ useEffect(() => {
     ]
 
     const questions6 = [
-        { question: "PS(ECOG):", questionType: questionType, questionId: 'c5-1', inputtype: 'dropdown', options: ["0", "1", "2"], value: ps, setValue: setPs, heading: "Physical Examination" },
+        { question: "ASA:", questionType: questionType, questionId: 'c5-0', inputtype: 'dropdown', options: ["0", "1", "2","3",'4'], value: asa, setValue: setAsa, heading: "Physical Examination" },
+        { question: "PS(ECOG):", questionType: questionType, questionId: 'c5-1', inputtype: 'dropdown', options: ["0", "1", "2"], value: ps, setValue: setPs },
         { question: "Height (cms):", questionType: questionType, questionId: 'c5-2', inputtype: 'text', options: [], value: height, setValue: setHeight, restriction:(alpha.some(i => height.includes(i))),restrictiontext:"alphabets not allowed" },
         { question: "Weight (kgs):", questionType: questionType, questionId: 'c5-3', inputtype: 'text', options: [], value: weight, setValue: setWeight, restriction:(alpha.some(i => weight.includes(i))),restrictiontext:"alphabets not allowed" },
         { question: "Weight Loss (%):", questionType: questionType, questionId: 'c5-4', inputtype: 'text', options: [], value: weightlosspercentage, setValue: setWeightlosspercentage, restriction:(alpha.some(i => weightlosspercentage.includes(i))),restrictiontext:"alphabets not allowed" },
         { question: "BSA (/m2):", questionType: questionType, questionId: 'c5-5', inputtype: 'text', options: [], value: bsa, setValue: setBsa , restriction:(alpha.some(i => bsa.includes(i))),restrictiontext:"alphabets not allowed" },
         { question: "BMI (kg/m2):", questionType: questionType, questionId: 'c5-6', inputtype: 'text', options: [], value: bmi, setValue: setBmi, restriction:(alpha.some(i => bmi.includes(i))),restrictiontext:"alphabets not allowed" },
-        { question: "Muscle Wasting:", questionType: questionType, questionId: 'c5-7', inputtype: 'dropdown', options: ["General", "Temporal"], value: musclewasting, setValue: setMusclewasting },
+        { question: "Muscle Wasting:", questionType: questionType, questionId: 'c5-7', inputtype: 'dropdown', options: ["General", "Temporal",'No'], value: musclewasting, setValue: setMusclewasting },
         { question: "Other Positive Finding:", questionType: questionType, questionId: 'c5-8', inputtype: 'text', options: [], value: otherpositivefindings, setValue: setOtherpositivefindings },
 
     ]
-
+    const [tumorheight, setTumorheight] = useState('');
+    const [tumorwidth, setTumorwidth] = useState('');
+    useEffect(() => {
+        if(tumorheight!="" && tumorwidth!=""){
+        setTumorsize(tumorheight + " x " + tumorwidth);
+        }
+    }, [tumorheight, tumorwidth]);
 
     const questions7 = [
-        { question: "Primary Site:", questionType: questionType, questionId: 'c6-1', inputtype: 'text', options: [], value: primarysite, setValue: setPrimarysite, heading: "Clinical Examination" },
-        { question: "Select the most appropriate one:", questionType: questionType, questionId: 'c6-2', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "RMT", "FOM", "Oral Tougue"], value: clinicalappropriate, setValue: setClinicalappropriate },
+        { question: "Primary Site:", questionType: questionType, questionId: 'c6-1', inputtype: 'dropdown', options: ["Upper Bucco-Alveolar (BA) Complex","Lower BA complex or Tongue"], value: primarysite, setValue: setPrimarysite, heading: "Clinical Examination" },
+        { question: "Specific Site:", questionType: questionType, questionId: 'c6-2', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "RMT", "FOM", "Oral Tougue"], value: clinicalappropriate, setValue: setClinicalappropriate },
         { question: "Site of tumor (Epicenter)-Right or Left:", questionType: questionType, questionId: 'c6-3', inputtype: 'dropdown', options: ["Right", "Left"], value: siteoftumor, setValue: setSiteoftumor },
         { question: "Reaching Midline:", questionType: questionType, questionId: 'c6-4', inputtype: 'dropdown', options: ["Yes", "No"], value: reachingmidline, setValue: setReachingmidline },
-        { question: "Size (cm):", questionType: questionType, questionId: 'c6-5', inputtype: 'text', options: [], value: tumorsize, setValue: setTumorsize },
+        { question: "Size (cm):", questionType: questionType, questionId: 'c6-5', inputtype: 'multitext', options: [], value: tumorsize, setValue: setTumorsize, subParts:[{s_question:"Tumor Height (cm):",s_answer:tumorheight,s_setanswer:setTumorheight},{s_question:"Tumor Width (cm):",s_answer:tumorwidth,s_setanswer:setTumorwidth}], restriction:(alpha.some(i => (i!=="x" && tumorsize.includes(i)))),restrictiontext:"alphabets not allowed" },
         { question: "Proliferative/Infiltrative/Prolifero-infilterative:", questionType: questionType, questionId: 'c6-6', inputtype: 'dropdown', options: ["Proliferative", "Infiltrative", "Prolifero-infilterative"], value: pipi, setValue: setPipi },
         { question: "Skin Involved:", questionType: questionType, questionId: 'c6-7', inputtype: 'dropdown', options: ["Yes", "No"], value: skininvolved, setValue: setSkininvolved },
         { question: "Gross Fungation/Edema/Ulceration:", questionType: questionType, questionId: 'c6-8', inputtype: 'dropdown', options: ["Gross Fungation", "Edema", "Ulceration"], value: gfeu, setValue: setGfeu },
@@ -330,22 +338,47 @@ useEffect(() => {
         { question: "OSMF:", questionType: questionType, questionId: 'c6-10', inputtype: 'dropdown', options: ["Yes", "No"], value: osmf, setValue: setOsmf },
         { question: "Leukoplakia:", questionType: questionType, questionId: 'c6-11', inputtype: 'dropdown', options: ["Yes", "No"], value: leukoplakia, setValue: setLeukoplakia },
         { question: "Erythroplakia:", questionType: questionType, questionId: 'c6-12', inputtype: 'dropdown', options: ["Yes", "No"], value: erythroplakia, setValue: setErythroplakia },
-        { question: "Mouth Opening (cm):", questionType: questionType, questionId: 'c6-13', inputtype: 'text', options: [], value: mouthopening, setValue: setMouthopening },
+        { question: "Mouth Opening (cm):", questionType: questionType, questionId: 'c6-13', inputtype: 'text', options: [], value: mouthopening, setValue: setMouthopening , restriction:(alpha.some(i => (mouthopening.includes(i)))),restrictiontext:"alphabets not allowed"},
         { question: "Tongue Protrusion:", questionType: questionType, questionId: 'c6-14', inputtype: 'dropdown', options: ["Restricted", "Normal"], value: tougueprotrusion, setValue: setTougueprotrusion },
-        { question: "CT Stage:", questionType: questionType, questionId: 'c6-15', inputtype: 'text', options: [], value: ctstage, setValue: setCtstage },
+        { question: "cT Stage:", questionType: questionType, questionId: 'c6-15', inputtype: 'dropdown', options: ["Tx","T0", "T1", "T2", "T3","T4a","T4b"], value: ctstage, setValue: setCtstage },
 
     ]
 
+
+    const [heightoflargestpalpable, setHeightoflargestpalpable] = useState("");
+    const [widthoflargestpalpable, setWidthoflargestpalpable] = useState("");
+
+    useEffect(() => {
+        if (heightoflargestpalpable !== "" && widthoflargestpalpable !== "") {
+            setSizeoflargestpalpable(heightoflargestpalpable + "x" + widthoflargestpalpable)
+        }
+    }, [heightoflargestpalpable, widthoflargestpalpable])
+
     const questions8 = [
-        { question: "Number of Palpable Nodes:", questionType: questionType, questionId: 'c7-1', inputtype: 'text', options: [], value: necknodes, setValue: setNecknodes, heading: "Neck Nodes" },
+        { question: "Number of Palpable Nodes:", questionType: questionType, questionId: 'c7-1', inputtype: 'text', options: [], value: necknodes, setValue: setNecknodes, heading: "Neck Nodes", restriction :(alphaspecial.some(i => necknodes.includes(i))),restrictiontext:"alphabets and special charaxters not allowed"},
         { question: "Level :", questionType: questionType, questionId: 'c7-2', inputtype: 'dropdown', options: ["1", "2a", "2b", "3", "4", "5"], value: levelofnodes, setValue: setLevelofnodes },
-        { question: "Size of Largest Palpable Node (cm):", questionType: questionType, questionId: 'c7-3', inputtype: 'text', options: [], value: sizeoflargestpalpable, setValue: setSizeoflargestpalpable },
+        { question: "Size of Largest Palpable Node (cm):", questionType: questionType, questionId: 'c7-3', inputtype: 'multitext', options: [], value: sizeoflargestpalpable, setValue: setSizeoflargestpalpable, subParts:[{s_question:"Height",s_answer:heightoflargestpalpable,s_setanswer:setHeightoflargestpalpable},{s_question:"Width",s_answer:widthoflargestpalpable,s_setanswer:setWidthoflargestpalpable}] , restriction:(alpha.some(i => (i!=="x" && sizeoflargestpalpable.includes(i)))),restrictiontext:"alphabets not allowed" },
         { question: "Gross ENE:", questionType: questionType, questionId: 'c7-4', inputtype: 'dropdown', options: ["Yes", "No"], value: grossene, setValue: setGrossene },
         { question: "What suggests ENE:", questionType: questionType, questionId: 'c7-5', inputtype: 'dropdown', options: ["Skin Invasion", "Muscle Invasion", "Vessel"], value: whatsuggestene, setValue: setWhatsuggestene },
         { question: "Contralateral Nodes (C/L):", questionType: questionType, questionId: 'c7-6', inputtype: 'dropdown', options: ["Yes", "No"], value: contralateralnodes, setValue: setContralateralnodes },
         { question: "ENE in C/L Nodes:", questionType: questionType, questionId: 'c7-7', inputtype: 'dropdown', options: ["Yes", "No"], value: eneinclnodes, setValue: setEneinclnodes },
-        { question: "c N Stage:", questionType: questionType, questionId: 'c7-8', inputtype: 'text', options: [], value: cnstage, setValue: setCnstage },
-        { question: "c Stage:", questionType: questionType, questionId: 'c7-9', inputtype: 'text', options: [], value: cstage, setValue: setCstage },
+        { question: "c N Stage:", questionType: questionType, questionId: 'c7-8', inputtype: 'dropdown', options: [
+            "Nx",
+            "N0",
+            "N1",
+            "pN1",
+            "N2a",
+            "pN2a",
+            "N2b",
+            "pN2b",
+            "N2c",
+            "pN2c",
+            "N3a",
+            "pN3a",
+            "N3b",
+            "pN3b"
+          ], value: cnstage, setValue: setCnstage },
+        { question: "c M Stage:", questionType: questionType, questionId: 'c7-9', inputtype: 'dropdown', options: ["M0","M1"], value: cstage, setValue: setCstage },
         { question: "Other Significant Findings:", questionType: questionType, questionId: 'c7-10', inputtype: 'text', options: [], value: othersignificantfindings, setValue: setOthersignificantfindings },
 
     ]
@@ -1131,7 +1164,7 @@ useEffect(() => {
         if (
             
 
-            alpha.some(i => tumorsize.includes(i)) || 
+            alpha.some(i => (i!=="x" && tumorsize.includes(i))) || 
             alpha.some(i => mouthopening.includes(i)) 
             // ctstage === ""
 
@@ -1232,7 +1265,7 @@ useEffect(() => {
            
             // sizeoflargestpalpable === "" ||
 
-            alpha.some(i => sizeoflargestpalpable.includes(i)) || 
+            alpha.some(i =>   (i!=="x" && sizeoflargestpalpable.includes(i))) || 
             alphaspecial.some(i => necknodes.includes(i))
             
 

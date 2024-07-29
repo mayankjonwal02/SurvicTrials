@@ -15,6 +15,7 @@ import { motion, useScroll } from "framer-motion"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCircleExclamation, faDroplet, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { cn } from '@/lib/utils';
+import { Scrollbar } from '@radix-ui/react-scroll-area';
 interface Question {
     question: string;
     subQuestions?: string[];
@@ -120,7 +121,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                             </DropdownMenuTrigger>
 
                                             <DropdownMenuContent>
-                                                <ScrollArea className='max-h-[300px]'>
+                                                <ScrollArea className='max-h-[300px] overflow-auto'>
                                                     <DropdownMenuLabel>Choose Option</DropdownMenuLabel>
                                                     <DropdownMenuSeparator />
                                                     {question.options.map((option, optIndex) => (
@@ -128,6 +129,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                                             {option}
                                                         </DropdownMenuItem>
                                                     ))}
+                                                    <Scrollbar orientation='vertical' />
                                                 </ScrollArea>
                                             </DropdownMenuContent>
                                         </DropdownMenu>
