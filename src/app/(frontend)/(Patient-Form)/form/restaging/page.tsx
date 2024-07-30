@@ -69,7 +69,7 @@ const Restaging = () =>{
 
     const questions1 = [
         { question: 'Method of restaging:', questionType: questionType, questionId: 'r-1', inputtype: 'text', options: [], value: methodOfRestaging, setValue: setMethodOfRestaging , heading:"Restaging"},
-        { question: 'Clinical Examination (CE) only/ or CT Scan/ or MRI/ or PET CT:', questionType: questionType, questionId: 'r-2', inputtype: 'text', options: [], value: clinicalExamination, setValue: setClinicalExamination },
+        { question: 'Clinical Examination (CE) only/ or CT Scan/ or MRI/ or PET CT:', questionType: questionType, questionId: 'r-2', inputtype: 'dropdown', options: ["CE only", "CT Scan", "MRI", "PET CT"], value: clinicalExamination, setValue: setClinicalExamination },
         { question: 'Response on clinical assessment (*Progressive disease/ Stable disease/ Complete Response/ Partial Response):', questionType: questionType, questionId: 'r-3', inputtype: 'text', options: [], value: responseCategory, setValue: setResponseCategory }
     ]
 

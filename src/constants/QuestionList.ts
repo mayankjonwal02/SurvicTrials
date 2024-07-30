@@ -480,6 +480,8 @@ const Investigation = [
     { question: 'Lesion 3 Location', questionType: "Investigation", questionId: 'i-58_6', inputtype: 'text',  updates:[],value:"" },
     { question: 'Lesion 3 Size', questionType: "Investigation", questionId: 'i-58_7', inputtype: 'text', updates:[],value:"" },
     { question: 'Lesion 3 Marked on scan', questionType: "Investigation", questionId: 'i-58_8', updates:[],value:"" }      ]
+
+    
 const Postoperativecom = [
     { question: 'Postoperative Complications:', questionId: 'p1-1',updates:[], value:"",questionType: 'Post-Operative Complications' },
     { question: 'Grade of Complications:', questionId: 'p1-2',updates:[], value:"",questionType: 'Post-Operative Complications' },
