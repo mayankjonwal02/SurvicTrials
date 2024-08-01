@@ -10,6 +10,12 @@ import {
     TabsTrigger,
   } from "@/components/ui/tabs"
 import { sub } from 'date-fns';
+import HeadDrop from '@/components/HeadDrop';
+
+interface updateType {
+    questionId: string;
+    updates:any[]
+}
 const Investigations = () =>  {
     const { toast } = useToast()
     const router = useRouter();
@@ -110,7 +116,9 @@ const Investigations = () =>  {
     const [lesion3Location, setLesion3Location] = useState('');
     const [lesion3Size, setLesion3Size] = useState('');
     const [lesion3Marked, setLesion3Marked] = useState('');
+    const [responseCategory1, setResponseCategory1] = useState('');
 
+    const [updates, setUpdates] = useState<updateType[]>([]);
 
     
 
@@ -172,7 +180,12 @@ const Investigations = () =>  {
     }, [height, width, depth])
 
     const questions3 = [
-        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging, heading: "Staging Radiology" },
+        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging, heading: "Staging Radiology", info:[
+            "1. Complete response (CR): Disappearance of all target and non-target lesions. SAD of previously pathological lymph nodes should be <10 mm",
+            "2. Partial response (PR): ≥30% decrease in the SLD of target lesions.",
+            "3. Stable disease (SD): neither unequivocal progression or regression.",
+            "4. Progressive disease (PD): ≥20% increase in the SLD of target lesions compared to smallest SLD in the study (nadir) AND ≥5 mm SLD increase OR progression of non-target lesions OR new lesions."
+        ] },
         { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionType: questionType, questionId: 'i-38', inputtype: 'dropdown', options: ["Upper BA Complex", "Lower BA Complex", "Tongue"], value: subsite, setValue: setSubsite },
         { question: 'USG/CT/MRI/PET:', questionType: questionType, questionId: 'i-39', inputtype: 'dropdown', options: ['USG', 'CT', 'MRI', 'PET'], value: imagingType, setValue: setImagingType },
         { question: 'Site (Epicenter of tumor):', questionType: questionType, questionId: 'i-40', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "Central Alveolus", "RMT", "FOM", "Oral Tongue"], value: site, setValue: setSite },
@@ -202,7 +215,9 @@ const Investigations = () =>  {
         { question: 'Lesion 2 Marked on scan', questionType: questionType, questionId: 'i-58_5', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion2Marked, setValue: setLesion2Marked },
         { question: 'Lesion 3 Location', questionType: questionType, questionId: 'i-58_6', inputtype: 'text', options: [], value: lesion3Location, setValue: setLesion3Location },
         { question: 'Lesion 3 Size', questionType: questionType, questionId: 'i-58_7', inputtype: 'text', options: [], value: lesion3Size, setValue: setLesion3Size, restriction: alpha.some(i => lesion3Size.includes(i)), restrictiontext: 'Alphabets are not allowed' },
-        { question: 'Lesion 3 Marked on scan', questionType: questionType, questionId: 'i-58_8', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion3Marked, setValue: setLesion3Marked }     
+        { question: 'Lesion 3 Marked on scan', questionType: questionType, questionId: 'i-58_8', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion3Marked, setValue: setLesion3Marked }     ,
+        { question: 'Response on clinical assessment', questionType: questionType, questionId: 'i-58_9', inputtype: 'dropdown', options: ['*Progressive disease', 'Stable disease','Complete Response','Partial Response'], value: responseCategory1, setValue: setResponseCategory1 }     
+
     ];
     
 
@@ -211,6 +226,7 @@ const Investigations = () =>  {
 
         const fetchalldata = async () => 
         {
+            let updateArray: { questionId: string; updates: any; }[] = []
             setDataloading(true);
         const storedpatient_trial_number =localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
@@ -230,16 +246,38 @@ const Investigations = () =>  {
                 const questiondata = apidata.data.data;
                 const questionsArray = [questions1, questions2, questions3]
                 questionsArray.forEach((question_list) => {
-                    question_list.map((question) => {
+                    question_list.map((question : any) => {
                         const requiredquestionid = question.questionId;
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
+                        const questionupdates =questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.updates;
                         
                         questionvalue !== undefined && question.setValue(questionvalue)
+                        if(question.inputtype === "multitext")
+                            {
+                                const subparts = question.subParts
+                                const questionsubparts = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.subParts
+                                if(questionsubparts !== undefined && subparts !== undefined)
+                                {
+                                    subparts.map((subpart : any , index : number) => {
+                                        subpart.s_setanswer(questionsubparts[index].s_answer)
+                                    })
+                                }
+                            }
+                    //    console.log(questionupdates)
+
+                        questionupdates !== undefined && updateArray.push({
+                            questionId: question.questionId,
+                            updates: questionupdates})
+
+                        
 
                         
 
                     })
                 })
+
+                setUpdates(updateArray);
+                
                 
 
             }
@@ -267,6 +305,8 @@ const Investigations = () =>  {
         fetchalldata();
         
       }, []);
+
+ 
     
         const handleSubmit1 = () => {
         if (
@@ -646,7 +686,7 @@ const Investigations = () =>  {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
-                            router.push("/form/restaging")
+                            router.push("/form/qualityoflifeassessment")
                         } else {
                             toast({
                                 title: "Error",
@@ -696,9 +736,9 @@ const Investigations = () =>  {
 
 
 
-            {tabValue==="Biopsy"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle="Investigations" loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="LaboratoryTest"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle="Investigations" loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="Radiology"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle="Investigations" loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+            {tabValue==="Biopsy"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle="Investigations" loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="LaboratoryTest"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle="Investigations" loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="Radiology"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle="Investigations" loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
            
         </div>
     );
@@ -712,7 +752,7 @@ interface CustomTabsProps {
 
 const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
     return (
-        <div className=''>
+        <div className='flex flex-col justify-center items-center gap-2'>
 
             <Tabs value={tabValue} onValueChange={setTabValue} className="">
                 <TabsList className='bg-green-1'>
@@ -722,6 +762,17 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     
                 </TabsList>
             </Tabs>
+            <HeadDrop
+          dataArray={[
+            { id: "Biopsy", title: "Biopsy" },
+            { id: "LaboratoryTest", title: "LaboratoryTest" },
+            { id: 'Radiology', title: "Radiology" },
+            
+          ]}
+          id={tabValue}
+          setId={setTabValue}
+         
+        />
         </div>
     );
 };

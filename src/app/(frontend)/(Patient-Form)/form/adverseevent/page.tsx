@@ -9,6 +9,7 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
+import HeadDrop from '@/components/HeadDrop';
 
 const Adverseevent = () => {
     const { toast } = useToast()
@@ -500,7 +501,7 @@ interface CustomTabsProps {
 
 const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
     return (
-        <div className=''>
+        <div className='flex flex-col justify-center items-center gap-2'>
 
             <Tabs value={tabValue} onValueChange={setTabValue} className="">
                 <TabsList className='bg-green-1'>
@@ -510,6 +511,18 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     
                 </TabsList>
             </Tabs>
+            <HeadDrop
+          dataArray={[
+            { id: "section1", title: "Cycle 1" },
+            { id: "section2", title: "Cycle 2" },
+            { id: 'section3', title: "Cycle 3" },
+            
+            
+          ]}
+          id={tabValue}
+          setId={setTabValue}
+         
+        />
         </div>
     );
 };

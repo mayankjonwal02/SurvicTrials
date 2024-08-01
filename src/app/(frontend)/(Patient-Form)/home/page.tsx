@@ -96,7 +96,7 @@ const home = () => {
                 setLoading(false)
                 localStorage.setItem("patienttrialnumber", patient_trial_number)
                 localStorage.setItem("task","update")
-                router.push('/form/demographic')
+                router.push('/form/counselling')
             }
             else {
 
@@ -226,7 +226,7 @@ const home = () => {
                                 <DropdownMenuTrigger asChild><Button className='bg-green-3 text-green-5 hover:bg-green-4 hover:text-green-5 text-sm border border-2 border-green-5' >
                                     {patient_trial_number !== "" ? patient_trial_number : "Select Patient Trial Number"} <FontAwesomeIcon icon={faChevronDown} className='ms-2' />
                                 </Button></DropdownMenuTrigger>
-                                <DropdownMenuContent>
+                                <DropdownMenuContent className='max-h-[300px] overflow-auto'>
                                     {idlist.map((id) => (
                                         <DropdownMenuItem key={id} onClick={() => setPatient_trial_number(id)}>
                                             {id}

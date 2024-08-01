@@ -61,26 +61,65 @@ const AdverseEvent = [
   ];
 
   
-const AdverseEventManagement = [
-    { question: 'Chemotherapy Cycle:', questionId: 'a2-1',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Adverse Event:', questionId: 'a2-2',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Start Date:', questionId: 'a2-3',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'End Date:', questionId: 'a2-4',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Admission Required:', questionId: 'a2-5',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Duration of Admission:', questionId: 'a2-6',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Antibiotics Given:', questionId: 'a2-7',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Number of Days of Antibiotics:', questionId: 'a2-8',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Nadir ANC:', questionId: 'a2-9',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Nadir Platelets:', questionId: 'a2-10',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Focus of Infection:', questionId: 'a2-11',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Transfusion:', questionId: 'a2-12',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'GCSF Given:', questionId: 'a2-13',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Dose Reduction Planned from Next Cycle:', questionId: 'a2-14',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Other Management:', questionId: 'a2-15',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Drug 1:', questionId: 'a2-16',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Drug 2:', questionId: 'a2-17',updates:[], value:"",questionType: 'Adverse Event Management' },
-    { question: 'Drug 3:', questionId: 'a2-18',updates:[], value:"",questionType: 'Adverse Event Management' }
+  const AdverseEventManagement = [
+    { question: 'Chemotherapy Cycle:', questionId: 'a2-1_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Adverse Event:', questionId: 'a2-2_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Start Date:', questionId: 'a2-3_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'End Date:', questionId: 'a2-4_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Admission Required:', questionId: 'a2-5_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Duration of Admission (in Days):', questionId: 'a2-6_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Antibiotics Given:', questionId: 'a2-7_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Number of Days of Antibiotics:', questionId: 'a2-8_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Nadir ANC:', questionId: 'a2-9_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Nadir Platelets:', questionId: 'a2-10_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Focus of Infection:', questionId: 'a2-11_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Transfusion:', questionId: 'a2-12_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'GCSF Given:', questionId: 'a2-13_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Dose Reduction Planned from Next Cycle:', questionId: 'a2-14_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Other Management:', questionId: 'a2-15_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 1:', questionId: 'a2-16_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 2:', questionId: 'a2-17_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 3:', questionId: 'a2-18_cycle1', updates: [], value: "", questionType: 'Adverse Event Management' },
+    
+    { question: 'Chemotherapy Cycle:', questionId: 'a2-1_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Adverse Event:', questionId: 'a2-2_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Start Date:', questionId: 'a2-3_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'End Date:', questionId: 'a2-4_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Admission Required:', questionId: 'a2-5_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Duration of Admission (in Days):', questionId: 'a2-6_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Antibiotics Given:', questionId: 'a2-7_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Number of Days of Antibiotics:', questionId: 'a2-8_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Nadir ANC:', questionId: 'a2-9_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Nadir Platelets:', questionId: 'a2-10_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Focus of Infection:', questionId: 'a2-11_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Transfusion:', questionId: 'a2-12_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'GCSF Given:', questionId: 'a2-13_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Dose Reduction Planned from Next Cycle:', questionId: 'a2-14_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Other Management:', questionId: 'a2-15_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 1:', questionId: 'a2-16_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 2:', questionId: 'a2-17_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 3:', questionId: 'a2-18_cycle2', updates: [], value: "", questionType: 'Adverse Event Management' },
+    
+    { question: 'Chemotherapy Cycle:', questionId: 'a2-1_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Adverse Event:', questionId: 'a2-2_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Start Date:', questionId: 'a2-3_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'End Date:', questionId: 'a2-4_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Admission Required:', questionId: 'a2-5_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Duration of Admission (in Days):', questionId: 'a2-6_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Antibiotics Given:', questionId: 'a2-7_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Number of Days of Antibiotics:', questionId: 'a2-8_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Nadir ANC:', questionId: 'a2-9_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Nadir Platelets:', questionId: 'a2-10_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Focus of Infection:', questionId: 'a2-11_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Transfusion:', questionId: 'a2-12_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'GCSF Given:', questionId: 'a2-13_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Dose Reduction Planned from Next Cycle:', questionId: 'a2-14_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Other Management:', questionId: 'a2-15_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 1:', questionId: 'a2-16_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 2:', questionId: 'a2-17_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' },
+    { question: 'Drug 3:', questionId: 'a2-18_cycle3', updates: [], value: "", questionType: 'Adverse Event Management' }
 ];
+
 
 const Randomization = [
     {question :"Treatment Arm:", questionId:"r3-1",updates:[], value:"",questionType:"Randomization"},
@@ -388,7 +427,7 @@ const Histopathology = [
     { question: 'Worst Pattern of Invasion:', questionId: 'h-18',updates:[], value:"",questionType: 'Histopathology' },
     { question: 'Residual tumor assessment:RX/R0/R1/R2:', questionId: 'h-19',updates:[], value:"",questionType: 'Histopathology' },
     { question: 'Major salivary gland:', questionId: 'h-20',updates:[], value:"",questionType: 'Histopathology' },
-    { question: 'involved/ free:', questionId: 'h-21',updates:[], value:"",questionType: 'Histopathology' },
+    { question: 'Minor salivary gland:', questionId: 'h-21',updates:[], value:"",questionType: 'Histopathology' },
     { question: 'Regional Nodes:', questionId: 'h-22',updates:[], value:"",questionType: 'Histopathology' },
     { question: 'Nodes Orientation:', questionId: 'h-23',updates:[], value:"",questionType: 'Histopathology' },
     { question: 'Total Number of Nodes Identified:', questionId: 'h-24',updates:[], value:"",questionType: 'Histopathology' },
@@ -482,29 +521,52 @@ const Investigation = [
     { question: 'Lesion 3 Marked on scan', questionType: "Investigation", questionId: 'i-58_8', updates:[],value:"" }      ]
 
     
-const Postoperativecom = [
-    { question: 'Postoperative Complications:', questionId: 'p1-1',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Grade of Complications:', questionId: 'p1-2',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Postoperative Day of Recording Complication:', questionId: 'p1-3',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Local Wound Infection:', questionId: 'p1-4',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Local Wound Infection:', questionId: 'p1-5',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Systemic Infection:', questionId: 'p1-6',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Systemic Infection:', questionId: 'p1-7',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Flap Related:', questionId: 'p1-8',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Flap Related:', questionId: 'p1-9',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Other Wound Related:', questionId: 'p1-10',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Other Wound Related:', questionId: 'p1-11',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'GI-HPB:', questionId: 'p1-12',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - GI-HPB:', questionId: 'p1-13',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Pulmonary:', questionId: 'p1-14',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Pulmonary:', questionId: 'p1-15',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Renal:', questionId: 'p1-16',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Renal:', questionId: 'p1-17',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Cardiovascular:', questionId: 'p1-18',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Cardiovascular:', questionId: 'p1-19',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Other Systemic:', questionId: 'p1-20',updates:[], value:"",questionType: 'Post-Operative Complications' },
-    { question: 'Details - Other Systemic:', questionId: 'p1-21',updates:[], value:"",questionType: 'Post-Operative Complications' }
-];
+    const Postoperativecom = [
+        { question: 'Postoperative Complications (Early):', questionId: 'p1-1_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Grade of Complications (Early):', questionId: 'p1-2_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Postoperative Day of Recording Complication (Early):', questionId: 'p1-3_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Local Wound Infection (Early):', questionId: 'p1-4_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Local Wound Infection (Early):', questionId: 'p1-5_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Systemic Infection (Early):', questionId: 'p1-6_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Systemic Infection (Early):', questionId: 'p1-7_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Flap Related (Early):', questionId: 'p1-8_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Flap Related (Early):', questionId: 'p1-9_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Other Wound Related (Early):', questionId: 'p1-10_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Other Wound Related (Early):', questionId: 'p1-11_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'GI-HPB (Early):', questionId: 'p1-12_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - GI-HPB (Early):', questionId: 'p1-13_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Pulmonary (Early):', questionId: 'p1-14_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Pulmonary (Early):', questionId: 'p1-15_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Renal (Early):', questionId: 'p1-16_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Renal (Early):', questionId: 'p1-17_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Cardiovascular (Early):', questionId: 'p1-18_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Cardiovascular (Early):', questionId: 'p1-19_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Other Systemic (Early):', questionId: 'p1-20_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Other Systemic (Early):', questionId: 'p1-21_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
+    
+        { question: 'Postoperative Complications (Delayed):', questionId: 'p1-1_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Grade of Complications (Delayed):', questionId: 'p1-2_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Postoperative Day of Recording Complication (Delayed):', questionId: 'p1-3_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Local Wound Infection (Delayed):', questionId: 'p1-4_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Local Wound Infection (Delayed):', questionId: 'p1-5_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Systemic Infection (Delayed):', questionId: 'p1-6_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Systemic Infection (Delayed):', questionId: 'p1-7_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Flap Related (Delayed):', questionId: 'p1-8_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Flap Related (Delayed):', questionId: 'p1-9_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Other Wound Related (Delayed):', questionId: 'p1-10_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Other Wound Related (Delayed):', questionId: 'p1-11_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'GI-HPB (Delayed):', questionId: 'p1-12_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - GI-HPB (Delayed):', questionId: 'p1-13_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Pulmonary (Delayed):', questionId: 'p1-14_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Pulmonary (Delayed):', questionId: 'p1-15_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Renal (Delayed):', questionId: 'p1-16_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Renal (Delayed):', questionId: 'p1-17_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Cardiovascular (Delayed):', questionId: 'p1-18_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Cardiovascular (Delayed):', questionId: 'p1-19_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Other Systemic (Delayed):', questionId: 'p1-20_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
+        { question: 'Details - Other Systemic (Delayed):', questionId: 'p1-21_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' }
+    ];
+    
 const ProtocolDeviation = [
     { question: 'Start Date:', questionId: 'p2-1',updates:[], value:"",questionType: 'Protocol Deviation' },
     { question: 'End Date:', questionId: 'p2-2',updates:[], value:"",questionType: 'Protocol Deviation' },
@@ -610,22 +672,94 @@ const Restaging = [
     { question: 'Level 1/2a/2b/3/4/5:', questionId: 'r-51',updates:[], value:"",questionType: 'Restaging' },
     { question: 'SAD of Largest Suspicious Nodes (mm):', questionId: 'r-52',updates:[], value:"",questionType: 'Restaging' },
     { question: 'USG Correlation:', questionId: 'r-53',updates:[], value:"",questionType: 'Restaging' },
-    { question: 'FNAC:', questionId: 'r-54',updates:[], value:"",questionType: 'Restaging' },
+    { question: 'FNAC Required:', questionId: 'r-54',updates:[], value:"",questionType: 'Restaging' },
     { question: 'Radiological ENE:', questionId: 'r-55',updates:[], value:"",questionType: 'Restaging' },
     { question: 'What Suggests ENE:', questionId: 'r-56',updates:[], value:"",questionType: 'Restaging' },
     { question: 'Response category (CR/PR/SD/PD):', questionId: 'r-57',updates:[], value:"",questionType: 'Restaging' }
 ];
 
 const Rtog = [
-    { question: 'Treatment Week:', questionId: 'r2-1',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'Skin:', questionId: 'r2-2',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'Mucosa:', questionId: 'r2-3',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'Pharynx:', questionId: 'r2-4',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'Larynx:', questionId: 'r2-5',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'Salivary Gland:', questionId: 'r2-6',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'Weight (in kg):', questionId: 'r2-7',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' },
-    { question: 'CBC:', questionId: 'r2-8',updates:[], value:"",questionType: 'RTOG Toxicity Assessment' }
+    // Week 1
+    { question: 'Treatment Week:', questionId: 'r2-1', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-2', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-3', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-4', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-5', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-6', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-7', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-8', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 2
+    { question: 'Treatment Week:', questionId: 'r2-9', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-10', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-11', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-12', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-13', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-14', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-15', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-16', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 3
+    { question: 'Treatment Week:', questionId: 'r2-17', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-18', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-19', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-20', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-21', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-22', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-23', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-24', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 4
+    { question: 'Treatment Week:', questionId: 'r2-25', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-26', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-27', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-28', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-29', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-30', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-31', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-32', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 5
+    { question: 'Treatment Week:', questionId: 'r2-33', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-34', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-35', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-36', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-37', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-38', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-39', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-40', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 6
+    { question: 'Treatment Week:', questionId: 'r2-41', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-42', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-43', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-44', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-45', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-46', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-47', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-48', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 7
+    { question: 'Treatment Week:', questionId: 'r2-49', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-50', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-51', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-52', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-53', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-54', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-55', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-56', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+
+    // Week 8
+    { question: 'Treatment Week:', questionId: 'r2-57', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Skin:', questionId: 'r2-58', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Mucosa:', questionId: 'r2-59', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Pharynx:', questionId: 'r2-60', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Larynx:', questionId: 'r2-61', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Salivary Gland:', questionId: 'r2-62', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'Weight (in kg):', questionId: 'r2-63', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' },
+    { question: 'CBC:', questionId: 'r2-64', updates: [], value: "", questionType: 'RTOG Toxicity Assessment' }
 ];
+
 
 const SocialHistory = [
     // For Question Set 1
@@ -689,6 +823,8 @@ const SurgicalTreatment = [
     // Surgical Treatment
     { question: 'Date of Surgery:', questionId: 's2-1',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Resection of Primary:', questionId: 's2-2',updates:[], value:"",questionType: 'Surgical Treatment' },
+    { question: 'Wide excision of soft tissue with:', questionId: 's2-2_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Wide excision of soft tissue without:', questionId: 's2-2_0_0' , updates: [], value: "", questionType: 'Surgical Treatment' },
     { question: 'Bone Resection:', questionId: 's2-3',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'ITF Clearance:', questionId: 's2-4',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Lymphadenectomy:', questionId: 's2-5',updates:[], value:"",questionType: 'Surgical Treatment' },
@@ -726,6 +862,7 @@ const SurgicalTreatment = [
     { question: 'Condition on Discharge:', questionId: 's2-33',updates:[], value:"",questionType: 'Surgical Duration' },
     { question: 'Oral Antibiotics Use (Days):', questionId: 's2-34',updates:[], value:"",questionType: 'Surgical Duration' },
     { question: 'Readmission:', questionId: 's2-35',updates:[], value:"",questionType: 'Surgical Duration' },
+    { question: 'Readmission Reason:', questionId: 's2-36',updates:[], value:"",questionType: 'Surgical Duration' },
   ];
 
 const Hpe = [
@@ -744,7 +881,6 @@ const Hpe = [
     { question: 'Cycles of chemotherapy:', questionId: 't-13',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Chemotherapy schedule:', questionId: 't-14',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Dose of chemotherapy:', questionId: 't-15',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
-    { question: 'Actual treatment delivery:', questionId: 't-16',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Dose delivered:', questionId: 't-17',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'No of fractions:', questionId: 't-18',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Dose per fraction:', questionId: 't-19',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
@@ -760,12 +896,70 @@ const Hpe = [
     { question: 'Gap correction of any:', questionId: 't-29',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Concurrent CT (Y/N):', questionId: 't-30',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Cisplatin/ Carbo/ Nimotuzumab/other…:', questionId: 't-31',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
+    { question: 'If other , then specify:', questionId: 't-16',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Dose of chemo:', questionId: 't-32',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Cycles of chemotherapy:', questionId: 't-33',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Dose of chemotherapy:', questionId: 't-34',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Dose modification:', questionId: 't-35',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
     { question: 'Reason for dose modification:', questionId: 't-36',updates:[], value:"",questionType: 'Treatment Plan after HPE' },
   ];
+
+
+  const SAE = [
+    { question: 'Record ID:', questionId: 's_1', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Subject ID:', questionId: 's_2', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Initials and Case Number:', questionId: 's_3', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Age:', questionId: 's_4', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Gender:', questionId: 's_5', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Weight (kg):', questionId: 's_6', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Height (cm):', questionId: 's_7', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Type of Report:', questionId: 's_8', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Date of Initial Report:', questionId: 's_9', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Assessment of Relatedness:', questionId: 's_10', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Event Description:', questionId: 's_11', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Date of Onset:', questionId: 's_12', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Date of Reporting:', questionId: 's_13', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Onset Lag Time (Days):', questionId: 's_14', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Location of SAE:', questionId: 's_15', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Suspected Study Drug:', questionId: 's_16', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Study Drug Indication:', questionId: 's_17', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Route of Administration:', questionId: 's_18', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Therapy Start Date:', questionId: 's_19', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Therapy Stop Date:', questionId: 's_20', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Study Intervention Discontinued:', questionId: 's_21', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Reaction Decline with Dose Adjustment:', questionId: 's_22', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Dose Details:', questionId: 's_23', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Reaction Reappear on Dose Reintroduction:', questionId: 's_24', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Reintroduce Dose Details:', questionId: 's_25', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Concomitant Drugs:', questionId: 's_26', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Similar SAE:', questionId: 's_27', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'SAE Seriousness:', questionId: 's_28', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Medical Management of the event:', questionId: 's_29', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Cause of SAE:', questionId: 's_30', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Outcome of SAE:', questionId: 's_31', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Continued on trial:', questionId: 's_32', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'PI assessment of Relatedness:', questionId: 's_33', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Communicated to Regulatory Agencies:', questionId: 's_34', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Protocol alteration required:', questionId: 's_35', updates: [], value: "", questionType: 'Serious Adverse Event' },
+    { question: 'Compensation Details:', questionId: 's_36', updates: [], value: "", questionType: 'Serious Adverse Event' }
+];
+
+const Counselling = [
+    { question: 'Patient Name:', questionId: 'cc_1', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Hospital CR Number:', questionId: 'cc_2', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Date of Visit:', questionId: 'cc_3', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Counselling Done By:', questionId: 'cc_4', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Result of Screening (Eligible/Ineligible):', questionId: 'cc_5', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Patient Information Sheet Hand Over (Yes/No):', questionId: 'cc_6', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Patient Queries (Enumerate):', questionId: 'cc_7', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Patient Query Answered (Yes/No):', questionId: 'cc_8', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Outcome of Counselling (Agree/Disagree):', questionId: 'cc_9', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'If Disagree - Mention Reason:', questionId: 'cc_10', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Planned Date of Enrollment:', questionId: 'cc_11', updates: [], value: "", questionType: 'Counselling' },
+    { question: 'Trial Number:', questionId: 'cc_12', updates: [], value: "", questionType: 'Counselling' },
+];
+
+
   type QuestionCategory = {
     updates: any;
     question: string;
@@ -797,6 +991,8 @@ const AllQuestions : AllQuestionsType = {
     "Surgical Treatment":SurgicalTreatment,
     "Treatment Plan after HPE":Hpe,
     "Randomization":Randomization   ,
+    "Serious Adverse Event":SAE,
+    "Counselling":Counselling
 
 
 }

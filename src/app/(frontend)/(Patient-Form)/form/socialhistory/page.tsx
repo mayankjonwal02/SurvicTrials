@@ -10,6 +10,7 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
+import HeadDrop from '@/components/HeadDrop';
 
 const SocialHistory = () => {
     const { toast } = useToast()
@@ -637,9 +638,12 @@ interface CustomTabsProps {
     setTabValue: (value: string) => void;
 }
 
+
+
 const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
+  
     return (
-        <div className=''>
+        <div className='flex flex-col gap-1 justify-center items-center'>
 
             <Tabs value={tabValue} onValueChange={setTabValue} className="">
                 <TabsList className='bg-green-1'>
@@ -652,6 +656,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     
                 </TabsList>
             </Tabs>
+            <HeadDrop dataArray={[{id:"1",title:"Smoking"},{id:"2",title:"Caffeine"},{id:"3",title:"Alcohol"},{id:"4",title:"Drugs"},{id:"5",title:"Other"}]} id={tabValue} setId={setTabValue}/>
         </div>
     );
 };

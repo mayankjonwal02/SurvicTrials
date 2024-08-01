@@ -16,7 +16,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCircleExclamation, faDroplet, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { cn } from '@/lib/utils';
 import { Scrollbar } from '@radix-ui/react-scroll-area';
+
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+  
+  import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "@/components/ui/table"
+
+
 interface Question {
+    questionId?: string;
     question: string;
     subQuestions?: string[];
     options: string[];
@@ -45,9 +67,10 @@ interface CustomFormProps {
     formtitle: String;
     loading: boolean;
     tabs?: React.ReactNode;
+    updates?: { questionId: string; updates: any[] }[]
 }
 
-const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, buttontitle, formtitle, loading, tabs }) => {
+const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, buttontitle, formtitle, loading, tabs , updates }) => {
     const [task, setTask] = useState("")
     useEffect(() => {
         const storedtask = localStorage.getItem("task");
@@ -65,7 +88,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
             <div className='text-2xl font-bold text-green-5 my-5 text-center max-w-[90%]  mx-0 '>{formtitle}</div>
             <div className='w-[90%] h-[80%] flex flex-col justify-center bg-white/30 items-center mt-7 py-4 '>
                 <ScrollArea ref={scrollRef} className='w-full h-full md:px-6' style={{ scrollbarColor: "#d9d9d9 #f0f0f0" }}>
-                    <div className='w-full  flex flex-col justify-center items-center '>
+                    <div className='w-full  flex flex-col justify-center items-center mb-10'>
 
                         {tabs ? <>{tabs}</> : <></>}
                     </div>
@@ -78,7 +101,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                             {question.info && (
 
                                 <div className='list-disc ml-4'>
-                                    <b className='mb-10'>Points to be noted:</b>
+                                    <b className='mb-10 mt-[60px]'>Points to be noted:</b>
 
                                     {question.info.map((information: string, infoIndex) => (
                                         information !== "" ? (
@@ -110,22 +133,22 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                             <DropdownMenuTrigger className='w-fit p-2 border rounded-lg m-2'>
                                                 <Button
                                                     className={cn(
-                                                        "w-full p-2 border rounded-lg",
+                                                        "w-fit p-2 border rounded-lg",
                                                         (question.value === "" && task === "update") ? "bg-red-300" : "text-white bg-green-600 hover:bg-green-4 hover:text-green-5"
                                                     )}
                                                     onClick={() => question.setValue("")}
                                                     variant="outline"
                                                 >
-                                                    {question.value === "" ? `Choose Option` : question.value} <FontAwesomeIcon className='ml-2' icon={faCaretDown} />
+                                                    {question.value === "" ? `Choose Option` :<div className=' max-w-[300px] overflow-hidden'>{question.value}</div> } <FontAwesomeIcon className='ml-2' icon={faCaretDown} />
                                                 </Button>
                                             </DropdownMenuTrigger>
 
                                             <DropdownMenuContent>
-                                                <ScrollArea className='max-h-[300px] overflow-auto'>
+                                                <ScrollArea className='max-h-[300px] max-w-[300px] overflow-auto'>
                                                     <DropdownMenuLabel>Choose Option</DropdownMenuLabel>
                                                     <DropdownMenuSeparator />
                                                     {question.options.map((option, optIndex) => (
-                                                        <DropdownMenuItem key={optIndex} onClick={() => question.setValue(option)}>
+                                                        <DropdownMenuItem className='hover:bg-green-200' key={optIndex} onClick={() => question.setValue(option)}>
                                                             {option}
                                                         </DropdownMenuItem>
                                                     ))}
@@ -216,6 +239,52 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                     ) : (
                                         <></>
                                     )}
+                                    {updates && updates.map((update, updateIndex) => (
+                                        update.questionId === question.questionId ? (
+                                            <Dialog>
+                            <DialogTrigger>
+                              <div className="font-normal text-purple-600 cursor-pointer hover:text-fuchsia-400 text-md mb-8 ms-4">
+                                See Updates
+                              </div>
+                            </DialogTrigger>
+                            <DialogContent className="w-full md:w-[60%] h-[60%] p-4">
+                              <DialogHeader className=" flex justify-center items-center">
+                                <DialogTitle><b>Question</b> : {question.question}</DialogTitle>
+                              </DialogHeader>
+
+                              <ScrollArea className="w-full h-full rounded-lg overflow-auto bg-gray-200 ">
+                                <div className="flex flex-col h-full w-full justify-center items-center mt-5 px-3">
+                                  <Table>
+                                    {/* <TableCaption>{patient.patient_trial_number}</TableCaption> */}
+                                    <TableHeader>
+                                      <TableRow>
+                                        <TableHead>Date</TableHead>
+                                        <TableHead>Value</TableHead>
+                                        <TableHead>Updated By</TableHead>
+                                      </TableRow>
+                                    </TableHeader>
+                                    <TableBody>
+                                      {update.updates.map((update: any) => (
+                                        update.answer !== "" ? (
+                                          <TableRow key={update.date}>
+                                            <TableCell className="font-medium">{update.updatedOn}</TableCell>
+                                            <TableCell>{update.answer}</TableCell>
+                                            <TableCell>{update.updatedBy}</TableCell>
+                                          </TableRow>
+                                        ) : null
+                                      ))}
+
+
+                                    </TableBody>
+                                  </Table>
+                                </div>
+                              </ScrollArea>
+                            </DialogContent>
+                          </Dialog>
+
+                                           
+                                        ) : <></>
+                                    ))}
                                     {question.restriction && <div className='text-red-500 ps-2'>{<FontAwesomeIcon icon={faCircleExclamation} className='me-2' />}{question.restrictiontext}</div>}
 
                                 </div>

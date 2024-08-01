@@ -2,6 +2,13 @@ import { faUserPlus ,faUsers , faBookMedical , faRightFromBracket, faHandsBound,
 
 const sidebaritems = [
     {
+        title: "Counselling",
+        path: "/form/counselling",
+        icon:undefined,
+        category:"Counselling"
+        
+    },
+    {
         title: "Demographic Details",
         path: "/form/demographic",
         icon:undefined,
@@ -126,9 +133,9 @@ const sidebaritems = [
     },
     {
         title: "SAE",
-        path: "/form/rtogtoxicityassessment",
+        path: "/form/sae",
         icon:undefined,
-        category:"RTOG Toxicity Assessment"
+        category:"Serious Adverse Event"
         
     },
     {

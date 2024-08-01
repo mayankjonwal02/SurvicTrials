@@ -54,64 +54,99 @@ const AllResponses = () => {
 
   const exportPatientsToCSV = () => {
     const headers = Object.keys(AllQuestions).flatMap(category =>
-      AllQuestions[category].map(question => question.questionId)
+      AllQuestions[category].map(question => ({ questionId: question.questionId, question: question.question }))
     );
-
+  
+    // Create a mapping of questionId to question text for easy reference
+    const questionIdToText = headers.reduce((acc, { questionId, question }) => {
+      acc[questionId] = question;
+      return acc;
+    }, {} as Record<string, string>);
+  
     const data = patientsdata.map((patient: any) => {
       const patientData: any = { patient_trial_number: patient.patient_trial_number };
-
-      headers.forEach(questionId => {
+  
+      headers.forEach(({ questionId }) => {
         const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
         patientData[questionId] = matchingQuestion ? matchingQuestion.answer : "Not Answered";
       });
-
+  
       return patientData;
     });
-
-    const fields = ['patient_trial_number', ...headers];
+  
+    // Add the question text as headers
+    const fields = ['patient_trial_number', ...headers.map(header => header.question)];
     const json2csvParser = new Parser({ fields });
-    const csv = json2csvParser.parse(data);
     
+    // Adjust data to match the new header order
+    const csvData = data.map((row: any) => {
+      const newRow: any = { patient_trial_number: row.patient_trial_number };
+      headers.forEach(({ questionId, question }) => {
+        newRow[question] = row[questionId] || "Not Answered";
+      });
+      return newRow;
+    });
+  
+    const csv = json2csvParser.parse(csvData);
+  
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const timestamp = new Date().toISOString().replace(/:/g, '-');
     saveAs(blob, `patients_data_${timestamp}.csv`);
   };
+  
 
   const exportUpdatesToCSV = () => {
     const headers = Object.keys(AllQuestions).flatMap(category =>
-      AllQuestions[category].map(question => question.questionId)
+      AllQuestions[category].map(question => ({ questionId: question.questionId, question: question.question }))
     );
-
+  
+    // Create a mapping of questionId to question text
+    const questionIdToText = headers.reduce((acc, { questionId, question }) => {
+      acc[questionId] = question;
+      return acc;
+    }, {} as Record<string, string>);
+  
     const data = patientsdata.map((patient: any) => {
       const patientData: any = { patient_trial_number: patient.patient_trial_number };
-
-      headers.forEach(questionId => {
+  
+      headers.forEach(({ questionId }) => {
         const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
         if (matchingQuestion) {
-          let info = ""
-          matchingQuestion.updates.map((update: any) => {
-            if (update.answer !== "") { info = info + update.updatedOn + " : " + update.answer + " | " }
-          })
-          patientData[questionId] = info !== "" ? info : "Not Answered"
-
-        }
-        else {
+          let info = "";
+          matchingQuestion.updates.forEach((update: any) => {
+            if (update.answer !== "") {
+              info += `${update.updatedOn} : ${update.answer} | `;
+            }
+          });
+          patientData[questionId] = info !== "" ? info : "Not Answered";
+        } else {
           patientData[questionId] = "Not Answered";
         }
-
       });
-
+  
       return patientData;
     });
-
-    const fields = ['patient_trial_number', ...headers];
+  
+    // Add the question text as headers
+    const fields = ['patient_trial_number', ...headers.map(header => header.question)];
     const json2csvParser = new Parser({ fields });
-    const csv = json2csvParser.parse(data);
-
+    
+    // Adjust data to match the new header order
+    const csvData = data.map((row: any) => {
+      const newRow: any = { patient_trial_number: row.patient_trial_number };
+      headers.forEach(({ questionId, question }) => {
+        newRow[question] = row[questionId] || "Not Answered";
+      });
+      return newRow;
+    });
+  
+    const csv = json2csvParser.parse(csvData);
+  
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const timestamp = new Date().toISOString().replace(/:/g, '-');
     saveAs(blob, `updates_data_${timestamp}.csv`);
   };
+  
 
   if (loading) {
     return <div className="flex items-center justify-center h-screen w-full text-3xl font-bold text-green-5 ">

@@ -67,13 +67,15 @@ const Treatmentplanafterhpe = () => {
 
 
 
+    const alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    const alphaspecial = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
 
 
 
     const questions1 = [
-        { question: 'Plan as per HPE:', questionType: questionType, questionId: 't-1', inputtype: 'text', options: [], value: t1, setValue: setT1 },
+        { question: 'Plan as per HPE:', questionType: questionType, questionId: 't-1', inputtype: 'text', options: [], value: t1, setValue: setT1 , heading:"Planned Treatment details"},
         { question: 'Dose of radiation planned (Total dose):', questionType: questionType, questionId: 't-2', inputtype: 'text', options: [], value: t2, setValue: setT2 },
-        { question: 'Number of fractions:', questionType: questionType, questionId: 't-3', inputtype: 'text', options: [], value: t3, setValue: setT3 },
+        { question: 'Number of fractions:', questionType: questionType, questionId: 't-3', inputtype: 'text', options: [], value: t3, setValue: setT3,restriction:alpha.some(i => t3.includes(i)), restrictiontext:"Alphabets not allowed" },
         { question: 'Dose per fraction:', questionType: questionType, questionId: 't-4', inputtype: 'text', options: [], value: t4, setValue: setT4 },
         {
             question: 'RT Technique:', questionType: questionType, questionId: 't-5', inputtype: 'dropdown', options: ["2D",
@@ -102,9 +104,8 @@ const Treatmentplanafterhpe = () => {
         { question: 'Cycles of chemotherapy:', questionType: questionType, questionId: 't-13', inputtype: 'text', options: [], value: t13, setValue: setT13 },
         { question: 'Chemotherapy schedule:', questionType: questionType, questionId: 't-14', inputtype: 'dropdown', options: ["Weekly", "3-Weekly"], value: t14, setValue: setT14 },
         { question: 'Dose of chemotherapy:', questionType: questionType, questionId: 't-15', inputtype: 'text', options: [], value: t15, setValue: setT15 },
-        { question: 'Actual treatment delivery:', questionType: questionType, questionId: 't-16', inputtype: 'text', options: [], value: t16, setValue: setT16 },
-        { question: 'Dose delivered:', questionType: questionType, questionId: 't-17', inputtype: 'text', options: [], value: t17, setValue: setT17 },
-        { question: 'No of fractions:', questionType: questionType, questionId: 't-18', inputtype: 'text', options: [], value: t18, setValue: setT18 },
+        { question: 'Dose delivered:', questionType: questionType, questionId: 't-17', inputtype: 'text', options: [], value: t17, setValue: setT17 , heading:"Actual treatment delivery" },
+        { question: 'No of fractions:', questionType: questionType, questionId: 't-18', inputtype: 'text', options: [], value: t18, setValue: setT18 ,restriction:alpha.some(i => t18.includes(i)), restrictiontext:"Alphabets not allowed"},
         { question: 'Dose per fraction:', questionType: questionType, questionId: 't-19', inputtype: 'text', options: [], value: t19, setValue: setT19 },
         {
             question: 'RT Technique:', questionType: questionType, questionId: 't-20', inputtype: 'dropdown', options: ["2D",
@@ -117,7 +118,7 @@ const Treatmentplanafterhpe = () => {
         { question: 'Adaptive planning (re-plan) needed:', questionType: questionType, questionId: 't-23', inputtype: 'dropdown', options: ["Yes", "No"], value: t23, setValue: setT23 },
         { question: 'Reason for re-plan:', questionType: questionType, questionId: 't-24', inputtype: 'textarea', options: [], value: t24, setValue: setT24 },
         { question: 'Treatment break:', questionType: questionType, questionId: 't-25', inputtype: 'dropdown', options: ["Yes", "No"], value: t25, setValue: setT25 },
-        { question: 'How many days break:', questionType: questionType, questionId: 't-26', inputtype: 'text', options: [], value: t26, setValue: setT26 },
+        { question: 'How many days break:', questionType: questionType, questionId: 't-26', inputtype: 'text', options: [], value: t26, setValue: setT26 ,restriction:alphaspecial.some(i => t26.includes(i)), restrictiontext:"Alphabets and special characters not allowed"},
         {
             question: 'Reason for break:', questionType: questionType, questionId: 't-27', inputtype: 'dropdown', options: ["Grade > III toxicity",
                 "Defaulted",
@@ -126,8 +127,10 @@ const Treatmentplanafterhpe = () => {
         },
         { question: 'Other (Reason):', questionType: questionType, questionId: 't-28', inputtype: 'textarea', options: [], value: t28, setValue: setT28 },
         { question: 'Gap correction of any:', questionType: questionType, questionId: 't-29', inputtype: 'text', options: [], value: t29, setValue: setT29 },
-        { question: 'Concurrent CT (Y/N):', questionType: questionType, questionId: 't-30', inputtype: 'text', options: [], value: t30, setValue: setT30 },
-        { question: 'Cisplatin/ Carbo/ Nimotuzumab/other…:', questionType: questionType, questionId: 't-31', inputtype: 'text', options: [], value: t31, setValue: setT31 },
+        { question: 'Concurrent CT (Y/N):', questionType: questionType, questionId: 't-30', inputtype: 'dropdown', options: ["Yes", "No"], value: t30, setValue: setT30 },
+        { question: 'Cisplatin/ Carbo/ Nimotuzumab/other…:', questionType: questionType, questionId: 't-31', inputtype: 'dropdown', options: ["Cisplatin", "Carbo", "Nimotuzumab","Other"], value: t31, setValue: setT31 },
+        { question: 'If other , then specify:', questionType: questionType, questionId: 't-16', inputtype: 'text', options: [], value: t16, setValue: setT16 },
+
         { question: 'Dose of chemo:', questionType: questionType, questionId: 't-32', inputtype: 'text', options: [], value: t32, setValue: setT32 },
         { question: 'Cycles of chemotherapy:', questionType: questionType, questionId: 't-33', inputtype: 'text', options: [], value: t33, setValue: setT33 },
         { question: 'Dose of chemotherapy:', questionType: questionType, questionId: 't-34', inputtype: 'text', options: [], value: t34, setValue: setT34 },
@@ -192,9 +195,7 @@ const Treatmentplanafterhpe = () => {
 
     }, []);
 
-    const alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    const alphaspecial = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
-
+   
 
 
     const handleSubmit1 = () => {

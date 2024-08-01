@@ -3,79 +3,58 @@ import React, {useState,useEffect} from 'react'
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import CustomForm from '@/components/customform';
-import { set } from 'mongoose';
 
-const Protocoldeviation = () => {
+const Counselling = () =>  {
     const { toast } = useToast()
     const router = useRouter();
 
     const [user, setUser] = useState<any>({});
     const [userid, setUserId] = useState('');
     const [patient_trial_number, setPatient_trial_number] = React.useState("2024-BTI-1");
-
-    const [dataloading, setDataloading] = useState(false);
+    const [dataloading, setDataloading] = useState(true);
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
         setUser(storedUser);
         setUserId(storedUser.unique_id);
     }, []);
-    const questionType = "protocoldeviation";
-    const formTitle = "Protocol Deviation due to Chemotherapy"; 
+    const questionType = "Counselling";
+    const formTitle = "Concomitant Medicines";
     const [tabValue, setTabValue] = useState("section1");
     const [loading, setLoading] = React.useState(false);
 
     // Section 1
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
-    const [otherCategory, setOtherCategory] = useState('');
-    const [impactSubjectSafety, setImpactSubjectSafety] = useState('');
-    const [affectDataIntegrity, setAffectDataIntegrity] = useState('');
-    const [affectWillingness, setAffectWillingness] = useState('');
-    const [reportingDate, setReportingDate] = useState('');
-    const [piSignDate, setPiSignDate] = useState('');
-  
-
-
-
-
-
-
-
-
+    const [patientName, setPatientName] = useState('');
+    const [hospitalCRNumber, setHospitalCRNumber] = useState('');
+    const [dateOfVisit, setDateOfVisit] = useState('');
+    const [counsellingDoneBy, setCounsellingDoneBy] = useState('');
+    const [resultOfScreening, setResultOfScreening] = useState('');
+    const [patientInfoSheetHandOver, setPatientInfoSheetHandOver] = useState('');
+    const [patientQueries, setPatientQueries] = useState("");
+    const [patientQueryAnswered, setPatientQueryAnswered] = useState('');
+    const [outcomeOfCounselling, setOutcomeOfCounselling] = useState('');
+    const [reasonIfDisagree, setReasonIfDisagree] = useState('');
+    const [plannedDateOfEnrollment, setPlannedDateOfEnrollment] = useState('');
+    const [trialNumber, setTrialNumber] = useState(patient_trial_number);
 
     const questions1 = [
-        { question: 'Start Date:', questionId: 'p2-1', questionType: questionType, inputtype: 'date', options: [], value: startDate, setValue: setStartDate },
-        { question: 'End Date:', questionId: 'p2-2', questionType: questionType, inputtype: 'date', options: [], value: endDate, setValue: setEndDate },
-        { question: 'Description:', questionId: 'p2-3', questionType: questionType, inputtype: 'dropdown', options: [
-            "Wrong doses of chemotherapy or selecting regimen other than FLOT",
-            "Diagnostic Laparoscopy not done before randomization",
-            "Laparoscopic Surgery or Robotic surgery has been performed",
-            "Poor protocol adherence",
-            "a) After randomization, if chemotherapy has not been started within 2 weeks or surgery has not been done within 3 weeks.",
-            "b) Surgery is not performed within 6 weeks after neoadjuvant chemotherapy.",
-            "c) Adjuvant chemotherapy not started within 8 weeks of surgery.",
-            "Non-compliance with the International Conference on Harmonisation (ICH) guideline for Good Clinical Practice",
-            "Inaccurate or incomplete data recording",
-            "Patients who do not show up for scheduled visits, site staff should make several attempts(i.e., at least three attempts within a reasonable period of time after a missed visit) to contact these patients for follow-up information.",
-            "If the scheduled visits are missed or investigations have not been performed."
-        ], value: description, setValue: setDescription },
-        { question: 'Category:', questionId: 'p2-4', questionType: questionType, inputtype: 'dropdown', options: [ "Consent Deviation",
-            "Drug Administration/Accountability",
-            "Enrollment Deviation",
-            "Procedural Deviation",
-            "Loss of Confidentiality",
-            "Other"], value: category, setValue: setCategory },
-        { question: 'Other Category:', questionId: 'p2-5', questionType: questionType, inputtype: 'text', options: [], value: otherCategory, setValue: setOtherCategory },
-        { question: 'Does deviation/ unanticipated problem have the potential to*: Impact subject safety:', questionId: 'p2-6', questionType: questionType, inputtype: 'dropdown', options: [ "Yes","No","NA"], value: impactSubjectSafety, setValue: setImpactSubjectSafety },
-        { question: 'Does deviation/ unanticipated problem have the potential to*: Affect data integrity:', questionId: 'p2-7', questionType: questionType, inputtype: 'dropdown', options: [   "Yes","No","NA"], value: affectDataIntegrity, setValue: setAffectDataIntegrity },
-        { question: 'Does deviation/ unanticipated problem have the potential to*: Affect subject’s willingness to participate?:', questionId: 'p2-8', questionType: questionType, inputtype: 'dropdown', options: [   "Yes","No","NA"], value: affectWillingness, setValue: setAffectWillingness },
-        { question: 'Date of Reporting:', questionId: 'p2-9', questionType: questionType, inputtype: 'date', options: [], value: reportingDate, setValue: setReportingDate },
-        { question: 'PI Sign Date:', questionId: 'p2-10', questionType: questionType, inputtype: 'date', options: [], value: piSignDate, setValue: setPiSignDate }
-      ];
+        { question: 'Patient Name:', questionId: 'cc_1', questionType: questionType, inputtype: 'disabled', options: [], value: patientName, setValue: setPatientName },
+        { question: 'Hospital CR Number:', questionId: 'cc_2', questionType: questionType, inputtype: 'text', options: [], value: hospitalCRNumber, setValue: setHospitalCRNumber },
+        { question: 'Date of Visit:', questionId: 'cc_3', questionType: questionType, inputtype: 'date', options: [], value: dateOfVisit, setValue: setDateOfVisit },
+        { question: 'Counselling Done By:', questionId: 'cc_4', questionType: questionType, inputtype: 'text', options: [], value: counsellingDoneBy, setValue: setCounsellingDoneBy },
+        { question: 'Result of Screening (Eligible/Ineligible):', questionId: 'cc_5', questionType: questionType, inputtype: 'dropdown', options: ['Eligible', 'Ineligible'], value: resultOfScreening, setValue: setResultOfScreening },
+        { question: 'Patient Information Sheet Hand Over (Yes/No):', questionId: 'cc_6', questionType: questionType, inputtype: 'dropdown', options: ['Yes', 'No'], value: patientInfoSheetHandOver, setValue: setPatientInfoSheetHandOver },
+        { question: 'Patient Queries (Enumerate):', questionId: 'cc_7', questionType: questionType, inputtype: 'textarea', options: [], value: patientQueries, setValue: setPatientQueries },
+        { question: 'Patient Query Answered (Yes/No):', questionId: 'cc_8', questionType: questionType, inputtype: 'dropdown', options: ['Yes', 'No'], value: patientQueryAnswered, setValue: setPatientQueryAnswered },
+        { question: 'Outcome of Counselling (Agree/Disagree):', questionId: 'cc_9', questionType: questionType, inputtype: 'dropdown', options: ['Agree', 'Disagree'], value: outcomeOfCounselling, setValue: setOutcomeOfCounselling },
+        { question: 'If Disagree - Mention Reason:', questionId: 'cc_10', questionType: questionType, inputtype: 'textarea', options: [], value: reasonIfDisagree, setValue: setReasonIfDisagree },
+        { question: 'Planned Date of Enrollment:', questionId: 'cc_11', questionType: questionType, inputtype: 'date', options: [], value: plannedDateOfEnrollment, setValue: setPlannedDateOfEnrollment },
+        { question: 'Trial Number:', questionId: 'cc_12', questionType: questionType, inputtype: 'disabled', options: [], value: trialNumber, setValue: setTrialNumber },
+    ];
     
+
+
+
 
       useEffect( () => {
 
@@ -107,6 +86,10 @@ const Protocoldeviation = () => {
                         questionvalue !== undefined && question.setValue(questionvalue)
                     })
                 })
+
+                const userdata = apidata.data 
+
+                userdata.patientName !== undefined && setPatientName(userdata.patientName)
                 
 
             }
@@ -134,9 +117,6 @@ const Protocoldeviation = () => {
         fetchalldata();
         
       }, []);
-
-
-
 
 
     const handleSubmit1 = () => {
@@ -185,7 +165,7 @@ const Protocoldeviation = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
-                            router.push("/form/restaging")
+                            router.push("/form/demographic")
                         } else {
                             toast({
                                 title: "Error",
@@ -238,7 +218,7 @@ const Protocoldeviation = () => {
 
 
     return (
-        <div className='w-full h-screen '>
+        <div className=' w-full h-screen'>
 
 
 
@@ -249,4 +229,4 @@ const Protocoldeviation = () => {
     );
 }
 
-export default Protocoldeviation
+export default Counselling

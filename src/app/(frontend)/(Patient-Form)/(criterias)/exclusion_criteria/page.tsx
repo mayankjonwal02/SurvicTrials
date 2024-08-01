@@ -191,7 +191,7 @@ const ExclusionCriteria = () => {
                         description: jsondata.message,
                         variant: "success",
                     })
-                    router.push('/form/demographic')
+                    router.push('/form/counselling')
                 }
                 else {
                     toast({
@@ -221,7 +221,7 @@ const ExclusionCriteria = () => {
         { question: 'Patients with known HIV, hepatitis B or C infection (severe/uncompensated).', options: ['Yes', 'No'] , inputtype:'dropdown' , value: criteria5, setValue: setCriteria5 },
         {
             question: 'City of Institute.',
-            options: [user.city],  inputtype:'dropdown' , value: criteria6, setValue: setCriteria6
+            options: [],  inputtype:'dropdown' , value: criteria6, setValue: setCriteria6
         },
     ];
 

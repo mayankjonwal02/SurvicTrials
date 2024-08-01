@@ -9,7 +9,14 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
+import HeadDrop from '@/components/HeadDrop';
 
+
+  interface updateType {
+    questionId: string;
+    updates:any[]
+
+  }
 const Chemotherapyform = () => {
     const { toast } = useToast()
     const router = useRouter();
@@ -27,7 +34,7 @@ const Chemotherapyform = () => {
     const formTitle = "Chemotherapy Form";
     const [tabValue, setTabValue] = useState("section1");
     const [loading, setLoading] = React.useState(false);
-
+    const [updates, setUpdates] = useState<updateType[]>([]);
     const [dataloading, setSetDataLoading] = useState(false);
     // Section 1
     const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -56,7 +63,13 @@ const [doseModificationCycle1, setDoseModificationCycle1] = useState('');
 const [reasonForDoseModificationCycle1, setReasonForDoseModificationCycle1] = useState('');
 
 const questions1 = [
-  { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle1', inputtype: 'date', options: [], value: startDateCycle1, setValue: setStartDateCycle1 },
+  { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle1', inputtype: 'date', options: [], value: startDateCycle1, setValue: setStartDateCycle1 , info:[
+   
+    
+    "1. Haematological: Haemoglobin &gt; 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥100000/cmm3",
+    "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
+    "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
+  ]},
   { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle1', inputtype: 'dropdown', options: ["DCF", "CF", "Other"], value: regimenCycle1, setValue: setRegimenCycle1 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle1', inputtype: 'text', options: [], value: otherRegimenCycle1, setValue: setOtherRegimenCycle1 },
   { question: 'Cycle:', questionType: questionType, questionId: 'c1-4_cycle1', inputtype: 'disabled', options: ["Cycle 1", "Cycle 2", "Cycle 3"], value: cycleCycle1, setValue: setCycleCycle1 },
@@ -103,7 +116,13 @@ const [doseModificationCycle2, setDoseModificationCycle2] = useState('');
 const [reasonForDoseModificationCycle2, setReasonForDoseModificationCycle2] = useState('');
 
 const questions2 = [
-  { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle2', inputtype: 'date', options: [], value: startDateCycle2, setValue: setStartDateCycle2 },
+  { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle2', inputtype: 'date', options: [], value: startDateCycle2, setValue: setStartDateCycle2, info:[
+   
+    
+    "1. Haematological: Haemoglobin &gt; 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥100000/cmm3",
+    "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
+    "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
+  ] },
   { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle2', inputtype: 'dropdown', options: ["DCF", "CF", "Other"], value: regimenCycle2, setValue: setRegimenCycle2 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle2', inputtype: 'text', options: [], value: otherRegimenCycle2, setValue: setOtherRegimenCycle2 },
   { question: 'Cycle:', questionType: questionType, questionId: 'c1-4_cycle2', inputtype: 'disabled', options: ["Cycle 1", "Cycle 2", "Cycle 3"], value: cycleCycle2, setValue: setCycleCycle2 },
@@ -150,7 +169,13 @@ const [doseModificationCycle3, setDoseModificationCycle3] = useState('');
 const [reasonForDoseModificationCycle3, setReasonForDoseModificationCycle3] = useState('');
 
 const questions3 = [
-  { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle3', inputtype: 'date', options: [], value: startDateCycle3, setValue: setStartDateCycle3 },
+  { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle3', inputtype: 'date', options: [], value: startDateCycle3, setValue: setStartDateCycle3, info:[
+   
+    
+    "1. Haematological: Haemoglobin &gt; 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥100000/cmm3",
+    "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
+    "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
+  ] },
   { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle3', inputtype: 'dropdown', options: ["DCF", "CF", "Other"], value: regimenCycle3, setValue: setRegimenCycle3 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle3', inputtype: 'text', options: [], value: otherRegimenCycle3, setValue: setOtherRegimenCycle3 },
   { question: 'Cycle:', questionType: questionType, questionId: 'c1-4_cycle3', inputtype: 'disabled', options: ["Cycle 1", "Cycle 2", "Cycle 3"], value: cycleCycle3, setValue: setCycleCycle3 },
@@ -179,6 +204,8 @@ const questions3 = [
 
         const fetchalldata = async () => 
         {
+            let updateArray: { questionId: string; updates: any; }[] = []
+
         setSetDataLoading(true);
         const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
@@ -201,10 +228,18 @@ const questions3 = [
                     question_list.map((question) => {
                         const requiredquestionid = question.questionId;
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
-                        
+                        const questionupdates =questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.updates;
+
                         questionvalue !== undefined && question.setValue(questionvalue)
+                        questionupdates !== undefined && updateArray.push({
+                            questionId: question.questionId,
+                            updates: questionupdates})
+
                     })
                 })
+
+                setUpdates(updateArray);
+
                 
 
             }
@@ -553,9 +588,9 @@ const questions3 = [
 
 
 
-            {tabValue === "section1" && <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />}
-            {tabValue === "section2" && <CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />}
-            {tabValue === "section3" && <CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />}
+            {tabValue === "section1" && <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>}
+            {tabValue === "section2" && <CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>}
+            {tabValue === "section3" && <CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>}
         
 
         </div>
@@ -569,7 +604,7 @@ interface CustomTabsProps {
 
 const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
     return (
-        <div className=''>
+        <div className='flex flex-col justify-center items-center gap-2'>
 
             <Tabs value={tabValue} onValueChange={setTabValue} className="">
                 <TabsList className='bg-green-1'>
@@ -579,6 +614,18 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     
                 </TabsList>
             </Tabs>
+            <HeadDrop
+          dataArray={[
+            { id: "section1", title: "Cycle 1" },
+            { id: "section2", title: "Cycle 2" },
+            { id: 'section3', title: "Cycle 3" },
+            
+            
+          ]}
+          id={tabValue}
+          setId={setTabValue}
+         
+        />
         </div>
     );
 };

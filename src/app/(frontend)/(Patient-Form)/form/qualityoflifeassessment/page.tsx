@@ -9,6 +9,7 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
+import HeadDrop from '@/components/HeadDrop';
 
 const Qualityoflifeassessment = () => {
     const { toast } = useToast()
@@ -806,7 +807,7 @@ const Qualityoflifeassessment = () => {
                                 description: "Social History Profile Submitted",
                                 variant: "success",
                             })
-                            router.push('/form/surgicaltreatment')
+                            router.push('/form/randomization')
                         } else {
                             toast({
                                 title: "Error",
@@ -878,7 +879,7 @@ interface CustomTabsProps {
 
 const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
     return (
-        <div className=''>
+        <div className='flex flex-col justify-center items-center gap-2'>
 
             <Tabs value={tabValue} onValueChange={setTabValue} className="">
                 <TabsList className='bg-green-1'>
@@ -893,6 +894,22 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     
                 </TabsList>
             </Tabs>
+            <HeadDrop
+          dataArray={[
+            { id: "section1", title: "Physical Well-being" },
+            { id: "section2", title: "Social/Family Well-being" },
+            { id: 'section3', title: "Emotional Well-being" },
+            { id: 'section4', title: "Functional Well-being" },
+            { id: 'section5', title: "Head and Neck" },
+            { id: 'section6', title: "Fatigue" },
+            { id: 'section7', title: "Cost" },
+            
+          ]}
+          id={tabValue}
+          setId={setTabValue}
+         
+        />
+            
         </div>
     );
 };
