@@ -19,7 +19,7 @@ const Counselling = () =>  {
         setUserId(storedUser.unique_id);
     }, []);
     const questionType = "Counselling";
-    const formTitle = "Concomitant Medicines";
+    const formTitle = "Counselling Form";
     const [tabValue, setTabValue] = useState("section1");
     const [loading, setLoading] = React.useState(false);
 
