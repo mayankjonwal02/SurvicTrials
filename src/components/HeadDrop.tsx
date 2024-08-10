@@ -34,7 +34,7 @@ const HeadDrop: React.FC<HeadDropProps> = ({ dataArray, setId,  id}) => {
   <DropdownMenuTrigger className='w-fit'>
   <Button variant="outline" className='text-green-600 border-2 border-green-600'>{heading} <FontAwesomeIcon size='sm' className='ms-2 w-[10px]' icon={faCaretDown} /></Button>
     </DropdownMenuTrigger>
-  <DropdownMenuContent>
+  <DropdownMenuContent className='max-h-[300px]  overflow-auto'>
     <DropdownMenuLabel>Select Option</DropdownMenuLabel>
     <DropdownMenuSeparator />
     {dataArray.map((item) => (

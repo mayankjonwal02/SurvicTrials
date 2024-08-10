@@ -11,6 +11,13 @@ import {
   } from "@/components/ui/tabs"
 import HeadDrop from '@/components/HeadDrop';
 
+
+interface updateType {
+    questionId: string;
+    updates:any[]
+}
+
+
 const Qualityoflifeassessment = () => {
     const { toast } = useToast()
     const router = useRouter();
@@ -123,6 +130,8 @@ const Qualityoflifeassessment = () => {
     const [q65, setQ65] = useState('');
 
 
+    const [updates, setUpdates] = useState<updateType[]>([]);
+
  
 
 
@@ -219,6 +228,8 @@ const Qualityoflifeassessment = () => {
 
         const fetchalldata = async () => 
         {
+            let updateArray: { questionId: string; updates: any; }[] = []
+
             setDataloading(true)
         const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
@@ -241,10 +252,17 @@ const Qualityoflifeassessment = () => {
                     question_list.map((question) => {
                         const requiredquestionid = question.questionId;
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
-                        
+                        const questionupdates =questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.updates;
+
                         questionvalue !== undefined && question.setValue(questionvalue)
+                        questionupdates !== undefined && updateArray.push({
+                            questionId: question.questionId,
+                            updates: questionupdates})
                     })
                 })
+
+                setUpdates(updateArray);
+
                 
 
             }
@@ -860,13 +878,13 @@ const Qualityoflifeassessment = () => {
 
 
 
-            {tabValue==="section1"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="section2"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="section3"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="section4"?<CustomForm questions={questions4} handleSubmit={handleSubmit4} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="section5"?<CustomForm questions={questions5} handleSubmit={handleSubmit5} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="section6"?<CustomForm questions={questions6} handleSubmit={handleSubmit6} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="section7"?<CustomForm questions={questions7} handleSubmit={handleSubmit7} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+            {tabValue==="section1"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="section2"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="section3"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="section4"?<CustomForm questions={questions4} handleSubmit={handleSubmit4} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="section5"?<CustomForm questions={questions5} handleSubmit={handleSubmit5} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="section6"?<CustomForm questions={questions6} handleSubmit={handleSubmit6} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
+            {tabValue==="section7"?<CustomForm questions={questions7} handleSubmit={handleSubmit7} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} updates={updates}/>:<></>}
         </div>
     );
 }

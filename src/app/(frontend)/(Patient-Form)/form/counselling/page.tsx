@@ -90,6 +90,8 @@ const Counselling = () =>  {
                 const userdata = apidata.data 
 
                 userdata.patientName !== undefined && setPatientName(userdata.patientName)
+                userdata.patient_trial_number !== undefined && setTrialNumber(userdata.patient_trial_number)
+                
                 
 
             }

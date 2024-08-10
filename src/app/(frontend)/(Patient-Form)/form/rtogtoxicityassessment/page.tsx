@@ -39,7 +39,9 @@ const [week_1_mucosa, setWeek_1_mucosa] = useState('');
 const [week_1_pharynx, setWeek_1_pharynx] = useState('');
 const [week_1_larynx, setWeek_1_larynx] = useState('');
 const [week_1_salivaryGland, setWeek_1_salivaryGland] = useState('');
-const [week_1_weight, setWeek_1_weight] = useState('');
+const [week_1_weight_s, setWeek_1_weight_s] = useState('');
+const [week_1_weight_e, setWeek_1_weight_e] = useState('');
+const [week_1_weight, setWeek_1_weight] = useState("");
 const [week_1_cbc, setWeek_1_cbc] = useState('');
 
 const [week_2_treatmentWeek, setWeek_2_treatmentWeek] = useState('Week 2');
@@ -48,7 +50,9 @@ const [week_2_mucosa, setWeek_2_mucosa] = useState('');
 const [week_2_pharynx, setWeek_2_pharynx] = useState('');
 const [week_2_larynx, setWeek_2_larynx] = useState('');
 const [week_2_salivaryGland, setWeek_2_salivaryGland] = useState('');
-const [week_2_weight, setWeek_2_weight] = useState('');
+const [week_2_weight_s, setWeek_2_weight_s] = useState('');
+const [week_2_weight_e, setWeek_2_weight_e] = useState('');
+const [week_2_weight, setWeek_2_weight] = useState("");
 const [week_2_cbc, setWeek_2_cbc] = useState('');
 
 const [week_3_treatmentWeek, setWeek_3_treatmentWeek] = useState('Week 3');
@@ -57,7 +61,9 @@ const [week_3_mucosa, setWeek_3_mucosa] = useState('');
 const [week_3_pharynx, setWeek_3_pharynx] = useState('');
 const [week_3_larynx, setWeek_3_larynx] = useState('');
 const [week_3_salivaryGland, setWeek_3_salivaryGland] = useState('');
-const [week_3_weight, setWeek_3_weight] = useState('');
+const [week_3_weight_s, setWeek_3_weight_s] = useState('');
+const [week_3_weight_e, setWeek_3_weight_e] = useState('');
+const [week_3_weight, setWeek_3_weight] = useState("");
 const [week_3_cbc, setWeek_3_cbc] = useState('');
 
 const [week_4_treatmentWeek, setWeek_4_treatmentWeek] = useState('Week 4');
@@ -66,7 +72,9 @@ const [week_4_mucosa, setWeek_4_mucosa] = useState('');
 const [week_4_pharynx, setWeek_4_pharynx] = useState('');
 const [week_4_larynx, setWeek_4_larynx] = useState('');
 const [week_4_salivaryGland, setWeek_4_salivaryGland] = useState('');
-const [week_4_weight, setWeek_4_weight] = useState('');
+const [week_4_weight_s, setWeek_4_weight_s] = useState('');
+const [week_4_weight_e, setWeek_4_weight_e] = useState('');
+const [week_4_weight, setWeek_4_weight] = useState("");
 const [week_4_cbc, setWeek_4_cbc] = useState('');
 
 const [week_5_treatmentWeek, setWeek_5_treatmentWeek] = useState('Week 5');
@@ -75,7 +83,9 @@ const [week_5_mucosa, setWeek_5_mucosa] = useState('');
 const [week_5_pharynx, setWeek_5_pharynx] = useState('');
 const [week_5_larynx, setWeek_5_larynx] = useState('');
 const [week_5_salivaryGland, setWeek_5_salivaryGland] = useState('');
-const [week_5_weight, setWeek_5_weight] = useState('');
+const [week_5_weight_s, setWeek_5_weight_s] = useState('');
+const [week_5_weight_e, setWeek_5_weight_e] = useState('');
+const [week_5_weight, setWeek_5_weight] = useState("");
 const [week_5_cbc, setWeek_5_cbc] = useState('');
 
 const [week_6_treatmentWeek, setWeek_6_treatmentWeek] = useState('Week 6');
@@ -84,7 +94,9 @@ const [week_6_mucosa, setWeek_6_mucosa] = useState('');
 const [week_6_pharynx, setWeek_6_pharynx] = useState('');
 const [week_6_larynx, setWeek_6_larynx] = useState('');
 const [week_6_salivaryGland, setWeek_6_salivaryGland] = useState('');
-const [week_6_weight, setWeek_6_weight] = useState('');
+const [week_6_weight_s, setWeek_6_weight_s] = useState('');
+const [week_6_weight_e, setWeek_6_weight_e] = useState('');
+const [week_6_weight, setWeek_6_weight] = useState("");
 const [week_6_cbc, setWeek_6_cbc] = useState('');
 
 const [week_7_treatmentWeek, setWeek_7_treatmentWeek] = useState('Week 7');
@@ -93,7 +105,9 @@ const [week_7_mucosa, setWeek_7_mucosa] = useState('');
 const [week_7_pharynx, setWeek_7_pharynx] = useState('');
 const [week_7_larynx, setWeek_7_larynx] = useState('');
 const [week_7_salivaryGland, setWeek_7_salivaryGland] = useState('');
-const [week_7_weight, setWeek_7_weight] = useState('');
+const [week_7_weight_s, setWeek_7_weight_s] = useState('');
+const [week_7_weight_e, setWeek_7_weight_e] = useState('');
+const [week_7_weight, setWeek_7_weight] = useState("");
 const [week_7_cbc, setWeek_7_cbc] = useState('');
 
 const [week_8_treatmentWeek, setWeek_8_treatmentWeek] = useState('Week 8');
@@ -102,8 +116,22 @@ const [week_8_mucosa, setWeek_8_mucosa] = useState('');
 const [week_8_pharynx, setWeek_8_pharynx] = useState('');
 const [week_8_larynx, setWeek_8_larynx] = useState('');
 const [week_8_salivaryGland, setWeek_8_salivaryGland] = useState('');
-const [week_8_weight, setWeek_8_weight] = useState('');
+const [week_8_weight_s, setWeek_8_weight_s] = useState('');
+const [week_8_weight_e, setWeek_8_weight_e] = useState('');
+const [week_8_weight, setWeek_8_weight] = useState("");
 const [week_8_cbc, setWeek_8_cbc] = useState('');
+
+useEffect( () => {
+
+    setWeek_1_weight(week_1_weight_s + ' - ' + week_1_weight_e);
+    setWeek_2_weight(week_2_weight_s + ' - ' + week_2_weight_e);
+    setWeek_3_weight(week_3_weight_s + ' - ' + week_3_weight_e);
+    setWeek_4_weight(week_4_weight_s + ' - ' + week_4_weight_e);
+    setWeek_5_weight(week_5_weight_s + ' - ' + week_5_weight_e);
+    setWeek_6_weight(week_6_weight_s + ' - ' + week_6_weight_e);
+    setWeek_7_weight(week_7_weight_s + ' - ' + week_7_weight_e);
+    setWeek_8_weight(week_8_weight_s + ' - ' + week_8_weight_e);
+}, [week_1_weight_s, week_1_weight_e, week_2_weight_s, week_2_weight_e, week_3_weight_s, week_3_weight_e, week_4_weight_s, week_4_weight_e, week_5_weight_s, week_5_weight_e, week_6_weight_s, week_6_weight_e, week_7_weight_s, week_7_weight_e, week_8_weight_s, week_8_weight_e])
 
 const questions1 = [
     { question: 'Treatment Week:', questionId: 'r2-1', questionType: questionType, inputtype: 'disabled', options: [
@@ -120,7 +148,7 @@ const questions1 = [
     { question: 'Pharynx:', questionId: 'r2-4', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_1_pharynx, setValue: setWeek_1_pharynx },
     { question: 'Larynx:', questionId: 'r2-5', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_1_larynx, setValue: setWeek_1_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-6', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_1_salivaryGland, setValue: setWeek_1_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-7', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_1_weight, setValue: setWeek_1_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-7', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_1_weight, setValue: setWeek_1_weight , subParts:[{s_question:"At Start of Treatment",s_answer:week_1_weight_s,s_setanswer:setWeek_1_weight_s},{s_question:"At End of Treatment",s_answer:week_1_weight_e,s_setanswer:setWeek_1_weight_e}] },
     { question: 'CBC:', questionId: 'r2-8', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_1_cbc, setValue: setWeek_1_cbc },
     ]
 
@@ -139,7 +167,7 @@ const questions2 = [
     { question: 'Pharynx:', questionId: 'r2-12', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_2_pharynx, setValue: setWeek_2_pharynx },
     { question: 'Larynx:', questionId: 'r2-13', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_2_larynx, setValue: setWeek_2_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-14', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_2_salivaryGland, setValue: setWeek_2_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-15', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_2_weight, setValue: setWeek_2_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-15', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_2_weight, setValue: setWeek_2_weight, subParts:[{s_question:"At Start of Treatment",s_answer:week_2_weight_s,s_setanswer:setWeek_2_weight_s},{s_question:"At End of Treatment",s_answer:week_2_weight_e,s_setanswer:setWeek_2_weight_e}] },
     { question: 'CBC:', questionId: 'r2-16', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_2_cbc, setValue: setWeek_2_cbc },
     ]
 
@@ -158,7 +186,7 @@ const questions3 = [
     { question: 'Pharynx:', questionId: 'r2-20', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_3_pharynx, setValue: setWeek_3_pharynx },
     { question: 'Larynx:', questionId: 'r2-21', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_3_larynx, setValue: setWeek_3_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-22', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_3_salivaryGland, setValue: setWeek_3_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-23', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_3_weight, setValue: setWeek_3_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-23', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_3_weight, setValue: setWeek_3_weight, subParts:[{s_question:"At Start of Treatment",s_answer:week_3_weight_s,s_setanswer:setWeek_3_weight_s},{s_question:"At End of Treatment",s_answer:week_3_weight_e,s_setanswer:setWeek_3_weight_e}] },
     { question: 'CBC:', questionId: 'r2-24', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_3_cbc, setValue: setWeek_3_cbc },
     ]
 
@@ -177,7 +205,7 @@ const questions4 = [
     { question: 'Pharynx:', questionId: 'r2-28', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_4_pharynx, setValue: setWeek_4_pharynx },
     { question: 'Larynx:', questionId: 'r2-29', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_4_larynx, setValue: setWeek_4_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-30', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_4_salivaryGland, setValue: setWeek_4_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-31', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_4_weight, setValue: setWeek_4_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-31', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_4_weight, setValue: setWeek_4_weight ,subParts:[{s_question:"At Start of Treatment",s_answer:week_4_weight_s,s_setanswer:setWeek_4_weight_s},{s_question:"At End of Treatment",s_answer:week_4_weight_e,s_setanswer:setWeek_4_weight_e}] },
     { question: 'CBC:', questionId: 'r2-32', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_4_cbc, setValue: setWeek_4_cbc },
     ]
 const questions5 = [
@@ -195,7 +223,7 @@ const questions5 = [
     { question: 'Pharynx:', questionId: 'r2-36', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_5_pharynx, setValue: setWeek_5_pharynx },
     { question: 'Larynx:', questionId: 'r2-37', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_5_larynx, setValue: setWeek_5_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-38', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_5_salivaryGland, setValue: setWeek_5_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-39', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_5_weight, setValue: setWeek_5_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-39', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_5_weight, setValue: setWeek_5_weight, subParts:[{s_question:"At Start of Treatment",s_answer:week_5_weight_s,s_setanswer:setWeek_5_weight_s},{s_question:"At End of Treatment",s_answer:week_5_weight_e,s_setanswer:setWeek_5_weight_e}] },
     { question: 'CBC:', questionId: 'r2-40', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_5_cbc, setValue: setWeek_5_cbc },
     ]
 const questions6 = [
@@ -213,7 +241,7 @@ const questions6 = [
     { question: 'Pharynx:', questionId: 'r2-44', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_6_pharynx, setValue: setWeek_6_pharynx },
     { question: 'Larynx:', questionId: 'r2-45', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_6_larynx, setValue: setWeek_6_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-46', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_6_salivaryGland, setValue: setWeek_6_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-47', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_6_weight, setValue: setWeek_6_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-47', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_6_weight, setValue: setWeek_6_weight , subParts:[{s_question:"At Start of Treatment",s_answer:week_6_weight_s,s_setanswer:setWeek_6_weight_s},{s_question:"At End of Treatment",s_answer:week_6_weight_e,s_setanswer:setWeek_6_weight_e}] },
     { question: 'CBC:', questionId: 'r2-48', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_6_cbc, setValue: setWeek_6_cbc },
     ]
 const questions7 = [
@@ -231,7 +259,7 @@ const questions7 = [
     { question: 'Pharynx:', questionId: 'r2-52', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_7_pharynx, setValue: setWeek_7_pharynx },
     { question: 'Larynx:', questionId: 'r2-53', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_7_larynx, setValue: setWeek_7_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-54', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_7_salivaryGland, setValue: setWeek_7_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-55', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_7_weight, setValue: setWeek_7_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-55', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_7_weight, setValue: setWeek_7_weight, subParts:[{s_question:"At Start of Treatment",s_answer:week_7_weight_s,s_setanswer:setWeek_7_weight_s},{s_question:"At End of Treatment",s_answer:week_7_weight_e,s_setanswer:setWeek_7_weight_e}] },
     { question: 'CBC:', questionId: 'r2-56', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_7_cbc, setValue: setWeek_7_cbc },
     ]
 const questions8 = [
@@ -249,7 +277,7 @@ const questions8 = [
     { question: 'Pharynx:', questionId: 'r2-60', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_8_pharynx, setValue: setWeek_8_pharynx },
     { question: 'Larynx:', questionId: 'r2-61', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_8_larynx, setValue: setWeek_8_larynx },
     { question: 'Salivary Gland:', questionId: 'r2-62', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_8_salivaryGland, setValue: setWeek_8_salivaryGland },
-    { question: 'Weight (in kg):', questionId: 'r2-63', questionType: questionType, inputtype: 'text', options: ["0","1","2","3"], value: week_8_weight, setValue: setWeek_8_weight },
+    { question: 'Weight (in kg):', questionId: 'r2-63', questionType: questionType, inputtype: 'multitext', options: ["0","1","2","3"], value: week_8_weight, setValue: setWeek_8_weight, subParts:[{s_question:"At Start of Treatment",s_answer:week_8_weight_s,s_setanswer:setWeek_8_weight_s},{s_question:"At End of Treatment",s_answer:week_8_weight_e,s_setanswer:setWeek_8_weight_e}] },
     { question: 'CBC:', questionId: 'r2-64', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3"], value: week_8_cbc, setValue: setWeek_8_cbc }
 ];
 
@@ -279,11 +307,23 @@ const questions8 = [
                 const questiondata = apidata.data.data;
                 const questionsArray = [questions1, questions2, questions3, questions4, questions5, questions6, questions7, questions8]
                 questionsArray.forEach((question_list) => {
-                    question_list.map((question) => {
+                    question_list.map((question : any) => {
                         const requiredquestionid = question.questionId;
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
                         
                         questionvalue !== undefined && question.setValue(questionvalue)
+
+                        if(question.inputtype === "multitext")
+                            {
+                                const subparts = question.subParts
+                                const questionsubparts = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.subParts
+                                if(questionsubparts !== undefined && subparts !== undefined)
+                                {
+                                    subparts.map((subpart : any, index : number) => {
+                                        subpart.s_setanswer(questionsubparts[index].s_answer)
+                                    })
+                                }
+                            }
                     })
                 })
                 

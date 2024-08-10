@@ -88,6 +88,7 @@ const SocialHistory = () => {
     useEffect(() => {
 
         if(addiction1 === "No"){
+            setAddictiontype1("Not Applicable");
             setAgeofstarting1("0");
             setDoseperday1("0");
             setDoseperweek1("0");
@@ -97,6 +98,7 @@ const SocialHistory = () => {
             
         }
         else{
+            setAddictiontype1("");
             setAgeofstarting1("");
             setDoseperday1("");
             setDoseperweek1("");
@@ -106,6 +108,7 @@ const SocialHistory = () => {
         }
 
         if(addiction2 === "No"){
+            setAddictiontype2("Not Applicable");
             setAgeofstarting2("0");
             setDoseperday2("0");
             setDoseperweek2("0");
@@ -115,6 +118,7 @@ const SocialHistory = () => {
             
         }
         else{
+            setAddictiontype2("");
             setAgeofstarting2("");
             setDoseperday2("");
             setDoseperweek2("");
@@ -127,6 +131,7 @@ const SocialHistory = () => {
 
 
         if(addiction3 === "No"){
+            setAddictiontype3("Not Applicable");
             setAgeofstarting3("0");
             setDoseperday3("0");
             setDoseperweek3("0");
@@ -136,6 +141,7 @@ const SocialHistory = () => {
             
         }   
         else{
+            setAddictiontype3("");
             setAgeofstarting3("");
             setDoseperday3("");
             setDoseperweek3("");
@@ -146,6 +152,7 @@ const SocialHistory = () => {
 
 
         if(addiction4 === "No"){
+            setAddictiontype4("Not Applicable");
             setAgeofstarting4("0");
             setDoseperday4("0");
             setDoseperweek4("0");
@@ -155,6 +162,7 @@ const SocialHistory = () => {
             
         }
         else{
+            setAddictiontype4("");
             setAgeofstarting4("");
             setDoseperday4("");
             setDoseperweek4("");
@@ -166,6 +174,7 @@ const SocialHistory = () => {
 
 
         if(addiction5 === "No"){
+
             setAddictiontype5("Not Applicable");
             setAgeofstarting5("0");
             setDoseperday5("0");
@@ -230,7 +239,7 @@ const SocialHistory = () => {
             "Gm/Day DODA or Gm of Opium bar or Paste.",
             "SODQ scale (Dr. Navtratan)"
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type1', inputtype: 'dropdown', options: ["Cigarette" , "beedi"], value: addictiontype1, setValue: setAddictiontype1 },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type1', inputtype: addiction1==="No"?"disabled":'dropdown', options: ["Cigarette" , "beedi"], value: addictiontype1, setValue: setAddictiontype1 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: ageofstarting1, setValue: setAgeofstarting1, restriction:( ( (alpha.some(i => ageofstarting1.includes(i)) || special.some(i => ageofstarting1.includes(i))) || ageofstarting1.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseperday1, setValue: setDoseperday1 , restriction:( ( (alpha.some(i => doseperday1.includes(i)) || special.some(i => doseperday1.includes(i))) || doseperday1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
         { question: 'Dose per Week:', questionType: 'text', questionId: 's1-4-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseperweek1, setValue: setDoseperweek1 , restriction:( ( (alpha.some(i => doseperweek1.includes(i)) || special.some(i => doseperweek1.includes(i))) || doseperweek1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -278,7 +287,7 @@ const SocialHistory = () => {
             "Gm/Day DODA or Gm of Opium bar or Paste.",
             "SODQ scale (Dr. Navtratan)"
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type2', inputtype: 'dropdown', options: ["Paan","Ghutkha","Khaini"], value: addictiontype2, setValue: setAddictiontype2 },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type2', inputtype: addiction2==="No"?"disabled":'dropdown', options: ["Paan","Ghutkha","Khaini"], value: addictiontype2, setValue: setAddictiontype2 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: ageofstarting2, setValue: setAgeofstarting2 , restriction:( ( (alpha.some(i => ageofstarting2.includes(i)) || special.some(i => ageofstarting2.includes(i))) || ageofstarting2.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperday2, setValue: setDoseperday2 , restriction:( ( (alpha.some(i => doseperday2.includes(i)) || special.some(i => doseperday2.includes(i))) || doseperday2.length > 2 ) ),restrictiontext:"Please enter valid dose" },
         { question: 'Dose per Week:', questionType: 'text', questionId: 's1-4-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperweek2, setValue: setDoseperweek2, restriction:( ( (alpha.some(i => doseperweek2.includes(i)) || special.some(i => doseperweek2.includes(i))) || doseperweek2.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -326,7 +335,7 @@ const SocialHistory = () => {
             "Gm/Day DODA or Gm of Opium bar or Paste.",
             "SODQ scale (Dr. Navtratan)"
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type3', inputtype: 'dropdown', options: ["Beer","Malt","Liquor","Wine"], value: addictiontype3, setValue: setAddictiontype3 },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type3', inputtype: addiction3==="No"?"disabled":'dropdown', options: ["Beer","Malt","Liquor","Wine"], value: addictiontype3, setValue: setAddictiontype3 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: ageofstarting3, setValue: setAgeofstarting3 , restriction:( ( (alpha.some(i => ageofstarting3.includes(i)) || special.some(i => ageofstarting3.includes(i))) || ageofstarting3.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: doseperday3, setValue: setDoseperday3 , restriction:( ( (alpha.some(i => doseperday3.includes(i)) || special.some(i => doseperday3.includes(i))) || doseperday3.length > 2 ) ),restrictiontext:"Please enter valid dose" },
         { question: 'Dose per Week:', questionType: 'text', questionId: 's1-4-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: doseperweek3, setValue: setDoseperweek3, restriction:( ( (alpha.some(i => doseperweek3.includes(i)) || special.some(i => doseperweek3.includes(i))) || doseperweek3.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -374,7 +383,7 @@ const SocialHistory = () => {
             "Gm/Day DODA or Gm of Opium bar or Paste.",
             "SODQ scale (Dr. Navtratan)"
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type4', inputtype: 'dropdown', options: ["Opium: Bar-Prepared Dross" ,"Opium: Sap-Paste Raw/Doda"], value: addictiontype4, setValue: setAddictiontype4 },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type4', inputtype: addiction4==="No"?"disabled":'dropdown', options: ["Opium: Bar-Prepared Dross" ,"Opium: Sap-Paste Raw/Doda"], value: addictiontype4, setValue: setAddictiontype4 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: ageofstarting4, setValue: setAgeofstarting4 , restriction:( ( (alpha.some(i => ageofstarting4.includes(i)) || special.some(i => ageofstarting4.includes(i))) || ageofstarting4.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: doseperday4, setValue: setDoseperday4, restriction:( ( (alpha.some(i => doseperday4.includes(i)) || special.some(i => doseperday4.includes(i))) || doseperday4.length > 2 ) ),restrictiontext:"Please enter valid dose" },
         { question: 'Dose per Week:', questionType: 'text', questionId: 's1-4-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: doseperweek4, setValue: setDoseperweek4, restriction:( ( (alpha.some(i => doseperweek4.includes(i)) || special.some(i => doseperweek4.includes(i))) || doseperweek4.length > 2 ) ),restrictiontext:"Please enter valid dose" },
@@ -656,7 +665,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     
                 </TabsList>
             </Tabs>
-            <HeadDrop dataArray={[{id:"1",title:"Smoking"},{id:"2",title:"Caffeine"},{id:"3",title:"Alcohol"},{id:"4",title:"Drugs"},{id:"5",title:"Other"}]} id={tabValue} setId={setTabValue}/>
+            <HeadDrop dataArray={[{id:"1",title:"Smoking"},{id:"2",title:"Non-Smoked Tobacco"},{id:"3",title:"Alcohol"},{id:"4",title:"Opium"},{id:"5",title:"Other"}]} id={tabValue} setId={setTabValue}/>
         </div>
     );
 };
