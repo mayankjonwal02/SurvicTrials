@@ -19,6 +19,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from 'next/navigation'
+import * as XLSX from 'xlsx';
 const Institutebaseddata = () => {
   // const [user, setUser] = useState<any>({});
   // const [userid, setUserId] = useState("");
@@ -84,28 +85,152 @@ const Institutebaseddata = () => {
   }, [patientsdata, patient]);
 
   const exportPatientsToCSV = () => {
-    const headers = Object.keys(AllQuestions).flatMap(category =>
-      AllQuestions[category].map(question => question.questionId)
+    // Create a new workbook
+    const workbook = XLSX.utils.book_new();
+
+    // Create the "Master Data" sheet with all questions and answers
+    const masterData = Object.keys(AllQuestions).flatMap(category =>
+        AllQuestions[category].map(question => ({
+            questionId: question.questionId,
+            question: question.question,
+        }))
     );
 
-    const data = patientsdata.map((patient: any) => {
-      const patientData: any = { patient_trial_number: patient.patient_trial_number };
+    // Create a mapping of questionId to question text for easy reference
+    const questionIdToText = masterData.reduce((acc, { questionId, question }) => {
+        acc[questionId] = question;
+        return acc;
+    }, {} as Record<string, string>);
 
-      headers.forEach(questionId => {
-        const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
-        patientData[questionId] = matchingQuestion ? matchingQuestion.answer : "Not Answered";
-      });
+    // Create master sheet data including answers
+    const masterSheetData = [
+        ["Patient Trial Number", "Question ID", "Question Text", "Answer"],
+        ...patientsdata.flatMap((patient: { data: any[]; patient_trial_number: any; }) => {
+            return masterData.map(({ questionId, question }) => {
+                const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
+                return [patient.patient_trial_number, questionId, question, matchingQuestion ? matchingQuestion.answer : "Not Answered"];
+            });
+        })
+    ];
 
-      return patientData;
+    const masterSheet = XLSX.utils.aoa_to_sheet(masterSheetData);
+    XLSX.utils.book_append_sheet(workbook, masterSheet, "Master Data");
+
+    // Create sheets for each category
+    Object.keys(AllQuestions).forEach(category => {
+        const headers = AllQuestions[category].map(question => ({
+            questionId: question.questionId,
+            question: question.question,
+        }));
+
+        const data = patientsdata.map((patient: any) => {
+            const patientData: any = { patient_trial_number: patient.patient_trial_number };
+
+            headers.forEach(({ questionId }) => {
+                const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
+                patientData[questionId] = matchingQuestion ? matchingQuestion.answer : "Not Answered";
+            });
+
+            return patientData;
+        });
+
+        const sheetData = [
+            ["Patient Trial Number", ...headers.map(header => header.question)],
+            ...data.map((row: { [x: string]: any; patient_trial_number: any; }) => [
+                row.patient_trial_number,
+                ...headers.map(header => row[header.questionId] || "Not Answered")
+            ])
+        ];
+
+        const sheet = XLSX.utils.aoa_to_sheet(sheetData);
+        XLSX.utils.book_append_sheet(workbook, sheet, category);
     });
 
-    const fields = ['patient_trial_number', ...headers];
-    const json2csvParser = new Parser({ fields });
-    const csv = json2csvParser.parse(data);
-    
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    saveAs(blob, 'patients_data.csv');
-  };
+    // Generate and download the Excel file
+    const timestamp = new Date().toISOString().replace(/:/g, '-');
+    XLSX.writeFile(workbook, `patients_data_${timestamp}.xlsx`);
+};
+  
+
+const exportUpdatesToCSV = () => {
+  // Create a new workbook
+  const workbook = XLSX.utils.book_new();
+
+  // Create the "Master Data" sheet with all questions and updates
+  const masterData = Object.keys(AllQuestions).flatMap(category =>
+      AllQuestions[category].map(question => ({
+          questionId: question.questionId,
+          question: question.question,
+      }))
+  );
+
+  const masterSheetData = [
+      ["Patient Trial Number", "Question ID", "Question Text", "Update Date", "Answer"],
+      ...patientsdata.flatMap((patient: { data: any[]; patient_trial_number: any; }) => {
+          return masterData.flatMap(({ questionId, question }) => {
+              const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
+              return matchingQuestion
+                  ? matchingQuestion.updates.map((update: any) => [
+                      patient.patient_trial_number,
+                      questionId,
+                      question,
+                      update.updatedOn,
+                      update.answer || "Not Answered"
+                  ])
+                  : [
+                      [patient.patient_trial_number, questionId, question, "No Updates", "Not Answered"]
+                  ];
+          });
+      })
+  ];
+
+  const masterSheet = XLSX.utils.aoa_to_sheet(masterSheetData);
+  XLSX.utils.book_append_sheet(workbook, masterSheet, "Master Data");
+
+  // Create sheets for each category
+  Object.keys(AllQuestions).forEach(category => {
+      const headers = AllQuestions[category].map(question => ({
+          questionId: question.questionId,
+          question: question.question,
+      }));
+
+      const data = patientsdata.map((patient: any) => {
+          const patientData: any = { patient_trial_number: patient.patient_trial_number };
+
+          headers.forEach(({ questionId }) => {
+              const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
+              if (matchingQuestion) {
+                  let info = "";
+                  matchingQuestion.updates.forEach((update: any) => {
+                      if (update.answer !== "") {
+                          info += `${update.updatedOn} : ${update.answer} | `;
+                      }
+                  });
+                  patientData[questionId] = info !== "" ? info : "Not Answered";
+              } else {
+                  patientData[questionId] = "Not Answered";
+              }
+          });
+
+          return patientData;
+      });
+
+      const sheetData = [
+          ["Patient Trial Number", ...headers.map(header => header.question)],
+          ...data.map((row: { [x: string]: any; patient_trial_number: any; }) => [
+              row.patient_trial_number,
+              ...headers.map(header => row[header.questionId] || "Not Answered")
+          ])
+      ];
+
+      const sheet = XLSX.utils.aoa_to_sheet(sheetData);
+      XLSX.utils.book_append_sheet(workbook, sheet, category);
+  });
+
+  // Generate and download the Excel file
+  const timestamp = new Date().toISOString().replace(/:/g, '-');
+  XLSX.writeFile(workbook, `updates_data_${timestamp}.xlsx`);
+};
 
   const exportQuestionsToCSV = () => {
     const data = Object.keys(AllQ).flatMap(category =>
