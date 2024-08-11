@@ -134,7 +134,7 @@ const exportUpdatesToCSV = () => {
   );
 
   const masterSheetData = [
-      ["Patient Trial Number", "Question ID", "Question Text", "Update Time", "Answer"],
+      ["Patient Trial Number", "Question ID", "Question Text", "Update Date", "Answer"],
       ...patientsdata.flatMap((patient: { data: any[]; patient_trial_number: any; }) => {
           return masterData.flatMap(({ questionId, question }) => {
               const matchingQuestion = patient.data.find((q: any) => q.questionId === questionId);
