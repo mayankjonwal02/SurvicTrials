@@ -160,7 +160,7 @@ const Viewusers = () => {
       </ScrollArea>
       {
         loading ? (
-          <div className='absolute animate-spin h-[100px] w-[100px] top-[50%] left-[40%] border-4 border-t-4 border-green-500 border-t-transparent rounded-full'></div>
+          <div className='absolute animate-spin h-[100px] w-[100px] top-[50%] left-[40%] border-4 border-t-4 border-green-5 border-t-transparent rounded-full'></div>
         ) : null
       }
 

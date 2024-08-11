@@ -134,7 +134,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                                                 <Button
                                                     className={cn(
                                                         "w-fit p-2 border rounded-lg",
-                                                        (question.value === "" && task === "update") ? "bg-red-300" : "text-white bg-green-600 hover:bg-green-4 hover:text-green-5"
+                                                        (question.value === "" && task === "update") ? "bg-red-300" : "text-white bg-green-5 hover:bg-green-4 hover:text-green-5"
                                                     )}
                                                     onClick={() => question.setValue("")}
                                                     variant="outline"
@@ -292,7 +292,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                         </div>
                     ))}
                     <div className='w-full flex justify-center'>
-                        <Button onClick={handleSubmit} className='bg-red-600 mt-5 text-white hover:bg-green-4 hover:text-green-5 text-sm' variant="outline">
+                        <Button onClick={handleSubmit} className='bg-green-5 mt-5 text-white hover:bg-green-4 hover:text-green-5 text-sm' variant="outline">
                             {buttontitle}
 
 

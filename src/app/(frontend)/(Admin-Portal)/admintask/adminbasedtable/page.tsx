@@ -215,26 +215,26 @@ const exportUpdatesToCSV = () => {
       <div className="font-bold text-2xl md:text-3xl text-green-700 mb-4 mt-8 text-center">All Patient Responses</div>
       <div className="flex flex-col md:flex-row justify-around items-center w-full">
 
-      <button onClick={exportPatientsToCSV} className="mb-1 md:mb-4 mt-4 p-2 bg-green-600 hover:bg-green-700 text-white rounded transition duration-300">
+      <button onClick={exportPatientsToCSV} className="mb-1 md:mb-4 mt-4 p-2 bg-green-5 hover:bg-green-3 text-white rounded transition duration-300">
         Export All Responses to CSV
       </button>
-      <button onClick={exportUpdatesToCSV} className="mb-4 mt-4 p-2 bg-green-600 hover:bg-green-700 text-white rounded transition duration-300">
+      <button onClick={exportUpdatesToCSV} className="mb-4 mt-4 p-2 bg-green-5 hover:bg-green-3 text-white rounded transition duration-300">
           Export All Updates to CSV
         </button>
       </div>
       <div className="flex-grow flex w-full justify-center">
-        <ScrollArea className="w-[90%] h-[90%] bg-green-100 border border-green-300 rounded-lg shadow-md overflow-auto">
+        <ScrollArea className="w-[90%] h-[70%] bg-green-100 border border-green-3 rounded-lg shadow-md overflow-auto">
           <div className="w-full h-full overflow-x-auto">
             <table className="min-w-full bg-white border-collapse">
               <thead>
-                <tr className="bg-green-600 text-white">
-                  <th className="border border-green-400 px-4 py-2 sticky left-0 z-10" style={{ minWidth: "200px" }}>Patient Trial Number</th>
+                <tr className="bg-green-5 text-white">
+                  <th className="border border-green-4 px-4 py-2 sticky left-0 z-10" style={{ minWidth: "200px" }}>Patient Trial Number</th>
                   {Object.keys(AllQ).flatMap(category =>
                     AllQuestions[category].map(question => (
                       <TooltipProvider key={question.questionId}>
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <th className="border border-green-400 px-4 py-2 cursor-pointer whitespace-nowrap">
+                            <th className="border border-green-4 px-4 py-2 cursor-pointer whitespace-nowrap">
                               {question.questionId}
                             </th>
                           </TooltipTrigger>
@@ -249,11 +249,11 @@ const exportUpdatesToCSV = () => {
               </thead>
               <tbody>
                 {patientsdata.map((patient: any, index: number) => (
-                  <tr key={patient.patient_trial_number} className={index % 2 === 0 ? "bg-green-50" : "bg-white"}>
-                    <td className="border border-green-300 px-4 py-2 sticky left-0 z-10 font-semibold" style={{ minWidth: "200px" }}>{patient.patient_trial_number}</td>
+                  <tr key={patient.patient_trial_number} className={index % 2 === 0 ? "bg-green-4" : "bg-white"}>
+                    <td className="border border-green-3 px-4 py-2 sticky left-0 z-10 font-semibold" style={{ minWidth: "200px" }}>{patient.patient_trial_number}</td>
                     {Object.keys(AllQ).flatMap(category =>
                       AllQuestions[category].map(question => (
-                        <td className="border border-green-300 px-4 py-2 whitespace-nowrap" key={question.questionId}>
+                        <td className="border border-green-3 px-4 py-2 whitespace-nowrap" key={question.questionId}>
                           {patient.data.find((q: any) => q.questionId === question.questionId)?.answer || "Not Answered"}
                         </td>
                       ))

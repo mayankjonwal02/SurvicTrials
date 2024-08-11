@@ -17,6 +17,7 @@ const WelcomePage = () => {
     const router = useRouter();
     return (
         <div className='w-full h-fit flex flex-col justify-center items-center'>
+        
             <div className='w-full h-screen hidden md:flex flex-row justify-center items-center'>
                 <motion.div
                     className='flex justify-center items-center w-1/3'
@@ -33,8 +34,8 @@ const WelcomePage = () => {
                     transition={{ duration: 1, delay: 2 }}
 
                 >
-                    <h1 className='text-2xl md:text-6xl font-extrabold text-green-5 text-center'>SurVic Trials</h1>
-                    <p className='text-lg font-bold text-center text-green-800 mt-4'>Welcome to eCRF page of SurVIC Trial Collaborative, AIIMS Jodhpur</p>
+                    <h1 className='text-2xl md:text-6xl font-extrabold text-green-5 text-center'>SurVIC Trial</h1>
+                    <p className='text-lg font-bold text-center text-green-5 mt-4'>Welcome to eCRF page of SurVIC Trial Collaborative, AIIMS Jodhpur</p>
                     <Button className='bg-green-3 text-green-5 border border-2 border-green-5 h-[40px] md:h-[40px] text-lg md:text-lg lg:text-xl mt-4' onClick={() => { router.push('/login') }}>Get Started</Button>
                 </motion.div>
             </div>
@@ -60,8 +61,8 @@ const WelcomePage = () => {
                     transition={{ duration: 1, delay: 1 }}
 
                 >
-                    <h1 className='text-4xl md:text-6xl font-extrabold text-green-5 text-center'>SurVic Trials</h1>
-                    <p className='text-lg font-bold text-center text-green-800 mt-4'>Welcome to eCRF page of SurVIC Trial Collaborative, AIIMS Jodhpur</p>
+                    <h1 className='text-4xl md:text-6xl font-extrabold text-green-5 text-center'>SurVIC Trial</h1>
+                    <p className='text-lg font-bold text-center text-green-5 mt-4'>Welcome to eCRF page of SurVIC Trial Collaborative, AIIMS Jodhpur</p>
                     <Button className='bg-green-3 text-green-5 border border-2 border-green-5 h-[40px] md:h-[40px] text-lg md:text-lg lg:text-xl mt-4' onClick={() => { router.push('/login') }}>Get Started</Button>
 
                 </motion.div>
@@ -176,10 +177,11 @@ const WelcomePage = () => {
 
                 </div>
             </div>
-            <div className="w-full h-fit py-3 text-center bg-green-3 text-green-5">Developed by <b><a className="underline" href="https://www.linkedin.com/in/mayank-jonwal-b79a5a1ba/">Mayank Jonwal</a></b> & <b className="underline"><a href="https://www.linkedin.com/in/dasanivishu/">Vishal Dasani</a></b> from <b><a className="underline" href="https://www.iitj.ac.in/">IIT Jodhpur</a></b></div>
+            <div className="w-full h-fit py-3 text-center bg-green-3 text-green-5">Developed by <b><a className="underline" href="https://www.linkedin.com/in/mayank-jonwal-b79a5a1ba/">Mayank Jonwal</a></b> from <b><a className="underline" href="https://www.iitj.ac.in/">IIT Jodhpur</a></b></div>
 
         </div>
     );
 };
 
 export default WelcomePage;
+//  & <b className="underline"><a href="https://www.linkedin.com/in/dasanivishu/">Vishal Dasani</a></b>

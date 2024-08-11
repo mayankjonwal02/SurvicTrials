@@ -15,11 +15,12 @@ const config = {
     extend: {
       colors: {
         green:{
-          1:"#ACE1AF",
-          2:"#DADD98",
-          3:"#98FB98",
-          4:"#D0F0C0",
-          5:"#00563B"
+          1:"#b89e99",//"#ACE1AF",
+          2:"#74686c",//"#DADD98",
+          3: "#a17f81",//"#98FB98",
+          4: "#eee8e6" ,//"#D0F0C0",
+          5: "#6f2733",//"#00563B",
+          700: "#6f2733"
         },
         customgradient: {
           1:"bg-gradient-to-l from-green-2 from-10% via-green-4 via-60% to-green-3 to-90%"

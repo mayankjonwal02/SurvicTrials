@@ -286,7 +286,7 @@ const exportUpdatesToCSV = () => {
     <div className="w-full h-screen flex flex-col justify-start items-center overflow-hidden">
       <LogoutButton />
 
-      <div className="font-bold text-2xl md:text-3xl text-green-500 mt-2">Patient's Data - {citycode}</div>
+      <div className="font-bold text-2xl md:text-3xl text-green-5 mt-2">Patient's Data - {citycode}</div>
       <div className="font-bold text-xl my-4">{patient.patient_trial_number}</div>
       <div className="flex flex-col md:flex-row w-full h-fit justify-around items-center mb-4">
 
@@ -334,7 +334,7 @@ const exportUpdatesToCSV = () => {
             {patientsdata.map((data: any) => (
               <div
                 key={data.patient_trial_number}
-                className={cn("w-full text-center font-bold text-xl bg-white/40 rounded-lg my-3 py-2 cursor-pointer ", patient.patient_trial_number === data.patient_trial_number ? "bg-green-500 text-white" : "hover:bg-white/70")}
+                className={cn("w-full text-center font-bold text-xl bg-white/40 rounded-lg my-3 py-2 cursor-pointer ", patient.patient_trial_number === data.patient_trial_number ? "bg-green-5 text-white" : "hover:bg-white/70")}
                 onClick={() => setPatient(data)}
               >
                 {data.patient_trial_number}
@@ -362,7 +362,7 @@ const exportUpdatesToCSV = () => {
                             Question : {question.question}
                           </div>
                         </div>
-                        <div key={question.questionId} className="font-bold text-green-500 text-md md:text-lg mb-1 ms-3">
+                        <div key={question.questionId} className="font-bold text-green-3 text-md md:text-lg mb-1 ms-3">
                           Answer : {question.value}
                         </div>
                         <div>
