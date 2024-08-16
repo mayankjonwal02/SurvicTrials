@@ -45,7 +45,7 @@ const Counselling = () =>  {
         { question: 'Result of Screening (Eligible/Ineligible):', questionId: 'cc_5', questionType: questionType, inputtype: 'dropdown', options: ['Eligible', 'Ineligible'], value: resultOfScreening, setValue: setResultOfScreening },
         { question: 'Patient Information Sheet Hand Over (Yes/No):', questionId: 'cc_6', questionType: questionType, inputtype: 'dropdown', options: ['Yes', 'No'], value: patientInfoSheetHandOver, setValue: setPatientInfoSheetHandOver },
         { question: 'Patient Queries (Enumerate):', questionId: 'cc_7', questionType: questionType, inputtype: 'textarea', options: [], value: patientQueries, setValue: setPatientQueries },
-        { question: 'Patient Query Answered (Yes/No):', questionId: 'cc_8', questionType: questionType, inputtype: 'dropdown', options: ['Yes', 'No'], value: patientQueryAnswered, setValue: setPatientQueryAnswered },
+        { question: 'Patient Query Answered (Yes/No):', questionId: 'cc_8', questionType: questionType, inputtype: 'dropdown', options: ['Yes', 'No',"NA"], value: patientQueryAnswered, setValue: setPatientQueryAnswered },
         { question: 'Outcome of Counselling (Agree/Disagree):', questionId: 'cc_9', questionType: questionType, inputtype: 'dropdown', options: ['Agree', 'Disagree'], value: outcomeOfCounselling, setValue: setOutcomeOfCounselling },
         { question: 'If Disagree - Mention Reason:', questionId: 'cc_10', questionType: questionType, inputtype: 'textarea', options: [], value: reasonIfDisagree, setValue: setReasonIfDisagree },
         { question: 'Planned Date of Enrollment:', questionId: 'cc_11', questionType: questionType, inputtype: 'date', options: [], value: plannedDateOfEnrollment, setValue: setPlannedDateOfEnrollment },

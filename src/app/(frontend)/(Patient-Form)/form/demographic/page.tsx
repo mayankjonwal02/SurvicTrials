@@ -79,9 +79,9 @@ const Demographic = () => {
 
         { question: 'Date of OPD Registration:',questionType:questionType,questionId:'d-1', inputtype:'date' , options: [], value: dateodopdregistration, setValue: setDateodopdregistration },
         { question: 'Name :',questionType:questionType,questionId:'d-2', inputtype:'disabled' , options: [], value: name, setValue: setName },
+        { question: 'Phone Number:',questionType:questionType,questionId:'d-5', inputtype:'text' , options: [], value: contact, setValue: setContact, restriction:( (  contact.length !== 0 && contact.length !== 10 ) ) ,restrictiontext:"Please enter a valid phone number" },
         { question: 'Name of Primary Caregiver:',questionType:questionType,questionId:'d-3', inputtype:'text' , options: [], value: name_primary_care_giver, setValue: setName_primary_care_giver },
         { question: 'Primary Caregiver Phone Number:',questionType:questionType,questionId:'d-4', inputtype:'text' , options: [], value: contact_primary_care_giver, setValue: setContact_primary_care_giver , restriction:( (  contact_primary_care_giver.length !== 0 && contact_primary_care_giver.length !== 10 ) ) ,restrictiontext:"Please enter a valid phone number" },
-        { question: 'Phone Number:',questionType:questionType,questionId:'d-5', inputtype:'text' , options: [], value: contact, setValue: setContact, restriction:( (  contact.length !== 0 && contact.length !== 10 ) ) ,restrictiontext:"Please enter a valid phone number" },
         { question: 'Date of Birth:',questionType:questionType,questionId:'d-6', inputtype:'date' , options: [], value: dateofbirth, setValue: setDateofbirth, restriction:( ((dateofbirth !== "" && isMoreThan18Years(dateofbirth) )== false) ) ,restrictiontext:"Patient should be atleast 18 years" },
         { question: 'Age:',questionType:questionType,questionId:'d-6_1', inputtype:'disabled' , options: [], value: age, setValue: setAge , restriction:( age !="" && islessThan18(age) ) ,restrictiontext:"Patient should be atleast 18 years" },
         {question:'Gender:',questionType:questionType,questionId:'d-7',inputtype:'dropdown',options:["Male","Female","Others"],value:gender,setValue:setGender},
@@ -106,7 +106,7 @@ const Demographic = () => {
         {question:'Education:',questionType:questionType,questionId:'d-12',inputtype:'dropdown',options:["Professional Degree","Graduate"," Intermediate/ Diploma","High School","Middle school","Primary school","Illiterate"],value: education,setValue: setEducation},
         {question:'Occupation:',questionType:questionType,questionId:'d-13',inputtype:'dropdown',options:["Legislators/senior officials/managers", "Professional", "Technicians/associate professionals", "Clerk", "Semi-professional/Skilled worker", "shop and market sales workers", "Skilled agricultural and fishery workers", "Craft and related trade workers", "Plant and machine operators and assemblers", "Unskilled worker: Elementary occupation", "Unemployed"],value: occupation,setValue: setOccupation},
         {question:'Family Income (per Month):',questionType:questionType,questionId:'d-14',inputtype:'dropdown',options:["185,574 or more", "92,764–185,574", "69,584–92,764", "46,405–69,584", "27,815–46,405", "9,276–27,815", "less than 9,276"],value:familyincome,setValue: setFamilyincome},
-        {question:"Socioeconomic class",questionType:questionType,questionId:'d-15',inputtype:'dropdown',options:["Upper Class", "Upper Middle", "Lower Middle", "Upper lower", "Lower"],value:socioeconomicclass,setValue:setSocioeconomicclass}
+        // {question:"Socioeconomic class",questionType:questionType,questionId:'d-15',inputtype:'dropdown',options:["Upper Class", "Upper Middle", "Lower Middle", "Upper lower", "Lower"],value:socioeconomicclass,setValue:setSocioeconomicclass}
 
     ];
 

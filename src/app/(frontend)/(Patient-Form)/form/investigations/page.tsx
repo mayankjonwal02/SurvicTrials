@@ -67,7 +67,9 @@ const Investigations = () =>  {
     const [serumcreatinelevel, setSerumcreatinelevel] = React.useState("");
     const [bloodurealevel, setBloodurealevel] = React.useState("");
     const [viralmarkers, setViralmarkers] = React.useState("");
-    const [hhh, setHhh] = React.useState("");
+    const [hhh1, setHhh1] = React.useState("");
+    const [hhh2, setHhh2] = React.useState("");
+    const [hhh3, setHhh3] = React.useState("");
     const [lft, setLft] = React.useState("");
     const [directbilirubin, setDirectbilirubin] = React.useState("");
     const [indirectbilirubin, setIndirectbilirubin] = React.useState("");
@@ -137,7 +139,7 @@ const Investigations = () =>  {
 
     const questions2 = [
         { question: 'Date of Test - CBC', questionType: questionType, questionId: 'i-6_0', inputtype: 'date', options: [], value: dateoftest_cbc, setValue: setDateoftest_cbc, heading: "Laboratory Tests " },
-        { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc , restriction: alpha.some(i => cbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        // { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc , restriction: alpha.some(i => cbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: 'Hemoglobin (Hb):', questionType: questionType, questionId: 'i-7', inputtype: 'text', options: [], value: hb, setValue: setHb },
         { question: "Red Blood Cell Count (RBC) (10^6/uL):", questionType: questionType, questionId: 'i-8', inputtype: 'text', options: [], value: rbc, setValue: setRbc, restriction: alpha.some(i => rbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: "Total Leukocyte Count (TLC) (10^3/uL):", questionType: questionType, questionId: 'i-9', inputtype: 'text', options: [], value: tlc, setValue: setTlc, restriction: alpha.some(i => tlc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
@@ -155,7 +157,10 @@ const Investigations = () =>  {
         { question: "Serum Creatinine Level:",questionType: questionType, questionId: 'i-36', inputtype: 'text', options: [], value: serumcreatinelevel, setValue: setSerumcreatinelevel },
         { question: "Blood Urea Level:", questionType: questionType, questionId: 'i-22', inputtype: 'text', options: [], value: bloodurealevel, setValue: setBloodurealevel },
         { question: "Viral Markers:", questionType: questionType, questionId: 'i-23', inputtype: 'text', options: [], value: viralmarkers, setValue: setViralmarkers },
-        { question: "Hepatitis B Surface Antigen (HBsAg) / Hepatitis C Virus (HCV) / Human Immunodeficiency Virus (HIV):", questionType: questionType, questionId: 'i-24', inputtype: 'dropdown', options: ["HBsAg", "HCV", "HIV"], value: hhh, setValue: setHhh },
+        { question: "Hepatitis B Surface Antigen (HBsAg) :", questionType: questionType, questionId: 'i-24', inputtype: 'dropdown', options: ["Positive","Negative"], value: hhh1, setValue: setHhh1 },
+        { question: " Hepatitis C Virus (HCV) :", questionType: questionType, questionId: 'i-24_0', inputtype: 'dropdown', options: ["Positive","Negative"], value: hhh2, setValue: setHhh2 },
+        { question: "Human Immunodeficiency Virus (HIV):", questionType: questionType, questionId: 'i-24_1', inputtype: 'dropdown', options: ["Positive","Negative"], value: hhh3, setValue: setHhh3 },
+
         { question: "Liver Function Test (LFT) - Total Bilirubin (mg%) (T):", questionType: questionType, questionId: 'i-25', inputtype: 'text', options: [], value: lft, setValue: setLft, restriction: alpha.some(i => lft.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: "Direct Bilirubin (mg%) (D):", questionType: questionType, questionId: 'i-26', inputtype: 'text', options: [], value: directbilirubin, setValue: setDirectbilirubin, restriction: alpha.some(i => directbilirubin.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: "Indirect Bilirubin (mg%) (I):", questionType: questionType, questionId: 'i-27', inputtype: 'text', options: [], value: indirectbilirubin, setValue: setIndirectbilirubin, restriction: alpha.some(i => indirectbilirubin.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },

@@ -327,15 +327,17 @@ const ClinicalProfile = () => {
     }, [tumorheight, tumorwidth]);
 
     const questions7 = [
-        { question: "Primary Site:", questionType: questionType, questionId: 'c6-1', inputtype: 'dropdown', options: ["Upper Bucco-Alveolar (BA) Complex", "Lower BA complex or Tongue"], value: primarysite, setValue: setPrimarysite, heading: "Clinical Examination" },
-        { question: "Specific Site:", questionType: questionType, questionId: 'c6-2', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "RMT", "FOM", "Oral Tougue"], value: clinicalappropriate, setValue: setClinicalappropriate },
+        { question: "Primary Site:", questionType: questionType, questionId: 'c6-1', inputtype: 'dropdown', options: ["Upper Bucco-Alveolar (BA) Complex", "Lower BA complex "," Tongue"], value: primarysite, setValue: setPrimarysite, heading: "Clinical Examination" },
+        { question: "Specific Site:", questionType: questionType, questionId: 'c6-2', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "RMT", "FOM", "Oral Tougue","Lip"], value: clinicalappropriate, setValue: setClinicalappropriate },
         { question: "Site of tumor (Epicenter)-Right or Left:", questionType: questionType, questionId: 'c6-3', inputtype: 'dropdown', options: ["Right", "Left"], value: siteoftumor, setValue: setSiteoftumor },
         { question: "Reaching Midline:", questionType: questionType, questionId: 'c6-4', inputtype: 'dropdown', options: ["Yes", "No"], value: reachingmidline, setValue: setReachingmidline },
         { question: "Size (cm):", questionType: questionType, questionId: 'c6-5', inputtype: 'multitext', options: [], value: tumorsize, setValue: setTumorsize, subParts: [{ s_question: "Tumor Height (cm):", s_answer: tumorheight, s_setanswer: setTumorheight }, { s_question: "Tumor Width (cm):", s_answer: tumorwidth, s_setanswer: setTumorwidth }], restriction: (alpha.some(i => (i !== "x" && tumorsize.includes(i)))), restrictiontext: "alphabets not allowed" },
         { question: "Proliferative/Infiltrative/Prolifero-infilterative:", questionType: questionType, questionId: 'c6-6', inputtype: 'dropdown', options: ["Proliferative", "Infiltrative", "Prolifero-infilterative"], value: pipi, setValue: setPipi },
         { question: "Skin Involved:", questionType: questionType, questionId: 'c6-7', inputtype: 'dropdown', options: ["Yes", "No"], value: skininvolved, setValue: setSkininvolved },
-        { question: "Gross Fungation/Edema/Ulceration:", questionType: questionType, questionId: 'c6-8', inputtype: 'dropdown', options: ["Gross Fungation", "Edema", "Ulceration"], value: gfeu, setValue: setGfeu },
+        { question: " Skin Involved (Gross Fungation/Edema/Ulceration):", questionType: questionType, questionId: 'c6-8', inputtype: 'dropdown', options: ["Gross Fungation", "Edema", "Ulceration"], value: gfeu, setValue: setGfeu },
         { question: "Bone Involved:", questionType: questionType, questionId: 'c6-9', inputtype: 'dropdown', options: ["Yes", "No"], value: boneinvolved, setValue: setBoneinvolved },
+        { question: "Bone Involved (Loose teeth/ Fracture/ Para mandibular disease/ Perioral Numbness ):", questionType: questionType, questionId: 'c6-9_0', inputtype: 'dropdown', options: ["Loose teeth", "Fracture", "Para mandibular disease", "Perioral Numbness"], value: boneinvolved, setValue: setBoneinvolved },
+
         { question: "OSMF:", questionType: questionType, questionId: 'c6-10', inputtype: 'dropdown', options: ["Yes", "No"], value: osmf, setValue: setOsmf },
         { question: "Leukoplakia:", questionType: questionType, questionId: 'c6-11', inputtype: 'dropdown', options: ["Yes", "No"], value: leukoplakia, setValue: setLeukoplakia },
         { question: "Erythroplakia:", questionType: questionType, questionId: 'c6-12', inputtype: 'dropdown', options: ["Yes", "No"], value: erythroplakia, setValue: setErythroplakia },
@@ -357,7 +359,7 @@ const ClinicalProfile = () => {
 
     const questions8 = [
         { question: "Number of Palpable Nodes:", questionType: questionType, questionId: 'c7-1', inputtype: 'text', options: [], value: necknodes, setValue: setNecknodes, heading: "Neck Nodes", restriction: (alphaspecial.some(i => necknodes.includes(i))), restrictiontext: "alphabets and special charaxters not allowed" },
-        { question: "Level :", questionType: questionType, questionId: 'c7-2', inputtype: 'dropdown', options: ["1", "2a", "2b", "3", "4", "5"], value: levelofnodes, setValue: setLevelofnodes },
+        { question: "Level :", questionType: questionType, questionId: 'c7-2', inputtype: 'text', options: ["1", "2a", "2b", "3", "4", "5"], value: levelofnodes, setValue: setLevelofnodes },
         { question: "Size of Largest Palpable Node (cm):", questionType: questionType, questionId: 'c7-3', inputtype: 'multitext', options: [], value: sizeoflargestpalpable, setValue: setSizeoflargestpalpable, subParts: [{ s_question: "Height", s_answer: heightoflargestpalpable, s_setanswer: setHeightoflargestpalpable }, { s_question: "Width", s_answer: widthoflargestpalpable, s_setanswer: setWidthoflargestpalpable }], restriction: (alpha.some(i => (i !== "x" && sizeoflargestpalpable.includes(i)))), restrictiontext: "alphabets not allowed" },
         { question: "Gross ENE:", questionType: questionType, questionId: 'c7-4', inputtype: 'dropdown', options: ["Yes", "No"], value: grossene, setValue: setGrossene },
         { question: "What suggests ENE:", questionType: questionType, questionId: 'c7-5', inputtype: 'dropdown', options: ["Skin Invasion", "Muscle Invasion", "Vessel"], value: whatsuggestene, setValue: setWhatsuggestene },

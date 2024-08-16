@@ -71,6 +71,36 @@ const ExclusionCriteria = () => {
         setCriteria6(storedUser.city);
     }, []);
 
+    useEffect(() => {
+        switch (criteria6) {
+            case "Rishikesh":
+                setInvestigatorName("Dr. Amit Sehrawat")
+                break;
+            case "Bathinda":
+                setInvestigatorName("Dr. Rohit Mahajan")
+                break;
+            case "Lucknow":
+                setInvestigatorName("Dr. Vijay Kumar")
+                break;
+            case "Bhubaneshwar":
+                setInvestigatorName("Dr. Dilip Mudulli")
+                break;
+            case "Dehradun":
+                setInvestigatorName("Dr. Pankaj Garg")
+                break;
+            case "Udaipur":
+                setInvestigatorName("Dr. Ashish Jakhetiya")
+                break;
+            case "Jodhpur":
+                setInvestigatorName("Dr. Dharma Ram Poonia")
+                break;
+            
+        
+            default:
+                break;
+        }
+    },[criteria6])
+
     const settrialno = (trialnumber : string) => {
         localStorage.setItem("patienttrialnumber", trialnumber);
     }
@@ -252,7 +282,7 @@ const ExclusionCriteria = () => {
                                     <Input className="w-[70%] mx-1 mb-3" placeholder='Who took Consent' value={consentTakenBy} onChange={(e) => setConsentTakenBy(e.target.value)} />
 
                                     <Label className="text-sm mb-1">Investigator's Name</Label>
-                                    <Input className="w-[70%] mx-1 mb-3" placeholder="Investigator's Name" value={investigatorName} onChange={(e) => setInvestigatorName(e.target.value)} />
+                                    <Input className="w-[70%] mx-1 mb-3" placeholder="Investigator's Name" value={investigatorName} onChange={(e) => setInvestigatorName(e.target.value)} disabled />
 
                                     <Label className="text-sm mb-1">Choose Date</Label>
                                     <Popover>
