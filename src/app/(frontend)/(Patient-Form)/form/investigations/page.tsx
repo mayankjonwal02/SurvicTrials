@@ -81,6 +81,8 @@ const Investigations = () =>  {
     const [agratio, setAgratio] = React.useState("");
     const [ejectionfraction, setEjectionfraction] = React.useState("");
     const [ecg, setEcg] = React.useState("");
+    const [cholestrol, setCholestrol] = React.useState("");
+    const [crp, setCrp] = React.useState("");
 
 
 
@@ -156,7 +158,7 @@ const Investigations = () =>  {
         { question: "Renal Function Test (RFT) - Creatinine Clearance:", questionType: questionType, questionId: 'i-21', inputtype: 'text', options: [], value: rft, setValue: setRft },
         { question: "Serum Creatinine Level:",questionType: questionType, questionId: 'i-36', inputtype: 'text', options: [], value: serumcreatinelevel, setValue: setSerumcreatinelevel },
         { question: "Blood Urea Level:", questionType: questionType, questionId: 'i-22', inputtype: 'text', options: [], value: bloodurealevel, setValue: setBloodurealevel },
-        { question: "Viral Markers:", questionType: questionType, questionId: 'i-23', inputtype: 'text', options: [], value: viralmarkers, setValue: setViralmarkers },
+        { question: "Date of Viral Markers:", questionType: questionType, questionId: 'i-23', inputtype: 'date', options: [], value: viralmarkers, setValue: setViralmarkers },
         { question: "Hepatitis B Surface Antigen (HBsAg) :", questionType: questionType, questionId: 'i-24', inputtype: 'dropdown', options: ["Positive","Negative"], value: hhh1, setValue: setHhh1 },
         { question: " Hepatitis C Virus (HCV) :", questionType: questionType, questionId: 'i-24_0', inputtype: 'dropdown', options: ["Positive","Negative"], value: hhh2, setValue: setHhh2 },
         { question: "Human Immunodeficiency Virus (HIV):", questionType: questionType, questionId: 'i-24_1', inputtype: 'dropdown', options: ["Positive","Negative"], value: hhh3, setValue: setHhh3 },
@@ -172,11 +174,16 @@ const Investigations = () =>  {
         { question:"Albumin/Globulin (A/G) Ratio:", questionType: questionType, questionId: 'i-33', inputtype: 'text', options: [], value: agratio, setValue: setAgratio },
         { question: "Ejection Fraction:", questionType:questionType, questionId: 'i-34', inputtype: 'text', options: [], value: ejectionfraction, setValue: setEjectionfraction },
         { question: "Electrocardiogram (ECG):",questionType:questionType, questionId: 'i-35', inputtype: 'text', options: [], value: ecg, setValue: setEcg },
+        { question: "S. Cholestrol Level:",questionType:questionType, questionId: 'i-35_0', inputtype: 'text', options: [], value: cholestrol, setValue: setCholestrol },
+        { question: "CRP:",questionType:questionType, questionId: 'i-35_0_1', inputtype: 'text', options: [], value: crp, setValue: setCrp },
+
+
     ];
 
     const [height, setHeight] = useState('');
     const [width, setWidth] = useState('');
     const [depth, setDepth] = useState('');
+    const [date_part4, setDate_part4] = useState('');
 
     useEffect(() => {
         if (height !== '' && width !== '' && depth !== '') {
@@ -185,12 +192,14 @@ const Investigations = () =>  {
     }, [height, width, depth])
 
     const questions3 = [
-        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'text', options: [], value: stagingLocalImaging, setValue: setStagingLocalImaging, heading: "Staging Radiology", info:[
+        { question: 'Date of Local Imaging:', questionType: questionType, questionId: 'i-37_0_0', inputtype: 'date', options: [], value: date_part4, setValue: setDate_part4, heading: "Staging Radiology", info:[
             "1. Complete response (CR): Disappearance of all target and non-target lesions. SAD of previously pathological lymph nodes should be <10 mm",
             "2. Partial response (PR): ≥30% decrease in the SLD of target lesions.",
             "3. Stable disease (SD): neither unequivocal progression or regression.",
             "4. Progressive disease (PD): ≥20% increase in the SLD of target lesions compared to smallest SLD in the study (nadir) AND ≥5 mm SLD increase OR progression of non-target lesions OR new lesions."
-        ] },
+        ]  },
+
+        { question: 'Staging Local Imaging:', questionType: questionType, questionId: 'i-37', inputtype: 'dropdown', options: ["CT Thorax","CXR","PET CT","Not Applicable"], value: stagingLocalImaging, setValue: setStagingLocalImaging,},
         { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionType: questionType, questionId: 'i-38', inputtype: 'dropdown', options: ["Upper BA Complex", "Lower BA Complex", "Tongue"], value: subsite, setValue: setSubsite },
         { question: 'USG/CT/MRI/PET:', questionType: questionType, questionId: 'i-39', inputtype: 'dropdown', options: ['USG', 'CT', 'MRI', 'PET'], value: imagingType, setValue: setImagingType },
         { question: 'Site (Epicenter of tumor):', questionType: questionType, questionId: 'i-40', inputtype: 'dropdown', options: ["Buccal Mucosa", "Upper GBS", "Lower GBS", "Upper Alveolus", "Lower Alveolus", "Central Alveolus", "RMT", "FOM", "Oral Tongue"], value: site, setValue: setSite },
@@ -204,14 +213,14 @@ const Investigations = () =>  {
         { question: 'PNI (Perineural Invasion):', questionType: questionType, questionId: 'i-48', inputtype: 'dropdown', options: ['Yes', 'No'], value: pni, setValue: setPni },
         { question: 'Neck:', questionType: questionType, questionId: 'i-49', inputtype: 'dropdown', options: ["Single","Multiple"], value: neck, setValue: setNeck },
         { question: 'Number of Suspicious Nodes:', questionType: questionType, questionId: 'i-50', inputtype: 'text', options: [], value: numberOfSuspiciousNodes, setValue: setNumberOfSuspiciousNodes },
-        { question: 'Level 1/2a/2b/3/4/5:', questionType: questionType, questionId: 'i-51', inputtype: 'dropdown', options: ["Level 1", "Level 2a", "Level 2b", "Level 3", "Level 4", "Level 5"], value: levels, setValue: setLevels },
+        { question: 'Level 1/2a/2b/3/4/5:', questionType: questionType, questionId: 'i-51', inputtype: 'text', options: ["Level 1", "Level 2a", "Level 2b", "Level 3", "Level 4", "Level 5"], value: levels, setValue: setLevels },
         { question: 'SAD of Largest Suspicious Nodes (mm):', questionType: questionType, questionId: 'i-52', inputtype: 'text', options: [], value: sadLargestSuspiciousNode, setValue: setSadLargestSuspiciousNode, restriction: alpha.some(i => sadLargestSuspiciousNode.includes(i)), restrictiontext: 'Alphabets are not allowed' },
-        { question: 'USG Correlation:', questionType: questionType, questionId: 'i-53', inputtype: 'text', options: [], value: usgCorrelation, setValue: setUsgCorrelation },
+        // { question: 'USG Correlation:', questionType: questionType, questionId: 'i-53', inputtype: 'text', options: [], value: usgCorrelation, setValue: setUsgCorrelation },
         { question: 'FNAC Required:', questionType: questionType, questionId: 'i-54', inputtype: 'dropdown', options: ["Yes", "No"], value: fnac, setValue: setFnac },
         { question: 'Radiological ENE:', questionType: questionType, questionId: 'i-55', inputtype: 'dropdown', options: ['Yes', 'No'], value: radiologicalEne, setValue: setRadiologicalEne },
-        { question: 'What Suggests ENE:', questionType: questionType, questionId: 'i-56', inputtype: 'dropdown', options: ["Skin","Muscle","Vessel"], value: eneSuggestions, setValue: setEneSuggestions },
-        { question: 'Metastatic Workup :', questionType: questionType, questionId: 'i-57', inputtype: 'dropdown', options: ["CT Thorax","CXR","PET CT"], value: metastaticWorkup, setValue: setMetastaticWorkup },
-        { question: 'Date :', questionType: questionType, questionId: 'i-57_0', inputtype: 'date', options: [], value: date_part3, setValue: setDate_part3 },
+        { question: 'What Suggests ENE:', questionType: questionType, questionId: 'i-56', inputtype: 'dropdown', options: ["Skin","Muscle","Vessel","Not Applicable"], value: eneSuggestions, setValue: setEneSuggestions },
+        { question: 'Metastatic Workup :', questionType: questionType, questionId: 'i-57', inputtype: 'dropdown', options: ["CT Thorax","CXR","PET CT","Not Applicable"], value: metastaticWorkup, setValue: setMetastaticWorkup },
+        { question: 'Date of Metastatic Workup :', questionType: questionType, questionId: 'i-57_0', inputtype: 'date', options: [], value: date_part3, setValue: setDate_part3 },
         { question: 'Lesion 1 Location', questionType: questionType, questionId: 'i-58_0', inputtype: 'text', options: [], value: lesion1Location, setValue: setLesion1Location },
         { question: 'Lesion 1 Size', questionType: questionType, questionId: 'i-58_1', inputtype: 'text', options: [], value: lesion1Size, setValue: setLesion1Size, restriction: alpha.some(i => lesion1Size.includes(i)), restrictiontext: 'Alphabets are not allowed' },
         { question: 'Lesion 1 Marked on scan', questionType: questionType, questionId: 'i-58_2', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion1Marked, setValue: setLesion1Marked },
@@ -221,7 +230,7 @@ const Investigations = () =>  {
         { question: 'Lesion 3 Location', questionType: questionType, questionId: 'i-58_6', inputtype: 'text', options: [], value: lesion3Location, setValue: setLesion3Location },
         { question: 'Lesion 3 Size', questionType: questionType, questionId: 'i-58_7', inputtype: 'text', options: [], value: lesion3Size, setValue: setLesion3Size, restriction: alpha.some(i => lesion3Size.includes(i)), restrictiontext: 'Alphabets are not allowed' },
         { question: 'Lesion 3 Marked on scan', questionType: questionType, questionId: 'i-58_8', inputtype: 'dropdown', options: ['Yes', 'No'], value: lesion3Marked, setValue: setLesion3Marked }     ,
-        { question: 'Response on clinical assessment', questionType: questionType, questionId: 'i-58_9', inputtype: 'dropdown', options: ['*Progressive disease', 'Stable disease','Complete Response','Partial Response'], value: responseCategory1, setValue: setResponseCategory1 }     
+        // { question: 'Response on clinical assessment', questionType: questionType, questionId: 'i-58_9', inputtype: 'dropdown', options: ['*Progressive disease', 'Stable disease','Complete Response','Partial Response'], value: responseCategory1, setValue: setResponseCategory1 }     
 
     ];
     

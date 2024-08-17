@@ -93,6 +93,12 @@ const WelcomePage = () => {
                         <a href="https://twitter.com/drdharmapoonia" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-purple-600">@drdharmapoonia</a>
 
                     </div>
+
+                    <div className="mb-4">
+                        <h4 className="text-lg font-medium">LinkedIn</h4>
+                        <a href="https://www.linkedin.com/in/dr-dharma-ram-poonia-8a79481a0/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-purple-600">Dr. Dharma Ram Poonia</a>
+
+                    </div>
                 </div>
 
             </div>

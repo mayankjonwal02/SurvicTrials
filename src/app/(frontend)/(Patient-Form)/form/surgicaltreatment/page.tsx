@@ -95,11 +95,19 @@ const Surgicaltreatment = () =>{
 
     const questions1 = [
         { question: 'Date of Surgery:', questionId: 's2-1', questionType: questionType, inputtype: 'date', options: [], value: dateOfSurgery, setValue: setDateOfSurgery ,heading:"Surgical Treatment"},
-        { question: 'Resection of Primary:', questionId: 's2-2', questionType: questionType, inputtype: 'text', options: [], value: resectionOfPrimary, setValue: setResectionOfPrimary },
+        { question: 'Resection of Primary:', questionId: 's2-2', questionType: questionType, inputtype: 'dropdown', options: [ "Wide excision of soft tissue Only",
+            "WLE with Bony resection"], value: resectionOfPrimary, setValue: setResectionOfPrimary },
         { question: 'Wide excision of soft tissue with:', questionId: 's2-2_0', questionType: questionType, inputtype: 'text', options: [], value: widewith, setValue: setWidewith },
         { question: 'Wide excision of soft tissue without:', questionId: 's2-2_0_0', questionType: questionType, inputtype: 'text', options: [], value: widewithout, setValue: setWidewithout },
 
-        { question: 'Bone Resection:', questionId: 's2-3', questionType: questionType, inputtype: 'dropdown', options: ['Not Applicable','Segmental Mandibulectomy','Marginal Mandibulectomy','Upper Alveolectomy','Infrastructure Maxillectomy','Central Arch Resection','Zygoma Resection'], value: boneResection, setValue: setBoneResection },
+        { question: 'Bone Resection:', questionId: 's2-3', questionType: questionType, inputtype: 'dropdown', options: [
+            "No",
+            "Marginal mandibulectomy only",
+            "Marginal Mandibulectomy with Upper Alveolectomy/ Infrastructure Maxillectomy",
+            "Segmental Mandibulectomy Only",
+            "Segmental Mandibulectomy with Upper Alveolectomy/ Infrastructure Maxillectomy"
+        ]
+        , value: boneResection, setValue: setBoneResection },
         { question: 'ITF Clearance:', questionId: 's2-4', questionType: questionType, inputtype: 'dropdown', options: ['Not Applicable','Standard Infratemporal Fossa Clearance','High Infratemporal Fossa Clearance'], value: itfClearance, setValue: setItfClearance },
         { question: 'Lymphadenectomy:', questionId: 's2-5', questionType: questionType, inputtype: 'dropdown', options: ["Ipsilateral only","Bilateral"], value: lymphadenectomy, setValue: setLymphadenectomy },
         { question: 'Levels:', questionId: 's2-6', questionType: questionType, inputtype: 'dropdown', options: ["Level 1-3","Leve 1-4","Level 1-5"], value: levels, setValue: setLevels },
@@ -596,7 +604,7 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
             </Tabs>
             <HeadDrop
           dataArray={[
-            { id: "section1", title: "Surgical Treatment" },
+            { id: "section1", title: "Resection and Reconstruction" },
             { id: "section2", title: "Feeding Management" },
             { id: 'section3', title: "Surgical Duration" },
             

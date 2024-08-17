@@ -50,7 +50,8 @@ const [hbCycle1, setHbCycle1] = useState('');
 const [ancCycle1, setAncCycle1] = useState('');
 const [plateletCountCycle1, setPlateletCountCycle1] = useState('');
 const [bilirubinCycle1, setBilirubinCycle1] = useState('');
-const [sgotSgptCycle1, setSgotSgptCycle1] = useState('');
+const [sgotCycle1, setSgotCycle1] = useState('');
+const [SgptCycle1, setSgptCycle1] = useState('');
 const [creatinineCycle1, setCreatinineCycle1] = useState('');
 const [creatinineClearanceCycle1, setCreatinineClearanceCycle1] = useState('');
 const [bloodSugarCycle1, setBloodSugarCycle1] = useState('');
@@ -61,6 +62,9 @@ const [reasonForDelayCycle1, setReasonForDelayCycle1] = useState('');
 const [daysDelayedCycle1, setDaysDelayedCycle1] = useState('');
 const [doseModificationCycle1, setDoseModificationCycle1] = useState('');
 const [reasonForDoseModificationCycle1, setReasonForDoseModificationCycle1] = useState('');
+const [weight1, setWeight1] = useState('');
+const [bsa1, setBsa1] = useState('');
+const [bmi1, setBmi1] = useState('');
 
 const questions1 = [
   { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle1', inputtype: 'date', options: [], value: startDateCycle1, setValue: setStartDateCycle1 , info:[
@@ -70,7 +74,7 @@ const questions1 = [
     "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
     "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
   ]},
-  { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle1', inputtype: 'dropdown', options: ["DCF", "CF", "Other"], value: regimenCycle1, setValue: setRegimenCycle1 },
+  { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle1', inputtype: 'dropdown', options: ["TPF", "TPX", "CF","TP"], value: regimenCycle1, setValue: setRegimenCycle1 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle1', inputtype: 'text', options: [], value: otherRegimenCycle1, setValue: setOtherRegimenCycle1 },
   { question: 'Cycle:', questionType: questionType, questionId: 'c1-4_cycle1', inputtype: 'disabled', options: ["Cycle 1", "Cycle 2", "Cycle 3"], value: cycleCycle1, setValue: setCycleCycle1 },
   { question: 'Date of Start of Cycle:', questionType: questionType, questionId: 'c1-5_cycle1', inputtype: 'date', options: [], value: cycleStartDateCycle1, setValue: setCycleStartDateCycle1 },
@@ -79,7 +83,9 @@ const questions1 = [
   { question: 'Absolute Neutrophil Count (ANC):', questionType: questionType, questionId: 'c1-8_cycle1', inputtype: 'text', options: [], value: ancCycle1, setValue: setAncCycle1, restriction:(alpha.some(el => ancCycle1.includes(el))) , restrictiontext: 'ANC cannot contain alphabets' },
   { question: 'Platelet Count:', questionType: questionType, questionId: 'c1-9_cycle1', inputtype: 'text', options: [], value: plateletCountCycle1, setValue: setPlateletCountCycle1, restriction:(alpha.some(el => plateletCountCycle1.includes(el))) , restrictiontext: 'Platelet Count cannot contain alphabets' },
   { question: 'Bilirubin:', questionType: questionType, questionId: 'c1-10_cycle1', inputtype: 'text', options: [], value: bilirubinCycle1, setValue: setBilirubinCycle1 },
-  { question: 'SGOT/SGPT:', questionType: questionType, questionId: 'c1-11_cycle1', inputtype: 'text', options: [], value: sgotSgptCycle1, setValue: setSgotSgptCycle1 },
+  { question: 'SGOT:', questionType: questionType, questionId: 'c1-11_cycle1', inputtype: 'text', options: [], value: sgotCycle1, setValue: setSgotCycle1 },
+  { question: 'SGPT:', questionType: questionType, questionId: 'c1-11_cycle1_0', inputtype: 'text', options: [], value: SgptCycle1, setValue: setSgptCycle1 },
+
   { question: 'Creatinine:', questionType: questionType, questionId: 'c1-12_cycle1', inputtype: 'text', options: [], value: creatinineCycle1, setValue: setCreatinineCycle1 },
   { question: 'Creatinine Clearance:', questionType: questionType, questionId: 'c1-13_cycle1', inputtype: 'text', options: [], value: creatinineClearanceCycle1, setValue: setCreatinineClearanceCycle1 },
   { question: 'Blood Sugar:', questionType: questionType, questionId: 'c1-14_cycle1', inputtype: 'text', options: [], value: bloodSugarCycle1, setValue: setBloodSugarCycle1 },
@@ -89,7 +95,11 @@ const questions1 = [
   { question: 'Reason for Delay:', questionType: questionType, questionId: 'c1-18_cycle1', inputtype: 'textarea', options: [], value: reasonForDelayCycle1, setValue: setReasonForDelayCycle1 },
   { question: 'Number of Days Delayed:', questionType: questionType, questionId: 'c1-19_cycle1', inputtype: 'text', options: [], value: daysDelayedCycle1, setValue: setDaysDelayedCycle1 },
   { question: 'Dose Modification:', questionType: questionType, questionId: 'c1-20_cycle1', inputtype: 'dropdown', options: ["Yes", "No"], value: doseModificationCycle1, setValue: setDoseModificationCycle1 },
-  { question: 'Reason for Dose Modification:', questionType: questionType, questionId: 'c1-21_cycle1', inputtype: 'text', options: [], value: reasonForDoseModificationCycle1, setValue: setReasonForDoseModificationCycle1 }
+  { question: 'Reason for Dose Modification:', questionType: questionType, questionId: 'c1-21_cycle1', inputtype: 'text', options: [], value: reasonForDoseModificationCycle1, setValue: setReasonForDoseModificationCycle1 },
+  { question: 'Weight:', questionType: questionType, questionId: 'c1-22_cycle1', inputtype: 'text', options: [], value: weight1, setValue: setWeight1 },
+  { question: 'BSA:', questionType: questionType, questionId: 'c1-23_cycle1', inputtype: 'text', options: [], value: bsa1, setValue: setBsa1 },
+  { question: 'BMI:', questionType: questionType, questionId: 'c1-24_cycle1', inputtype: 'text', options: [], value: bmi1, setValue: setBmi1 },
+
 ];
 
 // Section 2 - Cycle 2
@@ -103,7 +113,8 @@ const [hbCycle2, setHbCycle2] = useState('');
 const [ancCycle2, setAncCycle2] = useState('');
 const [plateletCountCycle2, setPlateletCountCycle2] = useState('');
 const [bilirubinCycle2, setBilirubinCycle2] = useState('');
-const [sgotSgptCycle2, setSgotSgptCycle2] = useState('');
+const [sgotCycle2, setSgotCycle2] = useState('');
+const [SgptCycle2, setSgptCycle2] = useState('');
 const [creatinineCycle2, setCreatinineCycle2] = useState('');
 const [creatinineClearanceCycle2, setCreatinineClearanceCycle2] = useState('');
 const [bloodSugarCycle2, setBloodSugarCycle2] = useState('');
@@ -114,6 +125,9 @@ const [reasonForDelayCycle2, setReasonForDelayCycle2] = useState('');
 const [daysDelayedCycle2, setDaysDelayedCycle2] = useState('');
 const [doseModificationCycle2, setDoseModificationCycle2] = useState('');
 const [reasonForDoseModificationCycle2, setReasonForDoseModificationCycle2] = useState('');
+const [weight2, setWeight2] = useState('');
+const [bsa2, setBsa2] = useState('');
+const [bmi2, setBmi2] = useState('');
 
 const questions2 = [
   { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle2', inputtype: 'date', options: [], value: startDateCycle2, setValue: setStartDateCycle2, info:[
@@ -123,7 +137,7 @@ const questions2 = [
     "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
     "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
   ] },
-  { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle2', inputtype: 'dropdown', options: ["DCF", "CF", "Other"], value: regimenCycle2, setValue: setRegimenCycle2 },
+  { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle2', inputtype: 'dropdown', options: ["TPF", "TPX", "CF","TP"], value: regimenCycle2, setValue: setRegimenCycle2 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle2', inputtype: 'text', options: [], value: otherRegimenCycle2, setValue: setOtherRegimenCycle2 },
   { question: 'Cycle:', questionType: questionType, questionId: 'c1-4_cycle2', inputtype: 'disabled', options: ["Cycle 1", "Cycle 2", "Cycle 3"], value: cycleCycle2, setValue: setCycleCycle2 },
   { question: 'Date of Start of Cycle:', questionType: questionType, questionId: 'c1-5_cycle2', inputtype: 'date', options: [], value: cycleStartDateCycle2, setValue: setCycleStartDateCycle2 },
@@ -132,8 +146,8 @@ const questions2 = [
   { question: 'Absolute Neutrophil Count (ANC):', questionType: questionType, questionId: 'c1-8_cycle2', inputtype: 'text', options: [], value: ancCycle2, setValue: setAncCycle2 , restriction:(alpha.some(el => ancCycle2.includes(el))) , restrictiontext: 'ANC cannot contain alphabets' },
   { question: 'Platelet Count:', questionType: questionType, questionId: 'c1-9_cycle2', inputtype: 'text', options: [], value: plateletCountCycle2, setValue: setPlateletCountCycle2 , restriction:(alpha.some(el => plateletCountCycle2.includes(el))) , restrictiontext: 'Platelet Count cannot contain alphabets' },
   { question: 'Bilirubin:', questionType: questionType, questionId: 'c1-10_cycle2', inputtype: 'text', options: [], value: bilirubinCycle2, setValue: setBilirubinCycle2 },
-  { question: 'SGOT/SGPT:', questionType: questionType, questionId: 'c1-11_cycle2', inputtype: 'text', options: [], value: sgotSgptCycle2, setValue: setSgotSgptCycle2 },
-  { question: 'Creatinine:', questionType: questionType, questionId: 'c1-12_cycle2', inputtype: 'text', options: [], value: creatinineCycle2, setValue: setCreatinineCycle2 },
+  { question: 'SGOT:', questionType: questionType, questionId: 'c1-11_cycle2', inputtype: 'text', options: [], value: sgotCycle2, setValue: setSgotCycle2 },
+  { question: 'SGPT:', questionType: questionType, questionId: 'c1-11_cycle2_0', inputtype: 'text', options: [], value: SgptCycle2, setValue: setSgptCycle2 },  { question: 'Creatinine:', questionType: questionType, questionId: 'c1-12_cycle2', inputtype: 'text', options: [], value: creatinineCycle2, setValue: setCreatinineCycle2 },
   { question: 'Creatinine Clearance:', questionType: questionType, questionId: 'c1-13_cycle2', inputtype: 'text', options: [], value: creatinineClearanceCycle2, setValue: setCreatinineClearanceCycle2 },
   { question: 'Blood Sugar:', questionType: questionType, questionId: 'c1-14_cycle2', inputtype: 'text', options: [], value: bloodSugarCycle2, setValue: setBloodSugarCycle2 },
   { question: 'Other Details:', questionType: questionType, questionId: 'c1-15_cycle2', inputtype: 'textarea', options: [], value: otherDetailsCycle2, setValue: setOtherDetailsCycle2 },
@@ -142,7 +156,10 @@ const questions2 = [
   { question: 'Reason for Delay:', questionType: questionType, questionId: 'c1-18_cycle2', inputtype: 'textarea', options: [], value: reasonForDelayCycle2, setValue: setReasonForDelayCycle2 },
   { question: 'Number of Days Delayed:', questionType: questionType, questionId: 'c1-19_cycle2', inputtype: 'text', options: [], value: daysDelayedCycle2, setValue: setDaysDelayedCycle2 },
   { question: 'Dose Modification:', questionType: questionType, questionId: 'c1-20_cycle2', inputtype: 'dropdown', options: ["Yes", "No"], value: doseModificationCycle2, setValue: setDoseModificationCycle2 },
-  { question: 'Reason for Dose Modification:', questionType: questionType, questionId: 'c1-21_cycle2', inputtype: 'text', options: [], value: reasonForDoseModificationCycle2, setValue: setReasonForDoseModificationCycle2 }
+  { question: 'Reason for Dose Modification:', questionType: questionType, questionId: 'c1-21_cycle2', inputtype: 'text', options: [], value: reasonForDoseModificationCycle2, setValue: setReasonForDoseModificationCycle2 },
+  { question: 'Weight:', questionType: questionType, questionId: 'c1-22_cycle2', inputtype: 'text', options: [], value: weight2, setValue: setWeight2 },
+  { question: 'BSA:', questionType: questionType, questionId: 'c1-23_cycle2', inputtype: 'text', options: [], value: bsa2, setValue: setBsa2 },
+  { question: 'BMI:', questionType: questionType, questionId: 'c1-24_cycle2', inputtype: 'text', options: [], value: bmi2, setValue: setBmi2 },
 ];
 
 // Section 3 - Cycle 3
@@ -156,7 +173,8 @@ const [hbCycle3, setHbCycle3] = useState('');
 const [ancCycle3, setAncCycle3] = useState('');
 const [plateletCountCycle3, setPlateletCountCycle3] = useState('');
 const [bilirubinCycle3, setBilirubinCycle3] = useState('');
-const [sgotSgptCycle3, setSgotSgptCycle3] = useState('');
+const [sgotCycle3, setSgotCycle3] = useState('');
+const [SgptCycle3, setSgptCycle3] = useState('');
 const [creatinineCycle3, setCreatinineCycle3] = useState('');
 const [creatinineClearanceCycle3, setCreatinineClearanceCycle3] = useState('');
 const [bloodSugarCycle3, setBloodSugarCycle3] = useState('');
@@ -167,6 +185,9 @@ const [reasonForDelayCycle3, setReasonForDelayCycle3] = useState('');
 const [daysDelayedCycle3, setDaysDelayedCycle3] = useState('');
 const [doseModificationCycle3, setDoseModificationCycle3] = useState('');
 const [reasonForDoseModificationCycle3, setReasonForDoseModificationCycle3] = useState('');
+const [weight3, setWeight3] = useState('');
+const [bsa3, setBsa3] = useState('');
+const [bmi3, setBmi3] = useState('');
 
 const questions3 = [
   { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle3', inputtype: 'date', options: [], value: startDateCycle3, setValue: setStartDateCycle3, info:[
@@ -176,7 +197,7 @@ const questions3 = [
     "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
     "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
   ] },
-  { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle3', inputtype: 'dropdown', options: ["DCF", "CF", "Other"], value: regimenCycle3, setValue: setRegimenCycle3 },
+  { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle3', inputtype: 'dropdown', options: ["TPF", "TPX", "CF","TP"], value: regimenCycle3, setValue: setRegimenCycle3 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle3', inputtype: 'text', options: [], value: otherRegimenCycle3, setValue: setOtherRegimenCycle3 },
   { question: 'Cycle:', questionType: questionType, questionId: 'c1-4_cycle3', inputtype: 'disabled', options: ["Cycle 1", "Cycle 2", "Cycle 3"], value: cycleCycle3, setValue: setCycleCycle3 },
   { question: 'Date of Start of Cycle:', questionType: questionType, questionId: 'c1-5_cycle3', inputtype: 'date', options: [], value: cycleStartDateCycle3, setValue: setCycleStartDateCycle3 },
@@ -185,8 +206,8 @@ const questions3 = [
   { question: 'Absolute Neutrophil Count (ANC):', questionType: questionType, questionId: 'c1-8_cycle3', inputtype: 'text', options: [], value: ancCycle3, setValue: setAncCycle3 , restriction: (alpha.some(el => ancCycle3.includes(el))) , restrictiontext: 'ANC cannot contain alphabets' },
   { question: 'Platelet Count:', questionType: questionType, questionId: 'c1-9_cycle3', inputtype: 'text', options: [], value: plateletCountCycle3, setValue: setPlateletCountCycle3 , restriction: (alpha.some(el => plateletCountCycle3.includes(el))) , restrictiontext: 'Platelet Count cannot contain alphabets' },
   { question: 'Bilirubin:', questionType: questionType, questionId: 'c1-10_cycle3', inputtype: 'text', options: [], value: bilirubinCycle3, setValue: setBilirubinCycle3 },
-  { question: 'SGOT/SGPT:', questionType: questionType, questionId: 'c1-11_cycle3', inputtype: 'text', options: [], value: sgotSgptCycle3, setValue: setSgotSgptCycle3 },
-  { question: 'Creatinine:', questionType: questionType, questionId: 'c1-12_cycle3', inputtype: 'text', options: [], value: creatinineCycle3, setValue: setCreatinineCycle3 },
+  { question: 'SGOT:', questionType: questionType, questionId: 'c1-11_cycle3', inputtype: 'text', options: [], value: sgotCycle3, setValue: setSgotCycle3 },
+  { question: 'SGPT:', questionType: questionType, questionId: 'c1-11_cycle3_0', inputtype: 'text', options: [], value: SgptCycle3, setValue: setSgptCycle3 },  { question: 'Creatinine:', questionType: questionType, questionId: 'c1-12_cycle3', inputtype: 'text', options: [], value: creatinineCycle3, setValue: setCreatinineCycle3 },
   { question: 'Creatinine Clearance:', questionType: questionType, questionId: 'c1-13_cycle3', inputtype: 'text', options: [], value: creatinineClearanceCycle3, setValue: setCreatinineClearanceCycle3 },
   { question: 'Blood Sugar:', questionType: questionType, questionId: 'c1-14_cycle3', inputtype: 'text', options: [], value: bloodSugarCycle3, setValue: setBloodSugarCycle3 },
   { question: 'Other Details:', questionType: questionType, questionId: 'c1-15_cycle3', inputtype: 'textarea', options: [], value: otherDetailsCycle3, setValue: setOtherDetailsCycle3 },
@@ -195,7 +216,10 @@ const questions3 = [
   { question: 'Reason for Delay:', questionType: questionType, questionId: 'c1-18_cycle3', inputtype: 'textarea', options: [], value: reasonForDelayCycle3, setValue: setReasonForDelayCycle3 },
   { question: 'Number of Days Delayed:', questionType: questionType, questionId: 'c1-19_cycle3', inputtype: 'text', options: [], value: daysDelayedCycle3, setValue: setDaysDelayedCycle3 },
   { question: 'Dose Modification:', questionType: questionType, questionId: 'c1-20_cycle3', inputtype: 'dropdown', options: ["Yes", "No"], value: doseModificationCycle3, setValue: setDoseModificationCycle3 },
-  { question: 'Reason for Dose Modification:', questionType: questionType, questionId: 'c1-21_cycle3', inputtype: 'text', options: [], value: reasonForDoseModificationCycle3, setValue: setReasonForDoseModificationCycle3 }
+  { question: 'Reason for Dose Modification:', questionType: questionType, questionId: 'c1-21_cycle3', inputtype: 'text', options: [], value: reasonForDoseModificationCycle3, setValue: setReasonForDoseModificationCycle3 },
+  { question: 'Weight:', questionType: questionType, questionId: 'c1-22_cycle3', inputtype: 'text', options: [], value: weight3, setValue: setWeight3 },
+  { question: 'BSA:', questionType: questionType, questionId: 'c1-23_cycle3', inputtype: 'text', options: [], value: bsa3, setValue: setBsa3 },
+  { question: 'BMI:', questionType: questionType, questionId: 'c1-24_cycle3', inputtype: 'text', options: [], value: bmi3, setValue: setBmi3 },
 ];
 
     

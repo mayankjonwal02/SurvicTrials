@@ -47,21 +47,20 @@ const Protocoldeviation = () => {
 
 
     const questions1 = [
-        { question: 'Start Date:', questionId: 'p2-1', questionType: questionType, inputtype: 'date', options: [], value: startDate, setValue: setStartDate },
+        { question: 'Start Date:', questionId: 'p2-1', questionType: questionType, inputtype: 'date', options: [], value: startDate, setValue: setStartDate, info:["If one or more is answered yes for any event, it must be reported to the IRB promptly (14 business days from notification of or becoming aware of the event)."] },
         { question: 'End Date:', questionId: 'p2-2', questionType: questionType, inputtype: 'date', options: [], value: endDate, setValue: setEndDate },
-        { question: 'Description:', questionId: 'p2-3', questionType: questionType, inputtype: 'dropdown', options: [
-            "Wrong doses of chemotherapy or selecting regimen other than FLOT",
-            "Diagnostic Laparoscopy not done before randomization",
-            "Laparoscopic Surgery or Robotic surgery has been performed",
-            "Poor protocol adherence",
-            "a) After randomization, if chemotherapy has not been started within 2 weeks or surgery has not been done within 3 weeks.",
-            "b) Surgery is not performed within 6 weeks after neoadjuvant chemotherapy.",
-            "c) Adjuvant chemotherapy not started within 8 weeks of surgery.",
-            "Non-compliance with the International Conference on Harmonisation (ICH) guideline for Good Clinical Practice",
-            "Inaccurate or incomplete data recording",
-            "Patients who do not show up for scheduled visits, site staff should make several attempts(i.e., at least three attempts within a reasonable period of time after a missed visit) to contact these patients for follow-up information.",
-            "If the scheduled visits are missed or investigations have not been performed."
-        ], value: description, setValue: setDescription },
+        { question: 'Description:', questionId: 'p2-3', questionType: questionType, inputtype: 'dropdown', 
+            options: [
+                "Withdraw consent",
+                "Inoperable Primary Included in the study",
+                "N0-N1 Patients included in the study",
+                "Wrong chemotherapy dose or chemotherapy protocol other than TPF/TPX",
+                "Deviation from Protocol timeline Adherence: Enrollment to resumption of treatment within 3 weeks",
+                "Deviation from Protocol timeline Adherence: ICT to surgery within 6 weeks",
+                "Deviation from Protocol timeline Adherence: Number of chemotherapy cycles 2",
+                "Deviation from Protocol timeline Adherence: Defaulted for Surgery"
+            ]
+            , value: description, setValue: setDescription },
         { question: 'Category:', questionId: 'p2-4', questionType: questionType, inputtype: 'dropdown', options: [ "Consent Deviation",
             "Drug Administration/Accountability",
             "Enrollment Deviation",

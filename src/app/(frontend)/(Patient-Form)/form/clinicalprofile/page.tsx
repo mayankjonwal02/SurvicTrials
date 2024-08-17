@@ -149,6 +149,7 @@ const ClinicalProfile = () => {
     const [skininvolved, setSkininvolved] = React.useState("");
     const [gfeu, setGfeu] = React.useState("");
     const [boneinvolved, setBoneinvolved] = React.useState("");
+    const [boneinvolved1, setBoneinvolved1] = React.useState("");
     const [osmf, setOsmf] = React.useState("");
     const [leukoplakia, setLeukoplakia] = React.useState("");
     const [erythroplakia, setErythroplakia] = React.useState("");
@@ -334,9 +335,9 @@ const ClinicalProfile = () => {
         { question: "Size (cm):", questionType: questionType, questionId: 'c6-5', inputtype: 'multitext', options: [], value: tumorsize, setValue: setTumorsize, subParts: [{ s_question: "Tumor Height (cm):", s_answer: tumorheight, s_setanswer: setTumorheight }, { s_question: "Tumor Width (cm):", s_answer: tumorwidth, s_setanswer: setTumorwidth }], restriction: (alpha.some(i => (i !== "x" && tumorsize.includes(i)))), restrictiontext: "alphabets not allowed" },
         { question: "Proliferative/Infiltrative/Prolifero-infilterative:", questionType: questionType, questionId: 'c6-6', inputtype: 'dropdown', options: ["Proliferative", "Infiltrative", "Prolifero-infilterative"], value: pipi, setValue: setPipi },
         { question: "Skin Involved:", questionType: questionType, questionId: 'c6-7', inputtype: 'dropdown', options: ["Yes", "No"], value: skininvolved, setValue: setSkininvolved },
-        { question: " Skin Involved (Gross Fungation/Edema/Ulceration):", questionType: questionType, questionId: 'c6-8', inputtype: 'dropdown', options: ["Gross Fungation", "Edema", "Ulceration"], value: gfeu, setValue: setGfeu },
+        { question: " Skin Involved (Gross Fungation/Edema/Ulceration):", questionType: questionType, questionId: 'c6-8', inputtype: 'dropdown', options: ["Gross Fungation", "Edema", "Ulceration","Not Applicable"], value: gfeu, setValue: setGfeu },
         { question: "Bone Involved:", questionType: questionType, questionId: 'c6-9', inputtype: 'dropdown', options: ["Yes", "No"], value: boneinvolved, setValue: setBoneinvolved },
-        { question: "Bone Involved (Loose teeth/ Fracture/ Para mandibular disease/ Perioral Numbness ):", questionType: questionType, questionId: 'c6-9_0', inputtype: 'dropdown', options: ["Loose teeth", "Fracture", "Para mandibular disease", "Perioral Numbness"], value: boneinvolved, setValue: setBoneinvolved },
+        { question: "Bone Involved (Loose teeth/ Fracture/ Para mandibular disease/ Perioral Numbness ):", questionType: questionType, questionId: 'c6-9_0', inputtype: 'dropdown', options: ["Loose teeth", "Fracture", "Para mandibular disease", "Perioral Numbness","Not Applicable"], value: boneinvolved1, setValue: setBoneinvolved1 },
 
         { question: "OSMF:", questionType: questionType, questionId: 'c6-10', inputtype: 'dropdown', options: ["Yes", "No"], value: osmf, setValue: setOsmf },
         { question: "Leukoplakia:", questionType: questionType, questionId: 'c6-11', inputtype: 'dropdown', options: ["Yes", "No"], value: leukoplakia, setValue: setLeukoplakia },

@@ -140,7 +140,9 @@ const Chemotherapy = [
     { question: 'Absolute Neutrophil Count (ANC):', questionId: 'c1-8_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Platelet Count:', questionId: 'c1-9_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Bilirubin:', questionId: 'c1-10_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
-    { question: 'SGOT/SGPT:', questionId: 'c1-11_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'SGOT:', questionId: 'c1-11_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'SGPT:', questionId: 'c1-11_cycle1_0', updates: [], value: "", questionType: 'Chemotherapy' },
+
     { question: 'Creatinine:', questionId: 'c1-12_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Creatinine Clearance:', questionId: 'c1-13_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Blood Sugar:', questionId: 'c1-14_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
@@ -151,6 +153,9 @@ const Chemotherapy = [
     { question: 'Number of Days Delayed:', questionId: 'c1-19_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Dose Modification:', questionId: 'c1-20_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Reason for Dose Modification:', questionId: 'c1-21_cycle1', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'Weight:', questionType: 'Chemotherapy', questionId: 'c1-22_cycle1', updates: [], value: "" },
+    { question: 'BSA:', questionType: 'Chemotherapy', questionId: 'c1-23_cycle1', updates: [], value: "" },
+    { question: 'BMI:', questionType: 'Chemotherapy', questionId: 'c1-24_cycle1', updates: [], value: "" },
   
     // Cycle 2 questions
     { question: 'Date of Start of Chemotherapy:', questionId: 'c1-1_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
@@ -163,7 +168,8 @@ const Chemotherapy = [
     { question: 'Absolute Neutrophil Count (ANC):', questionId: 'c1-8_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Platelet Count:', questionId: 'c1-9_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Bilirubin:', questionId: 'c1-10_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
-    { question: 'SGOT/SGPT:', questionId: 'c1-11_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'SGOT:', questionId: 'c1-11_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'SGPT:', questionId: 'c1-11_cycle2_0', updates: [], value: "", questionType: 'Chemotherapy' },    
     { question: 'Creatinine:', questionId: 'c1-12_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Creatinine Clearance:', questionId: 'c1-13_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Blood Sugar:', questionId: 'c1-14_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
@@ -174,6 +180,9 @@ const Chemotherapy = [
     { question: 'Number of Days Delayed:', questionId: 'c1-19_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Dose Modification:', questionId: 'c1-20_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Reason for Dose Modification:', questionId: 'c1-21_cycle2', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'Weight:', questionType: 'Chemotherapy', questionId: 'c1-22_cycle2', updates: [], value: "" },
+    { question: 'BSA:', questionType: 'Chemotherapy', questionId: 'c1-23_cycle2', updates: [], value: "" },
+    { question: 'BMI:', questionType: 'Chemotherapy', questionId: 'c1-24_cycle2', updates: [], value: "" },
   
     // Cycle 3 questions
     { question: 'Date of Start of Chemotherapy:', questionId: 'c1-1_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
@@ -186,7 +195,8 @@ const Chemotherapy = [
     { question: 'Absolute Neutrophil Count (ANC):', questionId: 'c1-8_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Platelet Count:', questionId: 'c1-9_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Bilirubin:', questionId: 'c1-10_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
-    { question: 'SGOT/SGPT:', questionId: 'c1-11_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'SGOT:', questionId: 'c1-11_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'SGPT:', questionId: 'c1-11_cycle3_0', updates: [], value: "", questionType: 'Chemotherapy' },    
     { question: 'Creatinine:', questionId: 'c1-12_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Creatinine Clearance:', questionId: 'c1-13_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Blood Sugar:', questionId: 'c1-14_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
@@ -196,7 +206,10 @@ const Chemotherapy = [
     { question: 'Reason for Delay:', questionId: 'c1-18_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Number of Days Delayed:', questionId: 'c1-19_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
     { question: 'Dose Modification:', questionId: 'c1-20_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
-    { question: 'Reason for Dose Modification:', questionId: 'c1-21_cycle3', updates: [], value: "", questionType: 'Chemotherapy' }
+    { question: 'Reason for Dose Modification:', questionId: 'c1-21_cycle3', updates: [], value: "", questionType: 'Chemotherapy' },
+    { question: 'Weight:', questionType: 'Chemotherapy', questionId: 'c1-22_cycle3', updates: [], value: "" },
+    { question: 'BSA:', questionType: 'Chemotherapy', questionId: 'c1-23_cycle3', updates: [], value: "" },
+    { question: 'BMI:', questionType: 'Chemotherapy', questionId: 'c1-24_cycle3', updates: [], value: "" },
   ];
   
 
@@ -677,7 +690,7 @@ const Investigation = [
     { question: 'Renal Function Test (RFT) - Creatinine Clearance:', questionId: 'i-21',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Serum Creatinine Level:', questionId: 'i-36',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Blood Urea Level:', questionId: 'i-22',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Viral Markers:', questionId: 'i-23',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'Date of Viral Markers:', questionId: 'i-23',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Hepatitis B Surface Antigen (HBsAg) :', questionId: 'i-24',updates:[], value:"",questionType: 'Investigation' },
     { question: ' Hepatitis C Virus (HCV) :', questionId: 'i-24_0',updates:[], value:"",questionType: 'Investigation' },
 
@@ -694,6 +707,10 @@ const Investigation = [
     { question: 'Albumin/Globulin (A/G) Ratio:', questionId: 'i-33',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Ejection Fraction:', questionId: 'i-34',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Electrocardiogram (ECG):', questionId: 'i-35',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'S. Cholestrol Level:', questionId: 'i-35_0',updates:[], value:"",questionType: 'Investigation' },
+
+    { question: 'Date of Local Imaging:', questionId: 'i-37_0_0',updates:[], value:"",questionType: 'Investigation' },
+
     { question: 'Staging Local Imaging:', questionId: 'i-37',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Subsite (Upper BA Complex or Lower BA Complex or Tongue):', questionId: 'i-38',updates:[], value:"",questionType: 'Investigation' },
     { question: 'USG/CT/MRI/PET:', questionId: 'i-39',updates:[], value:"",questionType: 'Investigation' },
@@ -710,12 +727,12 @@ const Investigation = [
     { question: 'Number of Suspicious Nodes:', questionId: 'i-50',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Level 1/2a/2b/3/4/5:', questionId: 'i-51',updates:[], value:"",questionType: 'Investigation' },
     { question: 'SAD of Largest Suspicious Nodes (mm):', questionId: 'i-52',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'USG Correlation:', questionId: 'i-53',updates:[], value:"",questionType: 'Investigation' },
+    // { question: 'USG Correlation:', questionId: 'i-53',updates:[], value:"",questionType: 'Investigation' },
     { question: 'FNAC Required:', questionId: 'i-54',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Radiological ENE:', questionId: 'i-55',updates:[], value:"",questionType: 'Investigation' },
     { question: 'What Suggests ENE:', questionId: 'i-56',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Metastatic Workup :', questionId: 'i-57',updates:[], value:"",questionType: 'Investigation' },
-    { question: 'Date :',  questionId: 'i-57_0',updates:[], value:"",questionType: 'Investigation' },
+    { question: 'Date of Metastatic Workup :',  questionId: 'i-57_0',updates:[], value:"",questionType: 'Investigation' },
     { question: 'Lesion 1 Location', questionType: "Investigation", questionId: 'i-58_0', updates:[],value:"" },
     { question: 'Lesion 1 Size', questionType: "Investigation", questionId: 'i-58_1',  updates:[],value:"" },
     { question: 'Lesion 1 Marked on scan', questionType: "Investigation", questionId: 'i-58_2', updates:[],value:"" },
