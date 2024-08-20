@@ -1044,21 +1044,37 @@ const SocialHistory = [
 
 const SurgicalTreatment = [
     // Surgical Treatment
-    { question: 'Date of Surgery:', questionId: 's2-1',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Resection of Primary:', questionId: 's2-2',updates:[], value:"",questionType: 'Surgical Treatment' },
+    { question: 'Date of Surgery:', questionId: 's2-1', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Resection of Primary:', questionId: 's2-2', updates: [], value: "", questionType: 'Surgical Treatment' },
     { question: 'Wide excision of soft tissue with:', questionId: 's2-2_0', updates: [], value: "", questionType: 'Surgical Treatment' },
-    { question: 'Wide excision of soft tissue without:', questionId: 's2-2_0_0' , updates: [], value: "", questionType: 'Surgical Treatment' },
-    { question: 'Bone Resection:', questionId: 's2-3',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'ITF Clearance:', questionId: 's2-4',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Lymphadenectomy:', questionId: 's2-5',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Levels:', questionId: 's2-6',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Sternocleidomastoid Muscle:', questionId: 's2-7',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Internal Jugular Vein:', questionId: 's2-8',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Spinal Accessory Nerve:', questionId: 's2-9',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Reconstruction:', questionId: 's2-10',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Tracheostomy :', questionId: 's2-11',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Reason:', questionId: 's2-12',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Removed on Day:', questionId: 's2-13',updates:[], value:"",questionType: 'Surgical Treatment' },
+    { question: 'Wide excision of soft tissue without:', questionId: 's2-2_0_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Bone Resection:', questionId: 's2-3', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Central Arch Resection:', questionId: 's2-3_0_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Zygoma Resection:', questionId: 's2-3_0_1', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'ITF Clearance:', questionId: 's2-4', updates: [], value: "", questionType: 'Surgical Treatment' },
+    
+    // Existing Lymphadenectomy question
+    { question: 'Lymphadenectomy:', questionId: 's2-5', updates: [], value: "", questionType: 'Surgical Treatment' },
+    
+    // New questions added
+    // { question: 'Lymphadenectomy Yes/No:', questionId: 's2-5_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Laterality:', questionId: 's2-5_1', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Level of LNDs:', questionId: 's2-6_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Sternocleidomastoid Muscle:', questionId: 's2-7_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Internal Jugular Vein:', questionId: 's2-8_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Spinal Accessory Nerve:', questionId: 's2-9_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    
+    // Existing questions continued
+    { question: 'Levels:', questionId: 's2-6', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Sternocleidomastoid Muscle:', questionId: 's2-7', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Internal Jugular Vein:', questionId: 's2-8', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Spinal Accessory Nerve:', questionId: 's2-9', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Reconstruction:', questionId: 's2-10', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'If Other:', questionId: 's2-10_0_0', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Tracheostomy:', questionId: 's2-11', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Reason:', questionId: 's2-12', updates: [], value: "", questionType: 'Surgical Treatment' },
+    { question: 'Removed on Day:', questionId: 's2-13', updates: [], value: "", questionType: 'Surgical Treatment' },
+
   
     // Feeding Management
     { question: 'Ryle’s Tube, kept till which postoperative day:', questionId: 's2-14',updates:[], value:"",questionType: 'Feeding Management' },
