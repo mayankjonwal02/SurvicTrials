@@ -66,6 +66,9 @@ const Surgicaltreatment = () =>{
     const [rylesTubeDuration, setRylesTubeDuration] = useState('');
     const [feedingJejunostomy, setFeedingJejunostomy] = useState('');
     const [reasonForFeedingJejunostomy, setReasonForFeedingJejunostomy] = useState('');
+    const [reasonForFeedingJejunostomy1, setReasonForFeedingJejunostomy1] = useState('');
+    const [reasonForFeedingJejunostomy2, setReasonForFeedingJejunostomy2] = useState('');
+    const [reasonForFeedingJejunostomy3, setReasonForFeedingJejunostomy3] = useState('');
 
 
     // Section 3: Emotional Well-being
@@ -78,6 +81,10 @@ const Surgicaltreatment = () =>{
     const [s2_22, setS2_22] = useState('');
     const [s2_23, setS2_23] = useState('');
     const [s2_24, setS2_24] = useState('');
+    const [s2_24_0, setS2_24_0] = useState('');
+    const [s2_24_1, setS2_24_1] = useState('');
+
+
     const [s2_25, setS2_25] = useState('');
     const [s2_26, setS2_26] = useState('');
     const [s2_27, setS2_27] = useState('');
@@ -172,16 +179,19 @@ useEffect(() => {
     setReasonForFeedingJejunostomy(feedingJejunostomy==="No" ? "Not Applicable":"")
 }, [feedingJejunostomy])
 const questions2 =  [
-    { question: 'Tracheostomy:', questionId: 's2-11', questionType: questionType, inputtype: 'dropdown', options: ['Yes','No'], value: tracheostomy, setValue: setTracheostomy , heading:"Feeding Management" },
+    { question: 'Tracheostomy:', questionId: 's2-11', questionType: questionType, inputtype: 'dropdown', options: ['Yes','No'], value: tracheostomy, setValue: setTracheostomy , heading:"Ancillary procedures" },
+    { question: 'Scenario of Tracheostomy ', questionId: 's2-13', questionType: questionType, inputtype:'dropdown', options: ["Plan","Emergency"], value: tracheostomyRemovedOnDay, setValue: setTracheostomyRemovedOnDay },
     { question: 'Reason:', questionId: 's2-12', questionType: questionType, inputtype: tracheostomy === "No" ? 'disabled' : 'textarea', options: [], value: tracheostomyReason, setValue: setTracheostomyReason },
-    { question: 'Removed on Day:', questionId: 's2-13', questionType: questionType, inputtype: tracheostomy === "No" ? 'disabled' : 'text', options: [], value: tracheostomyRemovedOnDay, setValue: setTracheostomyRemovedOnDay },
-    { question: 'Ryle’s Tube, kept till which postoperative day:', questionId: 's2-14', questionType: questionType, inputtype: 'text', options: [], value: rylesTubeDuration, setValue: setRylesTubeDuration , },
-        { question: 'Feeding Jejunostomy/Per Cutaneous Gastrostomy:', questionId: 's2-15', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: feedingJejunostomy, setValue: setFeedingJejunostomy },
-        { question: 'Reason for Feeding Jejunostomy/Per Cutaneous Gastrostomy:', questionId: 's2-16', questionType: questionType, inputtype: feedingJejunostomy==="No" ? 'disabled':'textarea', options: [], value: reasonForFeedingJejunostomy, setValue: setReasonForFeedingJejunostomy }
+    { question: 'TT Removed on (POD) :', questionId: 's2-14', questionType: questionType, inputtype: 'text', options: [], value: rylesTubeDuration, setValue: setRylesTubeDuration , },
+    { question: 'Feeding Management :', questionId: 's2-15', questionType: questionType, inputtype: 'dropdown', options: ["Nil","Ryles's Tube","FJ","FG","PEG"], value: feedingJejunostomy, setValue: setFeedingJejunostomy },
+    { question: 'Indication of FJ or FG or PEG placement :', questionId: 's2-16', questionType: questionType, inputtype: 'textarea', options: [], value: reasonForFeedingJejunostomy, setValue: setReasonForFeedingJejunostomy },
+    { question: 'Feeding Tube removed on POD :', questionId: 's2-16_0', questionType: questionType, inputtype: 'text', options: [], value: reasonForFeedingJejunostomy1, setValue: setReasonForFeedingJejunostomy1 },
+    { question: 'Oral Feeds Resumed on POD :', questionId: 's2-16_1', questionType: questionType, inputtype: 'text', options: [], value: reasonForFeedingJejunostomy2, setValue: setReasonForFeedingJejunostomy2 },
+    { question: 'Full Oral feeds achieved on POD :', questionId: 's2-16_2', questionType: questionType, inputtype: 'text', options: [], value: reasonForFeedingJejunostomy3, setValue: setReasonForFeedingJejunostomy3 }
       ];
 
    const questions3 = [
-    { question: 'Duration of Primary Resection (Minutes):', questionId: 's2-17', questionType: questionType, inputtype: 'text', options: [], value: s2_17, setValue: setS2_17, heading:"Surgical Duration", restriction: alpha.some(i => s2_17.includes(i)), restrictiontext: "Alphabets not allowed" },
+    { question: 'Duration of Primary Resection (Minutes):', questionId: 's2-17', questionType: questionType, inputtype: 'text', options: [], value: s2_17, setValue: setS2_17, heading:"Surgical Durations and Intraoperative outcomes", restriction: alpha.some(i => s2_17.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Duration of Neck Dissection (Minutes):', questionId: 's2-18', questionType: questionType, inputtype: 'text', options: [], value: s2_18, setValue: setS2_18, restriction: alpha.some(i => s2_18.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Duration of Reconstruction (Minutes):', questionId: 's2-19', questionType: questionType, inputtype: 'text', options: [], value: s2_19, setValue: setS2_19, restriction: alpha.some(i => s2_19.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Total Surgical Duration (Minutes):', questionId: 's2-20', questionType: questionType, inputtype: 'text', options: [], value: s2_20, setValue: setS2_20, restriction: alpha.some(i => s2_20.includes(i)), restrictiontext: "Alphabets not allowed" },
@@ -189,6 +199,18 @@ const questions2 =  [
     { question: 'Blood Loss (ml):', questionId: 's2-22', questionType: questionType, inputtype: 'text', options: [], value: s2_22, setValue: setS2_22, restriction: alpha.some(i => s2_22.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Intraoperative Blood Transfusions:', questionId: 's2-23', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_23, setValue: setS2_23 },
     { question: 'Number of units transfused (Intraoperative):', questionId: 's2-24', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3","4","5"], value: s2_24, setValue: setS2_24 },
+    { question: 'Patient shifted to:', questionId: 's2-24_0', questionType: questionType, inputtype: 'dropdown', options: ["Ward","ICU"], value: s2_24_0, setValue: setS2_24_0 },
+    { question: 'Frozen Section:', questionId: 's2-24_1', questionType: questionType, inputtype: 'dropdown', options: ["Used","Not Used"], value: s2_24_1, setValue: setS2_24_1 },
+
+    
+    
+    
+    
+   
+];
+
+
+const questions4 = [
     { question: 'Postoperative transfusions:', questionId: 's2-25', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_25, setValue: setS2_25 },
     { question: 'Number of units transfused (Postoperative):', questionId: 's2-26', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3","4","5"], value: s2_26, setValue: setS2_26, restriction: alpha.some(i => s2_26.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'ICU Stay:', questionId: 's2-27', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_27, setValue: setS2_27 },
@@ -197,11 +219,18 @@ const questions2 =  [
     { question: 'Procedure for Revision Surgery:', questionId: 's2-30', questionType: questionType, inputtype: 'textarea', options: [], value: s2_30, setValue: setS2_30 },
     { question: 'Duration of Hospitalization (Days):', questionId: 's2-31', questionType: questionType, inputtype: 'text', options: [], value: s2_31, setValue: setS2_31, restriction: alphaspecial.some(i => s2_31.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
     { question: 'Parenteral Antibiotics Use (Days):', questionId: 's2-32', questionType: questionType, inputtype: 'text', options: [], value: s2_32, setValue: setS2_32, restriction: alphaspecial.some(i => s2_32.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
-    { question: 'Condition on Discharge:', questionId: 's2-33', questionType: questionType, inputtype: 'dropdown', options: ["Drain out/insitu","TT out/ insitu","FT out/ Insitu","Taking Away"], value: s2_33, setValue: setS2_33 },
+    { question: 'Condition on Discharge Drain:', questionId: 's2-33', questionType: questionType, inputtype: 'dropdown', options: ["Insitu","Removed"], value: s2_33, setValue: setS2_33 },
+    { question: 'Condition on Discharge Feeding tube:', questionId: 's2-33_0', questionType: questionType, inputtype: 'dropdown', options: ["Insitu","Removed"], value: s2_33, setValue: setS2_33 },
+    { question: 'Condition on Discharge TT:', questionId: 's2-33_1', questionType: questionType, inputtype: 'dropdown', options: ["Insitu","Removed"], value: s2_33, setValue: setS2_33 },
+    { question: 'Condition on Discharge wound:', questionId: 's2-33_2', questionType: questionType, inputtype: 'dropdown', options: ["Intact","Dehiscence"], value: s2_33, setValue: setS2_33 },
+    { question: 'Condition on Discharge Oral intake:', questionId: 's2-33_3', questionType: questionType, inputtype: 'dropdown', options: ["Nil","Clear","Liquid","Semisolid"], value: s2_33, setValue: setS2_33 },
+
+
+
     { question: 'Oral Antibiotics Use (Days):', questionId: 's2-34', questionType: questionType, inputtype: 'text', options: [], value: s2_34, setValue: setS2_34, restriction: alphaspecial.some(i => s2_34.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
     { question: 'Readmission:', questionId: 's2-35', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_35, setValue: setS2_35 },
     { question: 'Readmission Reason:', questionId: 's2-36', questionType: questionType, inputtype: 'textarea', options: ["Yes","No"], value: s2_36, setValue: setS2_36 }
-];
+]
 
 
     useEffect(() => {
@@ -451,12 +480,12 @@ const questions2 =  [
             alpha.some(i => s2_18.includes(i)) ||
             alpha.some(i => s2_19.includes(i)) ||
             alpha.some(i => s2_20.includes(i)) ||
-            alpha.some(i => s2_22.includes(i)) ||
-            alpha.some(i => s2_26.includes(i)) ||
-            alphaspecial.some(i => s2_28.includes(i)) ||
-            alphaspecial.some(i => s2_31.includes(i)) ||
-            alphaspecial.some(i => s2_32.includes(i)) ||
-            alphaspecial.some(i => s2_34.includes(i)) 
+            alpha.some(i => s2_22.includes(i)) 
+            // alpha.some(i => s2_26.includes(i)) ||
+            // alphaspecial.some(i => s2_28.includes(i)) ||
+            // alphaspecial.some(i => s2_31.includes(i)) ||
+            // alphaspecial.some(i => s2_32.includes(i)) ||
+            // alphaspecial.some(i => s2_34.includes(i)) 
             
 
 
@@ -493,54 +522,54 @@ const questions2 =  [
                 });
                 
             }
-            if (alpha.some(i => s2_22.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Please fill valid data in Blood Loss",
-                    variant: "destructive",
-                });
+            // if (alpha.some(i => s2_22.includes(i))) {
+            //     toast({
+            //         title: "Error",
+            //         description: "Please fill valid data in Blood Loss",
+            //         variant: "destructive",
+            //     });
                 
-            }
-            if (alpha.some(i => s2_26.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Please fill valid data in Number of units transfused (Postoperative)",
-                    variant: "destructive",
-                });
+            // }
+            // if (alpha.some(i => s2_26.includes(i))) {
+            //     toast({
+            //         title: "Error",
+            //         description: "Please fill valid data in Number of units transfused (Postoperative)",
+            //         variant: "destructive",
+            //     });
                 
-            }
-            if (alphaspecial.some(i => s2_28.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Please fill valid data in ICU Days",
-                    variant: "destructive",
-                });
+            // }
+            // if (alphaspecial.some(i => s2_28.includes(i))) {
+            //     toast({
+            //         title: "Error",
+            //         description: "Please fill valid data in ICU Days",
+            //         variant: "destructive",
+            //     });
                 
-            }
-            if (alphaspecial.some(i => s2_31.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Please fill valid data in Duration of Hospitalization",
-                    variant: "destructive",
-                });
+            // }
+            // if (alphaspecial.some(i => s2_31.includes(i))) {
+            //     toast({
+            //         title: "Error",
+            //         description: "Please fill valid data in Duration of Hospitalization",
+            //         variant: "destructive",
+            //     });
                 
-            }
-            if (alphaspecial.some(i => s2_32.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Please fill valid data in Parenteral Antibiotics Use",
-                    variant: "destructive",
-                });
+            // }
+            // if (alphaspecial.some(i => s2_32.includes(i))) {
+            //     toast({
+            //         title: "Error",
+            //         description: "Please fill valid data in Parenteral Antibiotics Use",
+            //         variant: "destructive",
+            //     });
                 
-            }
-            if (alphaspecial.some(i => s2_34.includes(i))) {
-                toast({
-                    title: "Error",
-                    description: "Please fill valid data in Oral Antibiotics Use",
-                    variant: "destructive",
-                });
+            // }
+            // if (alphaspecial.some(i => s2_34.includes(i))) {
+            //     toast({
+            //         title: "Error",
+            //         description: "Please fill valid data in Oral Antibiotics Use",
+            //         variant: "destructive",
+            //     });
                 
-            }
+            // }
 
         }
 
@@ -607,6 +636,140 @@ const questions2 =  [
     }
 
 
+    const handleSubmit4 = () => {
+        if (
+            // questions3.some((question) => question.value === '')
+
+            
+
+            // alpha.some(i => s2_17.includes(i)) ||
+            // alpha.some(i => s2_18.includes(i)) ||
+            // alpha.some(i => s2_19.includes(i)) ||
+            // alpha.some(i => s2_20.includes(i)) ||
+            // alpha.some(i => s2_22.includes(i)) 
+            alpha.some(i => s2_26.includes(i)) ||
+            alphaspecial.some(i => s2_28.includes(i)) ||
+            alphaspecial.some(i => s2_31.includes(i)) ||
+            alphaspecial.some(i => s2_32.includes(i)) ||
+            alphaspecial.some(i => s2_34.includes(i)) 
+            
+
+
+        ) {
+        
+            if (alpha.some(i => s2_22.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Blood Loss",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alpha.some(i => s2_26.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Number of units transfused (Postoperative)",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_28.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in ICU Days",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_31.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Duration of Hospitalization",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_32.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Parenteral Antibiotics Use",
+                    variant: "destructive",
+                });
+                
+            }
+            if (alphaspecial.some(i => s2_34.includes(i))) {
+                toast({
+                    title: "Error",
+                    description: "Please fill valid data in Oral Antibiotics Use",
+                    variant: "destructive",
+                });
+                
+            }
+
+        }
+
+
+        else {
+
+            try {
+                setLoading(true)
+                fetch('/api/updatepatient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        patient_trial_number: patient_trial_number,
+                        questions: questions4,
+                        submittedBy: userid
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        setLoading(false)
+                        console.log(data)
+                        if (data.executed) {
+                            toast({
+                                title: "Success",
+                                description: "Social History Profile Submitted",
+                                variant: "success",
+                            })
+                            router.push("/form/postoperativecomplications")
+                        } else {
+                            toast({
+                                title: "Error",
+                                description: data.message,
+                                variant: "destructive",
+                            })
+                        }
+                    })
+                    .catch(error => {
+                        setLoading(false)
+                        console.log(error)
+                        toast({
+                            title: "Error",
+                            description: error.message,
+                            variant: "destructive",
+                        })
+                    });
+
+
+            } catch (error: any) {
+                setLoading(false)
+                console.log(error)
+                toast({
+                    title: "Error",
+                    description: error.message,
+                    variant: "destructive",
+                })
+
+            }
+
+
+            // router.push('/exclusion_criteria')
+        }
+    }
+
   
 
 
@@ -629,7 +792,8 @@ const questions2 =  [
             {tabValue==="section1"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
             {tabValue==="section2"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
             {tabValue==="section3"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            
+            {tabValue==="section4"?<CustomForm questions={questions4} handleSubmit={handleSubmit4} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+
         </div>
     );
 }
@@ -649,6 +813,8 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     <TabsTrigger className='active:bg-green-5' value="section1">1</TabsTrigger>
                     <TabsTrigger value="section2">2</TabsTrigger>
                     <TabsTrigger value="section3">3</TabsTrigger>
+                    <TabsTrigger value="section4">4</TabsTrigger>
+
                     
                 
                     
@@ -657,8 +823,9 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
             <HeadDrop
           dataArray={[
             { id: "section1", title: "Resection and Reconstruction" },
-            { id: "section2", title: "Feeding Management" },
-            { id: 'section3', title: "Surgical Duration" },
+            { id: "section2", title: "Ancillary procedures" },
+            { id: 'section3', title: "Surgical Durations and Intraoperative outcomes" },
+            { id: 'section4', title: "Post operative outcomes and discharge" },
             
             
           ]}
