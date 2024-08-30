@@ -745,6 +745,7 @@ const Investigation = [
 
     
     const Postoperativecom = [
+        { question: 'Date (Early):', questionId: 'p1-1_(-1)_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Postoperative Complications (Early):', questionId: 'p1-1_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Grade of Complications (Early):', questionId: 'p1-2_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Postoperative Day of Recording Complication (Early):', questionId: 'p1-3_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
@@ -767,6 +768,7 @@ const Investigation = [
         { question: 'Other Systemic (Early):', questionId: 'p1-20_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Details - Other Systemic (Early):', questionId: 'p1-21_early', updates: [], value: "", questionType: 'Post-Operative Complications' },
     
+        { question: 'Date (Delayed):', questionId: 'p1-1_(-1)_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Postoperative Complications (Delayed):', questionId: 'p1-1_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Grade of Complications (Delayed):', questionId: 'p1-2_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
         { question: 'Postoperative Day of Recording Complication (Delayed):', questionId: 'p1-3_delayed', updates: [], value: "", questionType: 'Post-Operative Complications' },
@@ -990,7 +992,7 @@ const SocialHistory = [
     { question: 'Addiction Type:', questionId: 's1-1-type1', updates: [], value: "", questionType: 'Social History' },
     { question: 'Age of Starting:', questionId: 's1-2-type1', updates: [], value: "", questionType: 'Social History' },
     { question: 'Dose per Day/Intensity:', questionId: 's1-3-type1', updates: [], value: "", questionType: 'Social History' },
-    { question: 'Dose per Week:', questionId: 's1-4-type1', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Pack Per Year:', questionId: 's1-4-type1', updates: [], value: "", questionType: 'Social History' },
     { question: 'Duration in Years:', questionId: 's1-5-type1', updates: [], value: "", questionType: 'Social History' },
     { question: 'Current Status:', questionId: 's1-6-type1', updates: [], value: "", questionType: 'Social History' },
     { question: 'Quit Since:', questionId: 's1-7-type1', updates: [], value: "", questionType: 'Social History' },
@@ -1006,6 +1008,19 @@ const SocialHistory = [
     { question: 'Current Status:', questionId: 's1-6-type2', updates: [], value: "", questionType: 'Social History' },
     { question: 'Quit Since:', questionId: 's1-7-type2', updates: [], value: "", questionType: 'Social History' },
     { question: 'Category:', questionId: 's1-8-type2', updates: [], value: "", questionType: 'Social History' },
+
+
+    // For Question Set 2_0
+    { question: 'Addiction:', questionId: 's1-0-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Addiction Type:', questionId: 's1-1-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Age of Starting:', questionId: 's1-2-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Day/Intensity:', questionId: 's1-3-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Dose per Week:', questionId: 's1-4-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Duration in Years:', questionId: 's1-5-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Current Status:', questionId: 's1-6-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Quit Since:', questionId: 's1-7-type2_0', updates: [], value: "", questionType: 'Social History' },
+    { question: 'Category:', questionId: 's1-8-type2_0', updates: [], value: "", questionType: 'Social History' },
+
 
     // For Question Set 3
     { question: 'Addiction:', questionId: 's1-0-type3', updates: [], value: "", questionType: 'Social History' },

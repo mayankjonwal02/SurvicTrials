@@ -34,6 +34,7 @@ const Postoperativecomplications = () => {
 
     // Section 1
     // Section 1
+    const [p1_early_date, setP1_early_date] = useState('');
     const [p1_early, setP1_early] = useState('');
     const [p2_early, setP2_early] = useState('');
     const [p3_early, setP3_early] = useState('');
@@ -56,6 +57,7 @@ const Postoperativecomplications = () => {
     const [p1_20_early, setP1_20_early] = useState('');
     const [p1_21_early, setP1_21_early] = useState('');
 
+    const [p1_delayed_date, setP1_delayed_date] = useState('');
     const [p1_delayed, setP1_delayed] = useState('');
     const [p2_delayed, setP2_delayed] = useState('');
     const [p3_delayed, setP3_delayed] = useState('');
@@ -79,10 +81,11 @@ const Postoperativecomplications = () => {
     const [p1_21_delayed, setP1_21_delayed] = useState('');
 
     const questions1 = [
-        { question: 'Postoperative Complications (Early):', questionId: 'p1-1_early', questionType: questionType, inputtype: 'dropdown', options: ["Yes", "No"], value: p1_early, setValue: setP1_early, heading: "Postoperative Complication (up to 30d) : Early" },
+        { question: 'Date (Early):', questionId: 'p1-1_(-1)_early', questionType: questionType, inputtype: 'date', options: [], value: p1_early_date, setValue: setP1_early_date, heading: "Postoperative Complication (up to 30d) : Early" },
+        { question: 'Postoperative Complications (Early):', questionId: 'p1-1_early', questionType: questionType, inputtype: 'dropdown', options: ["Yes", "No"], value: p1_early, setValue: setP1_early },
+        { question: 'Local Wound Infection (Early):', questionId: 'p1-4_early', questionType: questionType, inputtype: 'dropdown', options: ["Superficial wound infection", "Deep wound infection", "Other","Not Applicable"], value: p1_4_early, setValue: setP1_4_early },
         { question: 'Grade of Complications (Early):', questionId: 'p1-2_early', questionType: questionType, inputtype: 'dropdown', options: ["I", "II", "IIIa", "IIIb", "IVa", "IVb", "V"], value: p2_early, setValue: setP2_early },
         { question: 'Postoperative Day of Recording Complication (Early):', questionId: 'p1-3_early', questionType: questionType, inputtype: 'textarea', options: [], value: p3_early, setValue: setP3_early },
-        { question: 'Local Wound Infection (Early):', questionId: 'p1-4_early', questionType: questionType, inputtype: 'dropdown', options: ["Superficial wound infection", "Deep wound infection", "Other","Not Applicable"], value: p1_4_early, setValue: setP1_4_early },
         { question: 'Details - Local Wound Infection (Early):', questionId: 'p1-5_early', questionType: questionType, inputtype: 'textarea', options: [], value: p1_5_early, setValue: setP1_5_early },
         { question: 'Systemic Infection (Early):', questionId: 'p1-6_early', questionType: questionType, inputtype: 'dropdown', options: ["Chest infection", "Sepsis", "Septicemia", "UTI", "Other","Not Applicable"], value: p1_6_early, setValue: setP1_6_early },
         { question: 'Details - Systemic Infection (Early):', questionId: 'p1-7_early', questionType: questionType, inputtype: 'textarea', options: [], value: p1_7_early, setValue: setP1_7_early },
@@ -102,10 +105,11 @@ const Postoperativecomplications = () => {
         { question: 'Details - Other Systemic (Early):', questionId: 'p1-21_early', questionType: questionType, inputtype: 'textarea', options: [], value: p1_21_early, setValue: setP1_21_early },
     ]
     const questions2 = [
-        { question: 'Postoperative Complications (Delayed):', questionId: 'p1-1_delayed', questionType: questionType, inputtype: 'dropdown', options: ["Yes", "No"], value: p1_delayed, setValue: setP1_delayed, heading: "Postoperative Complication (up to 30d) : Delayed" },
+        { question: 'Date (Delayed):', questionId: 'p1-1_(-1)_delayed', questionType: questionType, inputtype: 'date', options: [], value: p1_delayed_date, setValue: setP1_delayed_date, heading: "Postoperative Complication (up to 30d) : Delayed" },
+        { question: 'Postoperative Complications (Delayed):', questionId: 'p1-1_delayed', questionType: questionType, inputtype: 'dropdown', options: ["Yes", "No"], value: p1_delayed, setValue: setP1_delayed },
+        { question: 'Local Wound Infection (Delayed):', questionId: 'p1-4_delayed', questionType: questionType, inputtype: 'dropdown', options: ["Superficial wound infection", "Deep wound infection", "Other","Not Applicable"], value: p1_4_delayed, setValue: setP1_4_delayed },
         { question: 'Grade of Complications (Delayed):', questionId: 'p1-2_delayed', questionType: questionType, inputtype: 'dropdown', options: ["I", "II", "IIIa", "IIIb", "IVa", "IVb", "V"], value: p2_delayed, setValue: setP2_delayed },
         { question: 'Postoperative Day of Recording Complication (Delayed):', questionId: 'p1-3_delayed', questionType: questionType, inputtype: 'textarea', options: [], value: p3_delayed, setValue: setP3_delayed },
-        { question: 'Local Wound Infection (Delayed):', questionId: 'p1-4_delayed', questionType: questionType, inputtype: 'dropdown', options: ["Superficial wound infection", "Deep wound infection", "Other","Not Applicable"], value: p1_4_delayed, setValue: setP1_4_delayed },
         { question: 'Details - Local Wound Infection (Delayed):', questionId: 'p1-5_delayed', questionType: questionType, inputtype: 'textarea', options: [], value: p1_5_delayed, setValue: setP1_5_delayed },
         { question: 'Systemic Infection (Delayed):', questionId: 'p1-6_delayed', questionType: questionType, inputtype: 'dropdown', options: ["Chest infection", "Sepsis", "Septicemia", "UTI", "Other","Not Applicable"], value: p1_6_delayed, setValue: setP1_6_delayed },
         { question: 'Details - Systemic Infection (Delayed):', questionId: 'p1-7_delayed', questionType: questionType, inputtype: 'textarea', options: [], value: p1_7_delayed, setValue: setP1_7_delayed },

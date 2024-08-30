@@ -53,6 +53,18 @@ const SocialHistory = () => {
     const [category2, setCategory2] = useState("");
 
 
+    const [addiction2_0, setAddiction2_0] = useState("");
+    const [addictiontype2_0, setAddictiontype2_0] = useState("");
+    const [ageofstarting2_0, setAgeofstarting2_0] = useState("");
+    const [doseperday2_0, setDoseperday2_0] = useState("");
+    const [doseperweek2_0, setDoseperweek2_0] = useState("");
+    const [doseinyears2_0, setDoseinyears2_0] = useState("");
+    const [currentstatus2_0, setCurrentstatus2_0] = useState("");
+    const [quitsince2_0, setQuitsince2_0] = useState("");
+    const [category2_0, setCategory2_0] = useState("");
+
+
+
     const [addiction3, setAddiction3] = useState("");
     const [addictiontype3, setAddictiontype3] = useState("");
     const [ageofstarting3, setAgeofstarting3] = useState("");
@@ -205,17 +217,15 @@ const SocialHistory = () => {
         const special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "{", "}", "[", "]", ":", ";", "'", '"', "<", ">", ",", ".", "?", "/", "|", "\\", "~", "`"];
    
     const questions1 = [
-        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type1', inputtype: 'dropdown', options: ["Yes","No"], value: addiction1, setValue: setAddiction1,heading:"Smoking" ,info: [
-            "Never: never consumed the substance;",
-            "Current: Consuming currently or quit for less than 3 months;",
-            "Reformed: Quit for 3 months or more.",
-            "",
-            
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type1', inputtype: 'dropdown', options: ["Yes","No"], value: addiction1, setValue: setAddiction1, heading:"Smoking" , info: [
+            "CATEGORY: Never: never consumed the substance; Current: Consuming currently or quit for less than 3 months; Reformed/Former: Quit for 3 months or more.",
+            "Pack per year: Number of Sticks (Cigarette/bidi) consumed in a day/ Number of sticks in a pack X Years. eg. 12 bidies per day for 20 years: 12/25X20= 9.6 Pack per Year.",
+            "For cigarette can refer to https://www.mdcalc.com/calc/10187/pack-years-calculator"
         ]},
         { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type1', inputtype: addiction1==="No"?"disabled":'dropdown', options: ["Cigarette" , "beedi"], value: addictiontype1, setValue: setAddictiontype1 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: ageofstarting1, setValue: setAgeofstarting1, restriction:( ( (alpha.some(i => ageofstarting1.includes(i)) || special.some(i => ageofstarting1.includes(i))) || ageofstarting1.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseperday1, setValue: setDoseperday1 , restriction:( ( (alpha.some(i => doseperday1.includes(i)) || special.some(i => doseperday1.includes(i))) || doseperday1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
-        { question: 'Dose per Week:', questionType: 'text', questionId: 's1-4-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseperweek1, setValue: setDoseperweek1 , restriction:( ( (alpha.some(i => doseperweek1.includes(i)) || special.some(i => doseperweek1.includes(i))) || doseperweek1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
+        { question: 'Pack Per Year:', questionType: 'text', questionId: 's1-4-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseperweek1, setValue: setDoseperweek1 , restriction:( ( (alpha.some(i => doseperweek1.includes(i)) || special.some(i => doseperweek1.includes(i))) || doseperweek1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
         { question: 'Duration in Years:', questionType: 'text', questionId: 's1-5-type1', inputtype: addiction1==="No"?"disabled":'text', options: [], value: doseinyears1, setValue: setDoseinyears1 , restriction:( ( (alpha.some(i => doseinyears1.includes(i)) || special.some(i => doseinyears1.includes(i))) || doseinyears1.length > 2 ) ),restrictiontext:"Please enter valid dose" },
         { question: 'Current Status:', questionType: 'text', questionId: 's1-6-type1', inputtype: addiction1==="No"?"disabled":'dropdown', options: ["Quit","Consuming"], value: currentstatus1, setValue: setCurrentstatus1 },
         { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type1', inputtype: addiction1==="No"?"disabled":'date', options: [], value: quitsince1, setValue: setQuitsince1 },
@@ -226,24 +236,33 @@ const SocialHistory = () => {
     ];
 
     const questions2 = [
-        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type2', inputtype: 'dropdown', options: ["Yes","No"], value: addiction2, setValue: setAddiction2  ,heading:"Non-Smoked Tobacco" ,info: [
-            "Never: never consumed the substance;",
-            "Current: Consuming currently or quit for less than 3 months;",
-            "Reformed: Quit for 3 months or more.",
-            "",
-            
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type2', inputtype: 'dropdown', options: ["Yes","No"], value: addiction2, setValue: setAddiction2, heading:"Pouched/Packaged Non-smoked Tobacco" , info: [
+            "CATEGORY: Never: never consumed the substance; Current: Consuming currently or quit for less than 3 months; Reformed/Former: Quit for 3 months or more.",
+            "Generally, one small pouch contains- 5gm of substance: For Pouch based substances ask for Quantity consumed in a day."
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type2', inputtype: addiction2==="No"?"disabled":'dropdown', options: ["Paan","Ghutkha","Khaini"], value: addictiontype2, setValue: setAddictiontype2 },
-        { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: ageofstarting2, setValue: setAgeofstarting2 , restriction:( ( (alpha.some(i => ageofstarting2.includes(i)) || special.some(i => ageofstarting2.includes(i))) || ageofstarting2.length > 2 ) ),restrictiontext:"Please enter valid age" },
-        { question: 'Dose per Day/Intensity:', questionType: 'text', questionId: 's1-3-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperday2, setValue: setDoseperday2 , restriction:( ( (alpha.some(i => doseperday2.includes(i)) || special.some(i => doseperday2.includes(i))) || doseperday2.length > 2 ) ),restrictiontext:"Please enter valid dose" },
-        { question: 'Dose per Week:', questionType: 'text', questionId: 's1-4-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperweek2, setValue: setDoseperweek2, restriction:( ( (alpha.some(i => doseperweek2.includes(i)) || special.some(i => doseperweek2.includes(i))) || doseperweek2.length > 2 ) ),restrictiontext:"Please enter valid dose" },
-        { question: 'Duration in Years:', questionType: 'text', questionId: 's1-5-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseinyears2, setValue: setDoseinyears2 , restriction:( ( (alpha.some(i => doseinyears2.includes(i)) || special.some(i => doseinyears2.includes(i))) || doseinyears2.length > 2 ) ),restrictiontext:"Please enter valid dose" },
-        { question: 'Current Status:', questionType: 'text', questionId: 's1-6-type2', inputtype: addiction2==="No"?"disabled":'dropdown', options: ["Quit","Consuming"], value: currentstatus2, setValue: setCurrentstatus2 },
-        { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type2', inputtype: addiction2==="No"?"disabled":'date', options: [], value: quitsince2, setValue: setQuitsince2 },
-        {
-            question: 'Category:', questionType: 'text', questionId: 's1-8-type2', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category2, setValue: setCategory2,
-            
-        },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type2', inputtype: addiction2==="No"?"disabled":'dropdown', options: ["Gutkha", "Tobacco/ Zarda/ khaini/ Maawa", "Supari"], value: addictiontype2, setValue: setAddictiontype2 },
+        { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: ageofstarting2, setValue: setAgeofstarting2,  },
+        { question: 'Dose per Day (gm):', questionType: 'text', questionId: 's1-3-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperday2, setValue: setDoseperday2,  },
+        { question: 'Dose per Week (gm):', questionType: 'text', questionId: 's1-4-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseperweek2, setValue: setDoseperweek2,  },
+        { question: 'Duration in Years:', questionType: 'text', questionId: 's1-5-type2', inputtype: addiction2==="No"?"disabled":'text', options: [], value: doseinyears2, setValue: setDoseinyears2,  },
+        { question: 'Current Status:', questionType: 'text', questionId: 's1-6-type2', inputtype: addiction2==="No"?"disabled":'dropdown', options: ["Consuming","Quit"], value: currentstatus2, setValue: setCurrentstatus2 },
+        { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type2', inputtype: addiction2==="No" || currentstatus2!=="Quit"?"disabled":'date', options: [], value: quitsince2, setValue: setQuitsince2 },
+        { question: 'Category:', questionType: 'text', questionId: 's1-8-type2', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category2, setValue: setCategory2 },
+    ];
+
+    const questions2_0 = [
+        { question: 'Addiction:', questionType: 'text', questionId: 's1-0-type2_0', inputtype: 'dropdown', options: ["Yes","No"], value: addiction2_0, setValue: setAddiction2_0, heading:"Non-Pouched/Packaged Non-smoked Tobacco" , info: [
+            "CATEGORY: Never: never consumed the substance; Current: Consuming currently or quit for less than 3 months; Reformed/Former: Quit for 3 months or more.",
+            "Paan Quid/ non packed supari or snuff, ask for number of times consumption in a day."
+        ]},
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type2_0', inputtype: addiction2_0==="No"?"disabled":'dropdown', options: ["Supari", "Paan Quid", "Snuff"], value: addictiontype2_0, setValue: setAddictiontype2_0 },
+        { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type2_0', inputtype: addiction2_0==="No"?"disabled":'text', options: [], value: ageofstarting2_0, setValue: setAgeofstarting2_0 },
+        { question: 'Dose per Day (Frequency):', questionType: 'text', questionId: 's1-3-type2_0', inputtype: addiction2_0==="No"?"disabled":'text', options: [], value: doseperday2_0, setValue: setDoseperday2_0 },
+        { question: 'Dose per Week (Frequency):', questionType: 'text', questionId: 's1-4-type2_0', inputtype: addiction2_0==="No"?"disabled":'text', options: [], value: doseperweek2_0, setValue: setDoseperweek2_0,  },
+        { question: 'Duration in Years:', questionType: 'text', questionId: 's1-5-type2_0', inputtype: addiction2_0==="No"?"disabled":'text', options: [], value: doseinyears2_0, setValue: setDoseinyears2_0,  },
+        { question: 'Current Status:', questionType: 'text', questionId: 's1-6-type2_0', inputtype: addiction2_0==="No"?"disabled":'dropdown', options: ["Consuming","Quit"], value: currentstatus2_0, setValue: setCurrentstatus2_0 },
+        { question: 'Quit Since:', questionType: 'text', questionId: 's1-7-type2_0', inputtype: addiction2_0==="No"?"disabled":'date', options: [], value: quitsince2_0, setValue: setQuitsince2_0 },
+        { question: 'Category:', questionType: 'text', questionId: 's1-8-type2_0', inputtype: 'dropdown', options: ["Never", "Current", "Reformed"], value: category2_0, setValue: setCategory2_0 },
     ];
 
     const questions3 = [
@@ -274,7 +293,7 @@ const SocialHistory = () => {
             "",
            
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type3', inputtype: addiction3==="No"?"disabled":'dropdown', options: ["Beer","Malt","Liquor","Wine"], value: addictiontype3, setValue: setAddictiontype3 },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type3', inputtype: addiction3==="No"?"disabled":'dropdown', options: ["Beer","Malt Liquor- Whiskey/Rum/Vodka","Wine"], value: addictiontype3, setValue: setAddictiontype3 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: ageofstarting3, setValue: setAgeofstarting3 , restriction:( ( (alpha.some(i => ageofstarting3.includes(i)) || special.some(i => ageofstarting3.includes(i))) || ageofstarting3.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'Drinks per Day/Intensity:', questionType: 'text', questionId: 's1-3-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: doseperday3, setValue: setDoseperday3 , restriction:( ( (alpha.some(i => doseperday3.includes(i))  )) ),restrictiontext:"Please enter valid dose" },
         { question: 'Drinks per Week:', questionType: 'text', questionId: 's1-4-type3', inputtype: addiction3==="No"?"disabled":'text', options: [], value: doseperweek3, setValue: setDoseperweek3, restriction:( ( (alpha.some(i => doseperweek3.includes(i)) ) ) ),restrictiontext:"Please enter valid dose" },
@@ -303,7 +322,7 @@ const SocialHistory = () => {
             "Gm/Day DODA or Gm of Opium bar or Paste.",
             "SODQ scale (Dr. Navtratan)"
         ]},
-        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type4', inputtype: addiction4==="No"?"disabled":'dropdown', options: ["Opium: Bar-Prepared Dross" ,"Opium: Sap-Paste Raw/Doda"], value: addictiontype4, setValue: setAddictiontype4 },
+        { question: 'Addiction Type:', questionType: 'text', questionId: 's1-1-type4', inputtype: addiction4==="No"?"disabled":'dropdown', options: ["Prepared Dross" ,"Opium Paste","Doda"], value: addictiontype4, setValue: setAddictiontype4 },
         { question: 'Age of Starting:', questionType: 'text', questionId: 's1-2-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: ageofstarting4, setValue: setAgeofstarting4 , restriction:( ( (alpha.some(i => ageofstarting4.includes(i)) || special.some(i => ageofstarting4.includes(i))) || ageofstarting4.length > 2 ) ),restrictiontext:"Please enter valid age" },
         { question: 'gram per Day/Intensity:', questionType: 'text', questionId: 's1-3-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: doseperday4, setValue: setDoseperday4, restriction:( ( (alpha.some(i => doseperday4.includes(i)))   ) ),restrictiontext:"Please enter valid dose" },
         { question: 'gram per Week:', questionType: 'text', questionId: 's1-4-type4', inputtype: addiction4==="No"?"disabled":'text', options: [], value: doseperweek4, setValue: setDoseperweek4, restriction:( ( (alpha.some(i => doseperweek4.includes(i)) )  ) ),restrictiontext:"Please enter valid dose" },
@@ -360,7 +379,7 @@ const SocialHistory = () => {
             setDataloading(false);
             if (apidata.executed) {
                 const questiondata = apidata.data.data;
-                const questionsArray = [questions1, questions2, questions3, questions4,questions5]
+                const questionsArray = [questions1, questions2,questions2_0, questions3, questions4,questions5]
                 questionsArray.forEach((question_list) => {
                     question_list.map((question) => {
                         const requiredquestionid = question.questionId;
@@ -465,9 +484,13 @@ const SocialHistory = () => {
                             }
                             else if(questions == questions4)
                             {
-                                setTabValue("5")
+                                setTabValue("6")
                             }
                             else if(questions == questions3)
+                            {
+                                setTabValue("5")
+                            }
+                            else if(questions == questions2_0)
                             {
                                 setTabValue("4")
                             }
@@ -509,6 +532,7 @@ const SocialHistory = () => {
     
         const handleSubmit1 = () => handleSubmit(questions1, ageofstarting1, doseperday1, doseperweek1, doseinyears1);
         const handleSubmit2 = () => handleSubmit(questions2, ageofstarting2, doseperday2, doseperweek2, doseinyears2);
+        const handleSubmit2_0 = () => handleSubmit(questions2_0, ageofstarting2_0, doseperday2_0, doseperweek2_0, doseinyears2_0);
         const handleSubmit3 = () => handleSubmit(questions3, ageofstarting3, doseperday3, doseperweek3, doseinyears3);
         const handleSubmit4 = () => handleSubmit(questions4, ageofstarting4, doseperday4, doseperweek4, doseinyears4);
         const handleSubmit5 = () => handleSubmit(questions5, ageofstarting5, doseperday5, doseperweek5, doseinyears5);
@@ -525,10 +549,11 @@ const SocialHistory = () => {
             
             {tabValue==="1"?<CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
             {tabValue==="2"?<CustomForm questions={questions2} handleSubmit={handleSubmit2} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="3"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="4"?<CustomForm questions={questions4} handleSubmit={handleSubmit4} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            {tabValue==="5"?<CustomForm questions={questions5} handleSubmit={handleSubmit5} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
-            
+            {tabValue==="3"?<CustomForm questions={questions2_0} handleSubmit={handleSubmit2_0} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+            {tabValue==="4"?<CustomForm questions={questions3} handleSubmit={handleSubmit3} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+            {tabValue==="5"?<CustomForm questions={questions4} handleSubmit={handleSubmit4} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+            {tabValue==="6"?<CustomForm questions={questions5} handleSubmit={handleSubmit5} buttontitle="Submit & Next" formtitle={"Social History"} loading={loading} tabs={<CustomTabs tabValue={tabValue} setTabValue={setTabValue} />} />:<></>}
+
         
         </div>
     );
@@ -554,11 +579,12 @@ const CustomTabs: React.FC<CustomTabsProps> = ({ tabValue, setTabValue }) => {
                     <TabsTrigger value="3">3</TabsTrigger>
                     <TabsTrigger value="4">4</TabsTrigger>
                     <TabsTrigger value="5">5</TabsTrigger>
+                    <TabsTrigger value="6">6</TabsTrigger>
                 
                     
                 </TabsList>
             </Tabs>
-            <HeadDrop dataArray={[{id:"1",title:"Smoking"},{id:"2",title:"Non-Smoked Tobacco"},{id:"3",title:"Alcohol"},{id:"4",title:"Opium"},{id:"5",title:"Other"}]} id={tabValue} setId={setTabValue}/>
+            <HeadDrop dataArray={[{id:"1",title:"Smoking"},{id:"2",title:"Pouched/Packaged Non-smoked Tobacco"},{id:"3",title:"Non-Pouched/Packaged Non-smoked Tobacco"},{id:"4",title:"Alcohol"},{id:"5",title:"Opium"},{id:"6",title:"Other"}]} id={tabValue} setId={setTabValue}/>
         </div>
     );
 };
