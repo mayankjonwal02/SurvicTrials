@@ -58,7 +58,7 @@ const ClinicalProfile = () => {
 
     // Comorbidities
 
-    // const [age, setAge] = React.useState("");
+    const [age, setAge] = React.useState("");
     const [myocardialinfarction, setMyocardialinfarction] = React.useState("");
     const [chf, setChf] = React.useState("");
     const [peripheralvascular, setPeripheralvascular] = React.useState("");
@@ -222,8 +222,15 @@ const ClinicalProfile = () => {
     ]
 
     const questions2 = [
-        // { question: 'Age:', questionType: questionType, questionId: 'c2-25', inputtype: 'text', options: [], value: age, setValue: setAge, heading: "Comorbidities" },
-        { question: 'Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):', questionType: questionType, questionId: 'c2-26', inputtype: 'dropdown', options: ["Yes", "No"], value: myocardialinfarction, setValue: setMyocardialinfarction, heading: "Comorbidities", subheading: "Charlson Comorbidity Index*" },
+        { question: 'Points Score:', questionType: questionType, questionId: 'c2-42', inputtype: 'dropdown', options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"], value: pointscore, setValue: setPointscore, heading: "Comorbidities", subheading: "Charlson Comorbidity Index*" ,info:["Can use:","- https://www.mdcalc.com/calc/3917/charlson-comorbidity-index-cci ","- https://www.capc.org/documents/download/290/"] },
+        { question: 'Estimated 10-Year Survival (in %):', questionType: questionType, questionId: 'c2-43', inputtype: 'text', options: [], value: estimatedsurvival, setValue: setEstimatedsurvival, restriction: (alpha.some(i => estimatedsurvival.includes(i))), restrictiontext: "alphabets not allowed " },
+
+        { question: 'Age:', questionType: questionType, questionId: 'c2-25', inputtype: 'dropdown', options: [ "Age <50",
+            "Age 50-59",
+            "Age 60-69",
+            "Age 70-79",
+            "Age 80 or more"], value: age, setValue: setAge },
+        { question: 'Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):', questionType: questionType, questionId: 'c2-26', inputtype: 'dropdown', options: ["Yes", "No"], value: myocardialinfarction, setValue: setMyocardialinfarction},
         { question: 'CHF:', questionType: questionType, questionId: 'c2-27', inputtype: 'dropdown', options: ["Yes", "No"], value: chf, setValue: setChf },
         { question: 'Peripheral Vascular Disease:', questionType: questionType, questionId: 'c2-28', inputtype: 'dropdown', options: ["Yes", "No"], value: peripheralvascular, setValue: setPeripheralvascular },
         { question: 'CVA cerebrovascular accident / TIA transient ischemic attacks:', questionType: questionType, questionId: 'c2-29', inputtype: 'dropdown', options: ["Yes", "No"], value: cva, setValue: setCva },
@@ -231,17 +238,17 @@ const ClinicalProfile = () => {
         { question: 'COPD/RLD:', questionType: questionType, questionId: 'c2-31', inputtype: 'dropdown', options: ["Yes", "No"], value: copd, setValue: setCopd },
         { question: 'Connective Tissue Disease/Rheumatic disease:', questionType: questionType, questionId: 'c2-32', inputtype: 'dropdown', options: ["Yes", "No"], value: connectivetissuedisease, setValue: setConnectivetissuedisease },
         { question: 'Peptic Ulcer Disease:', questionType: questionType, questionId: 'c2-33', inputtype: 'dropdown', options: ["Yes", "No"], value: pepticulcer, setValue: setPepticulcer },
-        { question: 'Liver Disease:', questionType: questionType, questionId: 'c2-34', inputtype: 'text', options: ["Yes", "No"], value: liverrdisease, setValue: setLiverrdisease },
-        { question: 'Diabetes Mellitus:', questionType: questionType, questionId: 'c2-35', inputtype: 'dropdown', options: ["Yes", "No"], value: diabetes, setValue: setDiabetes },
+        { question: 'Liver Disease:', questionType: questionType, questionId: 'c2-34', inputtype: 'text', options: [ "No","Mild","Moderate to Severe"], value: liverrdisease, setValue: setLiverrdisease },
+        { question: 'Diabetes Mellitus:', questionType: questionType, questionId: 'c2-35', inputtype: 'dropdown', options: [ "No or Diet controlled",
+            "Uncomplicated",
+            "Complicated - end organ damage"], value: diabetes, setValue: setDiabetes },
+            { question: 'Moderate to Severe CKD:', questionType: questionType, questionId: 'c2-37', inputtype: 'dropdown', options: ["No or Mild", "Moderate to Severe Dysfunction"], value: ckd, setValue: setCkd },
         { question: 'Hemiplegia or Paraplegia:', questionType: questionType, questionId: 'c2-36', inputtype: 'dropdown', options: ["Yes", "No"], value: hemiplegia, setValue: setHemiplegia },
-        { question: 'Moderate to Severe CKD:', questionType: questionType, questionId: 'c2-37', inputtype: 'dropdown', options: ["Yes", "No"], value: ckd, setValue: setCkd },
-        { question: 'Solid Tumor:', questionType: questionType, questionId: 'c2-38', inputtype: 'dropdown', options: ["Yes", "No"], value: solidtumor, setValue: setSolidtumor },
+        { question: 'Solid Malignancy/ Metastatic (Other):', questionType: questionType, questionId: 'c2-38', inputtype: 'dropdown', options: ["Yes", "No"], value: solidtumor, setValue: setSolidtumor },
         { question: 'Leukemia:', questionType: questionType, questionId: 'c2-39', inputtype: 'dropdown', options: ["Yes", "No"], value: leukemia, setValue: setLeukemia },
         { question: 'Lymphoma:', questionType: questionType, questionId: 'c2-40', inputtype: 'dropdown', options: ["Yes", "No"], value: lymphoma, setValue: setLymphoma },
         { question: 'AIDS:', questionType: questionType, questionId: 'c2-41', inputtype: 'dropdown', options: ["Yes", "No"], value: aids, setValue: setAids },
-        { question: 'Points Score:', questionType: questionType, questionId: 'c2-42', inputtype: 'dropdown', options: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"], value: pointscore, setValue: setPointscore },
-        { question: 'Estimated 10-Year Survival (in %):', questionType: questionType, questionId: 'c2-43', inputtype: 'text', options: [], value: estimatedsurvival, setValue: setEstimatedsurvival, restriction: (alpha.some(i => estimatedsurvival.includes(i))), restrictiontext: "alphabets not allowed " },
-
+       
     ]
 
     const questions3 = [

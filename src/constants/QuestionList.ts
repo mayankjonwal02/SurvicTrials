@@ -239,7 +239,7 @@ const ClinicalProfile = [
     { question: "Duration in day (presenting symptom to presentation to first physician/ primary care):", questionId: "c2-21",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Duration in day (primary physician referred to cancer centre/enrolling institute):", questionId: "c2-22",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Duration in day (day of presentation to enrolling institute to start of treatment):", questionId: "c2-23",updates:[], value:"",questionType: "Clinical Profile" },
-    // { question: "Age:", questionId: "c2-25",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "Age:", questionId: "c2-25",updates:[], value:"",questionType: "Clinical Profile" },
 
 
     { question: "Myocardial Infarction History of definite or probable MI (EKG changes and/or enzyme changes):", questionId: "c2-26",updates:[], value:"",questionType: "Clinical Profile" },
@@ -254,7 +254,7 @@ const ClinicalProfile = [
     { question: "Diabetes Mellitus:", questionId: "c2-35",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Hemiplegia or Paraplegia:", questionId: "c2-36",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Moderate to Severe CKD:", questionId: "c2-37",updates:[], value:"",questionType: "Clinical Profile" },
-    { question: "Solid Tumor:", questionId: "c2-38",updates:[], value:"",questionType: "Clinical Profile" },
+    { question: "Solid Malignancy/ Metastatic (Other):", questionId: "c2-38",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Leukemia:", questionId: "c2-39",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "Lymphoma:", questionId: "c2-40",updates:[], value:"",questionType: "Clinical Profile" },
     { question: "AIDS:", questionId: "c2-41",updates:[], value:"",questionType: "Clinical Profile" },
