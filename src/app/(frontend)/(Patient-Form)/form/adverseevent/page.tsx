@@ -52,8 +52,8 @@ const [neurotoxicity1, setNeurotoxicity1] = useState('');
 
 const questions1 = [
   { question: 'Cycle:', questionId: 'a1-1_cycle1', questionType: questionType, inputtype: 'disabled', options: ["Cycle 1","Cycle 2","Cycle 3"], value: cycle1, setValue: setCycle1 },
-  { question: 'Thrombocytopenia:', questionId: 'a1-2_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: thrombocytopenia1, setValue: setThrombocytopenia1 },
-  { question: 'Neutropenia:', questionId: 'a1-3_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: neutropenia1, setValue: setNeutropenia1 },
+  { question: 'Thrombocytopenia:', questionId: 'a1-2_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Not Applicable"], value: thrombocytopenia1, setValue: setThrombocytopenia1 },
+  { question: 'Neutropenia:', questionId: 'a1-3_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Not Applicable"], value: neutropenia1, setValue: setNeutropenia1 },
   { question: 'Febrile Neutropenia:', questionId: 'a1-4_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: febrileNeutropenia1, setValue: setFebrileNeutropenia1 },
   { question: 'Hyponatremia:', questionId: 'a1-5_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: hyponatremia1, setValue: setHyponatremia1 },
   { question: 'Hypokalemia:', questionId: 'a1-6_cycle1', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: hypokalemia1, setValue: setHypokalemia1 },
@@ -93,8 +93,8 @@ const [neurotoxicity2, setNeurotoxicity2] = useState('');
 
 const questions2 = [
   { question: 'Cycle:', questionId: 'a1-1_cycle2', questionType: questionType, inputtype: 'disabled', options: ["Cycle 1","Cycle 2","Cycle 3"], value: cycle2, setValue: setCycle2 },
-  { question: 'Thrombocytopenia:', questionId: 'a1-2_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: thrombocytopenia2, setValue: setThrombocytopenia2 },
-  { question: 'Neutropenia:', questionId: 'a1-3_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: neutropenia2, setValue: setNeutropenia2 },
+  { question: 'Thrombocytopenia:', questionId: 'a1-2_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Not Applicable"], value: thrombocytopenia2, setValue: setThrombocytopenia2 },
+  { question: 'Neutropenia:', questionId: 'a1-3_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Not Applicable"], value: neutropenia2, setValue: setNeutropenia2 },
   { question: 'Febrile Neutropenia:', questionId: 'a1-4_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: febrileNeutropenia2, setValue: setFebrileNeutropenia2 },
   { question: 'Hyponatremia:', questionId: 'a1-5_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: hyponatremia2, setValue: setHyponatremia2 },
   { question: 'Hypokalemia:', questionId: 'a1-6_cycle2', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: hypokalemia2, setValue: setHypokalemia2 },
@@ -134,8 +134,8 @@ const [neurotoxicity3, setNeurotoxicity3] = useState('');
 
 const questions3 = [
   { question: 'Cycle:', questionId: 'a1-1_cycle3', questionType: questionType, inputtype: 'disabled', options: ["Cycle 1","Cycle 2","Cycle 3"], value: cycle3, setValue: setCycle3 },
-  { question: 'Thrombocytopenia:', questionId: 'a1-2_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: thrombocytopenia3, setValue: setThrombocytopenia3 },
-  { question: 'Neutropenia:', questionId: 'a1-3_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: neutropenia3, setValue: setNeutropenia3 },
+  { question: 'Thrombocytopenia:', questionId: 'a1-2_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Not Applicable"], value: thrombocytopenia3, setValue: setThrombocytopenia3 },
+  { question: 'Neutropenia:', questionId: 'a1-3_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Not Applicable"], value: neutropenia3, setValue: setNeutropenia3 },
   { question: 'Febrile Neutropenia:', questionId: 'a1-4_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: febrileNeutropenia3, setValue: setFebrileNeutropenia3 },
   { question: 'Hyponatremia:', questionId: 'a1-5_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: hyponatremia3, setValue: setHyponatremia3 },
   { question: 'Hypokalemia:', questionId: 'a1-6_cycle3', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: hypokalemia3, setValue: setHypokalemia3 },

@@ -141,7 +141,7 @@ const Investigations = () =>  {
 
     const questions2 = [
         { question: 'Date of Test - CBC', questionType: questionType, questionId: 'i-6_0', inputtype: 'date', options: [], value: dateoftest_cbc, setValue: setDateoftest_cbc, heading: "Laboratory Tests " },
-        // { question: 'CBC (Complete Blood Count):', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc , restriction: alpha.some(i => cbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
+        { question: 'Study timeline:', questionType: questionType, questionId: 'i-6', inputtype: 'text', options: [], value: cbc, setValue: setCbc , restriction: alpha.some(i => cbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: 'Hemoglobin (Hb):', questionType: questionType, questionId: 'i-7', inputtype: 'text', options: [], value: hb, setValue: setHb },
         { question: "Red Blood Cell Count (RBC) (10^6/uL):", questionType: questionType, questionId: 'i-8', inputtype: 'text', options: [], value: rbc, setValue: setRbc, restriction: alpha.some(i => rbc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },
         { question: "Total Leukocyte Count (TLC) (10^3/uL):", questionType: questionType, questionId: 'i-9', inputtype: 'text', options: [], value: tlc, setValue: setTlc, restriction: alpha.some(i => tlc.includes(i)), restrictiontext: 'Alphabets and Numbers are not Allowed' },

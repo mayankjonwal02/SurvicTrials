@@ -69,10 +69,17 @@ const [bmi1, setBmi1] = useState('');
 const questions1 = [
   { question: 'Date of Start of Chemotherapy:', questionType: questionType, questionId: 'c1-1_cycle1', inputtype: 'date', options: [], value: startDateCycle1, setValue: setStartDateCycle1 , info:[
    
-    
-    "1. Haematological: Haemoglobin &gt; 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥100000/cmm3",
-    "2. Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
-    "3. Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min."
+    "Pre Chemo Assessment:",
+    "1.  Haematological: Haemoglobin &gt; 9gm/dl, ANC ≥ 1500/cmm3, Platelet ≥100000/cmm3",
+    "2.  Liver Function test: Bilirubin ≤2 x upper limit normal (ULN), AST/ALT/ ALP ≤ 2.5 x ULN",
+    "3.  Renal Function test: Creatinine ≤ 1.5 ULN, Creatinine Clearance ≥60 ml/min.",
+    "ICT arm will receive the treatment as follows.",
+    "1.  Regimen: TPF or TPX",
+    "2.  Schedule: 2 Cycles; 3 weekly Interval",
+    "3.  Doses:",
+    "--  Inj. Docetaxel 75mg/m2 IV Over 60 minutes Day-1",
+    "--  Inj. Cisplatin 75mg/m2 IV Over 60 minutes Over 60 minutes Day-1",
+    "--  Inj. 5 FU 750-1000mg/m2 IV Over 12 hours on Day1 to Day4 with GCSF/Peg-GCSF Support or Tab let Capecitabine 850-1000mg/m2 twice a day for 14 days"
   ]},
   { question: 'Regimen:', questionType: questionType, questionId: 'c1-2_cycle1', inputtype: 'dropdown', options: ["TPF", "TPX", "CF","TP"], value: regimenCycle1, setValue: setRegimenCycle1 },
   { question: 'Regimen other:', questionType: questionType, questionId: 'c1-3_cycle1', inputtype: 'text', options: [], value: otherRegimenCycle1, setValue: setOtherRegimenCycle1 },

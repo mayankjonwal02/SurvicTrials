@@ -4,6 +4,14 @@ import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import CustomForm from '@/components/customform';
 
+
+interface updateType {
+    questionId: string;
+    updates:any[]
+}
+
+
+
 const Concomitantmedicines = () =>  {
     const { toast } = useToast()
     const router = useRouter();
@@ -31,6 +39,10 @@ const Concomitantmedicines = () =>  {
   const [stopDate, setStopDate] = useState('');
   const [remarks, setRemarks] = useState('');
 
+  const [updates, setUpdates] = useState<updateType[]>([]);
+
+
+
 
 
 
@@ -56,6 +68,7 @@ const Concomitantmedicines = () =>  {
 
         const fetchalldata = async () => 
         {
+            let updateArray: { questionId: string; updates: any; }[] = []
             setDataloading(true);
         const storedpatient_trial_number = localStorage.getItem("patienttrialnumber");
         if (storedpatient_trial_number) {
@@ -78,10 +91,17 @@ const Concomitantmedicines = () =>  {
                     question_list.map((question) => {
                         const requiredquestionid = question.questionId;
                         const questionvalue = questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.answer;
-                        
+                        const questionupdates =questiondata.find((this_question: { questionId: string; }) => this_question.questionId === requiredquestionid)?.updates;
+
                         questionvalue !== undefined && question.setValue(questionvalue)
+                        questionupdates !== undefined && updateArray.push({
+                            questionId: question.questionId,
+                            updates: questionupdates})
                     })
                 })
+
+                setUpdates(updateArray);
+                
                 
 
             }
@@ -215,7 +235,7 @@ const Concomitantmedicines = () =>  {
 
 
 
-            <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} />
+            <CustomForm questions={questions1} handleSubmit={handleSubmit1} buttontitle="Submit & Next" formtitle={formTitle} loading={loading} updates={updates}/>
 
         </div>
     );

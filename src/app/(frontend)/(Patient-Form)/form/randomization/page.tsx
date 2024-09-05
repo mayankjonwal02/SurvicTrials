@@ -28,6 +28,7 @@ const Randomization = () => {
     const [arm, setArm] = useState('');
     const [age, setAge] = useState('');
     const [general, setGeneral] = useState('');
+    const [tnm,setTnm] = useState('');
 
 
 
@@ -41,6 +42,7 @@ const Randomization = () => {
     { question: 'Treatment Arm:', questionId: 'r3-1', questionType: questionType, inputtype: 'dropdown', options: ["Surg Arm","ICT Arm"], value: arm, setValue: setArm },
     { question: 'Stratification by Age:', questionId: 'r3-2', questionType: questionType, inputtype: 'dropdown', options: ["<=45",">45"], value: age, setValue: setAge },
     { question: 'General Stratification:', questionId: 'r3-3', questionType: questionType, inputtype: 'dropdown', options: ["Buccal mucosa-alveolar","Tongue"], value: general, setValue: setGeneral },    
+    { question: 'TNM Stage:', questionId: 'r3-4', questionType: questionType, inputtype: 'text', options: [], value: tnm, setValue: setTnm },    
     ];
 
 
