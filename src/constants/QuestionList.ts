@@ -1134,7 +1134,7 @@ const SurgicalTreatment = [
     { question: 'Duration of Reconstruction (Minutes):', questionId: 's2-19',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Total Surgical Duration (Minutes):', questionId: 's2-20',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Intraoperative Complications (if any):', questionId: 's2-21',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Blood Loss (ml):', questionId: 's2-22',updates:[], value:"",questionType: 'Surgical Treatment' },
+    { question: 'Intraoperative  Blood Loss (ml):', questionId: 's2-22',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Intraoperative Blood Transfusions:', questionId: 's2-23',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Number of units transfused (Intraoperative):', questionId: 's2-24',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Patient shifted to:', questionId: 's2-24_0',updates:[], value:"",questionType: 'Surgical Treatment' },
@@ -1145,7 +1145,9 @@ const SurgicalTreatment = [
     { question: 'ICU Stay:', questionId: 's2-27',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'ICU Days:', questionId: 's2-28',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Revision surgery (Y/N):', questionId: 's2-29',updates:[], value:"",questionType: 'Surgical Treatment' },
-    { question: 'Procedure for Revision Surgery:', questionId: 's2-30',updates:[], value:"",questionType: 'Surgical Treatment' },
+    { question: 'Oral antibiotics use (days):', questionId: 's2-29_0',updates:[], value:"",questionType: 'Surgical Treatment' },
+
+    { question: 'Details of re-surgery:', questionId: 's2-30',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Duration of Hospitalization (Days):', questionId: 's2-31',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Parenteral Antibiotics Use (Days):', questionId: 's2-32',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Condition on Discharge Drain:', questionId: 's2-33',updates:[], value:"",questionType: 'Surgical Treatment' },
@@ -1157,6 +1159,7 @@ const SurgicalTreatment = [
     { question: 'Oral Antibiotics Use (Days):', questionId: 's2-34',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Readmission:', questionId: 's2-35',updates:[], value:"",questionType: 'Surgical Treatment' },
     { question: 'Readmission Reason:', questionId: 's2-36',updates:[], value:"",questionType: 'Surgical Treatment' },
+    { question: 'Indication for readmission:', questionId: 's2-37',updates:[], value:"",questionType: 'Surgical Treatment' },
   ];
 
 const Hpe = [

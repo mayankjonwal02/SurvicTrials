@@ -113,9 +113,6 @@ const Surgicaltreatment = () =>{
 const questions1 = [
     { question: 'Date of Surgery:', questionId: 's2-1', questionType: questionType, inputtype: 'date', options: [], value: dateOfSurgery, setValue: setDateOfSurgery ,heading:"Resection and Reconstruction"},
     { question: 'Resection of Primary:', questionId: 's2-2', questionType: questionType, inputtype: 'dropdown', options: [ "Wide excision of soft tissue Only", "WLE with Bony resection"], value: resectionOfPrimary, setValue: setResectionOfPrimary },
-    { question: 'Wide excision of soft tissue with:', questionId: 's2-2_0', questionType: questionType, inputtype: 'text', options: [], value: widewith, setValue: setWidewith },
-    { question: 'Wide excision of soft tissue without:', questionId: 's2-2_0_0', questionType: questionType, inputtype: 'text', options: [], value: widewithout, setValue: setWidewithout },
-
     { question: 'Bone Resection:', questionId: 's2-3', questionType: questionType, inputtype: 'dropdown', options: [
         "No",
         "Marginal mandibulectomy only",
@@ -123,6 +120,10 @@ const questions1 = [
         "Segmental Mandibulectomy Only",
         "Segmental Mandibulectomy with Upper Alveolectomy/ Infrastructure Maxillectomy"
     ], value: boneResection, setValue: setBoneResection },
+    { question: 'Wide excision of soft tissue with:', questionId: 's2-2_0', questionType: questionType, inputtype: 'text', options: [], value: widewith, setValue: setWidewith },
+    { question: 'Wide excision of soft tissue without:', questionId: 's2-2_0_0', questionType: questionType, inputtype: 'text', options: [], value: widewithout, setValue: setWidewithout },
+
+    
     { question: 'Central Arch Resection:', questionId: 's2-3_0_0', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: centralarchresection, setValue: setCentralarchresection },
     { question: 'Zygoma Resection:', questionId: 's2-3_0_1', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: zygomaresection, setValue: setZygomaresection },
 
@@ -196,7 +197,7 @@ const questions2 =  [
     { question: 'Duration of Reconstruction (Minutes):', questionId: 's2-19', questionType: questionType, inputtype: 'text', options: [], value: s2_19, setValue: setS2_19, restriction: alpha.some(i => s2_19.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Total Surgical Duration (Minutes):', questionId: 's2-20', questionType: questionType, inputtype: 'text', options: [], value: s2_20, setValue: setS2_20, restriction: alpha.some(i => s2_20.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Intraoperative Complications (if any):', questionId: 's2-21', questionType: questionType, inputtype: 'text', options: [], value: s2_21, setValue: setS2_21 },
-    { question: 'Blood Loss (ml):', questionId: 's2-22', questionType: questionType, inputtype: 'text', options: [], value: s2_22, setValue: setS2_22, restriction: alpha.some(i => s2_22.includes(i)), restrictiontext: "Alphabets not allowed" },
+    { question: 'Intraoperative Blood Loss (ml):', questionId: 's2-22', questionType: questionType, inputtype: 'text', options: [], value: s2_22, setValue: setS2_22, restriction: alpha.some(i => s2_22.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'Intraoperative Blood Transfusions:', questionId: 's2-23', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_23, setValue: setS2_23 },
     { question: 'Number of units transfused (Intraoperative):', questionId: 's2-24', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3","4","5"], value: s2_24, setValue: setS2_24 },
     { question: 'Patient shifted to:', questionId: 's2-24_0', questionType: questionType, inputtype: 'dropdown', options: ["Ward","ICU"], value: s2_24_0, setValue: setS2_24_0 },
@@ -209,27 +210,35 @@ const questions2 =  [
    
 ];
 
+// extra variables 
+
+const [oralantibiotics , setOralantibiotics] = useState("")
+const [Indication,setIndication] = useState("")
+
 
 const questions4 = [
     { question: 'Postoperative transfusions:', questionId: 's2-25', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_25, setValue: setS2_25 },
-    { question: 'Number of units transfused (Postoperative):', questionId: 's2-26', questionType: questionType, inputtype: 'dropdown', options: ["0","1","2","3","4","5"], value: s2_26, setValue: setS2_26, restriction: alpha.some(i => s2_26.includes(i)), restrictiontext: "Alphabets not allowed" },
+    { question: 'Number of units transfused (Postoperative):', questionId: 's2-26', questionType: questionType, inputtype: 'text', options: ["0","1","2","3","4","5"], value: s2_26, setValue: setS2_26, restriction: alpha.some(i => s2_26.includes(i)), restrictiontext: "Alphabets not allowed" },
     { question: 'ICU Stay:', questionId: 's2-27', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_27, setValue: setS2_27 },
     { question: 'ICU Days:', questionId: 's2-28', questionType: questionType, inputtype: 'text', options: [], value: s2_28, setValue: setS2_28, restriction: alphaspecial.some(i => s2_28.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
     { question: 'Revision surgery (Y/N):', questionId: 's2-29', questionType: questionType, inputtype: 'dropdown', options: ['Yes', 'No'], value: s2_29, setValue: setS2_29 },
-    { question: 'Procedure for Revision Surgery:', questionId: 's2-30', questionType: questionType, inputtype: 'textarea', options: [], value: s2_30, setValue: setS2_30 },
+    { question: 'Oral antibiotics use (days):', questionId: 's2-29_0', questionType: questionType, inputtype: 'text', options: [], value: oralantibiotics, setValue: setOralantibiotics,  },
+    { question: 'Details of re-surgery:', questionId: 's2-30', questionType: questionType, inputtype: 'textarea', options: [], value: s2_30, setValue: setS2_30 },
     { question: 'Duration of Hospitalization (Days):', questionId: 's2-31', questionType: questionType, inputtype: 'text', options: [], value: s2_31, setValue: setS2_31, restriction: alphaspecial.some(i => s2_31.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
     { question: 'Parenteral Antibiotics Use (Days):', questionId: 's2-32', questionType: questionType, inputtype: 'text', options: [], value: s2_32, setValue: setS2_32, restriction: alphaspecial.some(i => s2_32.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
     { question: 'Condition on Discharge Drain:', questionId: 's2-33', questionType: questionType, inputtype: 'dropdown', options: ["Insitu","Removed"], value: s2_33, setValue: setS2_33 },
     { question: 'Condition on Discharge Feeding tube:', questionId: 's2-33_0', questionType: questionType, inputtype: 'dropdown', options: ["Insitu","Removed"], value: s2_33, setValue: setS2_33 },
     { question: 'Condition on Discharge TT:', questionId: 's2-33_1', questionType: questionType, inputtype: 'dropdown', options: ["Insitu","Removed"], value: s2_33, setValue: setS2_33 },
     { question: 'Condition on Discharge wound:', questionId: 's2-33_2', questionType: questionType, inputtype: 'dropdown', options: ["Intact","Dehiscence"], value: s2_33, setValue: setS2_33 },
-    { question: 'Condition on Discharge Oral intake:', questionId: 's2-33_3', questionType: questionType, inputtype: 'dropdown', options: ["Nil","Clear","Liquid","Semisolid"], value: s2_33, setValue: setS2_33 },
+    { question: 'Condition on Discharge Oral intake:', questionId: 's2-33_3', questionType: questionType, inputtype: 'dropdown', options: ["Nil","Clear Liquid","Liquid","Semisolid"], value: s2_33, setValue: setS2_33 },
 
 
 
     { question: 'Oral Antibiotics Use (Days):', questionId: 's2-34', questionType: questionType, inputtype: 'text', options: [], value: s2_34, setValue: setS2_34, restriction: alphaspecial.some(i => s2_34.includes(i)), restrictiontext: "Alphabets and special characters not allowed" },
     { question: 'Readmission:', questionId: 's2-35', questionType: questionType, inputtype: 'dropdown', options: ["Yes","No"], value: s2_35, setValue: setS2_35 },
-    { question: 'Readmission Reason:', questionId: 's2-36', questionType: questionType, inputtype: 'textarea', options: ["Yes","No"], value: s2_36, setValue: setS2_36 }
+    { question: 'Readmission Reason:', questionId: 's2-36', questionType: questionType, inputtype: 'textarea', options: ["Yes","No"], value: s2_36, setValue: setS2_36 },
+    { question: 'Indication for readmission:', questionId: 's2-37', questionType: questionType, inputtype: 'text', options: [], value: Indication, setValue: setIndication },
+
 ]
 
 
@@ -264,7 +273,7 @@ const questions4 = [
             setDataloading(false);
             if (apidata.executed) {
                 const questiondata = apidata.data.data;
-                const questionsArray = [questions1, questions2, questions3]
+                const questionsArray = [questions1, questions2, questions3,questions4]
                 questionsArray.forEach((question_list) => {
                     question_list.map((question) => {
                         const requiredquestionid = question.questionId;

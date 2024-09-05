@@ -86,7 +86,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
         <div className='flex flex-col justify-start items-center h-full w-full  grow  '>
             <LogoutButton />
             <div className='text-2xl font-bold text-green-5 my-5 text-center max-w-[90%]  mx-0 '>{formtitle}</div>
-            <div className='w-[90%] h-[80%] flex flex-col justify-center bg-white/30 items-center mt-7 py-4 '>
+            <div className='w-[90%] h-[80%] flex flex-col justify-center bg-white/30 items-center mt-7 py-4 px-2'>
                 <ScrollArea ref={scrollRef} className='w-full h-full md:px-6' style={{ scrollbarColor: "#d9d9d9 #f0f0f0" }}>
                     <div className='w-full  flex flex-col justify-center items-center mb-10'>
 
