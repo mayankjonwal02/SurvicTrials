@@ -333,7 +333,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section2")
@@ -419,7 +419,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section3")
@@ -499,7 +499,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section4")
@@ -580,7 +580,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section5")
@@ -660,7 +660,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section6")
@@ -741,7 +741,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section7")
@@ -822,7 +822,7 @@ const Qualityoflifeassessment = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Quality of Life Assessment Form Submitted",
                                 variant: "success",
                             })
                             router.push('/form/randomization')

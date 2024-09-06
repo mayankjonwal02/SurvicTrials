@@ -67,10 +67,11 @@ interface CustomFormProps {
     formtitle: String;
     loading: boolean;
     tabs?: React.ReactNode;
-    updates?: { questionId: string; updates: any[] }[]
+    updates?: { questionId: string; updates: any[] }[],
+    alertRequired?: boolean
 }
 
-const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, buttontitle, formtitle, loading, tabs , updates }) => {
+const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, buttontitle, formtitle, loading, tabs , updates, alertRequired }) => {
     const [task, setTask] = useState("")
     useEffect(() => {
         const storedtask = localStorage.getItem("task");
@@ -292,7 +293,20 @@ const CustomForm: React.FC<CustomFormProps> = ({ questions, handleSubmit, button
                         </div>
                     ))}
                     <div className='w-full flex justify-center'>
-                        <Button onClick={handleSubmit} className='bg-green-5 mt-5 text-white hover:bg-green-4 hover:text-green-5 text-sm' variant="outline">
+                        <Button onClick={
+                            () => {
+                                if (alertRequired === true) {
+                                    // Show confirmation dialog if alert is required
+                                    if (window.confirm("Are you sure you want to submit?")) {
+                                        handleSubmit() // Call handleSubmit only if confirmed
+                                    }
+                                } else {
+                                    // Call handleSubmit directly if no alert is required
+                                    handleSubmit()
+                                }
+                            }
+                            
+                            } className='bg-green-5 mt-5 text-white hover:bg-green-4 hover:text-green-5 text-sm' variant="outline">
                             {buttontitle}
 
 

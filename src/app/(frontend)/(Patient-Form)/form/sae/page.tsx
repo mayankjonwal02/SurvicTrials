@@ -213,7 +213,7 @@ const SeriousAdverseEvent = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "SAE Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/followupreport")

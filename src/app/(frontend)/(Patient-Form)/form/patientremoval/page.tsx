@@ -248,6 +248,7 @@ const PatientRemoval = () => {
                 buttontitle="Submit"
                 formtitle="Patient Removal From Study"
                 loading={loading}
+                alertRequired={true}
             />
         </div>
     );

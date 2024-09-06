@@ -353,7 +353,7 @@ const questions4 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Surgical Treatment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section2")
@@ -439,7 +439,7 @@ const questions4 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Surgical Treatment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section3")
@@ -605,7 +605,7 @@ const questions4 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Surgical Treatment Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/postoperativecomplications")
@@ -740,7 +740,7 @@ const questions4 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Surgical Treatment Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/postoperativecomplications")

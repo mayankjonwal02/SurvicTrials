@@ -186,7 +186,7 @@ const Protocoldeviation = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Protocal Deviation Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/restaging")

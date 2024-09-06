@@ -282,7 +282,7 @@ const Adverseeventsmanagement = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Adverse Event Management Submitted",
                                 variant: "success",
                             })
                            setTabValue("section2")
@@ -364,7 +364,7 @@ const Adverseeventsmanagement = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Adverse Event Management Submitted",
                                 variant: "success",
                             })
                             setTabValue("section3")
@@ -446,7 +446,7 @@ const Adverseeventsmanagement = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Adverse Event Management Submitted",
                                 variant: "success",
                             })
                             router.push("/form/protocoldeviation")

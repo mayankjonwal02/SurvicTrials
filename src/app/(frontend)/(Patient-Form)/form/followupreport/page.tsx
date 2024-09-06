@@ -702,7 +702,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section2")
@@ -786,7 +786,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section3")
@@ -868,7 +868,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section4")
@@ -951,7 +951,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section5")
@@ -1033,7 +1033,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section6")
@@ -1118,7 +1118,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section7")
@@ -1203,7 +1203,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section8")
@@ -1287,7 +1287,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section9")
@@ -1371,7 +1371,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section10")
@@ -1455,7 +1455,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section11")
@@ -1540,7 +1540,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
                             setTabValue("section12")
@@ -1625,7 +1625,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
 
@@ -1709,7 +1709,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
 
@@ -1797,7 +1797,7 @@ const questionsTimingF72 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Follow Up Report Submitted",
                                 variant: "success",
                             })
 

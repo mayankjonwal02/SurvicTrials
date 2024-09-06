@@ -164,7 +164,7 @@ const Counselling = () =>  {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Counselling Submitted",
                                 variant: "success",
                             })
                             router.push("/form/demographic")

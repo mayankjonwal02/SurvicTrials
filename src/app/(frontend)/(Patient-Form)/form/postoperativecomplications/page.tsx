@@ -457,7 +457,7 @@ const Postoperativecomplications = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Post-Operative Complications Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section2")
@@ -542,7 +542,7 @@ const Postoperativecomplications = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Post-Operative Complications Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/histopathology")

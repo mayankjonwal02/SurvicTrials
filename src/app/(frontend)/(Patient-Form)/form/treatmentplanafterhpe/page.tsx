@@ -261,7 +261,7 @@ const Treatmentplanafterhpe = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Treatment Plan After HPE Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/rtogtoxicityassessment")

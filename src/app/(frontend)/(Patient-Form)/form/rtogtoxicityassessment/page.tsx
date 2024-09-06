@@ -402,7 +402,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section2")
@@ -487,7 +487,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section3")
@@ -573,7 +573,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section4")
@@ -659,7 +659,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section5")
@@ -745,7 +745,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section6")
@@ -831,7 +831,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section7")
@@ -917,7 +917,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("section8")
@@ -1002,7 +1002,7 @@ const questions8 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "RTOG Toxicity Assessment Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/sae")

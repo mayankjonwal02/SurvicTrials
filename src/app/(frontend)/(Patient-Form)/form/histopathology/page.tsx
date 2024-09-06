@@ -442,7 +442,7 @@ const Histopathology = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Histopathology Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/treatmentplanafterhpe")

@@ -174,7 +174,7 @@ const Concomitantmedicines = () =>  {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Concomitant Medicines Submitted",
                                 variant: "success",
                             })
                             router.push("/form/adverseevent")

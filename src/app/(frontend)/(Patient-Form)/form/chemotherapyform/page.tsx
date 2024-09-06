@@ -361,7 +361,7 @@ const questions3 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Chemotherapy Form Submitted",
                                 variant: "success",
                             })
                             setTabValue('section2')
@@ -459,7 +459,7 @@ const questions3 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Chemotherapy Form Submitted",
                                 variant: "success",
                             })
                             setTabValue('section3')
@@ -558,7 +558,7 @@ const questions3 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Chemotherapy Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/concomitantmedicines")

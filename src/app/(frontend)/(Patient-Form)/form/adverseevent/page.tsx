@@ -260,7 +260,7 @@ const questions3 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Adverse Event Submitted",
                                 variant: "success",
                             })
                             setTabValue('section2')
@@ -341,7 +341,7 @@ const questions3 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Adverse Event Submitted",
                                 variant: "success",
                             })
                             setTabValue('section3')
@@ -422,7 +422,7 @@ const questions3 = [
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Adverse Event Submitted",
                                 variant: "success",
                             })
                             router.push("/form/adverseeventsmanagement")

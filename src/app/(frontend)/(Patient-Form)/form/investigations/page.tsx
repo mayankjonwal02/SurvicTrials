@@ -369,7 +369,7 @@ const Investigations = () =>  {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Investigation Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("LaboratoryTest")
@@ -575,7 +575,7 @@ const Investigations = () =>  {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Investigation Form Submitted",
                                 variant: "success",
                             })
                             setTabValue("Radiology")
@@ -697,7 +697,7 @@ const Investigations = () =>  {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Investigation Form Submitted",
                                 variant: "success",
                             })
                             router.push("/form/qualityoflifeassessment")

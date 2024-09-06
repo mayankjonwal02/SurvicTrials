@@ -629,7 +629,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             setTabValue("Comorbidities")
@@ -734,7 +734,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             setTabValue("Adult Comorbidity Evaluation-27")
@@ -853,7 +853,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             setTabValue("Family History of Cancers")
@@ -944,7 +944,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
 
@@ -1028,7 +1028,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             setTabValue("Physical Examination")
@@ -1150,7 +1150,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             setTabValue("Clinical Examination")
@@ -1245,7 +1245,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             setTabValue("Neck Nodes")
@@ -1347,7 +1347,7 @@ const ClinicalProfile = () => {
                         if (data.executed) {
                             toast({
                                 title: "Success",
-                                description: "Social History Profile Submitted",
+                                description: "Clinical Profile Submitted",
                                 variant: "success",
                             })
                             router.push("/form/investigations")
