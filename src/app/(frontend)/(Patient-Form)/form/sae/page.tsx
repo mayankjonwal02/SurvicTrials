@@ -61,7 +61,16 @@ const SeriousAdverseEvent = () => {
     const [compensationDetails, setCompensationDetails] = useState('');
 
     const questions1 = [
-        { question: 'Record ID:', questionId: 's_1', questionType: questionType, inputtype: 'text', options: [], value: recordID, setValue: setRecordID },
+        { question: 'Record ID:', questionId: 's_1', questionType: questionType, inputtype: 'text', options: [], value: recordID, setValue: setRecordID, info:[
+            "SAE is any untoward medical occurrence that at any dose that results in",
+            "1. Death",
+            "2. Life-threatening (i.e., the subject is at risk of death at the time of the event)",
+            "3. Requires inpatient hospitalization or prolongation of existing hospitalization",
+            "4. Results in persistent or significant disability or incapacity",
+            "5. Other important medical events which, in the opinion of the investigator, are likely to become serious if untreated, or as defined in the protocol",
+            "6. Significant overdose: In case of a significant overdose of a study drug, this has to be reported as a serious adverse event."
+          ]
+           },
         { question: 'Subject ID:', questionId: 's_2', questionType: questionType, inputtype: 'text', options: [], value: subjectID, setValue: setSubjectID },
         { question: 'Initials and Case:', questionId: 's_3', questionType: questionType, inputtype: 'text', options: [], value: initialsAndCase, setValue: setInitialsAndCase },
         { question: 'AGE:', questionId: 's_4', questionType: questionType, inputtype: 'text', options: [], value: age, setValue: setAge },

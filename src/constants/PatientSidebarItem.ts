@@ -144,6 +144,13 @@ const sidebaritems = [
         category:"Follow-Up Report",
         path: "/form/followupreport",
        
+    },
+    {
+        title: "Patient Removal",
+        icon:undefined,
+        category:"Patient Removal",
+        path: "/form/patientremoval",
+       
     }
 ];
 export default sidebaritems

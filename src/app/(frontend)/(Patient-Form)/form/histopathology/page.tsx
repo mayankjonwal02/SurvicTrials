@@ -164,7 +164,7 @@ const Histopathology = () => {
             ], value: h18, setValue: setH18 
         },
         { 
-            question: 'Residual tumor assessment:RX/R0/R1/R2:', questionId: 'h-19', questionType: questionType, inputtype: 'text', options: [], value: h19, setValue: setH19,
+            question: 'Residual tumor assessment:RX/R0/R1/R2:', questionId: 'h-19', questionType: questionType, inputtype: 'dropdown', options: ["RX","R1","R2","R3"], value: h19, setValue: setH19,
             restriction: alpha.some(i => h19.includes(i)), restrictiontext: 'Alphabets not allowed'
         },
         { 
